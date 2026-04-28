@@ -27,69 +27,147 @@
   <script type="text/babel">
     const { useState, useEffect, useCallback } = React;
 
-    // --- Inline SVG Icons (Replacing lucide-react) ---
-    const ChevronLeft = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="m15 18-6-6 6-6"/></svg>
-    );
-    const BrainCircuit = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M9 13a4.5 4.5 0 0 0 3-4"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M6 18a4 4 0 0 1-1.968-.524"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4"/><path d="M17.997 5.125A3 3 0 0 1 17.599 6.5"/><path d="M20.523 10.896a4 4 0 0 0-.585-.396"/><path d="M18 18a4 4 0 0 0 1.968-.524"/></svg>
-    );
-    const RotateCcw = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-    );
-
-    // ---------------- MOCK DATABASE ----------------
+    // =========================================================
+    // 📚 QUESTION DATABASE (Edit your questions here!)
+    // =========================================================
     const DATABASE = {
       "Biology": {
         "AQA": {
-          "Cell Biology": {
-            "Easy (1-2 marks)": [
-              { id: 'b_a_c_e_1', q: "Define diffusion.", a: "Net movement of particles from an area of higher concentration to an area of lower concentration." },
-              { id: 'b_a_c_e_2', q: "Define osmosis.", a: "The diffusion of water molecules from a dilute solution to a concentrated solution across a partially permeable membrane." },
-              { id: 'b_a_c_e_3', q: "What is a eukaryote?", a: "A cell with a nucleus and membrane-bound organelles (e.g., animal and plant cells)." },
-              { id: 'b_a_c_e_4', q: "Where is genetic material stored in a eukaryotic cell?", a: "In the nucleus." }
-            ],
-            "Medium (3-4 marks)": [
-              { id: 'b_a_c_m_1', q: "Explain how temperature affects the rate of diffusion.", a: "Higher temperature means particles have more kinetic energy, so they move faster, increasing the rate of diffusion." },
-              { id: 'b_a_c_m_2', q: "What is active transport?", a: "Movement of substances against a concentration gradient (low to high), requiring energy from respiration." }
-            ],
-            "Hard (5-6 marks)": [
-              { id: 'b_a_c_h_1', q: "Describe what happens to a plant cell in a hypertonic solution.", a: "Water leaves the cell by osmosis. The cytoplasm pulls away from the cell wall, and the cell becomes plasmolyzed." }
-            ]
+          "1. Cell Biology": {
+            "1.1 Cell Structure": {
+              "Easy (1-2 marks)": [
+                { id: 'b_a_1_11_e_1', q: "What is the difference between eukaryotic and prokaryotic cells?", a: "(1) Eukaryotic cells have a nucleus / are more complex\n(2) Prokaryotic cells do not have a nucleus / are smaller and simpler" },
+                { id: 'b_a_1_11_e_2', q: "What are eukaryotes?", a: "(1) Organisms made of eukaryotic cells" },
+                { id: 'b_a_1_11_e_3', q: "What are prokaryotes?", a: "(1) Organisms made of prokaryotic cells" },
+                { id: 'b_a_1_11_e_4', q: "Are animal cells prokaryotic or eukaryotic?", a: "(1) Eukaryotic" },
+                { id: 'b_a_1_11_e_5', q: "Are plant cells prokaryotic or eukaryotic?", a: "(1) Eukaryotic" },
+                { id: 'b_a_1_11_e_6', q: "Are bacteria cells prokaryotic or eukaryotic?", a: "(1) Prokaryotic" },
+                { id: 'b_a_1_11_e_7', q: "What is the length of a eukaryotic cell?", a: "(1) 10–100 μm" },
+                { id: 'b_a_1_11_e_8', q: "What is the length of a prokaryotic cell?", a: "(1) 0.2–2 μm" },
+                { id: 'b_a_1_11_e_9', q: "What is the length of an average animal cell?", a: "(1) 10–30 μm" },
+                { id: 'b_a_1_11_e_10', q: "What is the length of an average plant cell?", a: "(1) 10–100 μm" },
+                { id: 'b_a_1_11_e_11', q: "What is the length of a virus?", a: "(1) 100 nm" },
+                { id: 'b_a_1_11_e_12', q: "How many millimetres are in a centimetre?", a: "(1) 10 mm" },
+                { id: 'b_a_1_11_e_13', q: "How many micrometres are in a millimetre?", a: "(1) 1000 μm" },
+                { id: 'b_a_1_11_e_14', q: "How many nanometres are in a micrometre?", a: "(1) 1000 nm" },
+                { id: 'b_a_1_11_e_15', q: "What is the function of the nucleus?", a: "(1) Controls the activities of the cell" },
+                { id: 'b_a_1_11_e_16', q: "What does the nucleus contain?", a: "(1) Genetic material (DNA)\n(2) Organised into chromosomes" },
+                { id: 'b_a_1_11_e_17', q: "What is the average size of a nucleus?", a: "(1) Around 10 μm" },
+                { id: 'b_a_1_11_e_18', q: "What is the cytoplasm?", a: "(1) A jelly-like substance\n(2) Where organelles are suspended" },
+                { id: 'b_a_1_11_e_19', q: "What is the purpose of the cytoplasm?", a: "(1) Site of chemical reactions\n(2) Contains enzymes" },
+                { id: 'b_a_1_11_e_20', q: "What is the average size of mitochondria?", a: "(1) Around 1–2 μm" },
+                { id: 'b_a_1_11_e_21', q: "What is the purpose of ribosomes?", a: "(1) Site of protein synthesis" },
+                { id: 'b_a_1_11_e_22', q: "What is the purpose of the cell wall?", a: "(1) Strengthens the cell\n(2) Supports the cell" },
+                { id: 'b_a_1_11_e_23', q: "What is the cell wall made of?", a: "(1) Cellulose" },
+                { id: 'b_a_1_11_e_24', q: "What is a DNA loop?", a: "(1) A circular strand of DNA" },
+                { id: 'b_a_1_11_e_25', q: "What is a plasmid?", a: "(1) Small circular rings of DNA" },
+                { id: 'b_a_1_11_e_26', q: "What is a flagellum?", a: "(1) A long tail-like structure\n(2) Used for movement" },
+                { id: 'b_a_1_11_e_27', q: "When would you use estimations in calculations?", a: "(1) To check whether a calculated answer is reasonable / correct" },
+                { id: 'b_a_1_11_e_28', q: "What is a specimen?", a: "(1) The object being observed under a microscope" },
+                { id: 'b_a_1_11_e_29', q: "What is a slide?", a: "(1) A thin piece of glass or plastic\n(2) Used to hold the specimen" },
+                { id: 'b_a_1_11_e_30', q: "What is a cover slip?", a: "(1) A thin square of glass or plastic\n(2) Placed over the specimen\n(3) Keeps the specimen flat / in place" },
+                { id: 'b_a_1_11_e_31', q: "What is the purpose of iodine solution in microscopy?", a: "(1) Stains the specimen\n(2) Makes structures easier to see" },
+                { id: 'b_a_1_11_e_32', q: "Why must the cover slip be lowered carefully?", a: "(1) To prevent air bubbles forming\n(2) Air bubbles can obstruct the view" }
+              ],
+              "Medium (3-4 marks)": [
+                { id: 'b_a_1_11_m_1', q: "Name three structures found in all eukaryotic cells.", a: "(1) Cell membrane\n(2) Cytoplasm\n(3) Nucleus" },
+                { id: 'b_a_1_11_m_2', q: "Name four structures found in all prokaryotic cells.", a: "(1) Cell wall\n(2) Cell membrane\n(3) Cytoplasm\n(4) Circular DNA (DNA loop)" },
+                { id: 'b_a_1_11_m_3', q: "When writing numbers in standard form, what is the format?", a: "(1) Written as A × 10^n\n(2) Where 1 ≤ A < 10\n(3) n is an integer (positive or negative whole number)" },
+                { id: 'b_a_1_11_m_4', q: "What does “order of magnitude” mean?", a: "(1) A comparison of size between two values\n(2) Expressed in powers of 10\n(3) Shows how many times bigger or smaller one value is" },
+                { id: 'b_a_1_11_m_5', q: "If a small animal cell is around 10 μm and a large plant cell is around 100 μm, how many orders of magnitude bigger is the plant cell?", a: "(1) 100 μm ÷ 10 μm = 10\n(2) This is 10^1\n(3) Therefore, it is 1 order of magnitude bigger" },
+                { id: 'b_a_1_11_m_6', q: "How many orders of magnitude bigger is a small animal cell compared to a virus?", a: "(1) Convert virus size: 100 nm = 0.1 μm\n(2) Small animal cell ≈ 10 μm\n(3) 10 ÷ 0.1 = 100\n(4) This is 10^2\n(5) Therefore, the cell is 2 orders of magnitude bigger" },
+                { id: 'b_a_1_11_m_7', q: "What is the purpose of the cell membrane?", a: "(1) Holds the cell together\n(2) Controls movement of substances in and out of the cell\n(3) Selectively permeable" },
+                { id: 'b_a_1_11_m_8', q: "What is the purpose of mitochondria?", a: "(1) Site of aerobic respiration\n(2) Releases energy (ATP)\n(3) Provides energy for cell activities" },
+                { id: 'b_a_1_11_m_9', q: "What are chloroplasts?", a: "(1) Contain chlorophyll\n(2) Chlorophyll absorbs light energy\n(3) Site of photosynthesis" },
+                { id: 'b_a_1_11_m_10', q: "What is the permanent vacuole?", a: "(1) Contains cell sap\n(2) Maintains turgor pressure\n(3) Keeps the cell rigid / supports the plant" },
+                { id: 'b_a_1_11_m_11', q: "Why do prokaryotic cells have plasmids?", a: "(1) Carry extra genes\n(2) Can give advantages (e.g. antibiotic resistance)\n(3) Can be transferred between cells" },
+                { id: 'b_a_1_11_m_12', q: "How could you use the size of cells to estimate the size of a subcellular structure?", a: "(1) Compare how many times the structure fits into the cell\n(2) Use the known size of the cell\n(3) Divide the cell size by the number of structures\n(4) This gives an approximate size of the structure" },
+                { id: 'b_a_1_11_m_13', q: "If a cell is 20 μm long and approximately 10 nuclei fit along its length, what is the approximate size of one nucleus?", a: "(1) Cell length = 20 μm\n(2) Number of nuclei = 10\n(3) 20 ÷ 10 = 2\n(4) Nucleus size ≈ 2 μm" },
+                { id: 'b_a_1_11_m_14', q: "Describe how to prepare a slide to observe onion cells.", a: "(1) Place a drop of water onto a clean slide\n(2) Peel a thin layer of onion epidermis using tweezers\n(3) Place the tissue onto the slide\n(4) Add a drop of iodine solution\n(5) Lower a cover slip carefully at an angle\n(6) Avoid trapping air bubbles" },
+                { id: 'b_a_1_11_m_15', q: "Describe how to draw a scientific diagram from a microscope observation.", a: "(1) Drawing should be large (at least half the space)\n(2) Use clear, continuous lines\n(3) Do not shade or colour\n(4) Keep structures in proportion\n(5) Include a title\n(6) Include magnification\n(7) Label using straight, uncrossed lines" }
+              ],
+              "Hard (5-6 marks)": [
+                { id: 'b_a_1_11_h_1', q: "Describe how to use a light microscope to observe a specimen.", a: "(1) Place the slide on the stage and secure it\n(2) Select the lowest power objective lens\n(3) Use the coarse adjustment knob to move the stage close to the lens\n(4) Look through the eyepiece\n(5) Slowly move the stage down until the image is in focus\n(6) Use the fine adjustment knob to sharpen the image\n(7) Switch to a higher magnification if needed and refocus" }
+              ]
+            }
           },
-          "Bioenergetics": {
-            "Easy (1-2 marks)": [
-              { id: 'b_a_b_e_1', q: "What is the word equation for photosynthesis?", a: "Carbon dioxide + water -> glucose + oxygen" },
-              { id: 'b_a_b_e_2', q: "Is photosynthesis endothermic or exothermic?", a: "Endothermic (it takes in energy from light)." }
-            ]
-          }
-        },
-        "Edexcel": {
-          "Genetics": {
-            "Easy (1-2 marks)": [
-              { id: 'b_e_g_e_1', q: "What is a gene?", a: "A small section of DNA that codes for a specific protein." }
-            ]
-          }
-        }
-      },
-      "Chemistry": {
-        "AQA": {
-          "Atomic Structure": {
-            "Easy (1-2 marks)": [
-              { id: 'c_a_a_e_1', q: "What is the charge of a proton?", a: "+1" },
-              { id: 'c_a_a_e_2', q: "What is the mass of an electron?", a: "Very small / Negligible (approx 1/2000)" }
-            ]
+          "2. Organisation": {
+            "2.3 Plant tissues, organs and systems": {
+              "Easy (1-2 marks)": [
+                { id: 'b_a_2_23_e_1', q: "Are xylem and phloem part of the plant transport system?", a: "(1) Yes\n(2) They are tissues, not organs" },
+                { id: 'b_a_2_23_e_2', q: "What are root hair cells specialised to do?", a: "(1) Absorb water by osmosis\n(2) Absorb mineral ions by active transport" },
+                { id: 'b_a_2_23_e_3', q: "What are mineral ions used for in plants?", a: "(1) To make proteins\n(2) To make other molecules" },
+                { id: 'b_a_2_23_e_4', q: "What is the transpiration stream?", a: "(1) Movement of water through the xylem" },
+                { id: 'b_a_2_23_e_5', q: "How does water help the plant stay upright?", a: "(1) Creates turgor pressure" },
+                { id: 'b_a_2_23_e_6', q: "What is transpiration?", a: "(1) Loss of water vapour from leaves" },
+                { id: 'b_a_2_23_e_7', q: "Does the leaf keep most of the water?", a: "(1) No\n(2) Most is lost" },
+                { id: 'b_a_2_23_e_8', q: "Where are stomata found?", a: "(1) Mainly on the underside of leaves" },
+                { id: 'b_a_2_23_e_9', q: "What are guard cells specialised to do?", a: "(1) Control gas exchange\n(2) Control water loss" },
+                { id: 'b_a_2_23_e_10', q: "What is the function of stomata?", a: "(1) Allow gases to enter and leave by diffusion" },
+                { id: 'b_a_2_23_e_11', q: "What is water potential?", a: "(1) The tendency for water to move by osmosis" },
+                { id: 'b_a_2_23_e_12', q: "Why can’t stomata remain closed?", a: "(1) Gases would not be able to diffuse in and out" },
+                { id: 'b_a_2_23_e_13', q: "What is humidity?", a: "(1) The amount of water vapour in the air" },
+                { id: 'b_a_2_23_e_14', q: "What is the function of the phloem?", a: "(1) Transports sugars (food)\n(2) From leaves to the rest of the plant" },
+                { id: 'b_a_2_23_e_15', q: "What is cell sap?", a: "(1) Water with dissolved sugars\n(2) May also contain mineral ions" },
+                { id: 'b_a_2_23_e_16', q: "What is translocation?", a: "(1) Movement of sugars in the phloem" },
+                { id: 'b_a_2_23_e_17', q: "Why is the shoot of a plant cut at a slant?", a: "(1) Increases surface area for water uptake" },
+                { id: 'b_a_2_23_e_18', q: "How can a potometer be used to compare transpiration rates under different conditions?", a: "(1) Set up the potometer\n(2) Change one condition at a time\n(3) Measure how far the bubble moves over time" }
+              ],
+              "Medium (3-4 marks)": [
+                { id: 'b_a_2_23_m_1', q: "What are the main organs in the plant transport system?", a: "(1) Roots\n(2) Stems (shoots)\n(3) Leaves" },
+                { id: 'b_a_2_23_m_2', q: "How are root hair cells adapted for their function?", a: "(1) Large surface area for absorption\n(2) Large permanent vacuole to increase osmosis\n(3) Many mitochondria for active transport" },
+                { id: 'b_a_2_23_m_3', q: "What is the function of the xylem?", a: "(1) Transports water\n(2) Transports mineral ions\n(3) From roots to leaves" },
+                { id: 'b_a_2_23_m_4', q: "What is water used for in plants?", a: "(1) Photosynthesis\n(2) Maintaining turgor pressure\n(3) Transporting minerals" },
+                { id: 'b_a_2_23_m_5', q: "Describe the structure of xylem tissue.", a: "(1) Hollow tubes\n(2) No end walls\n(3) Strengthened with lignin" },
+                { id: 'b_a_2_23_m_6', q: "What causes water loss from the leaf?", a: "(1) Spongy mesophyll has air spaces\n(2) Water evaporates into air spaces\n(3) Water vapour diffuses out through stomata" },
+                { id: 'b_a_2_23_m_7', q: "What are stomata?", a: "(1) Tiny pores in leaves\n(2) Surrounded by guard cells\n(3) Allow gases to diffuse in and out" },
+                { id: 'b_a_2_23_m_8', q: "What are guard cells?", a: "(1) Cells that surround stomata\n(2) Control opening and closing\n(3) Regulate gas exchange / water loss" },
+                { id: 'b_a_2_23_m_9', q: "How are guard cells adapted for their function?", a: "(1) Thick inner walls and thin outer walls\n(2) Allows opening and closing\n(3) Sensitive to light (open in light, close in dark)" },
+                { id: 'b_a_2_23_m_10', q: "Why does a plant lose most of the water it takes in?", a: "(1) Water evaporates from mesophyll cells\n(2) Enters air spaces in the leaf\n(3) Diffuses out through stomata" },
+                { id: 'b_a_2_23_m_11', q: "Why is water loss not always harmful to the plant?", a: "(1) Maintains the transpiration stream\n(2) Pulls water up from roots\n(3) Supplies water for photosynthesis" },
+                { id: 'b_a_2_23_m_12', q: "When do stomata open and close?", a: "(1) Open to allow carbon dioxide in\n(2) Open to allow oxygen out\n(3) Close to reduce water loss" },
+                { id: 'b_a_2_23_m_13', q: "Explain how wind affects transpiration.", a: "(1) Removes water vapour from leaf surface\n(2) Maintains steep concentration gradient\n(3) Increases diffusion rate" },
+                { id: 'b_a_2_23_m_14', q: "Explain how temperature affects transpiration.", a: "(1) Increases kinetic energy of molecules\n(2) Speeds up evaporation and diffusion\n(3) Increases rate of water loss" },
+                { id: 'b_a_2_23_m_15', q: "Explain how humidity affects transpiration.", a: "(1) High humidity reduces concentration gradient\n(2) Slows diffusion of water vapour\n(3) Decreases transpiration rate" },
+                { id: 'b_a_2_23_m_16', q: "Explain how light intensity affects transpiration.", a: "(1) Light increases photosynthesis\n(2) Stomata open for gas exchange\n(3) Increases water loss" },
+                { id: 'b_a_2_23_m_17', q: "How are plants adapted to reduce water loss?", a: "(1) Waxy cuticle reduces evaporation\n(2) Stomata mainly on underside\n(3) Reduces exposure to sunlight" },
+                { id: 'b_a_2_23_m_18', q: "What happens if a plant loses water faster than it absorbs it?", a: "(1) Cells lose turgor pressure\n(2) Plant wilts\n(3) Stomata close to reduce water loss" },
+                { id: 'b_a_2_23_m_19', q: "Will the plant die if it loses too much water?", a: "(1) May stop photosynthesising\n(2) May overheat\n(3) Can recover if conditions improve" },
+                { id: 'b_a_2_23_m_20', q: "Describe the structure of phloem tissue.", a: "(1) Made of elongated living cells\n(2) Arranged in tubes\n(3) Sieve plates between cells" },
+                { id: 'b_a_2_23_m_21', q: "How does cell sap move through the phloem?", a: "(1) Moves from cell to cell\n(2) Through pores in sieve plates\n(3) Driven by pressure differences" },
+                { id: 'b_a_2_23_m_22', q: "What is sugar used for in plants?", a: "(1) Respiration\n(2) Growth (making new cells)\n(3) Storage (e.g. roots)" },
+                { id: 'b_a_2_23_m_23', q: "Why can removing a ring of bark kill a tree?", a: "(1) Phloem is found under the bark\n(2) Removing it stops sugar transport\n(3) Roots and tissues do not receive food\n(4) Tree eventually dies" }
+              ],
+              "Hard (5-6 marks)": [
+                { id: 'b_a_2_23_h_1', q: "How are xylem cells adapted for their function?", a: "(1) Cells are dead\n(2) No end walls → continuous tubes\n(3) Hollow to allow flow\n(4) Lignin strengthens walls\n(5) Prevents collapse under pressure\n(6) Provides support" },
+                { id: 'b_a_2_23_h_2', q: "Describe how water moves from the soil to the leaves.", a: "(1) Water enters root hair cells by osmosis\n(2) Moves through root cells by osmosis\n(3) Enters xylem vessels\n(4) Travels up the stem in transpiration stream\n(5) Moves into leaf cells\n(6) Evaporates and exits via stomata" },
+                { id: 'b_a_2_23_h_3', q: "How do guard cells work?", a: "(1) When water enters, cells become turgid\n(2) Turgid cells open the stomata\n(3) When water leaves, cells become flaccid\n(4) Flaccid cells close the stomata\n(5) Opening allows gas exchange\n(6) Closing reduces water loss" },
+                { id: 'b_a_2_23_h_4', q: "Describe the process of transpiration.", a: "(1) Water evaporates from mesophyll cells\n(2) Water vapour enters air spaces\n(3) Diffuses out through stomata\n(4) Creates a concentration gradient\n(5) Causes water to be pulled up through xylem\n(6) Forms the transpiration stream" },
+                { id: 'b_a_2_23_h_5', q: "What factors increase the rate of transpiration?", a: "(1) High temperature\n(2) Wind\n(3) Low humidity\n(4) High light intensity\n(5) Larger surface area\n(6) More stomata open" },
+                { id: 'b_a_2_23_h_6', q: "How are phloem cells adapted for their function?", a: "(1) Cells are living\n(2) Have sieve plates with pores\n(3) Few organelles to allow flow\n(4) Companion cells provide energy\n(5) Companion cells contain many mitochondria\n(6) Enables active transport of sugars" },
+                { id: 'b_a_2_23_h_7', q: "Describe how to measure transpiration using a potometer.", a: "(1) Cut the shoot at a slant under water\n(2) Assemble apparatus under water to avoid air bubbles\n(3) Ensure system is airtight and watertight\n(4) Introduce an air bubble into capillary tube\n(5) Measure distance bubble moves over time\n(6) Calculate rate of water uptake" }
+              ]
+            }
           }
         }
       }
     };
 
+    // =========================================================
+    // ⚙️ APP LOGIC (Don't touch unless adding features)
+    // =========================================================
+
+    const ChevronLeftIcon = ({ className }) => (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="m15 18-6-6 6-6"/></svg>
+    );
+    const RotateCcwIcon = ({ className }) => (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+    );
+
     function App() {
-      // App State
-      const [step, setStep] = useState('menu'); // 'menu', 'playing', 'summary'
-      const [path, setPath] = useState([]); // [Subject, Board, Topic, Difficulty]
+      const [step, setStep] = useState('menu'); 
+      const [path, setPath] = useState([]); 
       
-      // Session State
       const [queue, setQueue] = useState([]);
       const [currentIndex, setCurrentIndex] = useState(0);
       const [showAnswer, setShowAnswer] = useState(false);
@@ -97,30 +175,20 @@
       const [isDeckMastered, setIsDeckMastered] = useState(false);
       const [deckStats, setDeckStats] = useState({ bad: 0, ish: 0, easy: 0, unseen: 0 });
 
-      // ---------------- MENU LOGIC ----------------
-
       const handleSelectPath = (selection) => {
         const newPath = [...path, selection];
-        
-        if (newPath.length === 4) {
-          startSession(newPath);
-        } else {
-          setPath(newPath);
-        }
+        if (newPath.length === 5) startSession(newPath);
+        else setPath(newPath);
       };
 
-      const handleBackMenu = () => {
-        setPath(path.slice(0, -1));
-      };
+      const handleBackMenu = () => setPath(path.slice(0, -1));
 
       const startSession = (selectedPath) => {
-        const [subject, board, topic, diff] = selectedPath;
-        const allQuestions = DATABASE[subject]?.[board]?.[topic]?.[diff] || [];
-        
+        const [subj, board, topic, subtopic, diff] = selectedPath;
+        const allQuestions = DATABASE[subj]?.[board]?.[topic]?.[subtopic]?.[diff] || [];
         const scores = JSON.parse(localStorage.getItem('studyqs_scores') || '{}');
 
         let weak = [], medium = [], unseen = [], strong = [];
-
         allQuestions.forEach(q => {
           const score = scores[q.id];
           if (score === 1) weak.push(q);
@@ -130,7 +198,6 @@
         });
 
         const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
-
         let buildQueue = [...shuffle(weak), ...shuffle(medium), ...shuffle(unseen)];
         let masteredFlag = false;
 
@@ -139,13 +206,7 @@
           masteredFlag = true;
         }
 
-        setDeckStats({
-          bad: weak.length,
-          ish: medium.length,
-          easy: strong.length,
-          unseen: unseen.length
-        });
-
+        setDeckStats({ bad: weak.length, ish: medium.length, easy: strong.length, unseen: unseen.length });
         setPath(selectedPath);
         setQueue(buildQueue);
         setCurrentIndex(0);
@@ -153,34 +214,26 @@
         setSessionStats({ weak: 0, medium: 0, strong: 0 });
         setIsDeckMastered(masteredFlag);
         
-        if (buildQueue.length > 0) {
-          setStep('playing');
-        } else {
-          alert("No questions found in this section.");
+        if (buildQueue.length > 0) setStep('playing');
+        else {
+          alert("No questions found.");
           setPath(selectedPath.slice(0, -1)); 
         }
       };
 
-      // ---------------- PLAY LOGIC ----------------
-
       const handleRate = useCallback((scoreRating) => {
         if (!showAnswer) return;
-
         const currentQ = queue[currentIndex];
-        
         const scores = JSON.parse(localStorage.getItem('studyqs_scores') || '{}');
         scores[currentQ.id] = scoreRating;
         localStorage.setItem('studyqs_scores', JSON.stringify(scores));
 
-        const [subject, board, topic, diff] = path;
-        const allQuestions = DATABASE[subject]?.[board]?.[topic]?.[diff] || [];
+        const [subj, board, topic, subtopic, diff] = path;
+        const allQuestions = DATABASE[subj]?.[board]?.[topic]?.[subtopic]?.[diff] || [];
         let b = 0, i = 0, e = 0, u = 0;
         allQuestions.forEach(q => {
           const s = scores[q.id];
-          if (s === 1) b++;
-          else if (s === 2) i++;
-          else if (s === 3) e++;
-          else u++;
+          if (s === 1) b++; else if (s === 2) i++; else if (s === 3) e++; else u++;
         });
         setDeckStats({ bad: b, ish: i, easy: e, unseen: u });
 
@@ -194,49 +247,50 @@
         if (currentIndex + 1 < queue.length) {
           setCurrentIndex(prev => prev + 1);
           setShowAnswer(false);
-        } else {
-          setStep('summary');
-        }
-      }, [currentIndex, queue, showAnswer]);
+        } else setStep('summary');
+      }, [currentIndex, queue, showAnswer, path]);
 
       useEffect(() => {
         const handleKeyDown = (e) => {
           if (step !== 'playing') return;
-
-          if (e.code === 'Space') {
-            e.preventDefault(); 
-            if (!showAnswer) setShowAnswer(true);
-          }
+          if (e.code === 'Space') { e.preventDefault(); if (!showAnswer) setShowAnswer(true); }
           if (showAnswer) {
             if (e.key === '1') handleRate(1);
             if (e.key === '2') handleRate(2);
             if (e.key === '3') handleRate(3);
           }
         };
-
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
       }, [step, showAnswer, handleRate]);
 
-      // ---------------- RENDERERS ----------------
+      const getSubjectStats = () => {
+        const scores = JSON.parse(localStorage.getItem('studyqs_scores') || '{}');
+        const stats = {};
+        Object.keys(DATABASE).forEach(subject => {
+          let totalQs = 0, easyQs = 0;
+          Object.values(DATABASE[subject] || {}).forEach(topics => {
+            Object.values(topics).forEach(subtopics => {
+              Object.values(subtopics).forEach(difficulties => {
+                Object.values(difficulties).forEach(questions => {
+                  totalQs += questions.length;
+                  questions.forEach(q => { if (scores[q.id] === 3) easyQs++; });
+                });
+              });
+            });
+          });
+          stats[subject] = totalQs > 0 ? Math.round((easyQs / totalQs) * 100) : 0;
+        });
+        return stats;
+      };
 
       const renderMenu = () => {
-        let options = [];
-        let title = "";
-
-        if (path.length === 0) {
-          title = "Select Subject";
-          options = Object.keys(DATABASE);
-        } else if (path.length === 1) {
-          title = `Select Exam Board`;
-          options = Object.keys(DATABASE[path[0]] || {});
-        } else if (path.length === 2) {
-          title = `Select Topic`;
-          options = Object.keys(DATABASE[path[0]][path[1]] || {});
-        } else if (path.length === 3) {
-          title = `Select Difficulty`;
-          options = Object.keys(DATABASE[path[0]][path[1]][path[2]] || {});
-        }
+        let options = [], title = "";
+        if (path.length === 0) { title = "Select Subject"; options = Object.keys(DATABASE); }
+        else if (path.length === 1) { title = "Select Exam Board"; options = Object.keys(DATABASE[path[0]] || {}); }
+        else if (path.length === 2) { title = "Select Topic"; options = Object.keys(DATABASE[path[0]][path[1]] || {}); }
+        else if (path.length === 3) { title = "Select Subtopic"; options = Object.keys(DATABASE[path[0]][path[1]][path[2]] || {}); }
+        else if (path.length === 4) { title = "Select Difficulty"; options = Object.keys(DATABASE[path[0]][path[1]][path[2]][path[3]] || {}); }
 
         return (
           <div className="w-full max-w-2xl mx-auto p-6 animate-fade-in">
@@ -244,48 +298,44 @@
               <h1 className="text-3xl font-bold text-gray-800">studyqs</h1>
               <p className="text-gray-500 mt-2">Recall questions for GCSE</p>
             </div>
-
             {path.length > 0 && (
               <div className="flex items-center gap-2 mb-6 text-sm text-gray-600 bg-gray-50 p-3 rounded-lg">
-                <button onClick={handleBackMenu} className="hover:text-blue-600 flex items-center font-medium">
-                  <ChevronLeft className="w-4 h-4 mr-1" /> Back
-                </button>
-                <span className="text-gray-300">|</span>
-                <span className="truncate">{path.join(' > ')}</span>
+                <button onClick={handleBackMenu} className="hover:text-blue-600 flex items-center font-medium"><ChevronLeftIcon className="w-4 h-4 mr-1" /> Back</button>
+                <span className="text-gray-300">|</span><span className="truncate">{path.join(' > ')}</span>
               </div>
             )}
-
+            {path.length === 0 && (
+              <div className="mb-8">
+                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 px-1">Your Progress</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {Object.entries(getSubjectStats()).map(([subj, percent]) => (
+                    <div key={subj} className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm flex items-center justify-between">
+                      <span className="font-semibold text-gray-700">{subj}</span>
+                      <div className="text-right">
+                        <span className={`text-lg font-bold ${percent >= 80 ? 'text-green-500' : percent >= 40 ? 'text-yellow-500' : 'text-blue-500'}`}>{percent}%</span>
+                        <span className="text-xs text-gray-400 ml-1 font-medium">comfortable</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <h2 className="text-xl font-semibold text-gray-800 mb-4">{title}</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {options.map(opt => {
                   let stats = null;
-                  if (path.length === 3) {
-                     const allQs = DATABASE[path[0]][path[1]][path[2]][opt] || [];
+                  if (path.length === 4) {
+                     const allQs = DATABASE[path[0]][path[1]][path[2]][path[3]][opt] || [];
                      const scores = JSON.parse(localStorage.getItem('studyqs_scores') || '{}');
                      let b=0, i=0, e=0, u=0;
-                     allQs.forEach(q => {
-                       const s = scores[q.id];
-                       if (s === 1) b++; else if (s === 2) i++; else if (s === 3) e++; else u++;
-                     });
+                     allQs.forEach(q => { const s = scores[q.id]; if (s === 1) b++; else if (s === 2) i++; else if (s === 3) e++; else u++; });
                      stats = { b, i, e, u };
                   }
-
                   return (
-                    <button
-                      key={opt}
-                      onClick={() => handleSelectPath(opt)}
-                      className="p-4 text-left border border-gray-200 rounded-lg hover:border-blue-500 hover:bg-blue-50 hover:text-blue-700 transition-all font-medium text-gray-700 flex justify-between items-center"
-                    >
+                    <button key={opt} onClick={() => handleSelectPath(opt)} className="p-4 text-left border border-gray-200 rounded-lg hover:border-blue-500 hover:bg-blue-50 hover:text-blue-700 transition-all font-medium text-gray-700 flex justify-between items-center">
                       <span>{opt}</span>
-                      {stats && (
-                        <div className="flex gap-2 text-xs font-bold bg-white px-2 py-1 rounded shadow-sm border border-gray-100" title="Unseen | Bad | Ish | Easy">
-                          <span className="text-gray-400" title="Unseen">{stats.u}</span>
-                          <span className="text-red-500" title="Bad">{stats.b}</span>
-                          <span className="text-yellow-500" title="Ish">{stats.i}</span>
-                          <span className="text-green-500" title="Easy">{stats.e}</span>
-                        </div>
-                      )}
+                      {stats && <div className="flex gap-2 text-xs font-bold bg-white px-2 py-1 rounded shadow-sm border border-gray-100"><span className="text-gray-400">{stats.u}</span><span className="text-red-500">{stats.b}</span><span className="text-yellow-500">{stats.i}</span><span className="text-green-500">{stats.e}</span></div>}
                     </button>
                   );
                 })}
@@ -297,93 +347,30 @@
 
       const renderPlaying = () => {
         const currentQ = queue[currentIndex];
-        const progressPercent = ((currentIndex) / queue.length) * 100;
-
+        const progressPercent = (currentIndex / queue.length) * 100;
         return (
           <div className="w-full max-w-3xl mx-auto p-4 md:p-8 animate-fade-in flex flex-col min-h-screen justify-center">
-            
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-4">
-              <button 
-                onClick={() => setStep('summary')} 
-                className="text-gray-500 hover:text-gray-800 flex items-center gap-2 text-sm font-medium transition-colors"
-              >
-                <RotateCcw className="w-4 h-4" /> Exit Session
-              </button>
-
-              <div className="text-sm font-semibold text-gray-600 bg-gray-100 px-4 py-1.5 rounded-full text-center sm:text-right shadow-inner">
-                {path.join(' • ')}
-              </div>
+              <button onClick={() => setStep('summary')} className="text-gray-500 hover:text-gray-800 flex items-center gap-2 text-sm font-medium transition-colors"><RotateCcwIcon className="w-4 h-4" /> Exit Session</button>
+              <div className="text-sm font-semibold text-gray-600 bg-gray-100 px-4 py-1.5 rounded-full text-center">{path.join(' • ')}</div>
             </div>
-
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-sm font-bold bg-white px-4 py-3 rounded-xl border border-gray-200 shadow-sm mb-6">
-              <span className="text-gray-500">Cards left: {deckStats.unseen}</span>
-              <span className="text-red-500">🙁: {deckStats.bad}</span>
-              <span className="text-yellow-600">😐: {deckStats.ish}</span>
-              <span className="text-green-500">🙂: {deckStats.easy}</span>
-            </div>
-
-            <div className="w-full bg-gray-200 rounded-full h-2.5 mb-2">
-              <div className="bg-blue-600 h-2.5 rounded-full transition-all duration-300" style={{ width: `${progressPercent}%` }}></div>
-            </div>
-            <div className="text-right text-xs text-gray-500 font-medium mb-8">
-              {currentIndex + 1} of {queue.length}
-            </div>
-
-            {isDeckMastered && currentIndex === 0 && (
-              <div className="bg-green-50 text-green-700 p-4 rounded-lg mb-6 text-center text-sm font-medium border border-green-200">
-                🎉 You previously mastered all questions in this section! Showing all for a recap.
-              </div>
-            )}
-
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-sm font-bold bg-white px-4 py-3 rounded-xl border border-gray-200 shadow-sm mb-6"><span className="text-gray-500">Left: {deckStats.unseen}</span><span className="text-red-500">🙁: {deckStats.bad}</span><span className="text-yellow-600">😐: {deckStats.ish}</span><span className="text-green-500">🙂: {deckStats.easy}</span></div>
+            <div className="w-full bg-gray-200 rounded-full h-2.5 mb-2"><div className="bg-blue-600 h-2.5 rounded-full transition-all duration-300" style={{ width: `${progressPercent}%` }}></div></div>
+            <div className="text-right text-xs text-gray-500 font-medium mb-8">{currentIndex + 1} of {queue.length}</div>
             <div className="bg-white rounded-2xl shadow-lg border border-gray-100 min-h-[300px] flex flex-col">
-              <div className="p-8 md:p-12 flex-1 flex items-center justify-center text-center">
-                <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 leading-relaxed">
-                  {currentQ.q}
-                </h2>
-              </div>
-              
+              <div className="p-8 md:p-12 flex-1 flex items-center justify-center text-center"><h2 className="text-2xl md:text-3xl font-semibold text-gray-800 leading-relaxed">{currentQ.q}</h2></div>
               <div className="border-t border-gray-100"></div>
-
               {!showAnswer ? (
-                <div className="p-6 bg-gray-50 rounded-b-2xl text-center">
-                  <button 
-                    onClick={() => setShowAnswer(true)}
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-sm transition-colors w-full md:w-auto"
-                  >
-                    Show Answer (Space)
-                  </button>
-                </div>
+                <div className="p-6 bg-gray-50 rounded-b-2xl text-center"><button onClick={() => setShowAnswer(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-sm transition-colors w-full md:w-auto">Show Answer (Space)</button></div>
               ) : (
                 <div className="p-8 md:p-12 bg-blue-50 rounded-b-2xl animate-fade-in text-center">
-                   <p className="text-lg md:text-xl text-blue-900 mb-8 font-medium">
-                    {currentQ.a}
-                  </p>
-                  
-                  <p className="text-sm text-gray-500 mb-4 font-medium uppercase tracking-wider">how was it?</p>
-                  
-                  <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <button 
-                      onClick={() => handleRate(1)}
-                      className="flex-1 max-w-[150px] mx-auto flex flex-col items-center p-4 bg-white border border-red-200 hover:border-red-400 hover:bg-red-50 rounded-xl transition-all group shadow-sm"
-                    >
-                      <span className="text-3xl mb-2 group-hover:scale-110 transition-transform">🙁</span>
-                      <span className="text-sm font-bold text-red-600 text-center">bad, got none</span>
-                    </button>
-                    <button 
-                      onClick={() => handleRate(2)}
-                      className="flex-1 max-w-[150px] mx-auto flex flex-col items-center p-4 bg-white border border-yellow-200 hover:border-yellow-400 hover:bg-yellow-50 rounded-xl transition-all group shadow-sm"
-                    >
-                      <span className="text-3xl mb-2 group-hover:scale-110 transition-transform">😐</span>
-                      <span className="text-sm font-bold text-yellow-600 text-center">ish, got some</span>
-                    </button>
-                    <button 
-                      onClick={() => handleRate(3)}
-                      className="flex-1 max-w-[150px] mx-auto flex flex-col items-center p-4 bg-white border border-green-200 hover:border-green-400 hover:bg-green-50 rounded-xl transition-all group shadow-sm"
-                    >
-                      <span className="text-3xl mb-2 group-hover:scale-110 transition-transform">🙂</span>
-                      <span className="text-sm font-bold text-green-600 text-center">easy, got full marks</span>
-                    </button>
-                  </div>
+                   <p className="text-lg md:text-xl text-blue-900 mb-8 font-medium whitespace-pre-wrap">{currentQ.a}</p>
+                   <p className="text-sm text-gray-500 mb-4 font-medium uppercase tracking-wider">how was it?</p>
+                   <div className="flex flex-col sm:flex-row justify-center gap-4">
+                    <button onClick={() => handleRate(1)} className="flex-1 max-w-[150px] mx-auto flex flex-col items-center p-4 bg-white border border-red-200 hover:bg-red-50 rounded-xl transition-all shadow-sm"><span className="text-3xl mb-2">🙁</span><span className="text-sm font-bold text-red-600 text-center">bad</span></button>
+                    <button onClick={() => handleRate(2)} className="flex-1 max-w-[150px] mx-auto flex flex-col items-center p-4 bg-white border border-yellow-200 hover:bg-yellow-50 rounded-xl transition-all shadow-sm"><span className="text-3xl mb-2">😐</span><span className="text-sm font-bold text-yellow-600 text-center">ish</span></button>
+                    <button onClick={() => handleRate(3)} className="flex-1 max-w-[150px] mx-auto flex flex-col items-center p-4 bg-white border border-green-200 hover:bg-green-50 rounded-xl transition-all shadow-sm"><span className="text-3xl mb-2">🙂</span><span className="text-sm font-bold text-green-600 text-center">easy</span></button>
+                   </div>
                 </div>
               )}
             </div>
@@ -391,47 +378,21 @@
         );
       };
 
-      const renderSummary = () => {
-        return (
-          <div className="w-full max-w-2xl mx-auto p-6 text-center animate-fade-in mt-12">
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">Session Complete!</h1>
-            <p className="text-gray-500 mb-8">Here's how you did on this review.</p>
-
-            <div className="grid grid-cols-3 gap-4 mb-8">
-              <div className="bg-white border border-gray-100 p-6 rounded-xl shadow-sm">
-                <div className="text-3xl mb-2">🙁</div>
-                <div className="text-2xl font-bold text-gray-800">{sessionStats.weak}</div>
-                <div className="text-xs text-gray-500 uppercase font-semibold mt-1">Bad (Got None)</div>
-              </div>
-              <div className="bg-white border border-gray-100 p-6 rounded-xl shadow-sm">
-                <div className="text-3xl mb-2">😐</div>
-                <div className="text-2xl font-bold text-gray-800">{sessionStats.medium}</div>
-                <div className="text-xs text-gray-500 uppercase font-semibold mt-1">Ish (Got Some)</div>
-              </div>
-              <div className="bg-white border border-gray-100 p-6 rounded-xl shadow-sm">
-                <div className="text-3xl mb-2">🙂</div>
-                <div className="text-2xl font-bold text-gray-800">{sessionStats.strong}</div>
-                <div className="text-xs text-gray-500 uppercase font-semibold mt-1">Easy (Full Marks)</div>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={() => startSession(path)}
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-sm transition-colors"
-              >
-                Revise Weak/Unseen Again
-              </button>
-              <button 
-                onClick={() => { setStep('menu'); setPath([]); }}
-                className="px-6 py-3 bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 font-semibold rounded-lg shadow-sm transition-colors"
-              >
-                Back to Home
-              </button>
-            </div>
+      const renderSummary = () => (
+        <div className="w-full max-w-2xl mx-auto p-6 text-center animate-fade-in mt-12">
+          <h1 className="text-3xl font-bold text-gray-800 mb-2">Session Complete!</h1>
+          <p className="text-gray-500 mb-8">Here's how you did.</p>
+          <div className="grid grid-cols-3 gap-4 mb-8">
+            <div className="bg-white border border-gray-100 p-6 rounded-xl shadow-sm"><div className="text-3xl mb-2">🙁</div><div className="text-2xl font-bold text-gray-800">{sessionStats.weak}</div></div>
+            <div className="bg-white border border-gray-100 p-6 rounded-xl shadow-sm"><div className="text-3xl mb-2">😐</div><div className="text-2xl font-bold text-gray-800">{sessionStats.medium}</div></div>
+            <div className="bg-white border border-gray-100 p-6 rounded-xl shadow-sm"><div className="text-3xl mb-2">🙂</div><div className="text-2xl font-bold text-gray-800">{sessionStats.strong}</div></div>
           </div>
-        );
-      };
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button onClick={() => startSession(path)} className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-sm transition-colors">Revise Again</button>
+            <button onClick={() => { setStep('menu'); setPath([]); }} className="px-6 py-3 bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 font-semibold rounded-lg shadow-sm transition-colors">Back to Home</button>
+          </div>
+        </div>
+      );
 
       return (
         <React.Fragment>
@@ -441,7 +402,6 @@
         </React.Fragment>
       );
     }
-
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(<App />);
   </script>
