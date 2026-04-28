@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>studyqs</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- React & ReactDOM -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  
+  <!-- Babel (translates JSX in the browser) -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-900 selection:bg-blue-100 min-h-screen">
+  
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useCallback } = React;
+
+    // --- Inline SVG Icons (Replacing lucide-react) ---
+    const ChevronLeft = ({ className }) => (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="m15 18-6-6 6-6"/></svg>
+    );
+    const BrainCircuit = ({ className }) => (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M9 13a4.5 4.5 0 0 0 3-4"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M6 18a4 4 0 0 1-1.968-.524"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4"/><path d="M17.997 5.125A3 3 0 0 1 17.599 6.5"/><path d="M20.523 10.896a4 4 0 0 0-.585-.396"/><path d="M18 18a4 4 0 0 0 1.968-.524"/></svg>
+    );
+    const RotateCcw = ({ className }) => (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+    );
+
+    // ---------------- MOCK DATABASE ----------------
+    const DATABASE = {
+      "Biology": {
+        "AQA": {
+          "Cell Biology": {
+            "Easy (1-2 marks)": [
+              { id: 'b_a_c_e_1', q: "Define diffusion.", a: "Net movement of particles from an area of higher concentration to an area of lower concentration." },
+              { id: 'b_a_c_e_2', q: "Define osmosis.", a: "The diffusion of water molecules from a dilute solution to a concentrated solution across a partially permeable membrane." },
+              { id: 'b_a_c_e_3', q: "What is a eukaryote?", a: "A cell with a nucleus and membrane-bound organelles (e.g., animal and plant cells)." },
+              { id: 'b_a_c_e_4', q: "Where is genetic material stored in a eukaryotic cell?", a: "In the nucleus." }
+            ],
+            "Medium (3-4 marks)": [
+              { id: 'b_a_c_m_1', q: "Explain how temperature affects the rate of diffusion.", a: "Higher temperature means particles have more kinetic energy, so they move faster, increasing the rate of diffusion." },
+              { id: 'b_a_c_m_2', q: "What is active transport?", a: "Movement of substances against a concentration gradient (low to high), requiring energy from respiration." }
+            ],
+            "Hard (5-6 marks)": [
+              { id: 'b_a_c_h_1', q: "Describe what happens to a plant cell in a hypertonic solution.", a: "Water leaves the cell by osmosis. The cytoplasm pulls away from the cell wall, and the cell becomes plasmolyzed." }
+            ]
+          },
+          "Bioenergetics": {
+            "Easy (1-2 marks)": [
+              { id: 'b_a_b_e_1', q: "What is the word equation for photosynthesis?", a: "Carbon dioxide + water -> glucose + oxygen" },
+              { id: 'b_a_b_e_2', q: "Is photosynthesis endothermic or exothermic?", a: "Endothermic (it takes in energy from light)." }
+            ]
+          }
+        },
+        "Edexcel": {
+          "Genetics": {
+            "Easy (1-2 marks)": [
+              { id: 'b_e_g_e_1', q: "What is a gene?", a: "A small section of DNA that codes for a specific protein." }
+            ]
+          }
+        }
+      },
+      "Chemistry": {
+        "AQA": {
+          "Atomic Structure": {
+            "Easy (1-2 marks)": [
+              { id: 'c_a_a_e_1', q: "What is the charge of a proton?", a: "+1" },
+              { id: 'c_a_a_e_2', q: "What is the mass of an electron?", a: "Very small / Negligible (approx 1/2000)" }
+            ]
+          }
+        }
+      }
+    };
+
+    function App() {
+      // App State
+      const [step, setStep] = useState('menu'); // 'menu', 'playing', 'summary'
+      const [path, setPath] = useState([]); // [Subject, Board, Topic, Difficulty]
+      
+      // Session State
+      const [queue, setQueue] = useState([]);
+      const [currentIndex, setCurrentIndex] = useState(0);
+      const [showAnswer, setShowAnswer] = useState(false);
+      const [sessionStats, setSessionStats] = useState({ weak: 0, medium: 0, strong: 0 });
+      const [isDeckMastered, setIsDeckMastered] = useState(false);
+      const [deckStats, setDeckStats] = useState({ bad: 0, ish: 0, easy: 0, unseen: 0 });
+
+      // ---------------- MENU LOGIC ----------------
+
+      const handleSelectPath = (selection) => {
+        const newPath = [...path, selection];
+        
+        if (newPath.length === 4) {
+          startSession(newPath);
+        } else {
+          setPath(newPath);
+        }
+      };
+
+      const handleBackMenu = () => {
+        setPath(path.slice(0, -1));
+      };
+
+      const startSession = (selectedPath) => {
+        const [subject, board, topic, diff] = selectedPath;
+        const allQuestions = DATABASE[subject]?.[board]?.[topic]?.[diff] || [];
+        
+        const scores = JSON.parse(localStorage.getItem('studyqs_scores') || '{}');
+
+        let weak = [], medium = [], unseen = [], strong = [];
+
+        allQuestions.forEach(q => {
+          const score = scores[q.id];
+          if (score === 1) weak.push(q);
+          else if (score === 2) medium.push(q);
+          else if (score === 3) strong.push(q);
+          else unseen.push(q);
+        });
+
+        const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
+
+        let buildQueue = [...shuffle(weak), ...shuffle(medium), ...shuffle(unseen)];
+        let masteredFlag = false;
+
+        if (buildQueue.length === 0 && strong.length > 0) {
+          buildQueue = shuffle(strong);
+          masteredFlag = true;
+        }
+
+        setDeckStats({
+          bad: weak.length,
+          ish: medium.length,
+          easy: strong.length,
+          unseen: unseen.length
+        });
+
+        setPath(selectedPath);
+        setQueue(buildQueue);
+        setCurrentIndex(0);
+        setShowAnswer(false);
+        setSessionStats({ weak: 0, medium: 0, strong: 0 });
+        setIsDeckMastered(masteredFlag);
+        
+        if (buildQueue.length > 0) {
+          setStep('playing');
+        } else {
+          alert("No questions found in this section.");
+          setPath(selectedPath.slice(0, -1)); 
+        }
+      };
+
+      // ---------------- PLAY LOGIC ----------------
+
+      const handleRate = useCallback((scoreRating) => {
+        if (!showAnswer) return;
+
+        const currentQ = queue[currentIndex];
+        
+        const scores = JSON.parse(localStorage.getItem('studyqs_scores') || '{}');
+        scores[currentQ.id] = scoreRating;
+        localStorage.setItem('studyqs_scores', JSON.stringify(scores));
+
+        const [subject, board, topic, diff] = path;
+        const allQuestions = DATABASE[subject]?.[board]?.[topic]?.[diff] || [];
+        let b = 0, i = 0, e = 0, u = 0;
+        allQuestions.forEach(q => {
+          const s = scores[q.id];
+          if (s === 1) b++;
+          else if (s === 2) i++;
+          else if (s === 3) e++;
+          else u++;
+        });
+        setDeckStats({ bad: b, ish: i, easy: e, unseen: u });
+
+        setSessionStats(prev => ({
+          ...prev,
+          weak: scoreRating === 1 ? prev.weak + 1 : prev.weak,
+          medium: scoreRating === 2 ? prev.medium + 1 : prev.medium,
+          strong: scoreRating === 3 ? prev.strong + 1 : prev.strong
+        }));
+
+        if (currentIndex + 1 < queue.length) {
+          setCurrentIndex(prev => prev + 1);
+          setShowAnswer(false);
+        } else {
+          setStep('summary');
+        }
+      }, [currentIndex, queue, showAnswer]);
+
+      useEffect(() => {
+        const handleKeyDown = (e) => {
+          if (step !== 'playing') return;
+
+          if (e.code === 'Space') {
+            e.preventDefault(); 
+            if (!showAnswer) setShowAnswer(true);
+          }
+          if (showAnswer) {
+            if (e.key === '1') handleRate(1);
+            if (e.key === '2') handleRate(2);
+            if (e.key === '3') handleRate(3);
+          }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+      }, [step, showAnswer, handleRate]);
+
+      // ---------------- RENDERERS ----------------
+
+      const renderMenu = () => {
+        let options = [];
+        let title = "";
+
+        if (path.length === 0) {
+          title = "Select Subject";
+          options = Object.keys(DATABASE);
+        } else if (path.length === 1) {
+          title = `Select Exam Board`;
+          options = Object.keys(DATABASE[path[0]] || {});
+        } else if (path.length === 2) {
+          title = `Select Topic`;
+          options = Object.keys(DATABASE[path[0]][path[1]] || {});
+        } else if (path.length === 3) {
+          title = `Select Difficulty`;
+          options = Object.keys(DATABASE[path[0]][path[1]][path[2]] || {});
+        }
+
+        return (
+          <div className="w-full max-w-2xl mx-auto p-6 animate-fade-in">
+            <div className="text-center mb-8">
+              <h1 className="text-3xl font-bold text-gray-800">studyqs</h1>
+              <p className="text-gray-500 mt-2">Recall questions for GCSE</p>
+            </div>
+
+            {path.length > 0 && (
+              <div className="flex items-center gap-2 mb-6 text-sm text-gray-600 bg-gray-50 p-3 rounded-lg">
+                <button onClick={handleBackMenu} className="hover:text-blue-600 flex items-center font-medium">
+                  <ChevronLeft className="w-4 h-4 mr-1" /> Back
+                </button>
+                <span className="text-gray-300">|</span>
+                <span className="truncate">{path.join(' > ')}</span>
+              </div>
+            )}
+
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+              <h2 className="text-xl font-semibold text-gray-800 mb-4">{title}</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {options.map(opt => {
+                  let stats = null;
+                  if (path.length === 3) {
+                     const allQs = DATABASE[path[0]][path[1]][path[2]][opt] || [];
+                     const scores = JSON.parse(localStorage.getItem('studyqs_scores') || '{}');
+                     let b=0, i=0, e=0, u=0;
+                     allQs.forEach(q => {
+                       const s = scores[q.id];
+                       if (s === 1) b++; else if (s === 2) i++; else if (s === 3) e++; else u++;
+                     });
+                     stats = { b, i, e, u };
+                  }
+
+                  return (
+                    <button
+                      key={opt}
+                      onClick={() => handleSelectPath(opt)}
+                      className="p-4 text-left border border-gray-200 rounded-lg hover:border-blue-500 hover:bg-blue-50 hover:text-blue-700 transition-all font-medium text-gray-700 flex justify-between items-center"
+                    >
+                      <span>{opt}</span>
+                      {stats && (
+                        <div className="flex gap-2 text-xs font-bold bg-white px-2 py-1 rounded shadow-sm border border-gray-100" title="Unseen | Bad | Ish | Easy">
+                          <span className="text-gray-400" title="Unseen">{stats.u}</span>
+                          <span className="text-red-500" title="Bad">{stats.b}</span>
+                          <span className="text-yellow-500" title="Ish">{stats.i}</span>
+                          <span className="text-green-500" title="Easy">{stats.e}</span>
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        );
+      };
+
+      const renderPlaying = () => {
+        const currentQ = queue[currentIndex];
+        const progressPercent = ((currentIndex) / queue.length) * 100;
+
+        return (
+          <div className="w-full max-w-3xl mx-auto p-4 md:p-8 animate-fade-in flex flex-col min-h-screen justify-center">
+            
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-4">
+              <button 
+                onClick={() => setStep('summary')} 
+                className="text-gray-500 hover:text-gray-800 flex items-center gap-2 text-sm font-medium transition-colors"
+              >
+                <RotateCcw className="w-4 h-4" /> Exit Session
+              </button>
+
+              <div className="text-sm font-semibold text-gray-600 bg-gray-100 px-4 py-1.5 rounded-full text-center sm:text-right shadow-inner">
+                {path.join(' • ')}
+              </div>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-sm font-bold bg-white px-4 py-3 rounded-xl border border-gray-200 shadow-sm mb-6">
+              <span className="text-gray-500">Cards left: {deckStats.unseen}</span>
+              <span className="text-red-500">🙁: {deckStats.bad}</span>
+              <span className="text-yellow-600">😐: {deckStats.ish}</span>
+              <span className="text-green-500">🙂: {deckStats.easy}</span>
+            </div>
+
+            <div className="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+              <div className="bg-blue-600 h-2.5 rounded-full transition-all duration-300" style={{ width: `${progressPercent}%` }}></div>
+            </div>
+            <div className="text-right text-xs text-gray-500 font-medium mb-8">
+              {currentIndex + 1} of {queue.length}
+            </div>
+
+            {isDeckMastered && currentIndex === 0 && (
+              <div className="bg-green-50 text-green-700 p-4 rounded-lg mb-6 text-center text-sm font-medium border border-green-200">
+                🎉 You previously mastered all questions in this section! Showing all for a recap.
+              </div>
+            )}
+
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 min-h-[300px] flex flex-col">
+              <div className="p-8 md:p-12 flex-1 flex items-center justify-center text-center">
+                <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 leading-relaxed">
+                  {currentQ.q}
+                </h2>
+              </div>
+              
+              <div className="border-t border-gray-100"></div>
+
+              {!showAnswer ? (
+                <div className="p-6 bg-gray-50 rounded-b-2xl text-center">
+                  <button 
+                    onClick={() => setShowAnswer(true)}
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-sm transition-colors w-full md:w-auto"
+                  >
+                    Show Answer (Space)
+                  </button>
+                </div>
+              ) : (
+                <div className="p-8 md:p-12 bg-blue-50 rounded-b-2xl animate-fade-in text-center">
+                   <p className="text-lg md:text-xl text-blue-900 mb-8 font-medium">
+                    {currentQ.a}
+                  </p>
+                  
+                  <p className="text-sm text-gray-500 mb-4 font-medium uppercase tracking-wider">how was it?</p>
+                  
+                  <div className="flex flex-col sm:flex-row justify-center gap-4">
+                    <button 
+                      onClick={() => handleRate(1)}
+                      className="flex-1 max-w-[150px] mx-auto flex flex-col items-center p-4 bg-white border border-red-200 hover:border-red-400 hover:bg-red-50 rounded-xl transition-all group shadow-sm"
+                    >
+                      <span className="text-3xl mb-2 group-hover:scale-110 transition-transform">🙁</span>
+                      <span className="text-sm font-bold text-red-600 text-center">bad, got none</span>
+                    </button>
+                    <button 
+                      onClick={() => handleRate(2)}
+                      className="flex-1 max-w-[150px] mx-auto flex flex-col items-center p-4 bg-white border border-yellow-200 hover:border-yellow-400 hover:bg-yellow-50 rounded-xl transition-all group shadow-sm"
+                    >
+                      <span className="text-3xl mb-2 group-hover:scale-110 transition-transform">😐</span>
+                      <span className="text-sm font-bold text-yellow-600 text-center">ish, got some</span>
+                    </button>
+                    <button 
+                      onClick={() => handleRate(3)}
+                      className="flex-1 max-w-[150px] mx-auto flex flex-col items-center p-4 bg-white border border-green-200 hover:border-green-400 hover:bg-green-50 rounded-xl transition-all group shadow-sm"
+                    >
+                      <span className="text-3xl mb-2 group-hover:scale-110 transition-transform">🙂</span>
+                      <span className="text-sm font-bold text-green-600 text-center">easy, got full marks</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      };
+
+      const renderSummary = () => {
+        return (
+          <div className="w-full max-w-2xl mx-auto p-6 text-center animate-fade-in mt-12">
+            <h1 className="text-3xl font-bold text-gray-800 mb-2">Session Complete!</h1>
+            <p className="text-gray-500 mb-8">Here's how you did on this review.</p>
+
+            <div className="grid grid-cols-3 gap-4 mb-8">
+              <div className="bg-white border border-gray-100 p-6 rounded-xl shadow-sm">
+                <div className="text-3xl mb-2">🙁</div>
+                <div className="text-2xl font-bold text-gray-800">{sessionStats.weak}</div>
+                <div className="text-xs text-gray-500 uppercase font-semibold mt-1">Bad (Got None)</div>
+              </div>
+              <div className="bg-white border border-gray-100 p-6 rounded-xl shadow-sm">
+                <div className="text-3xl mb-2">😐</div>
+                <div className="text-2xl font-bold text-gray-800">{sessionStats.medium}</div>
+                <div className="text-xs text-gray-500 uppercase font-semibold mt-1">Ish (Got Some)</div>
+              </div>
+              <div className="bg-white border border-gray-100 p-6 rounded-xl shadow-sm">
+                <div className="text-3xl mb-2">🙂</div>
+                <div className="text-2xl font-bold text-gray-800">{sessionStats.strong}</div>
+                <div className="text-xs text-gray-500 uppercase font-semibold mt-1">Easy (Full Marks)</div>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button 
+                onClick={() => startSession(path)}
+                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-sm transition-colors"
+              >
+                Revise Weak/Unseen Again
+              </button>
+              <button 
+                onClick={() => { setStep('menu'); setPath([]); }}
+                className="px-6 py-3 bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 font-semibold rounded-lg shadow-sm transition-colors"
+              >
+                Back to Home
+              </button>
+            </div>
+          </div>
+        );
+      };
+
+      return (
+        <React.Fragment>
+          {step === 'menu' && renderMenu()}
+          {step === 'playing' && renderPlaying()}
+          {step === 'summary' && renderSummary()}
+        </React.Fragment>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
