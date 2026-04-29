@@ -1,780 +1,969 @@
-import React, { useState, useEffect, useCallback } from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>studyqs</title>
+  
+  <script src="https://cdn.tailwindcss.com?v=2.9"></script>
+  
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-// =========================================================
-// 📚 THE COMPLETE MASTER DATABASE
-// =========================================================
-const DATABASE = {
-  "Biology": {
-    "AQA": {
-      "Higher": {
-        "1. Cell Biology": {
-          "1.1 Cell Structure": {
-            "Easy (1-2 marks)": [
-              { id: 'b_a_1_11_e_1', q: "What is the difference between eukaryotic and prokaryotic cells?", a: "(1) Eukaryotic cells have a nucleus / are more complex\n(2) Prokaryotic cells do not have a nucleus / are smaller and simpler" },
-              { id: 'b_a_1_11_e_2', q: "What are eukaryotes?", a: "(1) Organisms made of eukaryotic cells" },
-              { id: 'b_a_1_11_e_3', q: "What are prokaryotes?", a: "(1) Organisms made of prokaryotic cells" },
-              { id: 'b_a_1_11_e_4', q: "Are animal cells prokaryotic or eukaryotic?", a: "(1) Eukaryotic" },
-              { id: 'b_a_1_11_e_5', q: "Are plant cells prokaryotic or eukaryotic?", a: "(1) Eukaryotic" },
-              { id: 'b_a_1_11_e_6', q: "Are bacteria cells prokaryotic or eukaryotic?", a: "(1) Prokaryotic" },
-              { id: 'b_a_1_11_e_7', q: "What is the length of a eukaryotic cell?", a: "(1) 10–100 μm" },
-              { id: 'b_a_1_11_e_8', q: "What is the length of a prokaryotic cell?", a: "(1) 0.2–2 μm" },
-              { id: 'b_a_1_11_e_9', q: "What is the length of an average animal cell?", a: "(1) 10–30 μm" },
-              { id: 'b_a_1_11_e_10', q: "What is the length of an average plant cell?", a: "(1) 10–100 μm" },
-              { id: 'b_a_1_11_e_11', q: "What is the length of a virus?", a: "(1) 100 nm" },
-              { id: 'b_a_1_11_e_12', q: "How many millimetres are in a centimetre?", a: "(1) 10 mm" },
-              { id: 'b_a_1_11_e_13', q: "How many micrometres are in a millimetre?", a: "(1) 1000 μm" },
-              { id: 'b_a_1_11_e_14', q: "How many nanometres are in a micrometre?", a: "(1) 1000 nm" },
-              { id: 'b_a_1_11_e_15', q: "What is the function of the nucleus?", a: "(1) Controls the activities of the cell" },
-              { id: 'b_a_1_11_e_16', q: "What does the nucleus contain?", a: "(1) Genetic material (DNA)\n(2) Organised into chromosomes" },
-              { id: 'b_a_1_11_e_17', q: "What is the average size of a nucleus?", a: "(1) Around 10 μm" },
-              { id: 'b_a_1_11_e_18', q: "What is the cytoplasm?", a: "(1) A jelly-like substance\n(2) Where organelles are suspended" },
-              { id: 'b_a_1_11_e_19', q: "What is the purpose of the cytoplasm?", a: "(1) Site of chemical reactions\n(2) Contains enzymes" },
-              { id: 'b_a_1_11_e_20', q: "What is the average size of mitochondria?", a: "(1) Around 1–2 μm" },
-              { id: 'b_a_1_11_e_21', q: "What is the purpose of ribosomes?", a: "(1) Site of protein synthesis" },
-              { id: 'b_a_1_11_e_22', q: "What is the purpose of the cell wall?", a: "(1) Strengthens the cell\n(2) Supports the cell" },
-              { id: 'b_a_1_11_e_23', q: "What is the cell wall made of?", a: "(1) Cellulose" },
-              { id: 'b_a_1_11_e_24', q: "What is a DNA loop?", a: "(1) A circular strand of DNA" },
-              { id: 'b_a_1_11_e_25', q: "What is a plasmid?", a: "(1) Small circular rings of DNA" },
-              { id: 'b_a_1_11_e_26', q: "What is a flagellum?", a: "(1) A long tail-like structure\n(2) Used for movement" },
-              { id: 'b_a_1_11_e_27', q: "When would you use estimations in calculations?", a: "(1) To check whether a calculated answer is reasonable / correct" },
-              { id: 'b_a_1_11_e_28', q: "What is a specimen?", a: "(1) The object being observed under a microscope" },
-              { id: 'b_a_1_11_e_29', q: "What is a slide?", a: "(1) A thin piece of glass or plastic\n(2) Used to hold the specimen" },
-              { id: 'b_a_1_11_e_30', q: "What is a cover slip?", a: "(1) A thin square of glass or plastic\n(2) Placed over the specimen\n(3) Keeps the specimen flat / in place" },
-              { id: 'b_a_1_11_e_31', q: "What is the purpose of iodine solution in microscopy?", a: "(1) Stains the specimen\n(2) Makes structures easier to see" },
-              { id: 'b_a_1_11_e_32', q: "Why must the cover slip be lowered carefully?", a: "(1) To prevent air bubbles forming\n(2) Air bubbles can obstruct the view" }
-            ],
-            "Medium (3-4 marks)": [
-              { id: 'b_a_1_11_m_1', q: "Name three structures found in all eukaryotic cells.", a: "(1) Cell membrane\n(2) Cytoplasm\n(3) Nucleus" },
-              { id: 'b_a_1_11_m_2', q: "Name four structures found in all prokaryotic cells.", a: "(1) Cell wall\n(2) Cell membrane\n(3) Cytoplasm\n(4) Circular DNA (DNA loop)" },
-              { id: 'b_a_1_11_m_3', q: "When writing numbers in standard form, what is the format?", a: "(1) Written as A × 10^n\n(2) Where 1 ≤ A < 10\n(3) n is an integer (positive or negative whole number)" },
-              { id: 'b_a_1_11_m_4', q: "What does “order of magnitude” mean?", a: "(1) A comparison of size between two values\n(2) Expressed in powers of 10\n(3) Shows how many times bigger or smaller one value is" },
-              { id: 'b_a_1_11_m_5', q: "If a small animal cell is around 10 μm and a large plant cell is around 100 μm, how many orders of magnitude bigger is the plant cell?", a: "(1) 100 μm ÷ 10 μm = 10\n(2) This is 10^1\n(3) Therefore, it is 1 order of magnitude bigger" },
-              { id: 'b_a_1_11_m_6', q: "How many orders of magnitude bigger is a small animal cell compared to a virus?", a: "(1) Convert virus size: 100 nm = 0.1 μm\n(2) Small animal cell ≈ 10 μm\n(3) 10 ÷ 0.1 = 100\n(4) This is 10^2\n(5) Therefore, the cell is 2 orders of magnitude bigger" },
-              { id: 'b_a_1_11_m_7', q: "What is the purpose of the cell membrane?", a: "(1) Holds the cell together\n(2) Controls movement of substances in and out of the cell\n(3) Selectively permeable" },
-              { id: 'b_a_1_11_m_8', q: "What is the purpose of mitochondria?", a: "(1) Site of aerobic respiration\n(2) Releases energy (ATP)\n(3) Provides energy for cell activities" },
-              { id: 'b_a_1_11_m_9', q: "What are chloroplasts?", a: "(1) Contain chlorophyll\n(2) Chlorophyll absorbs light energy\n(3) Site of photosynthesis" },
-              { id: 'b_a_1_11_m_10', q: "What is the permanent vacuole?", a: "(1) Contains cell sap\n(2) Maintains turgor pressure\n(3) Keeps the cell rigid / supports the plant" },
-              { id: 'b_a_1_11_m_11', q: "Why do prokaryotic cells have plasmids?", a: "(1) Carry extra genes\n(2) Can give advantages (e.g. antibiotic resistance)\n(3) Can be transferred between cells" },
-              { id: 'b_a_1_11_m_12', q: "How could you use the size of cells to estimate the size of a subcellular structure?", a: "(1) Compare how many times the structure fits into the cell\n(2) Use the known size of the cell\n(3) Divide the cell size by the number of structures\n(4) This gives an approximate size of the structure" },
-              { id: 'b_a_1_11_m_13', q: "If a cell is 20 μm long and approximately 10 nuclei fit along its length, what is the approximate size of one nucleus?", a: "(1) Cell length = 20 μm\n(2) Number of nuclei = 10\n(3) 20 ÷ 10 = 2\n(4) Nucleus size ≈ 2 μm" },
-              { id: 'b_a_1_11_m_14', q: "Describe how to prepare a slide to observe onion cells.", a: "(1) Place a drop of water onto a clean slide\n(2) Peel a thin layer of onion epidermis using tweezers\n(3) Place the tissue onto the slide\n(4) Add a drop of iodine solution\n(5) Lower a cover slip carefully at an angle\n(6) Avoid trapping air bubbles" },
-              { id: 'b_a_1_11_m_15', q: "Describe how to draw a scientific diagram from a microscope observation.", a: "(1) Drawing should be large (at least half the space)\n(2) Use clear, continuous lines\n(3) Do not shade or colour\n(4) Keep structures in proportion\n(5) Include a title\n(6) Include magnification\n(7) Label using straight, uncrossed lines" }
-            ],
-            "Hard (5-6 marks)": [
-              { id: 'b_a_1_11_h_1', q: "Describe how to use a light microscope to observe a specimen.", a: "(1) Place the slide on the stage and secure it\n(2) Select the lowest power objective lens\n(3) Use the coarse adjustment knob to move the stage close to the lens\n(4) Look through the eyepiece\n(5) Slowly move the stage down until the image is in focus\n(6) Use the fine adjustment knob to sharpen the image\n(7) Switch to a higher magnification if needed and refocus" }
-            ]
-          }
-        },
-        "2. Organisation": {
-          "2.3 Plant tissues, organs and systems": {
-            "Easy (1-2 marks)": [
-              { id: 'b_a_2_23_e_1', q: "Are xylem and phloem part of the plant transport system?", a: "(1) Yes\n(2) They are tissues, not organs" },
-              { id: 'b_a_2_23_e_2', q: "What are root hair cells specialised to do?", a: "(1) Absorb water by osmosis\n(2) Absorb mineral ions by active transport" },
-              { id: 'b_a_2_23_e_3', q: "What are mineral ions used for in plants?", a: "(1) To make proteins\n(2) To make other molecules" },
-              { id: 'b_a_2_23_e_4', q: "What is the transpiration stream?", a: "(1) Movement of water through the xylem" },
-              { id: 'b_a_2_23_e_5', q: "How does water help the plant stay upright?", a: "(1) Creates turgor pressure" },
-              { id: 'b_a_2_23_e_6', q: "What is transpiration?", a: "(1) Loss of water vapour from leaves" },
-              { id: 'b_a_2_23_e_7', q: "Does the leaf keep most of the water?", a: "(1) No\n(2) Most is lost" },
-              { id: 'b_a_2_23_e_8', q: "Where are stomata found?", a: "(1) Mainly on the underside of leaves" },
-              { id: 'b_a_2_23_e_9', q: "What are guard cells specialised to do?", a: "(1) Control gas exchange\n(2) Control water loss" },
-              { id: 'b_a_2_23_e_10', q: "What is the function of stomata?", a: "(1) Allow gases to enter and leave by diffusion" },
-              { id: 'b_a_2_23_e_11', q: "What is water potential?", a: "(1) The tendency for water to move by osmosis" },
-              { id: 'b_a_2_23_e_12', q: "Why can’t stomata remain closed?", a: "(1) Gases would not be able to diffuse in and out" },
-              { id: 'b_a_2_23_e_13', q: "What is humidity?", a: "(1) The amount of water vapour in the air" },
-              { id: 'b_a_2_23_e_14', q: "What is the function of the phloem?", a: "(1) Transports sugars (food)\n(2) From leaves to the rest of the plant" },
-              { id: 'b_a_2_23_e_15', q: "What is cell sap?", a: "(1) Water with dissolved sugars\n(2) May also contain mineral ions" },
-              { id: 'b_a_2_23_e_16', q: "What is translocation?", a: "(1) Movement of sugars in the phloem" },
-              { id: 'b_a_2_23_e_17', q: "Why is the shoot of a plant cut at a slant?", a: "(1) Increases surface area for water uptake" },
-              { id: 'b_a_2_23_e_18', q: "How can a potometer be used to investigate the effect of environmental factors on transpiration rate?", a: "(1) Change one factor (e.g. light, wind, temp)\n(2) Measure rate of water uptake" },
-              { id: 'b_a_2_23_e_19', q: "What are limitations of using nail varnish to estimate stomata distribution?", a: "(1) Varnish may not peel cleanly\n(2) Results are only estimates" }
-            ],
-            "Medium (3-4 marks)": [
-              { id: 'b_a_2_23_m_1', q: "What are the main organs in the plant transport system?", a: "(1) Roots\n(2) Stems (shoots)\n(3) Leaves" },
-              { id: 'b_a_2_23_m_2', q: "How are root hair cells adapted for their function?", a: "(1) Large surface area for absorption\n(2) Large permanent vacuole to increase osmosis\n(3) Many mitochondria for active transport" },
-              { id: 'b_a_2_23_m_3', q: "What is the function of the xylem?", a: "(1) Transports water\n(2) Transports mineral ions\n(3) From roots to leaves" },
-              { id: 'b_a_2_23_m_4', q: "What is water used for in plants?", a: "(1) Photosynthesis\n(2) Maintaining turgor pressure\n(3) Transporting minerals" },
-              { id: 'b_a_2_23_m_5', q: "Describe the structure of xylem tissue.", a: "(1) Hollow tubes\n(2) No end walls\n(3) Strengthened with lignin" },
-              { id: 'b_a_2_23_m_6', q: "What causes water loss from the leaf?", a: "(1) Spongy mesophyll has air spaces\n(2) Water evaporates into air spaces\n(3) Water vapour diffuses out through stomata" },
-              { id: 'b_a_2_23_m_7', q: "What are stomata?", a: "(1) Tiny pores in leaves\n(2) Surrounded by guard cells\n(3) Allow gases to diffuse in and out" },
-              { id: 'b_a_2_23_m_8', q: "What are guard cells?", a: "(1) Cells that surround stomata\n(2) Control opening and closing\n(3) Regulate gas exchange / water loss" },
-              { id: 'b_a_2_23_m_9', q: "How are guard cells adapted for their function?", a: "(1) Thick inner walls and thin outer walls\n(2) Allows opening and closing\n(3) Sensitive to light (open in light, close in dark)" },
-              { id: 'b_a_2_23_m_10', q: "Why does a plant lose most of the water it takes in?", a: "(1) Water evaporates from mesophyll cells\n(2) Enters air spaces in the leaf\n(3) Diffuses out through stomata" },
-              { id: 'b_a_2_23_m_11', q: "Why is water loss not always harmful to the plant?", a: "(1) Maintains the transpiration stream\n(2) Pulls water up from roots\n(3) Supplies water for photosynthesis" },
-              { id: 'b_a_2_23_m_12', q: "When do stomata open and close?", a: "(1) Open to allow carbon dioxide in\n(2) Open to allow oxygen out\n(3) Close to reduce water loss" },
-              { id: 'b_a_2_23_m_13', q: "Explain how wind affects transpiration.", a: "(1) Removes water vapour from leaf surface\n(2) Maintains steep concentration gradient\n(3) Increases diffusion rate" },
-              { id: 'b_a_2_23_m_14', q: "Explain how temperature affects transpiration.", a: "(1) Increases kinetic energy of molecules\n(2) Speeds up evaporation and diffusion\n(3) Increases rate of water loss" },
-              { id: 'b_a_2_23_m_15', q: "Explain how humidity affects transpiration.", a: "(1) High humidity reduces concentration gradient\n(2) Slows diffusion of water vapour\n(3) Decreases transpiration rate" },
-              { id: 'b_a_2_23_m_16', q: "Explain how light intensity affects transpiration.", a: "(1) Light increases photosynthesis\n(2) Stomata open for gas exchange\n(3) Increases water loss" },
-              { id: 'b_a_2_23_m_17', q: "How are plants adapted to reduce water loss?", a: "(1) Waxy cuticle reduces evaporation\n(2) Stomata mainly on underside\n(3) Reduces exposure to sunlight" },
-              { id: 'b_a_2_23_m_18', q: "What happens if a plant loses water faster than it absorbs it?", a: "(1) Cells lose turgor pressure\n(2) Plant wilts\n(3) Stomata close to reduce water loss" },
-              { id: 'b_a_2_23_m_19', q: "Will the plant die if it loses too much water?", a: "(1) May stop photosynthesising\n(2) May overheat\n(3) Can recover if conditions improve" },
-              { id: 'b_a_2_23_m_20', q: "Describe the structure of phloem tissue.", a: "(1) Made of elongated living cells\n(2) Arranged in tubes\n(3) Sieve plates between cells" },
-              { id: 'b_a_2_23_m_21', q: "How does cell sap move through the phloem?", a: "(1) Moves from cell to cell\n(2) Through pores in sieve plates\n(3) Driven by pressure differences" },
-              { id: 'b_a_2_23_m_22', q: "What is sugar used for in plants?", a: "(1) Respiration\n(2) Growth (making new cells)\n(3) Storage (e.g. roots)" },
-              { id: 'b_a_2_23_m_23', q: "Why can removing a ring of bark kill a tree?", a: "(1) Phloem is found under the bark\n(2) Removing it stops sugar transport\n(3) Roots and tissues do not receive food\n(4) Tree eventually dies" }
-            ],
-            "Hard (5-6 marks)": [
-              { id: 'b_a_2_23_h_1', q: "How are xylem cells adapted for their function?", a: "(1) Cells are dead\n(2) No end walls → continuous tubes\n(3) Hollow to allow flow\n(4) Lignin strengthens walls\n(5) Prevents collapse under pressure\n(6) Provides support" },
-              { id: 'b_a_2_23_h_2', q: "Describe how water moves from the soil to the leaves.", a: "(1) Water enters root hair cells by osmosis\n(2) Moves through root cells by osmosis\n(3) Enters xylem vessels\n(4) Travels up the stem in transpiration stream\n(5) Moves into leaf cells\n(6) Evaporates and exits via stomata" },
-              { id: 'b_a_2_23_h_3', q: "How do guard cells work?", a: "(1) When water enters, cells become turgid\n(2) Turgid cells open the stomata\n(3) When water leaves, cells become flaccid\n(4) Flaccid cells close the stomata\n(5) Opening allows gas exchange\n(6) Closing reduces water loss" },
-              { id: 'b_a_2_23_h_4', q: "Describe the process of transpiration.", a: "(1) Water evaporates from mesophyll cells\n(2) Water vapour enters air spaces\n(3) Diffuses out through stomata\n(4) Creates a concentration gradient\n(5) Causes water to be pulled up through xylem\n(6) Forms the transpiration stream" },
-              { id: 'b_a_2_23_h_5', q: "What factors increase the rate of transpiration?", a: "(1) High temperature\n(2) Wind\n(3) Low humidity\n(4) High light intensity\n(5) Larger surface area\n(6) More stomata open" },
-              { id: 'b_a_2_23_h_6', q: "How are phloem cells adapted for their function?", a: "(1) Cells are living\n(2) Have sieve plates with pores\n(3) Few organelles to allow flow\n(4) Companion cells provide energy\n(5) Companion cells contain many mitochondria\n(6) Enables active transport of sugars" },
-              { id: 'b_a_2_23_h_7', q: "Describe how to measure transpiration using a potometer.", a: "(1) Cut shoot at slant under water\n(2) Assemble under water to avoid bubbles\n(3) Ensure system is airtight\n(4) Introduce air bubble\n(5) Measure distance moved over time\n(6) Calculate rate" },
-              { id: 'b_a_2_23_h_8', q: "Describe how to investigate stomata distribution using a microscope.", a: "(1) Apply nail varnish to leaf\n(2) Allow to dry and peel\n(3) Place on slide\n(4) Observe under microscope\n(5) Count stomata in known area\n(6) Repeat and calculate mean" }
-            ]
-          }
-        },
-        "3. Infection and response": {
-          "3.1 Communicable diseases": {
-            "Easy (1-2 marks)": [
-              { id: 'b_a_3_31_e_1', q: "What causes viral diseases?", a: "(1) Viruses" },
-              { id: 'b_a_3_31_e_2', q: "Are viruses alive?", a: "(1) No\n(2) Do not carry out life processes independently" },
-              { id: 'b_a_3_31_e_3', q: "Do viruses reproduce?", a: "(1) No\n(2) They replicate inside host cells" },
-              { id: 'b_a_3_31_e_4', q: "What are the main symptoms of measles?", a: "(1) Fever\n(2) Red rash" },
-              { id: 'b_a_3_31_e_5', q: "How is measles spread?", a: "(1) By inhaling droplets from coughs and sneezes" },
-              { id: 'b_a_3_31_e_6', q: "Is measles easy to catch?", a: "(1) Yes\n(2) It is highly infectious" },
-              { id: 'b_a_3_31_e_7', q: "Can measles be fatal?", a: "(1) Yes\n(2) Especially if complications develop" },
-              { id: 'b_a_3_31_e_8', q: "How is measles treated?", a: "(1) There is no specific cure\n(2) Patients may be isolated to prevent spread" },
-              { id: 'b_a_3_31_e_9', q: "Does measles only affect children?", a: "(1) No\n(2) It can affect unvaccinated adults" },
-              { id: 'b_a_3_31_e_10', q: "What does HIV stand for?", a: "(1) Human immunodeficiency virus" },
-              { id: 'b_a_3_31_e_11', q: "What happens after the early stage of HIV infection?", a: "(1) Symptoms may disappear\n(2) Virus remains in the body" },
-              { id: 'b_a_3_31_e_12', q: "How long can HIV take to damage the immune system?", a: "(1) Months to years" },
-              { id: 'b_a_3_31_e_13', q: "What is the difference between HIV and AIDS?", a: "(1) HIV is the virus\n(2) AIDS is the late stage of infection" },
-              { id: 'b_a_3_31_e_14', q: "What does AIDS stand for?", a: "(1) Acquired immune deficiency syndrome" },
-              { id: 'b_a_3_31_e_15', q: "How can the progression of HIV be slowed?", a: "(1) Taking antiretroviral drugs" },
-              { id: 'b_a_3_31_e_16', q: "What is an unscreened blood transfusion?", a: "(1) Blood that has not been tested for infections" },
-              { id: 'b_a_3_31_e_17', q: "Is there a vaccine for HIV?", a: "(1) No" },
-              { id: 'b_a_3_31_e_18', q: "Is there a cure for HIV?", a: "(1) No\n(2) It can be managed with treatment" },
-              { id: 'b_a_3_31_e_19', q: "What is the difference between HIV-positive and HIV-negative?", a: "(1) HIV-positive = infected with HIV\n(2) HIV-negative = not infected" },
-              { id: 'b_a_3_31_e_20', q: "What does TMV stand for?", a: "(1) Tobacco mosaic virus" },
-              { id: 'b_a_3_31_e_21', q: "How can you identify a plant infected with TMV?", a: "(1) Mosaic pattern on leaves\n(2) Discoloured patches" },
-              { id: 'b_a_3_31_e_22', q: "How is TMV transmitted between plants?", a: "(1) Direct contact\n(2) Insect vectors" },
-              { id: 'b_a_3_31_e_23', q: "How long can TMV survive outside a host?", a: "(1) Can survive for many years\n(2) e.g. in soil or plant material" },
-              { id: 'b_a_3_31_e_24', q: "How is TMV treated?", a: "(1) There is no cure" },
-              { id: 'b_a_3_31_e_25', q: "How can the spread of TMV be reduced?", a: "(1) Good field hygiene\n(2) Control insect pests" },
-              { id: 'b_a_3_31_e_26', q: "What alternative can farmers use to reduce the impact of TMV?", a: "(1) Grow TMV-resistant crop varieties" },
-              { id: 'b_a_3_31_e_27', q: "Will bacterial infections continue to decrease?", a: "(1) No\n(2) Antibiotic resistance is increasing" },
-              { id: 'b_a_3_31_e_28', q: "What causes bacterial diseases?", a: "(1) Pathogenic bacteria" },
-              { id: 'b_a_3_31_e_29', q: "How do bacteria reproduce?", a: "(1) Asexually\n(2) By binary fission" },
-              { id: 'b_a_3_31_e_30', q: "Are bacteria prokaryotic or eukaryotic?", a: "(1) Prokaryotic" },
-              { id: 'b_a_3_31_e_31', q: "How do bacteria compare in size to viruses?", a: "(1) Bacteria are larger" },
-              { id: 'b_a_3_31_e_32', q: "Are bacteria alive?", a: "(1) Yes" },
-              { id: 'b_a_3_31_e_33', q: "How is Salmonella transmitted?", a: "(1) Eating undercooked food\n(2) Poor food hygiene" },
-              { id: 'b_a_3_31_e_34', q: "How long does it take for Salmonella symptoms to develop?", a: "(1) 8–72 hours" },
-              { id: 'b_a_3_31_e_35', q: "When are antibiotics used to treat Salmonella?", a: "(1) In severe cases\n(2) For vulnerable people (e.g. elderly / young)" },
-              { id: 'b_a_3_31_e_36', q: "Why can Salmonella be dangerous?", a: "(1) Causes dehydration" },
-              { id: 'b_a_3_31_e_37', q: "How does the UK reduce the spread of Salmonella?", a: "(1) Vaccinating poultry" },
-              { id: 'b_a_3_31_e_38', q: "Why should raw chicken not be washed?", a: "(1) Bacteria can spread via water droplets" },
-              { id: 'b_a_3_31_e_39', q: "What does STD stand for?", a: "(1) Sexually transmitted disease" },
-              { id: 'b_a_3_31_e_40', q: "What is another term for STD?", a: "(1) STI (sexually transmitted infection)" },
-              { id: 'b_a_3_31_e_41', q: "What is discharge?", a: "(1) Fluid released from the body" },
-              { id: 'b_a_3_31_e_42', q: "How is gonorrhoea treated?", a: "(1) Antibiotics" },
-              { id: 'b_a_3_31_e_43', q: "Why is penicillin no longer used to treat gonorrhoea?", a: "(1) Antibiotic resistance" }
-            ],
-            "Medium (3-4 marks)": [
-              { id: 'b_a_3_31_m_1', q: "Describe the structure of a virus.", a: "(1) Genetic material (DNA/RNA)\n(2) Protein coat (capsid)\n(3) May have outer lipid envelope" },
-              { id: 'b_a_3_31_m_2', q: "What serious complications can measles cause?", a: "(1) Blindness\n(2) Brain damage\n(3) Can lead to death in severe cases" },
-              { id: 'b_a_3_31_m_3', q: "Is measles common in the UK?", a: "(1) Less common due to vaccination\n(2) Most children are vaccinated at a young age\n(3) Still occurs if vaccination rates are low" },
-              { id: 'b_a_3_31_m_4', q: "What complications can measles cause in adults?", a: "(1) Infertility (in some cases)\n(2) Complications during pregnancy\n(3) Risk of harm to the unborn baby" },
-              { id: 'b_a_3_31_m_5', q: "What are the early symptoms of HIV?", a: "(1) Flu-like symptoms\n(2) Such as fever\n(3) Fatigue or sore throat" },
-              { id: 'b_a_3_31_m_6', q: "What does HIV do to the body?", a: "(1) Attacks immune cells\n(2) Weakens the immune system\n(3) Makes it harder to fight infections" },
-              { id: 'b_a_3_31_m_7', q: "Why is HIV difficult to detect early?", a: "(1) Early symptoms are mild\n(2) Similar to flu\n(3) Long period with no symptoms" },
-              { id: 'b_a_3_31_m_8', q: "When does HIV develop into AIDS?", a: "(1) When the immune system is severely damaged\n(2) Cannot fight infections\n(3) Cannot fight cancers" },
-              { id: 'b_a_3_31_m_9', q: "What do antiretroviral drugs do?", a: "(1) Reduce virus replication\n(2) Slow damage to immune system\n(3) Delay development of AIDS" },
-              { id: 'b_a_3_31_m_10', q: "What factors affect how quickly HIV develops into AIDS?", a: "(1) Overall health\n(2) Nutrition\n(3) Use of antiretroviral drugs" },
-              { id: 'b_a_3_31_m_11', q: "How long can someone live with HIV?", a: "(1) Near normal life expectancy\n(2) If treated early\n(3) With antiretroviral drugs" },
-              { id: 'b_a_3_31_m_12', q: "What plants does TMV affect?", a: "(1) Many plant species\n(2) Including tobacco plants\n(3) And tomato plants" },
-              { id: 'b_a_3_31_m_13', q: "What causes the mosaic pattern in TMV-infected leaves?", a: "(1) Virus infects leaf cells\n(2) Damages or destroys cells\n(3) Causes discolouration" },
-              { id: 'b_a_3_31_m_14', q: "Why is TMV harmful to plants?", a: "(1) Reduces photosynthesis\n(2) Less chlorophyll / damaged cells\n(3) Leads to reduced growth" },
-              { id: 'b_a_3_31_m_15', q: "What are non-pathogenic bacteria?", a: "(1) Bacteria that do not cause disease\n(2) Can live in the body\n(3) Some help digestion" },
-              { id: 'b_a_3_31_m_16', q: "Where do bacteria live in the body?", a: "(1) Inside the host\n(2) Commonly in mouth, nose, throat" },
-              { id: 'b_a_3_31_m_17', q: "What happens when pathogenic bacteria enter the body?", a: "(1) Reproduce rapidly\n(2) Produce toxins\n(3) Toxins damage cells" },
-              { id: 'b_a_3_31_m_18', q: "What is Salmonella?", a: "(1) A type of bacterium\n(2) Found in animal gut\n(3) Causes food poisoning" },
-              { id: 'b_a_3_31_m_19', q: "What are the symptoms of Salmonella food poisoning?", a: "(1) Fever\n(2) Stomach cramps\n(3) Vomiting\n(4) Diarrhoea" },
-              { id: 'b_a_3_31_m_20', q: "What is gonorrhoea?", a: "(1) A bacterial infection\n(2) Sexually transmitted\n(3) Spread by unprotected sexual contact" },
-              { id: 'b_a_3_31_m_21', q: "What are the early symptoms of gonorrhoea?", a: "(1) Thick yellow/green discharge\n(2) Pain when urinating\n(3) Symptoms may disappear later" },
-              { id: 'b_a_3_31_m_22', q: "How can the spread of gonorrhoea be reduced?", a: "(1) Use condoms\n(2) Limit number of partners\n(3) Test and treat infected individuals" }
-            ],
-            "Hard (5-6 marks)": [
-              { id: 'b_a_3_31_h_1', q: "What do viruses do inside the body?", a: "(1) Enter host cells\n(2) Insert genetic material\n(3) Use cell machinery to replicate\n(4) Cell bursts (lysis)\n(5) New viruses infect others" },
-              { id: 'b_a_3_31_h_2', q: "Explain why viral diseases are difficult to treat.", a: "(1) Viruses live inside host cells\n(2) Hard to target without damaging cells\n(3) Antibiotics do not work on viruses\n(4) Viruses replicate rapidly\n(5) Can mutate quickly\n(6) Makes treatment difficult" },
-              { id: 'b_a_3_31_h_3', q: "How is HIV transmitted?", a: "(1) Unprotected sexual contact\n(2) Exchange of body fluids (e.g. blood)\n(3) Sharing needles\n(4) Unscreened blood transfusions\n(5) From mother to baby during birth\n(6) Through breastfeeding" },
-              { id: 'b_a_3_31_h_4', q: "How can the spread of HIV be reduced?", a: "(1) Use condoms\n(2) Do not share needles\n(3) Use screened blood for transfusions\n(4) Test regularly\n(5) Use antiretroviral treatment\n(6) Avoid breastfeeding if HIV-positive" },
-              { id: 'b_a_3_31_h_5', q: "Why are bacterial diseases less common than in the past?", a: "(1) Improved living conditions\n(2) Better sanitation\n(3) Vaccination programmes\n(4) Use of antibiotics\n(5) Improved healthcare\n(6) Better hygiene practices" },
-              { id: 'b_a_3_31_h_6', q: "How can Salmonella food poisoning be prevented?", a: "(1) Cook food thoroughly\n(2) Avoid cross-contamination\n(3) Keep raw meat separate\n(4) Wash hands and surfaces\n(5) Do not wash raw chicken\n(6) Maintain good food hygiene" },
-              { id: 'b_a_3_31_h_7', q: "What can happen if gonorrhoea is untreated?", a: "(1) Pelvic pain\n(2) Infertility\n(3) Ectopic pregnancy\n(4) Infection can spread\n(5) Can affect newborn babies\n(6) May cause blindness in babies" }
-            ]
-          }
-        },
-        "4. Bioenergetics": {
-          "4.1 Photosynthesis": {
-            "Easy (1-2 marks)": [
-              { id: 'b_a_4_41_e_1', q: "What is a limiting factor?", a: "(1) A factor that restricts the rate of a reaction\n(2) If increased, the rate will increase" },
-              { id: 'b_a_4_41_e_2', q: "Which factors can limit photosynthesis?", a: "(1) Light intensity\n(2) Carbon dioxide concentration" },
-              { id: 'b_a_4_41_e_3', q: "Why might a plant have low chlorophyll levels?", a: "(1) Magnesium deficiency\n(2) Some plants have non-green areas" },
-              { id: 'b_a_4_41_e_4', q: "What does deficiency mean?", a: "(1) A lack of something" },
-              { id: 'b_a_4_41_e_5', q: "Why does magnesium deficiency reduce photosynthesis?", a: "(1) Magnesium is needed to make chlorophyll" },
-              { id: 'b_a_4_41_e_6', q: "What is chlorosis?", a: "(1) Yellowing of leaves" },
-              { id: 'b_a_4_41_e_7', q: "What causes chlorosis?", a: "(1) Lack of magnesium" },
-              { id: 'b_a_4_41_e_8', q: "What is yield?", a: "(1) Amount of useful crop produced" },
-              { id: 'b_a_4_41_e_9', q: "How do farmers increase crop yield?", a: "(1) Reduce limiting factors\n(2) Optimise growing conditions" },
-              { id: 'b_a_4_41_e_10', q: "What is hydroponics?", a: "(1) Growing plants in nutrient solution\n(2) Without soil" },
-              { id: 'b_a_4_41_e_11', q: "What happens to light intensity when distance is doubled?", a: "(1) Light intensity becomes one quarter" },
-              { id: 'b_a_4_41_e_12', q: "What are the bubbles produced in the pondweed experiment?", a: "(1) Oxygen\n(2) Produced during photosynthesis" },
-              { id: 'b_a_4_41_e_13', q: "Why is a beaker of water placed between the lamp and the pondweed?", a: "(1) Acts as a heat filter\n(2) Prevents temperature increase" },
-              { id: 'b_a_4_41_e_14', q: "Why should the experiment be left for a short time before taking measurements?", a: "(1) To allow the rate of photosynthesis to stabilise" },
-              { id: 'b_a_4_41_e_15', q: "What is a more accurate way to measure oxygen production than counting bubbles?", a: "(1) Use a gas syringe" }
-            ],
-            "Medium (3-4 marks)": [
-              { id: 'b_a_4_41_m_1', q: "What factors affect the rate of photosynthesis?", a: "(1) Light intensity\n(2) Carbon dioxide concentration\n(3) Temperature\n(4) Chlorophyll content" },
-              { id: 'b_a_4_41_m_2', q: "How does carbon dioxide affect the rate of photosynthesis?", a: "(1) Carbon dioxide is a reactant\n(2) Low CO₂ reduces rate\n(3) More CO₂ increases rate" },
-              { id: 'b_a_4_41_m_3', q: "How does carbon dioxide concentration change during the day?", a: "(1) Higher at night (respiration releases CO₂)\n(2) Lower during the day (photosynthesis uses CO₂)\n(3) Changes depending on light availability" },
-              { id: 'b_a_4_41_m_4', q: "How does light intensity affect the rate of photosynthesis?", a: "(1) Provides energy for photosynthesis\n(2) Low light → low rate\n(3) High light → higher rate" },
-              { id: 'b_a_4_41_m_5', q: "How does chlorophyll content affect photosynthesis?", a: "(1) Chlorophyll absorbs light\n(2) Less chlorophyll reduces rate\n(3) More chlorophyll increases rate" },
-              { id: 'b_a_4_41_m_6', q: "How can farmers control limiting factors in photosynthesis?", a: "(1) Control light intensity\n(2) Control temperature\n(3) Control carbon dioxide levels" },
-              { id: 'b_a_4_41_m_7', q: "Why are greenhouses used in farming?", a: "(1) Control environmental conditions\n(2) Increase rate of photosynthesis\n(3) Increase crop yield" },
-              { id: 'b_a_4_41_m_8', q: "Why can greenhouse farming be expensive?", a: "(1) Cost of heating\n(2) Cost of lighting\n(3) Cost of equipment" },
-              { id: 'b_a_4_41_m_9', q: "What is the relationship between light intensity and distance?", a: "(1) Inversely proportional\n(2) As distance increases, intensity decreases\n(3) Follows inverse square relationship" },
-              { id: 'b_a_4_41_m_10', q: "What is the inverse square law?", a: "(1) Light intensity ∝ 1 / distance²\n(2) Intensity decreases rapidly with distance\n(3) Doubling distance reduces intensity" },
-              { id: 'b_a_4_41_m_11', q: "How can you identify a limiting factor on a photosynthesis graph?", a: "(1) Rate increases at first\n(2) Then levels off (plateau)\n(3) Shows another factor is limiting" },
-              { id: 'b_a_4_41_m_12', q: "Why must temperature be controlled in the pondweed experiment?", a: "(1) Temperature affects enzyme activity\n(2) It is a limiting factor of photosynthesis\n(3) Must be controlled to ensure a fair test" },
-              { id: 'b_a_4_41_m_13', q: "How does changing the distance of the lamp affect light intensity?", a: "(1) Increasing distance reduces light intensity\n(2) Decreasing distance increases light intensity\n(3) Follows inverse square relationship" }
-            ],
-            "Hard (5-6 marks)": [
-              { id: 'b_a_4_41_h_1', q: "How does temperature affect the rate of photosynthesis?", a: "(1) Low temperature → less kinetic energy\n(2) Fewer successful collisions\n(3) Slower reaction rate\n(4) Increasing temperature increases rate\n(5) Enzymes denature at high temperatures\n(6) Rate then decreases" },
-              { id: 'b_a_4_41_h_2', q: "What are advantages of growing plants in greenhouses?", a: "(1) Grow crops out of season\n(2) Faster growth rates\n(3) Controlled conditions\n(4) Reduced pests\n(5) No soil needed\n(6) Higher yields" },
-              { id: 'b_a_4_41_h_3', q: "Describe a practical to investigate the effect of light intensity on the rate of photosynthesis in pondweed.", a: "(1) Place pondweed in water (e.g. in a test tube/beaker)\n(2) Position a lamp at a measured distance\n(3) Use a ruler to measure the distance\n(4) Allow the plant to equilibrate\n(5) Count bubbles of oxygen produced in a set time\n(6) Repeat at different distances and calculate a mean" },
-              { id: 'b_a_4_41_h_4', q: "What variables should be controlled in the pondweed experiment?", a: "(1) Temperature\n(2) Carbon dioxide concentration\n(3) Type/size of pondweed\n(4) Volume of water\n(5) Light wavelength/colour\n(6) Time measured" }
-            ]
-          }
-        }
-      },
-      "Foundation": {
-        "1. Cell Biology": {
-          "1.1 Cell Structure": {
-            "Easy (1-2 marks)": [
-              { id: 'b_a_f_1_11_e_1', q: "What is the difference between eukaryotic and prokaryotic cells?", a: "(1) Eukaryotic cells have a nucleus / are more complex\n(2) Prokaryotic cells do not have a nucleus / are smaller and simpler" },
-              { id: 'b_a_f_1_11_e_2', q: "What are eukaryotes?", a: "(1) Organisms made of eukaryotic cells" },
-              { id: 'b_a_f_1_11_e_3', q: "What are prokaryotes?", a: "(1) Organisms made of prokaryotic cells" },
-              { id: 'b_a_f_1_11_e_4', q: "Are animal cells prokaryotic or eukaryotic?", a: "(1) Eukaryotic" },
-              { id: 'b_a_f_1_11_e_5', q: "Are plant cells prokaryotic or eukaryotic?", a: "(1) Eukaryotic" },
-              { id: 'b_a_f_1_11_e_6', q: "Are bacteria cells prokaryotic or eukaryotic?", a: "(1) Prokaryotic" },
-              { id: 'b_a_f_1_11_e_7', q: "What is the length of a eukaryotic cell?", a: "(1) 10–100 μm" },
-              { id: 'b_a_f_1_11_e_8', q: "What is the length of a prokaryotic cell?", a: "(1) 0.2–2 μm" },
-              { id: 'b_a_f_1_11_e_9', q: "What is the length of an average animal cell?", a: "(1) 10–30 μm" },
-              { id: 'b_a_f_1_11_e_10', q: "What is the length of an average plant cell?", a: "(1) 10–100 μm" },
-              { id: 'b_a_f_1_11_e_11', q: "What is the length of a virus?", a: "(1) 100 nm" },
-              { id: 'b_a_f_1_11_e_12', q: "How many millimetres are in a centimetre?", a: "(1) 10 mm" },
-              { id: 'b_a_f_1_11_e_13', q: "How many micrometres are in a millimetre?", a: "(1) 1000 μm" },
-              { id: 'b_a_f_1_11_e_14', q: "How many nanometres are in a micrometre?", a: "(1) 1000 nm" },
-              { id: 'b_a_f_1_11_e_15', q: "What is the function of the nucleus?", a: "(1) Controls the activities of the cell" },
-              { id: 'b_a_f_1_11_e_16', q: "What does the nucleus contain?", a: "(1) Genetic material (DNA)\n(2) Organised into chromosomes" },
-              { id: 'b_a_f_1_11_e_17', q: "What is the average size of a nucleus?", a: "(1) Around 10 μm" },
-              { id: 'b_a_f_1_11_e_18', q: "What is the cytoplasm?", a: "(1) A jelly-like substance\n(2) Where organelles are suspended" },
-              { id: 'b_a_f_1_11_e_19', q: "What is the purpose of the cytoplasm?", a: "(1) Site of chemical reactions\n(2) Contains enzymes" },
-              { id: 'b_a_f_1_11_e_20', q: "What is the average size of mitochondria?", a: "(1) Around 1–2 μm" },
-              { id: 'b_a_f_1_11_e_21', q: "What is the purpose of ribosomes?", a: "(1) Site of protein synthesis" },
-              { id: 'b_a_f_1_11_e_22', q: "What is the purpose of the cell wall?", a: "(1) Strengthens the cell\n(2) Supports the cell" },
-              { id: 'b_a_f_1_11_e_23', q: "What is the cell wall made of?", a: "(1) Cellulose" },
-              { id: 'b_a_f_1_11_e_24', q: "What is a DNA loop?", a: "(1) A circular strand of DNA" },
-              { id: 'b_a_f_1_11_e_25', q: "What is a plasmid?", a: "(1) Small circular rings of DNA" },
-              { id: 'b_a_f_1_11_e_26', q: "What is a flagellum?", a: "(1) A long tail-like structure\n(2) Used for movement" },
-              { id: 'b_a_f_1_11_e_27', q: "When would you use estimations in calculations?", a: "(1) To check whether a calculated answer is reasonable / correct" },
-              { id: 'b_a_f_1_11_e_28', q: "What is a specimen?", a: "(1) The object being observed under a microscope" },
-              { id: 'b_a_f_1_11_e_29', q: "What is a slide?", a: "(1) A thin piece of glass or plastic\n(2) Used to hold the specimen" },
-              { id: 'b_a_f_1_11_e_30', q: "What is a cover slip?", a: "(1) A thin square of glass or plastic\n(2) Placed over the specimen\n(3) Keeps the specimen flat / in place" },
-              { id: 'b_a_f_1_11_e_31', q: "What is the purpose of iodine solution in microscopy?", a: "(1) Stains the specimen\n(2) Makes structures easier to see" },
-              { id: 'b_a_f_1_11_e_32', q: "Why must the cover slip be lowered carefully?", a: "(1) To prevent air bubbles forming\n(2) Air bubbles can obstruct the view" }
-            ],
-            "Medium (3-4 marks)": [
-              { id: 'b_a_f_1_11_m_1', q: "Name three structures found in all eukaryotic cells.", a: "(1) Cell membrane\n(2) Cytoplasm\n(3) Nucleus" },
-              { id: 'b_a_f_1_11_m_2', q: "Name four structures found in all prokaryotic cells.", a: "(1) Cell wall\n(2) Cell membrane\n(3) Cytoplasm\n(4) Circular DNA (DNA loop)" },
-              { id: 'b_a_f_1_11_m_3', q: "When writing numbers in standard form, what is the format?", a: "(1) Written as A × 10^n\n(2) Where 1 ≤ A < 10\n(3) n is an integer (positive or negative whole number)" },
-              { id: 'b_a_f_1_11_m_4', q: "What does “order of magnitude” mean?", a: "(1) A comparison of size between two values\n(2) Expressed in powers of 10\n(3) Shows how many times bigger or smaller one value is" },
-              { id: 'b_a_f_1_11_m_5', q: "If a small animal cell is around 10 μm and a large plant cell is around 100 μm, how many orders of magnitude bigger is the plant cell?", a: "(1) 100 μm ÷ 10 μm = 10\n(2) This is 10^1\n(3) Therefore, it is 1 order of magnitude bigger" },
-              { id: 'b_a_f_1_11_m_6', q: "How many orders of magnitude bigger is a small animal cell compared to a virus?", a: "(1) Convert virus size: 100 nm = 0.1 μm\n(2) Small animal cell ≈ 10 μm\n(3) 10 ÷ 0.1 = 100\n(4) This is 10^2\n(5) Therefore, the cell is 2 orders of magnitude bigger" },
-              { id: 'b_a_f_1_11_m_7', q: "What is the purpose of the cell membrane?", a: "(1) Holds the cell together\n(2) Controls movement of substances in and out of the cell\n(3) Selectively permeable" },
-              { id: 'b_a_f_1_11_m_8', q: "What is the purpose of mitochondria?", a: "(1) Site of aerobic respiration\n(2) Releases energy (ATP)\n(3) Provides energy for cell activities" },
-              { id: 'b_a_f_1_11_m_9', q: "What are chloroplasts?", a: "(1) Contain chlorophyll\n(2) Chlorophyll absorbs light energy\n(3) Site of photosynthesis" },
-              { id: 'b_a_f_1_11_m_10', q: "What is the permanent vacuole?", a: "(1) Contains cell sap\n(2) Maintains turgor pressure\n(3) Keeps the cell rigid / supports the plant" },
-              { id: 'b_a_f_1_11_m_11', q: "Why do prokaryotic cells have plasmids?", a: "(1) Carry extra genes\n(2) Can give advantages (e.g. antibiotic resistance)\n(3) Can be transferred between cells" },
-              { id: 'b_a_f_1_11_m_12', q: "How could you use the size of cells to estimate the size of a subcellular structure?", a: "(1) Compare how many times the structure fits into the cell\n(2) Use the known size of the cell\n(3) Divide the cell size by the number of structures\n(4) This gives an approximate size of the structure" },
-              { id: 'b_a_f_1_11_m_13', q: "If a cell is 20 μm long and approximately 10 nuclei fit along its length, what is the approximate size of one nucleus?", a: "(1) Cell length = 20 μm\n(2) Number of nuclei = 10\n(3) 20 ÷ 10 = 2\n(4) Nucleus size ≈ 2 μm" },
-              { id: 'b_a_f_1_11_m_14', q: "Describe how to prepare a slide to observe onion cells.", a: "(1) Place a drop of water onto a clean slide\n(2) Peel a thin layer of onion epidermis using tweezers\n(3) Place the tissue onto the slide\n(4) Add a drop of iodine solution\n(5) Lower a cover slip carefully at an angle\n(6) Avoid trapping air bubbles" },
-              { id: 'b_a_f_1_11_m_15', q: "Describe how to draw a scientific diagram from a microscope observation.", a: "(1) Drawing should be large (at least half the space)\n(2) Use clear, continuous lines\n(3) Do not shade or colour\n(4) Keep structures in proportion\n(5) Include a title\n(6) Include magnification\n(7) Label using straight, uncrossed lines" }
-            ],
-            "Hard (5-6 marks)": [
-              { id: 'b_a_f_1_11_h_1', q: "Describe how to use a light microscope to observe a specimen.", a: "(1) Place the slide on the stage and secure it\n(2) Select the lowest power objective lens\n(3) Use the coarse adjustment knob to move the stage close to the lens\n(4) Look through the eyepiece\n(5) Slowly move the stage down until the image is in focus\n(6) Use the fine adjustment knob to sharpen the image\n(7) Switch to a higher magnification if needed and refocus" }
-            ]
-          }
-        },
-        "2. Organisation": {
-          "2.3 Plant tissues, organs and systems": {
-            "Easy (1-2 marks)": [
-              { id: 'b_a_f_2_23_e_1', q: "Are xylem and phloem part of the plant transport system?", a: "(1) Yes\n(2) They are tissues, not organs" },
-              { id: 'b_a_f_2_23_e_2', q: "What are root hair cells specialised to do?", a: "(1) Absorb water by osmosis\n(2) Absorb mineral ions by active transport" },
-              { id: 'b_a_f_2_23_e_3', q: "What are mineral ions used for in plants?", a: "(1) To make proteins\n(2) To make other molecules" },
-              { id: 'b_a_f_2_23_e_4', q: "What is the transpiration stream?", a: "(1) Movement of water through the xylem" },
-              { id: 'b_a_f_2_23_e_5', q: "How does water help the plant stay upright?", a: "(1) Creates turgor pressure" },
-              { id: 'b_a_f_2_23_e_6', q: "What is transpiration?", a: "(1) Loss of water vapour from leaves" },
-              { id: 'b_a_f_2_23_e_7', q: "Does the leaf keep most of the water?", a: "(1) No\n(2) Most is lost" },
-              { id: 'b_a_f_2_23_e_8', q: "Where are stomata found?", a: "(1) Mainly on the underside of leaves" },
-              { id: 'b_a_f_2_23_e_9', q: "What are guard cells specialised to do?", a: "(1) Control gas exchange\n(2) Control water loss" },
-              { id: 'b_a_f_2_23_e_10', q: "What is the function of stomata?", a: "(1) Allow gases to enter and leave by diffusion" },
-              { id: 'b_a_f_2_23_e_11', q: "What is water potential?", a: "(1) The tendency for water to move by osmosis" },
-              { id: 'b_a_f_2_23_e_12', q: "Why can’t stomata remain closed?", a: "(1) Gases would not be able to diffuse in and out" },
-              { id: 'b_a_f_2_23_e_13', q: "What is humidity?", a: "(1) The amount of water vapour in the air" },
-              { id: 'b_a_f_2_23_e_14', q: "What is the function of the phloem?", a: "(1) Transports sugars (food)\n(2) From leaves to the rest of the plant" },
-              { id: 'b_a_f_2_23_e_15', q: "What is cell sap?", a: "(1) Water with dissolved sugars\n(2) May also contain mineral ions" },
-              { id: 'b_a_f_2_23_e_16', q: "What is translocation?", a: "(1) Movement of sugars in the phloem" },
-              { id: 'b_a_f_2_23_e_17', q: "Why is the shoot of a plant cut at a slant?", a: "(1) Increases surface area for water uptake" },
-              { id: 'b_a_f_2_23_e_18', q: "How can a potometer be used to investigate the effect of environmental factors on transpiration rate?", a: "(1) Change one factor (e.g. light, wind, temp)\n(2) Measure rate of water uptake" },
-              { id: 'b_a_f_2_23_e_19', q: "What are limitations of using nail varnish to estimate stomata distribution?", a: "(1) Varnish may not peel cleanly\n(2) Results are only estimates" }
-            ],
-            "Medium (3-4 marks)": [
-              { id: 'b_a_f_2_23_m_1', q: "What are the main organs in the plant transport system?", a: "(1) Roots\n(2) Stems (shoots)\n(3) Leaves" },
-              { id: 'b_a_f_2_23_m_2', q: "How are root hair cells adapted for their function?", a: "(1) Large surface area for absorption\n(2) Large permanent vacuole to increase osmosis\n(3) Many mitochondria for active transport" },
-              { id: 'b_a_f_2_23_m_3', q: "What is the function of the xylem?", a: "(1) Transports water\n(2) Transports mineral ions\n(3) From roots to leaves" },
-              { id: 'b_a_f_2_23_m_4', q: "What is water used for in plants?", a: "(1) Photosynthesis\n(2) Maintaining turgor pressure\n(3) Transporting minerals" },
-              { id: 'b_a_f_2_23_m_5', q: "Describe the structure of xylem tissue.", a: "(1) Hollow tubes\n(2) No end walls\n(3) Strengthened with lignin" },
-              { id: 'b_a_f_2_23_m_6', q: "What causes water loss from the leaf?", a: "(1) Spongy mesophyll has air spaces\n(2) Water evaporates into air spaces\n(3) Water vapour diffuses out through stomata" },
-              { id: 'b_a_f_2_23_m_7', q: "What are stomata?", a: "(1) Tiny pores in leaves\n(2) Surrounded by guard cells\n(3) Allow gases to diffuse in and out" },
-              { id: 'b_a_f_2_23_m_8', q: "What are guard cells?", a: "(1) Cells that surround stomata\n(2) Control opening and closing\n(3) Regulate gas exchange / water loss" },
-              { id: 'b_a_f_2_23_m_9', q: "How are guard cells adapted for their function?", a: "(1) Thick inner walls and thin outer walls\n(2) Allows opening and closing\n(3) Sensitive to light (open in light, close in dark)" },
-              { id: 'b_a_f_2_23_m_10', q: "Why does a plant lose most of the water it takes in?", a: "(1) Water evaporates from mesophyll cells\n(2) Enters air spaces in the leaf\n(3) Diffuses out through stomata" },
-              { id: 'b_a_f_2_23_m_11', q: "Why is water loss not always harmful to the plant?", a: "(1) Maintains the transpiration stream\n(2) Pulls water up from roots\n(3) Supplies water for photosynthesis" },
-              { id: 'b_a_f_2_23_m_12', q: "When do stomata open and close?", a: "(1) Open to allow carbon dioxide in\n(2) Open to allow oxygen out\n(3) Close to reduce water loss" },
-              { id: 'b_a_f_2_23_m_13', q: "Explain how wind affects transpiration.", a: "(1) Removes water vapour from leaf surface\n(2) Maintains steep concentration gradient\n(3) Increases diffusion rate" },
-              { id: 'b_a_f_2_23_m_14', q: "Explain how temperature affects transpiration.", a: "(1) Increases kinetic energy of molecules\n(2) Speeds up evaporation and diffusion\n(3) Increases rate of water loss" },
-              { id: 'b_a_f_2_23_m_15', q: "Explain how humidity affects transpiration.", a: "(1) High humidity reduces concentration gradient\n(2) Slows diffusion of water vapour\n(3) Decreases transpiration rate" },
-              { id: 'b_a_f_2_23_m_16', q: "Explain how light intensity affects transpiration.", a: "(1) Light increases photosynthesis\n(2) Stomata open for gas exchange\n(3) Increases water loss" },
-              { id: 'b_a_f_2_23_m_17', q: "How are plants adapted to reduce water loss?", a: "(1) Waxy cuticle reduces evaporation\n(2) Stomata mainly on underside\n(3) Reduces exposure to sunlight" },
-              { id: 'b_a_f_2_23_m_18', q: "What happens if a plant loses water faster than it absorbs it?", a: "(1) Cells lose turgor pressure\n(2) Plant wilts\n(3) Stomata close to reduce water loss" },
-              { id: 'b_a_f_2_23_m_19', q: "Will the plant die if it loses too much water?", a: "(1) May stop photosynthesising\n(2) May overheat\n(3) Can recover if conditions improve" },
-              { id: 'b_a_f_2_23_m_20', q: "Describe the structure of phloem tissue.", a: "(1) Made of elongated living cells\n(2) Arranged in tubes\n(3) Sieve plates between cells" },
-              { id: 'b_a_f_2_23_m_21', q: "How does cell sap move through the phloem?", a: "(1) Moves from cell to cell\n(2) Through pores in sieve plates\n(3) Driven by pressure differences" },
-              { id: 'b_a_f_2_23_m_22', q: "What is sugar used for in plants?", a: "(1) Respiration\n(2) Growth (making new cells)\n(3) Storage (e.g. roots)" },
-              { id: 'b_a_f_2_23_m_23', q: "Why can removing a ring of bark kill a tree?", a: "(1) Phloem is found under the bark\n(2) Removing it stops sugar transport\n(3) Roots and tissues do not receive food\n(4) Tree eventually dies" }
-            ],
-            "Hard (5-6 marks)": [
-              { id: 'b_a_f_2_23_h_1', q: "How are xylem cells adapted for their function?", a: "(1) Cells are dead\n(2) No end walls → continuous tubes\n(3) Hollow to allow flow\n(4) Lignin strengthens walls\n(5) Prevents collapse under pressure\n(6) Provides support" },
-              { id: 'b_a_f_2_23_h_2', q: "Describe how water moves from the soil to the leaves.", a: "(1) Water enters root hair cells by osmosis\n(2) Moves through root cells by osmosis\n(3) Enters xylem vessels\n(4) Travels up the stem in transpiration stream\n(5) Moves into leaf cells\n(6) Evaporates and exits via stomata" },
-              { id: 'b_a_f_2_23_h_3', q: "How do guard cells work?", a: "(1) When water enters, cells become turgid\n(2) Turgid cells open the stomata\n(3) When water leaves, cells become flaccid\n(4) Flaccid cells close the stomata\n(5) Opening allows gas exchange\n(6) Closing reduces water loss" },
-              { id: 'b_a_f_2_23_h_4', q: "Describe the process of transpiration.", a: "(1) Water evaporates from mesophyll cells\n(2) Water vapour enters air spaces\n(3) Diffuses out through stomata\n(4) Creates a concentration gradient\n(5) Causes water to be pulled up through xylem\n(6) Forms the transpiration stream" },
-              { id: 'b_a_f_2_23_h_5', q: "What factors increase the rate of transpiration?", a: "(1) High temperature\n(2) Wind\n(3) Low humidity\n(4) High light intensity\n(5) Larger surface area\n(6) More stomata open" },
-              { id: 'b_a_f_2_23_h_6', q: "How are phloem cells adapted for their function?", a: "(1) Cells are living\n(2) Have sieve plates with pores\n(3) Few organelles to allow flow\n(4) Companion cells provide energy\n(5) Companion cells contain many mitochondria\n(6) Enables active transport of sugars" },
-              { id: 'b_a_f_2_23_h_7', q: "Describe how to measure transpiration using a potometer.", a: "(1) Cut shoot at slant under water\n(2) Assemble under water to avoid bubbles\n(3) Ensure system is airtight\n(4) Introduce air bubble\n(5) Measure distance moved over time\n(6) Calculate rate" },
-              { id: 'b_a_f_2_23_h_8', q: "Describe how to investigate stomata distribution using a microscope.", a: "(1) Apply nail varnish to leaf\n(2) Allow to dry and peel\n(3) Place on slide\n(4) Observe under microscope\n(5) Count stomata in known area\n(6) Repeat and calculate mean" }
-            ]
-          }
-        },
-        "3. Infection and response": {
-          "3.1 Communicable diseases": {
-            "Easy (1-2 marks)": [
-              { id: 'b_a_f_3_31_e_1', q: "What causes viral diseases?", a: "(1) Viruses" },
-              { id: 'b_a_f_3_31_e_2', q: "Are viruses alive?", a: "(1) No\n(2) Do not carry out life processes independently" },
-              { id: 'b_a_f_3_31_e_3', q: "Do viruses reproduce?", a: "(1) No\n(2) They replicate inside host cells" },
-              { id: 'b_a_f_3_31_e_4', q: "What are the main symptoms of measles?", a: "(1) Fever\n(2) Red rash" },
-              { id: 'b_a_f_3_31_e_5', q: "How is measles spread?", a: "(1) By inhaling droplets from coughs and sneezes" },
-              { id: 'b_a_f_3_31_e_6', q: "Is measles easy to catch?", a: "(1) Yes\n(2) It is highly infectious" },
-              { id: 'b_a_f_3_31_e_7', q: "Can measles be fatal?", a: "(1) Yes\n(2) Especially if complications develop" },
-              { id: 'b_a_f_3_31_e_8', q: "How is measles treated?", a: "(1) There is no specific cure\n(2) Patients may be isolated to prevent spread" },
-              { id: 'b_a_f_3_31_e_9', q: "Does measles only affect children?", a: "(1) No\n(2) It can affect unvaccinated adults" },
-              { id: 'b_a_f_3_31_e_10', q: "What does HIV stand for?", a: "(1) Human immunodeficiency virus" },
-              { id: 'b_a_f_3_31_e_11', q: "What happens after the early stage of HIV infection?", a: "(1) Symptoms may disappear\n(2) Virus remains in the body" },
-              { id: 'b_a_f_3_31_e_12', q: "How long can HIV take to damage the immune system?", a: "(1) Months to years" },
-              { id: 'b_a_f_3_31_e_13', q: "What is the difference between HIV and AIDS?", a: "(1) HIV is the virus\n(2) AIDS is the late stage of infection" },
-              { id: 'b_a_f_3_31_e_14', q: "What does AIDS stand for?", a: "(1) Acquired immune deficiency syndrome" },
-              { id: 'b_a_f_3_31_e_15', q: "How can the progression of HIV be slowed?", a: "(1) Taking antiretroviral drugs" },
-              { id: 'b_a_f_3_31_e_16', q: "What is an unscreened blood transfusion?", a: "(1) Blood that has not been tested for infections" },
-              { id: 'b_a_f_3_31_e_17', q: "Is there a vaccine for HIV?", a: "(1) No" },
-              { id: 'b_a_f_3_31_e_18', q: "Is there a cure for HIV?", a: "(1) No\n(2) It can be managed with treatment" },
-              { id: 'b_a_f_3_31_e_19', q: "What is the difference between HIV-positive and HIV-negative?", a: "(1) HIV-positive = infected with HIV\n(2) HIV-negative = not infected" },
-              { id: 'b_a_f_3_31_e_20', q: "What does TMV stand for?", a: "(1) Tobacco mosaic virus" },
-              { id: 'b_a_f_3_31_e_21', q: "How can you identify a plant infected with TMV?", a: "(1) Mosaic pattern on leaves\n(2) Discoloured patches" },
-              { id: 'b_a_f_3_31_e_22', q: "How is TMV transmitted between plants?", a: "(1) Direct contact\n(2) Insect vectors" },
-              { id: 'b_a_f_3_31_e_23', q: "How long can TMV survive outside a host?", a: "(1) Can survive for many years\n(2) e.g. in soil or plant material" },
-              { id: 'b_a_f_3_31_e_24', q: "How is TMV treated?", a: "(1) There is no cure" },
-              { id: 'b_a_f_3_31_e_25', q: "How can the spread of TMV be reduced?", a: "(1) Good field hygiene\n(2) Control insect pests" },
-              { id: 'b_a_f_3_31_e_26', q: "What alternative can farmers use to reduce the impact of TMV?", a: "(1) Grow TMV-resistant crop varieties" },
-              { id: 'b_a_f_3_31_e_27', q: "Will bacterial infections continue to decrease?", a: "(1) No\n(2) Antibiotic resistance is increasing" },
-              { id: 'b_a_f_3_31_e_28', q: "What causes bacterial diseases?", a: "(1) Pathogenic bacteria" },
-              { id: 'b_a_f_3_31_e_29', q: "How do bacteria reproduce?", a: "(1) Asexually\n(2) By binary fission" },
-              { id: 'b_a_f_3_31_e_30', q: "Are bacteria prokaryotic or eukaryotic?", a: "(1) Prokaryotic" },
-              { id: 'b_a_f_3_31_e_31', q: "How do bacteria compare in size to viruses?", a: "(1) Bacteria are larger" },
-              { id: 'b_a_f_3_31_e_32', q: "Are bacteria alive?", a: "(1) Yes" },
-              { id: 'b_a_f_3_31_e_33', q: "How is Salmonella transmitted?", a: "(1) Eating undercooked food\n(2) Poor food hygiene" },
-              { id: 'b_a_f_3_31_e_34', q: "How long does it take for Salmonella symptoms to develop?", a: "(1) 8–72 hours" },
-              { id: 'b_a_f_3_31_e_35', q: "When are antibiotics used to treat Salmonella?", a: "(1) In severe cases\n(2) For vulnerable people (e.g. elderly / young)" },
-              { id: 'b_a_f_3_31_e_36', q: "Why can Salmonella be dangerous?", a: "(1) Causes dehydration" },
-              { id: 'b_a_f_3_31_e_37', q: "How does the UK reduce the spread of Salmonella?", a: "(1) Vaccinating poultry" },
-              { id: 'b_a_f_3_31_e_38', q: "Why should raw chicken not be washed?", a: "(1) Bacteria can spread via water droplets" },
-              { id: 'b_a_f_3_31_e_39', q: "What does STD stand for?", a: "(1) Sexually transmitted disease" },
-              { id: 'b_a_f_3_31_e_40', q: "What is another term for STD?", a: "(1) STI (sexually transmitted infection)" },
-              { id: 'b_a_f_3_31_e_41', q: "What is discharge?", a: "(1) Fluid released from the body" },
-              { id: 'b_a_f_3_31_e_42', q: "How is gonorrhoea treated?", a: "(1) Antibiotics" },
-              { id: 'b_a_f_3_31_e_43', q: "Why is penicillin no longer used to treat gonorrhoea?", a: "(1) Antibiotic resistance" }
-            ],
-            "Medium (3-4 marks)": [
-              { id: 'b_a_f_3_31_m_1', q: "Describe the structure of a virus.", a: "(1) Genetic material (DNA/RNA)\n(2) Protein coat (capsid)\n(3) May have outer lipid envelope" },
-              { id: 'b_a_f_3_31_m_2', q: "What serious complications can measles cause?", a: "(1) Blindness\n(2) Brain damage\n(3) Can lead to death in severe cases" },
-              { id: 'b_a_f_3_31_m_3', q: "Is measles common in the UK?", a: "(1) Less common due to vaccination\n(2) Most children are vaccinated at a young age\n(3) Still occurs if vaccination rates are low" },
-              { id: 'b_a_f_3_31_m_4', q: "What complications can measles cause in adults?", a: "(1) Infertility (in some cases)\n(2) Complications during pregnancy\n(3) Risk of harm to the unborn baby" },
-              { id: 'b_a_f_3_31_m_5', q: "What are the early symptoms of HIV?", a: "(1) Flu-like symptoms\n(2) Such as fever\n(3) Fatigue or sore throat" },
-              { id: 'b_a_f_3_31_m_6', q: "What does HIV do to the body?", a: "(1) Attacks immune cells\n(2) Weakens the immune system\n(3) Makes it harder to fight infections" },
-              { id: 'b_a_f_3_31_m_7', q: "Why is HIV difficult to detect early?", a: "(1) Early symptoms are mild\n(2) Similar to flu\n(3) Long period with no symptoms" },
-              { id: 'b_a_f_3_31_m_8', q: "When does HIV develop into AIDS?", a: "(1) When the immune system is severely damaged\n(2) Cannot fight infections\n(3) Cannot fight cancers" },
-              { id: 'b_a_f_3_31_m_9', q: "What do antiretroviral drugs do?", a: "(1) Reduce virus replication\n(2) Slow damage to immune system\n(3) Delay development of AIDS" },
-              { id: 'b_a_f_3_31_m_10', q: "What factors affect how quickly HIV develops into AIDS?", a: "(1) Overall health\n(2) Nutrition\n(3) Use of antiretroviral drugs" },
-              { id: 'b_a_f_3_31_m_11', q: "How long can someone live with HIV?", a: "(1) Near normal life expectancy\n(2) If treated early\n(3) With antiretroviral drugs" },
-              { id: 'b_a_f_3_31_m_12', q: "What plants does TMV affect?", a: "(1) Many plant species\n(2) Including tobacco plants\n(3) And tomato plants" },
-              { id: 'b_a_f_3_31_m_13', q: "What causes the mosaic pattern in TMV-infected leaves?", a: "(1) Virus infects leaf cells\n(2) Damages or destroys cells\n(3) Causes discolouration" },
-              { id: 'b_a_f_3_31_m_14', q: "Why is TMV harmful to plants?", a: "(1) Reduces photosynthesis\n(2) Less chlorophyll / damaged cells\n(3) Leads to reduced growth" },
-              { id: 'b_a_f_3_31_m_15', q: "What are non-pathogenic bacteria?", a: "(1) Bacteria that do not cause disease\n(2) Can live in the body\n(3) Some help digestion" },
-              { id: 'b_a_f_3_31_m_16', q: "Where do bacteria live in the body?", a: "(1) Inside the host\n(2) Commonly in mouth, nose, throat" },
-              { id: 'b_a_f_3_31_m_17', q: "What happens when pathogenic bacteria enter the body?", a: "(1) Reproduce rapidly\n(2) Produce toxins\n(3) Toxins damage cells" },
-              { id: 'b_a_f_3_31_m_18', q: "What is Salmonella?", a: "(1) A type of bacterium\n(2) Found in animal gut\n(3) Causes food poisoning" },
-              { id: 'b_a_f_3_31_m_19', q: "What are the symptoms of Salmonella food poisoning?", a: "(1) Fever\n(2) Stomach cramps\n(3) Vomiting\n(4) Diarrhoea" },
-              { id: 'b_a_f_3_31_m_20', q: "What is gonorrhoea?", a: "(1) A bacterial infection\n(2) Sexually transmitted\n(3) Spread by unprotected sexual contact" },
-              { id: 'b_a_f_3_31_m_21', q: "What are the early symptoms of gonorrhoea?", a: "(1) Thick yellow/green discharge\n(2) Pain when urinating\n(3) Symptoms may disappear later" },
-              { id: 'b_a_f_3_31_m_22', q: "How can the spread of gonorrhoea be reduced?", a: "(1) Use condoms\n(2) Limit number of partners\n(3) Test and treat infected individuals" }
-            ],
-            "Hard (5-6 marks)": [
-              { id: 'b_a_f_3_31_h_1', q: "What do viruses do inside the body?", a: "(1) Enter host cells\n(2) Insert genetic material\n(3) Use cell machinery to replicate\n(4) Cell bursts (lysis)\n(5) New viruses infect others" },
-              { id: 'b_a_f_3_31_h_2', q: "Explain why viral diseases are difficult to treat.", a: "(1) Viruses live inside host cells\n(2) Hard to target without damaging cells\n(3) Antibiotics do not work on viruses\n(4) Viruses replicate rapidly\n(5) Can mutate quickly\n(6) Makes treatment difficult" },
-              { id: 'b_a_f_3_31_h_3', q: "How is HIV transmitted?", a: "(1) Unprotected sexual contact\n(2) Exchange of body fluids (e.g. blood)\n(3) Sharing needles\n(4) Unscreened blood transfusions\n(5) From mother to baby during birth\n(6) Through breastfeeding" },
-              { id: 'b_a_f_3_31_h_4', q: "How can the spread of HIV be reduced?", a: "(1) Use condoms\n(2) Do not share needles\n(3) Use screened blood for transfusions\n(4) Test regularly\n(5) Use antiretroviral treatment\n(6) Avoid breastfeeding if HIV-positive" },
-              { id: 'b_a_f_3_31_h_5', q: "Why are bacterial diseases less common than in the past?", a: "(1) Improved living conditions\n(2) Better sanitation\n(3) Vaccination programmes\n(4) Use of antibiotics\n(5) Improved healthcare\n(6) Better hygiene practices" },
-              { id: 'b_a_f_3_31_h_6', q: "How can Salmonella food poisoning be prevented?", a: "(1) Cook food thoroughly\n(2) Avoid cross-contamination\n(3) Keep raw meat separate\n(4) Wash hands and surfaces\n(5) Do not wash raw chicken\n(6) Maintain good food hygiene" },
-              { id: 'b_a_f_3_31_h_7', q: "What can happen if gonorrhoea is untreated?", a: "(1) Pelvic pain\n(2) Infertility\n(3) Ectopic pregnancy\n(4) Infection can spread\n(5) Can affect newborn babies\n(6) May cause blindness in babies" }
-            ]
-          }
-        },
-        "4. Bioenergetics": {
-          "4.1 Photosynthesis": {
-            "Easy (1-2 marks)": [
-              { id: 'b_a_f_4_41_e_1', q: "What is a limiting factor?", a: "(1) A factor that restricts the rate of a reaction\n(2) If increased, the rate will increase" },
-              { id: 'b_a_f_4_41_e_2', q: "Which factors can limit photosynthesis?", a: "(1) Light intensity\n(2) Carbon dioxide concentration" },
-              { id: 'b_a_f_4_41_e_3', q: "Why might a plant have low chlorophyll levels?", a: "(1) Magnesium deficiency\n(2) Some plants have non-green areas" },
-              { id: 'b_a_f_4_41_e_4', q: "What does deficiency mean?", a: "(1) A lack of something" },
-              { id: 'b_a_f_4_41_e_5', q: "Why does magnesium deficiency reduce photosynthesis?", a: "(1) Magnesium is needed to make chlorophyll" },
-              { id: 'b_a_f_4_41_e_6', q: "What is chlorosis?", a: "(1) Yellowing of leaves" },
-              { id: 'b_a_f_4_41_e_7', q: "What causes chlorosis?", a: "(1) Lack of magnesium" },
-              { id: 'b_a_f_4_41_e_8', q: "What is yield?", a: "(1) Amount of useful crop produced" },
-              { id: 'b_a_f_4_41_e_9', q: "How do farmers increase crop yield?", a: "(1) Reduce limiting factors\n(2) Optimise growing conditions" },
-              { id: 'b_a_f_4_41_e_10', q: "What is hydroponics?", a: "(1) Growing plants in nutrient solution\n(2) Without soil" },
-              { id: 'b_a_f_4_41_e_11', q: "What are the bubbles produced in the pondweed experiment?", a: "(1) Oxygen\n(2) Produced during photosynthesis" },
-              { id: 'b_a_f_4_41_e_12', q: "Why is a beaker of water placed between the lamp and the pondweed?", a: "(1) Acts as a heat filter\n(2) Prevents temperature increase" },
-              { id: 'b_a_f_4_41_e_13', q: "Why should the experiment be left for a short time before taking measurements?", a: "(1) To allow the rate of photosynthesis to stabilise" },
-              { id: 'b_a_f_4_41_e_14', q: "What is a more accurate way to measure oxygen production than counting bubbles?", a: "(1) Use a gas syringe" },
-              { id: 'b_a_f_4_41_e_15', q: "How can farmers increase the rate of photosynthesis in greenhouses?", a: "(1) Increase light intensity\n(2) Increase temperature" },
-              { id: 'b_a_f_4_41_e_16', q: "How does temperature affect photosynthesis?", a: "(1) Higher temperature increases rate\n(2) Too high decreases rate" }
-            ],
-            "Medium (3-4 marks)": [
-              { id: 'b_a_f_4_41_m_1', q: "What factors affect the rate of photosynthesis?", a: "(1) Light intensity\n(2) Carbon dioxide\n(3) Temperature" },
-              { id: 'b_a_f_4_41_m_2', q: "How does carbon dioxide affect the rate of photosynthesis?", a: "(1) Carbon dioxide is a reactant\n(2) Low CO₂ reduces rate\n(3) More CO₂ increases rate" },
-              { id: 'b_a_f_4_41_m_3', q: "How does carbon dioxide concentration change during the day?", a: "(1) Higher at night (respiration releases CO₂)\n(2) Lower during the day (photosynthesis uses CO₂)\n(3) Changes depending on light availability" },
-              { id: 'b_a_f_4_41_m_4', q: "How does light intensity affect the rate of photosynthesis?", a: "(1) Provides energy for photosynthesis\n(2) Low light → low rate\n(3) High light → higher rate" },
-              { id: 'b_a_f_4_41_m_5', q: "How does chlorophyll content affect photosynthesis?", a: "(1) Chlorophyll absorbs light\n(2) Less chlorophyll reduces rate\n(3) More chlorophyll increases rate" },
-              { id: 'b_a_f_4_41_m_6', q: "Why are greenhouses used in farming?", a: "(1) Control environmental conditions\n(2) Increase rate of photosynthesis\n(3) Increase crop yield" },
-              { id: 'b_a_f_4_41_m_7', q: "Why must temperature be controlled in the pondweed experiment?", a: "(1) Temperature affects enzyme activity\n(2) It is a limiting factor of photosynthesis\n(3) Must be controlled to ensure a fair test" }
-            ],
-            "Hard (5-6 marks)": [
-              { id: 'b_a_f_4_41_h_1', q: "What are advantages of growing plants in greenhouses?", a: "(1) Grow crops out of season\n(2) Faster growth rates\n(3) Controlled conditions\n(4) Reduced pests\n(5) No soil needed\n(6) Higher yields" },
-              { id: 'b_a_f_4_41_h_2', q: "Describe a practical to investigate the effect of light intensity on the rate of photosynthesis in pondweed.", a: "(1) Place pondweed in water (e.g. in a test tube/beaker)\n(2) Position a lamp at a measured distance\n(3) Use a ruler to measure the distance\n(4) Allow the plant to equilibrate\n(5) Count bubbles of oxygen produced in a set time\n(6) Repeat at different distances and calculate a mean" },
-              { id: 'b_a_f_4_41_h_3', q: "What variables should be controlled in the pondweed experiment?", a: "(1) Temperature\n(2) Carbon dioxide concentration\n(3) Type/size of pondweed\n(4) Volume of water\n(5) Light wavelength/colour\n(6) Time measured" }
-            ]
+  <style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-900 selection:bg-blue-100 min-h-screen">
+  
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useCallback } = React;
+
+    // =========================================================
+    // 📚 THE COMPLETE MASTER DATABASE
+    // =========================================================
+    const DATABASE = {
+      "Biology": {
+        "AQA": {
+          "Higher": {
+            "1. Cell Biology": {
+              "1.1 Cell Structure": {
+                "Easy (1-2 marks)": [
+                  { id: 'b_a_1_11_e_1', q: "What is the difference between eukaryotic and prokaryotic cells?", a: "(1) Eukaryotic cells have a nucleus / are more complex\n(2) Prokaryotic cells do not have a nucleus / are smaller and simpler" },
+                  { id: 'b_a_1_11_e_2', q: "What are eukaryotes?", a: "(1) Organisms made of eukaryotic cells" },
+                  { id: 'b_a_1_11_e_3', q: "What are prokaryotes?", a: "(1) Organisms made of prokaryotic cells" },
+                  { id: 'b_a_1_11_e_4', q: "Are animal cells prokaryotic or eukaryotic?", a: "(1) Eukaryotic" },
+                  { id: 'b_a_1_11_e_5', q: "Are plant cells prokaryotic or eukaryotic?", a: "(1) Eukaryotic" },
+                  { id: 'b_a_1_11_e_6', q: "Are bacteria cells prokaryotic or eukaryotic?", a: "(1) Prokaryotic" },
+                  { id: 'b_a_1_11_e_7', q: "What is the length of a eukaryotic cell?", a: "(1) 10–100 μm" },
+                  { id: 'b_a_1_11_e_8', q: "What is the length of a prokaryotic cell?", a: "(1) 0.2–2 μm" },
+                  { id: 'b_a_1_11_e_9', q: "What is the length of an average animal cell?", a: "(1) 10–30 μm" },
+                  { id: 'b_a_1_11_e_10', q: "What is the length of an average plant cell?", a: "(1) 10–100 μm" },
+                  { id: 'b_a_1_11_e_11', q: "What is the length of a virus?", a: "(1) 100 nm" },
+                  { id: 'b_a_1_11_e_12', q: "How many millimetres are in a centimetre?", a: "(1) 10 mm" },
+                  { id: 'b_a_1_11_e_13', q: "How many micrometres are in a millimetre?", a: "(1) 1000 μm" },
+                  { id: 'b_a_1_11_e_14', q: "How many nanometres are in a micrometre?", a: "(1) 1000 nm" },
+                  { id: 'b_a_1_11_e_15', q: "What is the function of the nucleus?", a: "(1) Controls the activities of the cell" },
+                  { id: 'b_a_1_11_e_16', q: "What does the nucleus contain?", a: "(1) Genetic material (DNA)\n(2) Organised into chromosomes" },
+                  { id: 'b_a_1_11_e_17', q: "What is the average size of a nucleus?", a: "(1) Around 10 μm" },
+                  { id: 'b_a_1_11_e_18', q: "What is the cytoplasm?", a: "(1) A jelly-like substance\n(2) Where organelles are suspended" },
+                  { id: 'b_a_1_11_e_19', q: "What is the purpose of the cytoplasm?", a: "(1) Site of chemical reactions\n(2) Contains enzymes" },
+                  { id: 'b_a_1_11_e_20', q: "What is the average size of mitochondria?", a: "(1) Around 1–2 μm" },
+                  { id: 'b_a_1_11_e_21', q: "What is the purpose of ribosomes?", a: "(1) Site of protein synthesis" },
+                  { id: 'b_a_1_11_e_22', q: "What is the purpose of the cell wall?", a: "(1) Strengthens the cell\n(2) Supports the cell" },
+                  { id: 'b_a_1_11_e_23', q: "What is the cell wall made of?", a: "(1) Cellulose" },
+                  { id: 'b_a_1_11_e_24', q: "What is a DNA loop?", a: "(1) A circular strand of DNA" },
+                  { id: 'b_a_1_11_e_25', q: "What is a plasmid?", a: "(1) Small circular rings of DNA" },
+                  { id: 'b_a_1_11_e_26', q: "What is a flagellum?", a: "(1) A long tail-like structure\n(2) Used for movement" },
+                  { id: 'b_a_1_11_e_27', q: "When would you use estimations in calculations?", a: "(1) To check whether a calculated answer is reasonable / correct" },
+                  { id: 'b_a_1_11_e_28', q: "What is a specimen?", a: "(1) The object being observed under a microscope" },
+                  { id: 'b_a_1_11_e_29', q: "What is a slide?", a: "(1) A thin piece of glass or plastic\n(2) Used to hold the specimen" },
+                  { id: 'b_a_1_11_e_30', q: "What is a cover slip?", a: "(1) A thin square of glass or plastic\n(2) Placed over the specimen\n(3) Keeps the specimen flat / in place" },
+                  { id: 'b_a_1_11_e_31', q: "What is the purpose of iodine solution in microscopy?", a: "(1) Stains the specimen\n(2) Makes structures easier to see" },
+                  { id: 'b_a_1_11_e_32', q: "Why must the cover slip be lowered carefully?", a: "(1) To prevent air bubbles forming\n(2) Air bubbles can obstruct the view" }
+                ],
+                "Medium (3-4 marks)": [
+                  { id: 'b_a_1_11_m_1', q: "Name three structures found in all eukaryotic cells.", a: "(1) Cell membrane\n(2) Cytoplasm\n(3) Nucleus" },
+                  { id: 'b_a_1_11_m_2', q: "Name four structures found in all prokaryotic cells.", a: "(1) Cell wall\n(2) Cell membrane\n(3) Cytoplasm\n(4) Circular DNA (DNA loop)" },
+                  { id: 'b_a_1_11_m_3', q: "When writing numbers in standard form, what is the format?", a: "(1) Written as A × 10^n\n(2) Where 1 ≤ A < 10\n(3) n is an integer (positive or negative whole number)" },
+                  { id: 'b_a_1_11_m_4', q: "What does “order of magnitude” mean?", a: "(1) A comparison of size between two values\n(2) Expressed in powers of 10\n(3) Shows how many times bigger or smaller one value is" },
+                  { id: 'b_a_1_11_m_5', q: "If a small animal cell is around 10 μm and a large plant cell is around 100 μm, how many orders of magnitude bigger is the plant cell?", a: "(1) 100 μm ÷ 10 μm = 10\n(2) This is 10^1\n(3) Therefore, it is 1 order of magnitude bigger" },
+                  { id: 'b_a_1_11_m_6', q: "How many orders of magnitude bigger is a small animal cell compared to a virus?", a: "(1) Convert virus size: 100 nm = 0.1 μm\n(2) Small animal cell ≈ 10 μm\n(3) 10 ÷ 0.1 = 100\n(4) This is 10^2\n(5) Therefore, the cell is 2 orders of magnitude bigger" },
+                  { id: 'b_a_1_11_m_7', q: "What is the purpose of the cell membrane?", a: "(1) Holds the cell together\n(2) Controls movement of substances in and out of the cell\n(3) Selectively permeable" },
+                  { id: 'b_a_1_11_m_8', q: "What is the purpose of mitochondria?", a: "(1) Site of aerobic respiration\n(2) Releases energy (ATP)\n(3) Provides energy for cell activities" },
+                  { id: 'b_a_1_11_m_9', q: "What are chloroplasts?", a: "(1) Contain chlorophyll\n(2) Chlorophyll absorbs light energy\n(3) Site of photosynthesis" },
+                  { id: 'b_a_1_11_m_10', q: "What is the permanent vacuole?", a: "(1) Contains cell sap\n(2) Maintains turgor pressure\n(3) Keeps the cell rigid / supports the plant" },
+                  { id: 'b_a_1_11_m_11', q: "Why do prokaryotic cells have plasmids?", a: "(1) Carry extra genes\n(2) Can give advantages (e.g. antibiotic resistance)\n(3) Can be transferred between cells" },
+                  { id: 'b_a_1_11_m_12', q: "How could you use the size of cells to estimate the size of a subcellular structure?", a: "(1) Compare how many times the structure fits into the cell\n(2) Use the known size of the cell\n(3) Divide the cell size by the number of structures\n(4) This gives an approximate size of the structure" },
+                  { id: 'b_a_1_11_m_13', q: "If a cell is 20 μm long and approximately 10 nuclei fit along its length, what is the approximate size of one nucleus?", a: "(1) Cell length = 20 μm\n(2) Number of nuclei = 10\n(3) 20 ÷ 10 = 2\n(4) Nucleus size ≈ 2 μm" },
+                  { id: 'b_a_1_11_m_14', q: "Describe how to prepare a slide to observe onion cells.", a: "(1) Place a drop of water onto a clean slide\n(2) Peel a thin layer of onion epidermis using tweezers\n(3) Place the tissue onto the slide\n(4) Add a drop of iodine solution\n(5) Lower a cover slip carefully at an angle\n(6) Avoid trapping air bubbles" },
+                  { id: 'b_a_1_11_m_15', q: "Describe how to draw a scientific diagram from a microscope observation.", a: "(1) Drawing should be large (at least half the space)\n(2) Use clear, continuous lines\n(3) Do not shade or colour\n(4) Keep structures in proportion\n(5) Include a title\n(6) Include magnification\n(7) Label using straight, uncrossed lines" }
+                ],
+                "Hard (5-6 marks)": [
+                  { id: 'b_a_1_11_h_1', q: "Describe how to use a light microscope to observe a specimen.", a: "(1) Place the slide on the stage and secure it\n(2) Select the lowest power objective lens\n(3) Use the coarse adjustment knob to move the stage close to the lens\n(4) Look through the eyepiece\n(5) Slowly move the stage down until the image is in focus\n(6) Use the fine adjustment knob to sharpen the image\n(7) Switch to a higher magnification if needed and refocus" }
+                ]
+              }
+            },
+            "2. Organisation": {
+              "2.3 Plant tissues, organs and systems": {
+                "Easy (1-2 marks)": [
+                  { id: 'b_a_2_23_e_1', q: "Are xylem and phloem part of the plant transport system?", a: "(1) Yes\n(2) They are tissues, not organs" },
+                  { id: 'b_a_2_23_e_2', q: "What are root hair cells specialised to do?", a: "(1) Absorb water by osmosis\n(2) Absorb mineral ions by active transport" },
+                  { id: 'b_a_2_23_e_3', q: "What are mineral ions used for in plants?", a: "(1) To make proteins\n(2) To make other molecules" },
+                  { id: 'b_a_2_23_e_4', q: "What is the transpiration stream?", a: "(1) Movement of water through the xylem" },
+                  { id: 'b_a_2_23_e_5', q: "How does water help the plant stay upright?", a: "(1) Creates turgor pressure" },
+                  { id: 'b_a_2_23_e_6', q: "What is transpiration?", a: "(1) Loss of water vapour from leaves" },
+                  { id: 'b_a_2_23_e_7', q: "Does the leaf keep most of the water?", a: "(1) No\n(2) Most is lost" },
+                  { id: 'b_a_2_23_e_8', q: "Where are stomata found?", a: "(1) Mainly on the underside of leaves" },
+                  { id: 'b_a_2_23_e_9', q: "What are guard cells specialised to do?", a: "(1) Control gas exchange\n(2) Control water loss" },
+                  { id: 'b_a_2_23_e_10', q: "What is the function of stomata?", a: "(1) Allow gases to enter and leave by diffusion" },
+                  { id: 'b_a_2_23_e_11', q: "What is water potential?", a: "(1) The tendency for water to move by osmosis" },
+                  { id: 'b_a_2_23_e_12', q: "Why can’t stomata remain closed?", a: "(1) Gases would not be able to diffuse in and out" },
+                  { id: 'b_a_2_23_e_13', q: "What is humidity?", a: "(1) The amount of water vapour in the air" },
+                  { id: 'b_a_2_23_e_14', q: "What is the function of the phloem?", a: "(1) Transports sugars (food)\n(2) From leaves to the rest of the plant" },
+                  { id: 'b_a_2_23_e_15', q: "What is cell sap?", a: "(1) Water with dissolved sugars\n(2) May also contain mineral ions" },
+                  { id: 'b_a_2_23_e_16', q: "What is translocation?", a: "(1) Movement of sugars in the phloem" },
+                  { id: 'b_a_2_23_e_17', q: "Why is the shoot of a plant cut at a slant?", a: "(1) Increases surface area for water uptake" },
+                  { id: 'b_a_2_23_e_18', q: "How can a potometer be used to investigate the effect of environmental factors on transpiration rate?", a: "(1) Change one factor (e.g. light, wind, temp)\n(2) Measure rate of water uptake" },
+                  { id: 'b_a_2_23_e_19', q: "What are limitations of using nail varnish to estimate stomata distribution?", a: "(1) Varnish may not peel cleanly\n(2) Results are only estimates" }
+                ],
+                "Medium (3-4 marks)": [
+                  { id: 'b_a_2_23_m_1', q: "What are the main organs in the plant transport system?", a: "(1) Roots\n(2) Stems (shoots)\n(3) Leaves" },
+                  { id: 'b_a_2_23_m_2', q: "How are root hair cells adapted for their function?", a: "(1) Large surface area for absorption\n(2) Large permanent vacuole to increase osmosis\n(3) Many mitochondria for active transport" },
+                  { id: 'b_a_2_23_m_3', q: "What is the function of the xylem?", a: "(1) Transports water\n(2) Transports mineral ions\n(3) From roots to leaves" },
+                  { id: 'b_a_2_23_m_4', q: "What is water used for in plants?", a: "(1) Photosynthesis\n(2) Maintaining turgor pressure\n(3) Transporting minerals" },
+                  { id: 'b_a_2_23_m_5', q: "Describe the structure of xylem tissue.", a: "(1) Hollow tubes\n(2) No end walls\n(3) Strengthened with lignin" },
+                  { id: 'b_a_2_23_m_6', q: "What causes water loss from the leaf?", a: "(1) Spongy mesophyll has air spaces\n(2) Water evaporates into air spaces\n(3) Water vapour diffuses out through stomata" },
+                  { id: 'b_a_2_23_m_7', q: "What are stomata?", a: "(1) Tiny pores in leaves\n(2) Surrounded by guard cells\n(3) Allow gases to diffuse in and out" },
+                  { id: 'b_a_2_23_m_8', q: "What are guard cells?", a: "(1) Cells that surround stomata\n(2) Control opening and closing\n(3) Regulate gas exchange / water loss" },
+                  { id: 'b_a_2_23_m_9', q: "How are guard cells adapted for their function?", a: "(1) Thick inner walls and thin outer walls\n(2) Allows opening and closing\n(3) Sensitive to light (open in light, close in dark)" },
+                  { id: 'b_a_2_23_m_10', q: "Why does a plant lose most of the water it takes in?", a: "(1) Water evaporates from mesophyll cells\n(2) Enters air spaces in the leaf\n(3) Diffuses out through stomata" },
+                  { id: 'b_a_2_23_m_11', q: "Why is water loss not always harmful to the plant?", a: "(1) Maintains the transpiration stream\n(2) Pulls water up from roots\n(3) Supplies water for photosynthesis" },
+                  { id: 'b_a_2_23_m_12', q: "When do stomata open and close?", a: "(1) Open to allow carbon dioxide in\n(2) Open to allow oxygen out\n(3) Close to reduce water loss" },
+                  { id: 'b_a_2_23_m_13', q: "Explain how wind affects transpiration.", a: "(1) Removes water vapour from leaf surface\n(2) Maintains steep concentration gradient\n(3) Increases diffusion rate" },
+                  { id: 'b_a_2_23_m_14', q: "Explain how temperature affects transpiration.", a: "(1) Increases kinetic energy of molecules\n(2) Speeds up evaporation and diffusion\n(3) Increases rate of water loss" },
+                  { id: 'b_a_2_23_m_15', q: "Explain how humidity affects transpiration.", a: "(1) High humidity reduces concentration gradient\n(2) Slows diffusion of water vapour\n(3) Decreases transpiration rate" },
+                  { id: 'b_a_2_23_m_16', q: "Explain how light intensity affects transpiration.", a: "(1) Light increases photosynthesis\n(2) Stomata open for gas exchange\n(3) Increases water loss" },
+                  { id: 'b_a_2_23_m_17', q: "How are plants adapted to reduce water loss?", a: "(1) Waxy cuticle reduces evaporation\n(2) Stomata mainly on underside\n(3) Reduces exposure to sunlight" },
+                  { id: 'b_a_2_23_m_18', q: "What happens if a plant loses water faster than it absorbs it?", a: "(1) Cells lose turgor pressure\n(2) Plant wilts\n(3) Stomata close to reduce water loss" },
+                  { id: 'b_a_2_23_m_19', q: "Will the plant die if it loses too much water?", a: "(1) May stop photosynthesising\n(2) May overheat\n(3) Can recover if conditions improve" },
+                  { id: 'b_a_2_23_m_20', q: "Describe the structure of phloem tissue.", a: "(1) Made of elongated living cells\n(2) Arranged in tubes\n(3) Sieve plates between cells" },
+                  { id: 'b_a_2_23_m_21', q: "How does cell sap move through the phloem?", a: "(1) Moves from cell to cell\n(2) Through pores in sieve plates\n(3) Driven by pressure differences" },
+                  { id: 'b_a_2_23_m_22', q: "What is sugar used for in plants?", a: "(1) Respiration\n(2) Growth (making new cells)\n(3) Storage (e.g. roots)" },
+                  { id: 'b_a_2_23_m_23', q: "Why can removing a ring of bark kill a tree?", a: "(1) Phloem is found under the bark\n(2) Removing it stops sugar transport\n(3) Roots and tissues do not receive food\n(4) Tree eventually dies" }
+                ],
+                "Hard (5-6 marks)": [
+                  { id: 'b_a_2_23_h_1', q: "How are xylem cells adapted for their function?", a: "(1) Cells are dead\n(2) No end walls → continuous tubes\n(3) Hollow to allow flow\n(4) Lignin strengthens walls\n(5) Prevents collapse under pressure\n(6) Provides support" },
+                  { id: 'b_a_2_23_h_2', q: "Describe how water moves from the soil to the leaves.", a: "(1) Water enters root hair cells by osmosis\n(2) Moves through root cells by osmosis\n(3) Enters xylem vessels\n(4) Travels up the stem in transpiration stream\n(5) Moves into leaf cells\n(6) Evaporates and exits via stomata" },
+                  { id: 'b_a_2_23_h_3', q: "How do guard cells work?", a: "(1) When water enters, cells become turgid\n(2) Turgid cells open the stomata\n(3) When water leaves, cells become flaccid\n(4) Flaccid cells close the stomata\n(5) Opening allows gas exchange\n(6) Closing reduces water loss" },
+                  { id: 'b_a_2_23_h_4', q: "Describe the process of transpiration.", a: "(1) Water evaporates from mesophyll cells\n(2) Water vapour enters air spaces\n(3) Diffuses out through stomata\n(4) Creates a concentration gradient\n(5) Causes water to be pulled up through xylem\n(6) Forms the transpiration stream" },
+                  { id: 'b_a_2_23_h_5', q: "What factors increase the rate of transpiration?", a: "(1) High temperature\n(2) Wind\n(3) Low humidity\n(4) High light intensity\n(5) Larger surface area\n(6) More stomata open" },
+                  { id: 'b_a_2_23_h_6', q: "How are phloem cells adapted for their function?", a: "(1) Cells are living\n(2) Have sieve plates with pores\n(3) Few organelles to allow flow\n(4) Companion cells provide energy\n(5) Companion cells contain many mitochondria\n(6) Enables active transport of sugars" },
+                  { id: 'b_a_2_23_h_7', q: "Describe how to measure transpiration using a potometer.", a: "(1) Cut shoot at slant under water\n(2) Assemble under water to avoid bubbles\n(3) Ensure system is airtight\n(4) Introduce air bubble\n(5) Measure distance moved over time\n(6) Calculate rate" },
+                  { id: 'b_a_2_23_h_8', q: "Describe how to investigate stomata distribution using a microscope.", a: "(1) Apply nail varnish to leaf\n(2) Allow to dry and peel\n(3) Place on slide\n(4) Observe under microscope\n(5) Count stomata in known area\n(6) Repeat and calculate mean" }
+                ]
+              }
+            },
+            "3. Infection and response": {
+              "3.1 Communicable diseases": {
+                "Easy (1-2 marks)": [
+                  { id: 'b_a_3_31_e_1', q: "What causes viral diseases?", a: "(1) Viruses" },
+                  { id: 'b_a_3_31_e_2', q: "Are viruses alive?", a: "(1) No\n(2) Do not carry out life processes independently" },
+                  { id: 'b_a_3_31_e_3', q: "Do viruses reproduce?", a: "(1) No\n(2) They replicate inside host cells" },
+                  { id: 'b_a_3_31_e_4', q: "What are the main symptoms of measles?", a: "(1) Fever\n(2) Red rash" },
+                  { id: 'b_a_3_31_e_5', q: "How is measles spread?", a: "(1) By inhaling droplets from coughs and sneezes" },
+                  { id: 'b_a_3_31_e_6', q: "Is measles easy to catch?", a: "(1) Yes\n(2) It is highly infectious" },
+                  { id: 'b_a_3_31_e_7', q: "Can measles be fatal?", a: "(1) Yes\n(2) Especially if complications develop" },
+                  { id: 'b_a_3_31_e_8', q: "How is measles treated?", a: "(1) There is no specific cure\n(2) Patients may be isolated to prevent spread" },
+                  { id: 'b_a_3_31_e_9', q: "Does measles only affect children?", a: "(1) No\n(2) It can affect unvaccinated adults" },
+                  { id: 'b_a_3_31_e_10', q: "What does HIV stand for?", a: "(1) Human immunodeficiency virus" },
+                  { id: 'b_a_3_31_e_11', q: "What happens after the early stage of HIV infection?", a: "(1) Symptoms may disappear\n(2) Virus remains in the body" },
+                  { id: 'b_a_3_31_e_12', q: "How long can HIV take to damage the immune system?", a: "(1) Months to years" },
+                  { id: 'b_a_3_31_e_13', q: "What is the difference between HIV and AIDS?", a: "(1) HIV is the virus\n(2) AIDS is the late stage of infection" },
+                  { id: 'b_a_3_31_e_14', q: "What does AIDS stand for?", a: "(1) Acquired immune deficiency syndrome" },
+                  { id: 'b_a_3_31_e_15', q: "How can the progression of HIV be slowed?", a: "(1) Taking antiretroviral drugs" },
+                  { id: 'b_a_3_31_e_16', q: "What is an unscreened blood transfusion?", a: "(1) Blood that has not been tested for infections" },
+                  { id: 'b_a_3_31_e_17', q: "Is there a vaccine for HIV?", a: "(1) No" },
+                  { id: 'b_a_3_31_e_18', q: "Is there a cure for HIV?", a: "(1) No\n(2) It can be managed with treatment" },
+                  { id: 'b_a_3_31_e_19', q: "What is the difference between HIV-positive and HIV-negative?", a: "(1) HIV-positive = infected with HIV\n(2) HIV-negative = not infected" },
+                  { id: 'b_a_3_31_e_20', q: "What does TMV stand for?", a: "(1) Tobacco mosaic virus" },
+                  { id: 'b_a_3_31_e_21', q: "How can you identify a plant infected with TMV?", a: "(1) Mosaic pattern on leaves\n(2) Discoloured patches" },
+                  { id: 'b_a_3_31_e_22', q: "How is TMV transmitted between plants?", a: "(1) Direct contact\n(2) Insect vectors" },
+                  { id: 'b_a_3_31_e_23', q: "How long can TMV survive outside a host?", a: "(1) Can survive for many years\n(2) e.g. in soil or plant material" },
+                  { id: 'b_a_3_31_e_24', q: "How is TMV treated?", a: "(1) There is no cure" },
+                  { id: 'b_a_3_31_e_25', q: "How can the spread of TMV be reduced?", a: "(1) Good field hygiene\n(2) Control insect pests" },
+                  { id: 'b_a_3_31_e_26', q: "What alternative can farmers use to reduce the impact of TMV?", a: "(1) Grow TMV-resistant crop varieties" },
+                  { id: 'b_a_3_31_e_27', q: "Will bacterial infections continue to decrease?", a: "(1) No\n(2) Antibiotic resistance is increasing" },
+                  { id: 'b_a_3_31_e_28', q: "What causes bacterial diseases?", a: "(1) Pathogenic bacteria" },
+                  { id: 'b_a_3_31_e_29', q: "How do bacteria reproduce?", a: "(1) Asexually\n(2) By binary fission" },
+                  { id: 'b_a_3_31_e_30', q: "Are bacteria prokaryotic or eukaryotic?", a: "(1) Prokaryotic" },
+                  { id: 'b_a_3_31_e_31', q: "How do bacteria compare in size to viruses?", a: "(1) Bacteria are larger" },
+                  { id: 'b_a_3_31_e_32', q: "Are bacteria alive?", a: "(1) Yes" },
+                  { id: 'b_a_3_31_e_33', q: "How is Salmonella transmitted?", a: "(1) Eating undercooked food\n(2) Poor food hygiene" },
+                  { id: 'b_a_3_31_e_34', q: "How long does it take for Salmonella symptoms to develop?", a: "(1) 8–72 hours" },
+                  { id: 'b_a_3_31_e_35', q: "When are antibiotics used to treat Salmonella?", a: "(1) In severe cases\n(2) For vulnerable people (e.g. elderly / young)" },
+                  { id: 'b_a_3_31_e_36', q: "Why can Salmonella be dangerous?", a: "(1) Causes dehydration" },
+                  { id: 'b_a_3_31_e_37', q: "How does the UK reduce the spread of Salmonella?", a: "(1) Vaccinating poultry" },
+                  { id: 'b_a_3_31_e_38', q: "Why should raw chicken not be washed?", a: "(1) Bacteria can spread via water droplets" },
+                  { id: 'b_a_3_31_e_39', q: "What does STD stand for?", a: "(1) Sexually transmitted disease" },
+                  { id: 'b_a_3_31_e_40', q: "What is another term for STD?", a: "(1) STI (sexually transmitted infection)" },
+                  { id: 'b_a_3_31_e_41', q: "What is discharge?", a: "(1) Fluid released from the body" },
+                  { id: 'b_a_3_31_e_42', q: "How is gonorrhoea treated?", a: "(1) Antibiotics" },
+                  { id: 'b_a_3_31_e_43', q: "Why is penicillin no longer used to treat gonorrhoea?", a: "(1) Antibiotic resistance" }
+                ],
+                "Medium (3-4 marks)": [
+                  { id: 'b_a_3_31_m_1', q: "Describe the structure of a virus.", a: "(1) Genetic material (DNA/RNA)\n(2) Protein coat (capsid)\n(3) May have outer lipid envelope" },
+                  { id: 'b_a_3_31_m_2', q: "What serious complications can measles cause?", a: "(1) Blindness\n(2) Brain damage\n(3) Can lead to death in severe cases" },
+                  { id: 'b_a_3_31_m_3', q: "Is measles common in the UK?", a: "(1) Less common due to vaccination\n(2) Most children are vaccinated at a young age\n(3) Still occurs if vaccination rates are low" },
+                  { id: 'b_a_3_31_m_4', q: "What complications can measles cause in adults?", a: "(1) Infertility (in some cases)\n(2) Complications during pregnancy\n(3) Risk of harm to the unborn baby" },
+                  { id: 'b_a_3_31_m_5', q: "What are the early symptoms of HIV?", a: "(1) Flu-like symptoms\n(2) Such as fever\n(3) Fatigue or sore throat" },
+                  { id: 'b_a_3_31_m_6', q: "What does HIV do to the body?", a: "(1) Attacks immune cells\n(2) Weakens the immune system\n(3) Makes it harder to fight infections" },
+                  { id: 'b_a_3_31_m_7', q: "Why is HIV difficult to detect early?", a: "(1) Early symptoms are mild\n(2) Similar to flu\n(3) Long period with no symptoms" },
+                  { id: 'b_a_3_31_m_8', q: "When does HIV develop into AIDS?", a: "(1) When the immune system is severely damaged\n(2) Cannot fight infections\n(3) Cannot fight cancers" },
+                  { id: 'b_a_3_31_m_9', q: "What do antiretroviral drugs do?", a: "(1) Reduce virus replication\n(2) Slow damage to immune system\n(3) Delay development of AIDS" },
+                  { id: 'b_a_3_31_m_10', q: "What factors affect how quickly HIV develops into AIDS?", a: "(1) Overall health\n(2) Nutrition\n(3) Use of antiretroviral drugs" },
+                  { id: 'b_a_3_31_m_11', q: "How long can someone live with HIV?", a: "(1) Near normal life expectancy\n(2) If treated early\n(3) With antiretroviral drugs" },
+                  { id: 'b_a_3_31_m_12', q: "What plants does TMV affect?", a: "(1) Many plant species\n(2) Including tobacco plants\n(3) And tomato plants" },
+                  { id: 'b_a_3_31_m_13', q: "What causes the mosaic pattern in TMV-infected leaves?", a: "(1) Virus infects leaf cells\n(2) Damages or destroys cells\n(3) Causes discolouration" },
+                  { id: 'b_a_3_31_m_14', q: "Why is TMV harmful to plants?", a: "(1) Reduces photosynthesis\n(2) Less chlorophyll / damaged cells\n(3) Leads to reduced growth" },
+                  { id: 'b_a_3_31_m_15', q: "What are non-pathogenic bacteria?", a: "(1) Bacteria that do not cause disease\n(2) Can live in the body\n(3) Some help digestion" },
+                  { id: 'b_a_3_31_m_16', q: "Where do bacteria live in the body?", a: "(1) Inside the host\n(2) Commonly in mouth, nose, throat" },
+                  { id: 'b_a_3_31_m_17', q: "What happens when pathogenic bacteria enter the body?", a: "(1) Reproduce rapidly\n(2) Produce toxins\n(3) Toxins damage cells" },
+                  { id: 'b_a_3_31_m_18', q: "What is Salmonella?", a: "(1) A type of bacterium\n(2) Found in animal gut\n(3) Causes food poisoning" },
+                  { id: 'b_a_3_31_m_19', q: "What are the symptoms of Salmonella food poisoning?", a: "(1) Fever\n(2) Stomach cramps\n(3) Vomiting\n(4) Diarrhoea" },
+                  { id: 'b_a_3_31_m_20', q: "What is gonorrhoea?", a: "(1) A bacterial infection\n(2) Sexually transmitted\n(3) Spread by unprotected sexual contact" },
+                  { id: 'b_a_3_31_m_21', q: "What are the early symptoms of gonorrhoea?", a: "(1) Thick yellow/green discharge\n(2) Pain when urinating\n(3) Symptoms may disappear later" },
+                  { id: 'b_a_3_31_m_22', q: "How can the spread of gonorrhoea be reduced?", a: "(1) Use condoms\n(2) Limit number of partners\n(3) Test and treat infected individuals" }
+                ],
+                "Hard (5-6 marks)": [
+                  { id: 'b_a_3_31_h_1', q: "What do viruses do inside the body?", a: "(1) Enter host cells\n(2) Insert genetic material\n(3) Use cell machinery to replicate\n(4) Cell bursts (lysis)\n(5) New viruses infect others" },
+                  { id: 'b_a_3_31_h_2', q: "Explain why viral diseases are difficult to treat.", a: "(1) Viruses live inside host cells\n(2) Hard to target without damaging cells\n(3) Antibiotics do not work on viruses\n(4) Viruses replicate rapidly\n(5) Can mutate quickly\n(6) Makes treatment difficult" },
+                  { id: 'b_a_3_31_h_3', q: "How is HIV transmitted?", a: "(1) Unprotected sexual contact\n(2) Exchange of body fluids (e.g. blood)\n(3) Sharing needles\n(4) Unscreened blood transfusions\n(5) From mother to baby during birth\n(6) Through breastfeeding" },
+                  { id: 'b_a_3_31_h_4', q: "How can the spread of HIV be reduced?", a: "(1) Use condoms\n(2) Do not share needles\n(3) Use screened blood for transfusions\n(4) Test regularly\n(5) Use antiretroviral treatment\n(6) Avoid breastfeeding if HIV-positive" },
+                  { id: 'b_a_3_31_h_5', q: "Why are bacterial diseases less common than in the past?", a: "(1) Improved living conditions\n(2) Better sanitation\n(3) Vaccination programmes\n(4) Use of antibiotics\n(5) Improved healthcare\n(6) Better hygiene practices" },
+                  { id: 'b_a_3_31_h_6', q: "How can Salmonella food poisoning be prevented?", a: "(1) Cook food thoroughly\n(2) Avoid cross-contamination\n(3) Keep raw meat separate\n(4) Wash hands and surfaces\n(5) Do not wash raw chicken\n(6) Maintain good food hygiene" },
+                  { id: 'b_a_3_31_h_7', q: "What can happen if gonorrhoea is untreated?", a: "(1) Pelvic pain\n(2) Infertility\n(3) Ectopic pregnancy\n(4) Infection can spread\n(5) Can affect newborn babies\n(6) May cause blindness in babies" }
+                ]
+              }
+            },
+            "4. Bioenergetics": {
+              "4.1 Photosynthesis": {
+                "Easy (1-2 marks)": [
+                  { id: 'b_a_h_4_41_e_1', q: "What is a limiting factor?", a: "(1) A factor that restricts the rate of a reaction\n(2) If increased, the rate will increase" },
+                  { id: 'b_a_h_4_41_e_2', q: "Which factors can limit photosynthesis?", a: "(1) Light intensity\n(2) Carbon dioxide concentration" },
+                  { id: 'b_a_h_4_41_e_3', q: "Why might a plant have low chlorophyll levels?", a: "(1) Magnesium deficiency\n(2) Some plants have non-green areas" },
+                  { id: 'b_a_h_4_41_e_4', q: "What does deficiency mean?", a: "(1) A lack of something" },
+                  { id: 'b_a_h_4_41_e_5', q: "Why does magnesium deficiency reduce photosynthesis?", a: "(1) Magnesium is needed to make chlorophyll" },
+                  { id: 'b_a_h_4_41_e_6', q: "What is chlorosis?", a: "(1) Yellowing of leaves" },
+                  { id: 'b_a_h_4_41_e_7', q: "What causes chlorosis?", a: "(1) Lack of magnesium" },
+                  { id: 'b_a_h_4_41_e_8', q: "What is yield?", a: "(1) Amount of useful crop produced" },
+                  { id: 'b_a_h_4_41_e_9', q: "How do farmers increase crop yield?", a: "(1) Reduce limiting factors\n(2) Optimise growing conditions" },
+                  { id: 'b_a_h_4_41_e_10', q: "What is hydroponics?", a: "(1) Growing plants in nutrient solution\n(2) Without soil" },
+                  { id: 'b_a_h_4_41_e_11', q: "What happens to light intensity when distance is doubled?", a: "(1) Light intensity becomes one quarter" },
+                  { id: 'b_a_h_4_41_e_12', q: "What are the bubbles produced in the pondweed experiment?", a: "(1) Oxygen\n(2) Produced during photosynthesis" },
+                  { id: 'b_a_h_4_41_e_13', q: "Why is a beaker of water placed between the lamp and the pondweed?", a: "(1) Acts as a heat filter\n(2) Prevents temperature increase" },
+                  { id: 'b_a_h_4_41_e_14', q: "Why should the experiment be left for a short time before taking measurements?", a: "(1) To allow the rate of photosynthesis to stabilise" },
+                  { id: 'b_a_h_4_41_e_15', q: "What is a more accurate way to measure oxygen production than counting bubbles?", a: "(1) Use a gas syringe" }
+                ],
+                "Medium (3-4 marks)": [
+                  { id: 'b_a_h_4_41_m_1', q: "What factors affect the rate of photosynthesis?", a: "(1) Light intensity\n(2) Carbon dioxide concentration\n(3) Temperature\n(4) Chlorophyll content" },
+                  { id: 'b_a_h_4_41_m_2', q: "How does carbon dioxide affect the rate of photosynthesis?", a: "(1) Carbon dioxide is a reactant\n(2) Low CO₂ reduces rate\n(3) More CO₂ increases rate" },
+                  { id: 'b_a_h_4_41_m_3', q: "How does carbon dioxide concentration change during the day?", a: "(1) Higher at night (respiration releases CO₂)\n(2) Lower during the day (photosynthesis uses CO₂)\n(3) Changes depending on light availability" },
+                  { id: 'b_a_h_4_41_m_4', q: "How does light intensity affect the rate of photosynthesis?", a: "(1) Provides energy for photosynthesis\n(2) Low light → low rate\n(3) High light → higher rate" },
+                  { id: 'b_a_h_4_41_m_5', q: "How does chlorophyll content affect photosynthesis?", a: "(1) Chlorophyll absorbs light\n(2) Less chlorophyll reduces rate\n(3) More chlorophyll increases rate" },
+                  { id: 'b_a_h_4_41_m_6', q: "How can farmers control limiting factors in photosynthesis?", a: "(1) Control light intensity\n(2) Control temperature\n(3) Control carbon dioxide levels" },
+                  { id: 'b_a_h_4_41_m_7', q: "Why are greenhouses used in farming?", a: "(1) Control environmental conditions\n(2) Increase rate of photosynthesis\n(3) Increase crop yield" },
+                  { id: 'b_a_h_4_41_m_8', q: "Why can greenhouse farming be expensive?", a: "(1) Cost of heating\n(2) Cost of lighting\n(3) Cost of equipment" },
+                  { id: 'b_a_h_4_41_m_9', q: "What is the relationship between light intensity and distance?", a: "(1) Inversely proportional\n(2) As distance increases, intensity decreases\n(3) Follows inverse square relationship" },
+                  { id: 'b_a_h_4_41_m_10', q: "What is the inverse square law?", a: "(1) Light intensity ∝ 1 / distance²\n(2) Intensity decreases rapidly with distance\n(3) Doubling distance reduces intensity" },
+                  { id: 'b_a_h_4_41_m_11', q: "How can you identify a limiting factor on a photosynthesis graph?", a: "(1) Rate increases at first\n(2) Then levels off (plateau)\n(3) Shows another factor is limiting" },
+                  { id: 'b_a_h_4_41_m_12', q: "Why must temperature be controlled in the pondweed experiment?", a: "(1) Temperature affects enzyme activity\n(2) It is a limiting factor of photosynthesis\n(3) Must be controlled to ensure a fair test" },
+                  { id: 'b_a_h_4_41_m_13', q: "How does changing the distance of the lamp affect light intensity?", a: "(1) Increasing distance reduces light intensity\n(2) Decreasing distance increases light intensity\n(3) Follows inverse square relationship" }
+                ],
+                "Hard (5-6 marks)": [
+                  { id: 'b_a_h_4_41_h_1', q: "How does temperature affect the rate of photosynthesis?", a: "(1) Low temperature → less kinetic energy\n(2) Fewer successful collisions\n(3) Slower reaction rate\n(4) Increasing temperature increases rate\n(5) Enzymes denature at high temperatures\n(6) Rate then decreases" },
+                  { id: 'b_a_h_4_41_h_2', q: "What are advantages of growing plants in greenhouses?", a: "(1) Grow crops out of season\n(2) Faster growth rates\n(3) Controlled conditions\n(4) Reduced pests\n(5) No soil needed\n(6) Higher yields" },
+                  { id: 'b_a_h_4_41_h_3', q: "Describe a practical to investigate the effect of light intensity on the rate of photosynthesis in pondweed.", a: "(1) Place pondweed in water (e.g. in a test tube/beaker)\n(2) Position a lamp at a measured distance\n(3) Use a ruler to measure the distance\n(4) Allow the plant to equilibrate\n(5) Count bubbles of oxygen produced in a set time\n(6) Repeat at different distances and calculate a mean" },
+                  { id: 'b_a_h_4_41_h_4', q: "What variables should be controlled in the pondweed experiment?", a: "(1) Temperature\n(2) Carbon dioxide concentration\n(3) Type/size of pondweed\n(4) Volume of water\n(5) Light wavelength/colour\n(6) Time measured" }
+                ]
+              },
+              "4.2 Respiration": {
+                "Easy (1-2 marks)": [
+                  { id: 'b_a_h_4_42_e_1', q: "Do muscles use energy when the body is at rest?", a: "(1) Yes\n(2) They still use oxygen and glucose" },
+                  { id: 'b_a_h_4_42_e_2', q: "What happens if muscles do not get enough oxygen?", a: "(1) Anaerobic respiration occurs" },
+                  { id: 'b_a_h_4_42_e_3', q: "What does anaerobic mean?", a: "(1) Without oxygen" },
+                  { id: 'b_a_h_4_42_e_4', q: "What is the word equation for anaerobic respiration in animals?", a: "(1) Glucose → lactic acid + energy" },
+                  { id: 'b_a_h_4_42_e_5', q: "What is lactic acid?", a: "(1) Product of anaerobic respiration in animals" },
+                  { id: 'b_a_h_4_42_e_6', q: "Why is anaerobic respiration less efficient than aerobic respiration?", a: "(1) Glucose is not fully broken down\n(2) Less energy is released" },
+                  { id: 'b_a_h_4_42_e_7', q: "How does energy yield compare between aerobic and anaerobic respiration?", a: "(1) Anaerobic releases much less energy\n(2) About 5% of aerobic respiration" },
+                  { id: 'b_a_h_4_42_e_8', q: "Why do muscles become tired during exercise?", a: "(1) Lactic acid builds up" },
+                  { id: 'b_a_h_4_42_e_9', q: "What is oxygen debt?", a: "(1) Extra oxygen needed after exercise" },
+                  { id: 'b_a_h_4_42_e_10', q: "What happens to glucose after oxygen debt is repaid?", a: "(1) Used in respiration\n(2) Or stored" },
+                  { id: 'b_a_h_4_42_e_11', q: "What affects how quickly someone goes into oxygen debt?", a: "(1) Fitness level" },
+                  { id: 'b_a_h_4_42_e_12', q: "How does the body recover from oxygen debt?", a: "(1) Increased breathing rate\n(2) Increased heart rate" },
+                  { id: 'b_a_h_4_42_e_13', q: "What is the word equation for oxygen debt repayment?", a: "(1) Lactic acid + oxygen → carbon dioxide + water" },
+                  { id: 'b_a_h_4_42_e_14', q: "Can other organisms respire anaerobically?", a: "(1) Yes\n(2) Plants and microorganisms" },
+                  { id: 'b_a_h_4_42_e_15', q: "What are the products of anaerobic respiration in plants and yeast?", a: "(1) Ethanol\n(2) Carbon dioxide" },
+                  { id: 'b_a_h_4_42_e_16', q: "What is fermentation?", a: "(1) Anaerobic respiration in yeast" },
+                  { id: 'b_a_h_4_42_e_17', q: "What is fermentation used for?", a: "(1) Bread making\n(2) Alcohol production" },
+                  { id: 'b_a_h_4_42_e_18', q: "What is metabolism?", a: "(1) The sum of all chemical reactions in a cell or body" },
+                  { id: 'b_a_h_4_42_e_19', q: "How many metabolic reactions occur in the body?", a: "(1) Many / thousands\n(2) Occur continuously" },
+                  { id: 'b_a_h_4_42_e_20', q: "What controls metabolism?", a: "(1) Enzymes\n(2) Hormones (e.g. thyroid hormone)" },
+                  { id: 'b_a_h_4_42_e_21', q: "What increases the rate of metabolic reactions?", a: "(1) Enzymes" },
+                  { id: 'b_a_h_4_42_e_22', q: "What are the two types of metabolic reactions?", a: "(1) Breakdown (catabolic) reactions\n(2) Synthesis (anabolic) reactions" },
+                  { id: 'b_a_h_4_42_e_23', q: "Name two examples of breakdown reactions.", a: "(1) Protein breakdown\n(2) Amino acid breakdown" },
+                  { id: 'b_a_h_4_42_e_24', q: "What is urea?", a: "(1) Waste product of protein metabolism" },
+                  { id: 'b_a_h_4_42_e_25', q: "What are lipids made from?", a: "(1) Glycerol\n(2) Three fatty acids" },
+                  { id: 'b_a_h_4_42_e_26', q: "What are lipids used for?", a: "(1) Form cell membranes\n(2) Store energy" }
+                ],
+                "Medium (3-4 marks)": [
+                  { id: 'b_a_h_4_42_m_1', q: "What happens to the body during exercise?", a: "(1) Increased demand for oxygen\n(2) Increased demand for glucose\n(3) Increased removal of carbon dioxide" },
+                  { id: 'b_a_h_4_42_m_2', q: "What happens to lactic acid after exercise?", a: "(1) Transported to the liver\n(2) Converted back into glucose\n(3) Requires oxygen" },
+                  { id: 'b_a_h_4_42_m_3', q: "How is lactic acid transported from muscles to the liver?", a: "(1) Diffuses from muscle cells into blood\n(2) Carried in the bloodstream\n(3) Diffuses into liver cells" },
+                  { id: 'b_a_h_4_42_m_4', q: "What affects recovery from oxygen debt?", a: "(1) Amount of lactic acid\n(2) Fitness level\n(3) Rate of oxygen intake" },
+                  { id: 'b_a_h_4_42_m_5', q: "Why does bread not contain alcohol?", a: "(1) Yeast is killed by heat\n(2) Ethanol evaporates\n(3) During baking" },
+                  { id: 'b_a_h_4_42_m_6', q: "What is the difference between breakdown and synthesis reactions?", a: "(1) Breakdown reactions split large molecules into smaller ones\n(2) Synthesis reactions build large molecules from smaller ones\n(3) Breakdown releases energy\n(4) Synthesis requires energy" },
+                  { id: 'b_a_h_4_42_m_7', q: "Name three examples of synthesis reactions.", a: "(1) Protein synthesis\n(2) Lipid formation\n(3) Conversion of glucose to glycogen" },
+                  { id: 'b_a_h_4_42_m_8', q: "How are amino acids broken down in the body?", a: "(1) Occurs in the liver\n(2) Enzymes remove the amine group\n(3) Produces urea" }
+                ],
+                "Hard (5-6 marks)": [
+                  { id: 'b_a_h_4_42_h_1', q: "What do muscles use energy for?", a: "(1) Muscle contraction\n(2) Movement of the body\n(3) Maintaining posture\n(4) Moving food through the digestive system\n(5) Pumping blood (heart muscle)\n(6) Transferring energy from respiration" },
+                  { id: 'b_a_h_4_42_h_2', q: "How does the body respond to exercise?", a: "(1) Heart rate increases\n(2) Breathing rate increases\n(3) Breathing depth increases\n(4) More oxygen delivered to muscles\n(5) More carbon dioxide removed\n(6) Glycogen converted to glucose" },
+                  { id: 'b_a_h_4_42_h_3', q: "What is anaerobic respiration?", a: "(1) Breakdown of glucose without oxygen\n(2) Releases energy\n(3) Produces lactic acid in animals\n(4) Produces ethanol and carbon dioxide in plants/yeast\n(5) Less energy released than aerobic respiration\n(6) Incomplete breakdown of glucose" },
+                  { id: 'b_a_h_4_42_h_4', q: "Name six examples of metabolic reactions.", a: "(1) Glucose → starch / glycogen / cellulose\n(2) Formation of lipids from glycerol and fatty acids\n(3) Glucose + nitrate ions → amino acids\n(4) Respiration\n(5) Photosynthesis\n(6) Breakdown of proteins to form urea" },
+                  { id: 'b_a_h_4_42_h_5', q: "What happens during protein breakdown?", a: "(1) Proteins are broken into amino acids\n(2) Amino acids enter the blood\n(3) Transported to the liver\n(4) Excess amino acids are broken down\n(5) Form urea\n(6) Urea is excreted by kidneys" },
+                  { id: 'b_a_h_4_42_h_6', q: "How is glucose used in synthesis reactions?", a: "(1) In plants, converted to starch for storage\n(2) Used to make cellulose for cell walls\n(3) In animals, converted to glycogen\n(4) Glycogen stored in liver and muscles\n(5) Helps regulate blood glucose levels\n(6) Used for growth and energy storage" },
+                  { id: 'b_a_h_4_42_h_7', q: "Explain how surface area to volume ratio affects metabolic processes in organisms.", a: "(1) Small organisms have a large SA:V ratio\n(2) Allows faster exchange of substances (e.g. oxygen, nutrients)\n(3) Supports higher metabolic rate per unit mass\n(4) Large organisms have a smaller SA:V ratio\n(5) Slower exchange of substances\n(6) Require specialised exchange surfaces (e.g. lungs, gills)" }
+                ]
+              }
+            }
+          },
+          "Foundation": {
+            "1. Cell Biology": {
+              "1.1 Cell Structure": {
+                "Easy (1-2 marks)": [
+                  { id: 'b_a_f_1_11_e_1', q: "What is the difference between eukaryotic and prokaryotic cells?", a: "(1) Eukaryotic cells have a nucleus / are more complex\n(2) Prokaryotic cells do not have a nucleus / are smaller and simpler" },
+                  { id: 'b_a_f_1_11_e_2', q: "What are eukaryotes?", a: "(1) Organisms made of eukaryotic cells" },
+                  { id: 'b_a_f_1_11_e_3', q: "What are prokaryotes?", a: "(1) Organisms made of prokaryotic cells" },
+                  { id: 'b_a_f_1_11_e_4', q: "Are animal cells prokaryotic or eukaryotic?", a: "(1) Eukaryotic" },
+                  { id: 'b_a_f_1_11_e_5', q: "Are plant cells prokaryotic or eukaryotic?", a: "(1) Eukaryotic" },
+                  { id: 'b_a_f_1_11_e_6', q: "Are bacteria cells prokaryotic or eukaryotic?", a: "(1) Prokaryotic" },
+                  { id: 'b_a_f_1_11_e_7', q: "What is the length of a eukaryotic cell?", a: "(1) 10–100 μm" },
+                  { id: 'b_a_f_1_11_e_8', q: "What is the length of a prokaryotic cell?", a: "(1) 0.2–2 μm" },
+                  { id: 'b_a_f_1_11_e_9', q: "What is the length of an average animal cell?", a: "(1) 10–30 μm" },
+                  { id: 'b_a_f_1_11_e_10', q: "What is the length of an average plant cell?", a: "(1) 10–100 μm" },
+                  { id: 'b_a_f_1_11_e_11', q: "What is the length of a virus?", a: "(1) 100 nm" },
+                  { id: 'b_a_f_1_11_e_12', q: "How many millimetres are in a centimetre?", a: "(1) 10 mm" },
+                  { id: 'b_a_f_1_11_e_13', q: "How many micrometres are in a millimetre?", a: "(1) 1000 μm" },
+                  { id: 'b_a_f_1_11_e_14', q: "How many nanometres are in a micrometre?", a: "(1) 1000 nm" },
+                  { id: 'b_a_f_1_11_e_15', q: "What is the function of the nucleus?", a: "(1) Controls the activities of the cell" },
+                  { id: 'b_a_f_1_11_e_16', q: "What does the nucleus contain?", a: "(1) Genetic material (DNA)\n(2) Organised into chromosomes" },
+                  { id: 'b_a_f_1_11_e_17', q: "What is the average size of a nucleus?", a: "(1) Around 10 μm" },
+                  { id: 'b_a_f_1_11_e_18', q: "What is the cytoplasm?", a: "(1) A jelly-like substance\n(2) Where organelles are suspended" },
+                  { id: 'b_a_f_1_11_e_19', q: "What is the purpose of the cytoplasm?", a: "(1) Site of chemical reactions\n(2) Contains enzymes" },
+                  { id: 'b_a_f_1_11_e_20', q: "What is the average size of mitochondria?", a: "(1) Around 1–2 μm" },
+                  { id: 'b_a_f_1_11_e_21', q: "What is the purpose of ribosomes?", a: "(1) Site of protein synthesis" },
+                  { id: 'b_a_f_1_11_e_22', q: "What is the purpose of the cell wall?", a: "(1) Strengthens the cell\n(2) Supports the cell" },
+                  { id: 'b_a_f_1_11_e_23', q: "What is the cell wall made of?", a: "(1) Cellulose" },
+                  { id: 'b_a_f_1_11_e_24', q: "What is a DNA loop?", a: "(1) A circular strand of DNA" },
+                  { id: 'b_a_f_1_11_e_25', q: "What is a plasmid?", a: "(1) Small circular rings of DNA" },
+                  { id: 'b_a_f_1_11_e_26', q: "What is a flagellum?", a: "(1) A long tail-like structure\n(2) Used for movement" },
+                  { id: 'b_a_f_1_11_e_27', q: "When would you use estimations in calculations?", a: "(1) To check whether a calculated answer is reasonable / correct" },
+                  { id: 'b_a_f_1_11_e_28', q: "What is a specimen?", a: "(1) The object being observed under a microscope" },
+                  { id: 'b_a_f_1_11_e_29', q: "What is a slide?", a: "(1) A thin piece of glass or plastic\n(2) Used to hold the specimen" },
+                  { id: 'b_a_f_1_11_e_30', q: "What is a cover slip?", a: "(1) A thin square of glass or plastic\n(2) Placed over the specimen\n(3) Keeps the specimen flat / in place" },
+                  { id: 'b_a_f_1_11_e_31', q: "What is the purpose of iodine solution in microscopy?", a: "(1) Stains the specimen\n(2) Makes structures easier to see" },
+                  { id: 'b_a_f_1_11_e_32', q: "Why must the cover slip be lowered carefully?", a: "(1) To prevent air bubbles forming\n(2) Air bubbles can obstruct the view" }
+                ],
+                "Medium (3-4 marks)": [
+                  { id: 'b_a_f_1_11_m_1', q: "Name three structures found in all eukaryotic cells.", a: "(1) Cell membrane\n(2) Cytoplasm\n(3) Nucleus" },
+                  { id: 'b_a_f_1_11_m_2', q: "Name four structures found in all prokaryotic cells.", a: "(1) Cell wall\n(2) Cell membrane\n(3) Cytoplasm\n(4) Circular DNA (DNA loop)" },
+                  { id: 'b_a_f_1_11_m_3', q: "When writing numbers in standard form, what is the format?", a: "(1) Written as A × 10^n\n(2) Where 1 ≤ A < 10\n(3) n is an integer (positive or negative whole number)" },
+                  { id: 'b_a_f_1_11_m_4', q: "What does “order of magnitude” mean?", a: "(1) A comparison of size between two values\n(2) Expressed in powers of 10\n(3) Shows how many times bigger or smaller one value is" },
+                  { id: 'b_a_f_1_11_m_5', q: "If a small animal cell is around 10 μm and a large plant cell is around 100 μm, how many orders of magnitude bigger is the plant cell?", a: "(1) 100 μm ÷ 10 μm = 10\n(2) This is 10^1\n(3) Therefore, it is 1 order of magnitude bigger" },
+                  { id: 'b_a_f_1_11_m_6', q: "How many orders of magnitude bigger is a small animal cell compared to a virus?", a: "(1) Convert virus size: 100 nm = 0.1 μm\n(2) Small animal cell ≈ 10 μm\n(3) 10 ÷ 0.1 = 100\n(4) This is 10^2\n(5) Therefore, the cell is 2 orders of magnitude bigger" },
+                  { id: 'b_a_f_1_11_m_7', q: "What is the purpose of the cell membrane?", a: "(1) Holds the cell together\n(2) Controls movement of substances in and out of the cell\n(3) Selectively permeable" },
+                  { id: 'b_a_f_1_11_m_8', q: "What is the purpose of mitochondria?", a: "(1) Site of aerobic respiration\n(2) Releases energy (ATP)\n(3) Provides energy for cell activities" },
+                  { id: 'b_a_f_1_11_m_9', q: "What are chloroplasts?", a: "(1) Contain chlorophyll\n(2) Chlorophyll absorbs light energy\n(3) Site of photosynthesis" },
+                  { id: 'b_a_f_1_11_m_10', q: "What is the permanent vacuole?", a: "(1) Contains cell sap\n(2) Maintains turgor pressure\n(3) Keeps the cell rigid / supports the plant" },
+                  { id: 'b_a_f_1_11_m_11', q: "Why do prokaryotic cells have plasmids?", a: "(1) Carry extra genes\n(2) Can give advantages (e.g. antibiotic resistance)\n(3) Can be transferred between cells" },
+                  { id: 'b_a_f_1_11_m_12', q: "How could you use the size of cells to estimate the size of a subcellular structure?", a: "(1) Compare how many times the structure fits into the cell\n(2) Use the known size of the cell\n(3) Divide the cell size by the number of structures\n(4) This gives an approximate size of the structure" },
+                  { id: 'b_a_f_1_11_m_13', q: "If a cell is 20 μm long and approximately 10 nuclei fit along its length, what is the approximate size of one nucleus?", a: "(1) Cell length = 20 μm\n(2) Number of nuclei = 10\n(3) 20 ÷ 10 = 2\n(4) Nucleus size ≈ 2 μm" },
+                  { id: 'b_a_f_1_11_m_14', q: "Describe how to prepare a slide to observe onion cells.", a: "(1) Place a drop of water onto a clean slide\n(2) Peel a thin layer of onion epidermis using tweezers\n(3) Place the tissue onto the slide\n(4) Add a drop of iodine solution\n(5) Lower a cover slip carefully at an angle\n(6) Avoid trapping air bubbles" },
+                  { id: 'b_a_f_1_11_m_15', q: "Describe how to draw a scientific diagram from a microscope observation.", a: "(1) Drawing should be large (at least half the space)\n(2) Use clear, continuous lines\n(3) Do not shade or colour\n(4) Keep structures in proportion\n(5) Include a title\n(6) Include magnification\n(7) Label using straight, uncrossed lines" }
+                ],
+                "Hard (5-6 marks)": [
+                  { id: 'b_a_f_1_11_h_1', q: "Describe how to use a light microscope to observe a specimen.", a: "(1) Place the slide on the stage and secure it\n(2) Select the lowest power objective lens\n(3) Use the coarse adjustment knob to move the stage close to the lens\n(4) Look through the eyepiece\n(5) Slowly move the stage down until the image is in focus\n(6) Use the fine adjustment knob to sharpen the image\n(7) Switch to a higher magnification if needed and refocus" }
+                ]
+              }
+            },
+            "2. Organisation": {
+              "2.3 Plant tissues, organs and systems": {
+                "Easy (1-2 marks)": [
+                  { id: 'b_a_f_2_23_e_1', q: "Are xylem and phloem part of the plant transport system?", a: "(1) Yes\n(2) They are tissues, not organs" },
+                  { id: 'b_a_f_2_23_e_2', q: "What are root hair cells specialised to do?", a: "(1) Absorb water by osmosis\n(2) Absorb mineral ions by active transport" },
+                  { id: 'b_a_f_2_23_e_3', q: "What are mineral ions used for in plants?", a: "(1) To make proteins\n(2) To make other molecules" },
+                  { id: 'b_a_f_2_23_e_4', q: "What is the transpiration stream?", a: "(1) Movement of water through the xylem" },
+                  { id: 'b_a_f_2_23_e_5', q: "How does water help the plant stay upright?", a: "(1) Creates turgor pressure" },
+                  { id: 'b_a_f_2_23_e_6', q: "What is transpiration?", a: "(1) Loss of water vapour from leaves" },
+                  { id: 'b_a_f_2_23_e_7', q: "Does the leaf keep most of the water?", a: "(1) No\n(2) Most is lost" },
+                  { id: 'b_a_f_2_23_e_8', q: "Where are stomata found?", a: "(1) Mainly on the underside of leaves" },
+                  { id: 'b_a_f_2_23_e_9', q: "What are guard cells specialised to do?", a: "(1) Control gas exchange\n(2) Control water loss" },
+                  { id: 'b_a_f_2_23_e_10', q: "What is the function of stomata?", a: "(1) Allow gases to enter and leave by diffusion" },
+                  { id: 'b_a_f_2_23_e_11', q: "What is water potential?", a: "(1) The tendency for water to move by osmosis" },
+                  { id: 'b_a_f_2_23_e_12', q: "Why can’t stomata remain closed?", a: "(1) Gases would not be able to diffuse in and out" },
+                  { id: 'b_a_f_2_23_e_13', q: "What is humidity?", a: "(1) The amount of water vapour in the air" },
+                  { id: 'b_a_f_2_23_e_14', q: "What is the function of the phloem?", a: "(1) Transports sugars (food)\n(2) From leaves to the rest of the plant" },
+                  { id: 'b_a_f_2_23_e_15', q: "What is cell sap?", a: "(1) Water with dissolved sugars\n(2) May also contain mineral ions" },
+                  { id: 'b_a_f_2_23_e_16', q: "What is translocation?", a: "(1) Movement of sugars in the phloem" },
+                  { id: 'b_a_f_2_23_e_17', q: "Why is the shoot of a plant cut at a slant?", a: "(1) Increases surface area for water uptake" },
+                  { id: 'b_a_f_2_23_e_18', q: "How can a potometer be used to investigate the effect of environmental factors on transpiration rate?", a: "(1) Change one factor (e.g. light, wind, temp)\n(2) Measure rate of water uptake" },
+                  { id: 'b_a_f_2_23_e_19', q: "What are limitations of using nail varnish to estimate stomata distribution?", a: "(1) Varnish may not peel cleanly\n(2) Results are only estimates" }
+                ],
+                "Medium (3-4 marks)": [
+                  { id: 'b_a_f_2_23_m_1', q: "What are the main organs in the plant transport system?", a: "(1) Roots\n(2) Stems (shoots)\n(3) Leaves" },
+                  { id: 'b_a_f_2_23_m_2', q: "How are root hair cells adapted for their function?", a: "(1) Large surface area for absorption\n(2) Large permanent vacuole to increase osmosis\n(3) Many mitochondria for active transport" },
+                  { id: 'b_a_f_2_23_m_3', q: "What is the function of the xylem?", a: "(1) Transports water\n(2) Transports mineral ions\n(3) From roots to leaves" },
+                  { id: 'b_a_f_2_23_m_4', q: "What is water used for in plants?", a: "(1) Photosynthesis\n(2) Maintaining turgor pressure\n(3) Transporting minerals" },
+                  { id: 'b_a_f_2_23_m_5', q: "Describe the structure of xylem tissue.", a: "(1) Hollow tubes\n(2) No end walls\n(3) Strengthened with lignin" },
+                  { id: 'b_a_f_2_23_m_6', q: "What causes water loss from the leaf?", a: "(1) Spongy mesophyll has air spaces\n(2) Water evaporates into air spaces\n(3) Water vapour diffuses out through stomata" },
+                  { id: 'b_a_f_2_23_m_7', q: "What are stomata?", a: "(1) Tiny pores in leaves\n(2) Surrounded by guard cells\n(3) Allow gases to diffuse in and out" },
+                  { id: 'b_a_f_2_23_m_8', q: "What are guard cells?", a: "(1) Cells that surround stomata\n(2) Control opening and closing\n(3) Regulate gas exchange / water loss" },
+                  { id: 'b_a_f_2_23_m_9', q: "How are guard cells adapted for their function?", a: "(1) Thick inner walls and thin outer walls\n(2) Allows opening and closing\n(3) Sensitive to light (open in light, close in dark)" },
+                  { id: 'b_a_f_2_23_m_10', q: "Why does a plant lose most of the water it takes in?", a: "(1) Water evaporates from mesophyll cells\n(2) Enters air spaces in the leaf\n(3) Diffuses out through stomata" },
+                  { id: 'b_a_f_2_23_m_11', q: "Why is water loss not always harmful to the plant?", a: "(1) Maintains the transpiration stream\n(2) Pulls water up from roots\n(3) Supplies water for photosynthesis" },
+                  { id: 'b_a_f_2_23_m_12', q: "When do stomata open and close?", a: "(1) Open to allow carbon dioxide in\n(2) Open to allow oxygen out\n(3) Close to reduce water loss" },
+                  { id: 'b_a_f_2_23_m_13', q: "Explain how wind affects transpiration.", a: "(1) Removes water vapour from leaf surface\n(2) Maintains steep concentration gradient\n(3) Increases diffusion rate" },
+                  { id: 'b_a_f_2_23_m_14', q: "Explain how temperature affects transpiration.", a: "(1) Increases kinetic energy of molecules\n(2) Speeds up evaporation and diffusion\n(3) Increases rate of water loss" },
+                  { id: 'b_a_f_2_23_m_15', q: "Explain how humidity affects transpiration.", a: "(1) High humidity reduces concentration gradient\n(2) Slows diffusion of water vapour\n(3) Decreases transpiration rate" },
+                  { id: 'b_a_f_2_23_m_16', q: "Explain how light intensity affects transpiration.", a: "(1) Light increases photosynthesis\n(2) Stomata open for gas exchange\n(3) Increases water loss" },
+                  { id: 'b_a_f_2_23_m_17', q: "How are plants adapted to reduce water loss?", a: "(1) Waxy cuticle reduces evaporation\n(2) Stomata mainly on underside\n(3) Reduces exposure to sunlight" },
+                  { id: 'b_a_f_2_23_m_18', q: "What happens if a plant loses water faster than it absorbs it?", a: "(1) Cells lose turgor pressure\n(2) Plant wilts\n(3) Stomata close to reduce water loss" },
+                  { id: 'b_a_f_2_23_m_19', q: "Will the plant die if it loses too much water?", a: "(1) May stop photosynthesising\n(2) May overheat\n(3) Can recover if conditions improve" },
+                  { id: 'b_a_f_2_23_m_20', q: "Describe the structure of phloem tissue.", a: "(1) Made of elongated living cells\n(2) Arranged in tubes\n(3) Sieve plates between cells" },
+                  { id: 'b_a_f_2_23_m_21', q: "How does cell sap move through the phloem?", a: "(1) Moves from cell to cell\n(2) Through pores in sieve plates\n(3) Driven by pressure differences" },
+                  { id: 'b_a_f_2_23_m_22', q: "What is sugar used for in plants?", a: "(1) Respiration\n(2) Growth (making new cells)\n(3) Storage (e.g. roots)" },
+                  { id: 'b_a_f_2_23_m_23', q: "Why can removing a ring of bark kill a tree?", a: "(1) Phloem is found under the bark\n(2) Removing it stops sugar transport\n(3) Roots and tissues do not receive food\n(4) Tree eventually dies" }
+                ],
+                "Hard (5-6 marks)": [
+                  { id: 'b_a_f_2_23_h_1', q: "How are xylem cells adapted for their function?", a: "(1) Cells are dead\n(2) No end walls → continuous tubes\n(3) Hollow to allow flow\n(4) Lignin strengthens walls\n(5) Prevents collapse under pressure\n(6) Provides support" },
+                  { id: 'b_a_f_2_23_h_2', q: "Describe how water moves from the soil to the leaves.", a: "(1) Water enters root hair cells by osmosis\n(2) Moves through root cells by osmosis\n(3) Enters xylem vessels\n(4) Travels up the stem in transpiration stream\n(5) Moves into leaf cells\n(6) Evaporates and exits via stomata" },
+                  { id: 'b_a_f_2_23_h_3', q: "How do guard cells work?", a: "(1) When water enters, cells become turgid\n(2) Turgid cells open the stomata\n(3) When water leaves, cells become flaccid\n(4) Flaccid cells close the stomata\n(5) Opening allows gas exchange\n(6) Closing reduces water loss" },
+                  { id: 'b_a_f_2_23_h_4', q: "Describe the process of transpiration.", a: "(1) Water evaporates from mesophyll cells\n(2) Water vapour enters air spaces\n(3) Diffuses out through stomata\n(4) Creates a concentration gradient\n(5) Causes water to be pulled up through xylem\n(6) Forms the transpiration stream" },
+                  { id: 'b_a_f_2_23_h_5', q: "What factors increase the rate of transpiration?", a: "(1) High temperature\n(2) Wind\n(3) Low humidity\n(4) High light intensity\n(5) Larger surface area\n(6) More stomata open" },
+                  { id: 'b_a_f_2_23_h_6', q: "How are phloem cells adapted for their function?", a: "(1) Cells are living\n(2) Have sieve plates with pores\n(3) Few organelles to allow flow\n(4) Companion cells provide energy\n(5) Companion cells contain many mitochondria\n(6) Enables active transport of sugars" },
+                  { id: 'b_a_f_2_23_h_7', q: "Describe how to measure transpiration using a potometer.", a: "(1) Cut shoot at slant under water\n(2) Assemble under water to avoid bubbles\n(3) Ensure system is airtight\n(4) Introduce air bubble\n(5) Measure distance moved over time\n(6) Calculate rate" },
+                  { id: 'b_a_f_2_23_h_8', q: "Describe how to investigate stomata distribution using a microscope.", a: "(1) Apply nail varnish to leaf\n(2) Allow to dry and peel\n(3) Place on slide\n(4) Observe under microscope\n(5) Count stomata in known area\n(6) Repeat and calculate mean" }
+                ]
+              }
+            },
+            "3. Infection and response": {
+              "3.1 Communicable diseases": {
+                "Easy (1-2 marks)": [
+                  { id: 'b_a_f_3_31_e_1', q: "What causes viral diseases?", a: "(1) Viruses" },
+                  { id: 'b_a_f_3_31_e_2', q: "Are viruses alive?", a: "(1) No\n(2) Do not carry out life processes independently" },
+                  { id: 'b_a_f_3_31_e_3', q: "Do viruses reproduce?", a: "(1) No\n(2) They replicate inside host cells" },
+                  { id: 'b_a_f_3_31_e_4', q: "What are the main symptoms of measles?", a: "(1) Fever\n(2) Red rash" },
+                  { id: 'b_a_f_3_31_e_5', q: "How is measles spread?", a: "(1) By inhaling droplets from coughs and sneezes" },
+                  { id: 'b_a_f_3_31_e_6', q: "Is measles easy to catch?", a: "(1) Yes\n(2) It is highly infectious" },
+                  { id: 'b_a_f_3_31_e_7', q: "Can measles be fatal?", a: "(1) Yes\n(2) Especially if complications develop" },
+                  { id: 'b_a_f_3_31_e_8', q: "How is measles treated?", a: "(1) There is no specific cure\n(2) Patients may be isolated to prevent spread" },
+                  { id: 'b_a_f_3_31_e_9', q: "Does measles only affect children?", a: "(1) No\n(2) It can affect unvaccinated adults" },
+                  { id: 'b_a_f_3_31_e_10', q: "What does HIV stand for?", a: "(1) Human immunodeficiency virus" },
+                  { id: 'b_a_f_3_31_e_11', q: "What happens after the early stage of HIV infection?", a: "(1) Symptoms may disappear\n(2) Virus remains in the body" },
+                  { id: 'b_a_f_3_31_e_12', q: "How long can HIV take to damage the immune system?", a: "(1) Months to years" },
+                  { id: 'b_a_f_3_31_e_13', q: "What is the difference between HIV and AIDS?", a: "(1) HIV is the virus\n(2) AIDS is the late stage of infection" },
+                  { id: 'b_a_f_3_31_e_14', q: "What does AIDS stand for?", a: "(1) Acquired immune deficiency syndrome" },
+                  { id: 'b_a_f_3_31_e_15', q: "How can the progression of HIV be slowed?", a: "(1) Taking antiretroviral drugs" },
+                  { id: 'b_a_f_3_31_e_16', q: "What is an unscreened blood transfusion?", a: "(1) Blood that has not been tested for infections" },
+                  { id: 'b_a_f_3_31_e_17', q: "Is there a vaccine for HIV?", a: "(1) No" },
+                  { id: 'b_a_f_3_31_e_18', q: "Is there a cure for HIV?", a: "(1) No\n(2) It can be managed with treatment" },
+                  { id: 'b_a_f_3_31_e_19', q: "What is the difference between HIV-positive and HIV-negative?", a: "(1) HIV-positive = infected with HIV\n(2) HIV-negative = not infected" },
+                  { id: 'b_a_f_3_31_e_20', q: "What does TMV stand for?", a: "(1) Tobacco mosaic virus" },
+                  { id: 'b_a_f_3_31_e_21', q: "How can you identify a plant infected with TMV?", a: "(1) Mosaic pattern on leaves\n(2) Discoloured patches" },
+                  { id: 'b_a_f_3_31_e_22', q: "How is TMV transmitted between plants?", a: "(1) Direct contact\n(2) Insect vectors" },
+                  { id: 'b_a_f_3_31_e_23', q: "How long can TMV survive outside a host?", a: "(1) Can survive for many years\n(2) e.g. in soil or plant material" },
+                  { id: 'b_a_f_3_31_e_24', q: "How is TMV treated?", a: "(1) There is no cure" },
+                  { id: 'b_a_f_3_31_e_25', q: "How can the spread of TMV be reduced?", a: "(1) Good field hygiene\n(2) Control insect pests" },
+                  { id: 'b_a_f_3_31_e_26', q: "What alternative can farmers use to reduce the impact of TMV?", a: "(1) Grow TMV-resistant crop varieties" },
+                  { id: 'b_a_f_3_31_e_27', q: "Will bacterial infections continue to decrease?", a: "(1) No\n(2) Antibiotic resistance is increasing" },
+                  { id: 'b_a_f_3_31_e_28', q: "What causes bacterial diseases?", a: "(1) Pathogenic bacteria" },
+                  { id: 'b_a_f_3_31_e_29', q: "How do bacteria reproduce?", a: "(1) Asexually\n(2) By binary fission" },
+                  { id: 'b_a_f_3_31_e_30', q: "Are bacteria prokaryotic or eukaryotic?", a: "(1) Prokaryotic" },
+                  { id: 'b_a_f_3_31_e_31', q: "How do bacteria compare in size to viruses?", a: "(1) Bacteria are larger" },
+                  { id: 'b_a_f_3_31_e_32', q: "Are bacteria alive?", a: "(1) Yes" },
+                  { id: 'b_a_f_3_31_e_33', q: "How is Salmonella transmitted?", a: "(1) Eating undercooked food\n(2) Poor food hygiene" },
+                  { id: 'b_a_f_3_31_e_34', q: "How long does it take for Salmonella symptoms to develop?", a: "(1) 8–72 hours" },
+                  { id: 'b_a_f_3_31_e_35', q: "When are antibiotics used to treat Salmonella?", a: "(1) In severe cases\n(2) For vulnerable people (e.g. elderly / young)" },
+                  { id: 'b_a_f_3_31_e_36', q: "Why can Salmonella be dangerous?", a: "(1) Causes dehydration" },
+                  { id: 'b_a_f_3_31_e_37', q: "How does the UK reduce the spread of Salmonella?", a: "(1) Vaccinating poultry" },
+                  { id: 'b_a_f_3_31_e_38', q: "Why should raw chicken not be washed?", a: "(1) Bacteria can spread via water droplets" },
+                  { id: 'b_a_f_3_31_e_39', q: "What does STD stand for?", a: "(1) Sexually transmitted disease" },
+                  { id: 'b_a_f_3_31_e_40', q: "What is another term for STD?", a: "(1) STI (sexually transmitted infection)" },
+                  { id: 'b_a_f_3_31_e_41', q: "What is discharge?", a: "(1) Fluid released from the body" },
+                  { id: 'b_a_f_3_31_e_42', q: "How is gonorrhoea treated?", a: "(1) Antibiotics" },
+                  { id: 'b_a_f_3_31_e_43', q: "Why is penicillin no longer used to treat gonorrhoea?", a: "(1) Antibiotic resistance" }
+                ],
+                "Medium (3-4 marks)": [
+                  { id: 'b_a_f_3_31_m_1', q: "Describe the structure of a virus.", a: "(1) Genetic material (DNA/RNA)\n(2) Protein coat (capsid)\n(3) May have outer lipid envelope" },
+                  { id: 'b_a_f_3_31_m_2', q: "What serious complications can measles cause?", a: "(1) Blindness\n(2) Brain damage\n(3) Can lead to death in severe cases" },
+                  { id: 'b_a_f_3_31_m_3', q: "Is measles common in the UK?", a: "(1) Less common due to vaccination\n(2) Most children are vaccinated at a young age\n(3) Still occurs if vaccination rates are low" },
+                  { id: 'b_a_f_3_31_m_4', q: "What complications can measles cause in adults?", a: "(1) Infertility (in some cases)\n(2) Complications during pregnancy\n(3) Risk of harm to the unborn baby" },
+                  { id: 'b_a_f_3_31_m_5', q: "What are the early symptoms of HIV?", a: "(1) Flu-like symptoms\n(2) Such as fever\n(3) Fatigue or sore throat" },
+                  { id: 'b_a_f_3_31_m_6', q: "What does HIV do to the body?", a: "(1) Attacks immune cells\n(2) Weakens the immune system\n(3) Makes it harder to fight infections" },
+                  { id: 'b_a_f_3_31_m_7', q: "Why is HIV difficult to detect early?", a: "(1) Early symptoms are mild\n(2) Similar to flu\n(3) Long period with no symptoms" },
+                  { id: 'b_a_f_3_31_m_8', q: "When does HIV develop into AIDS?", a: "(1) When the immune system is severely damaged\n(2) Cannot fight infections\n(3) Cannot fight cancers" },
+                  { id: 'b_a_f_3_31_m_9', q: "What do antiretroviral drugs do?", a: "(1) Reduce virus replication\n(2) Slow damage to immune system\n(3) Delay development of AIDS" },
+                  { id: 'b_a_f_3_31_m_10', q: "What factors affect how quickly HIV develops into AIDS?", a: "(1) Overall health\n(2) Nutrition\n(3) Use of antiretroviral drugs" },
+                  { id: 'b_a_f_3_31_m_11', q: "How long can someone live with HIV?", a: "(1) Near normal life expectancy\n(2) If treated early\n(3) With antiretroviral drugs" },
+                  { id: 'b_a_f_3_31_m_12', q: "What plants does TMV affect?", a: "(1) Many plant species\n(2) Including tobacco plants\n(3) And tomato plants" },
+                  { id: 'b_a_f_3_31_m_13', q: "What causes the mosaic pattern in TMV-infected leaves?", a: "(1) Virus infects leaf cells\n(2) Damages or destroys cells\n(3) Causes discolouration" },
+                  { id: 'b_a_f_3_31_m_14', q: "Why is TMV harmful to plants?", a: "(1) Reduces photosynthesis\n(2) Less chlorophyll / damaged cells\n(3) Leads to reduced growth" },
+                  { id: 'b_a_f_3_31_m_15', q: "What are non-pathogenic bacteria?", a: "(1) Bacteria that do not cause disease\n(2) Can live in the body\n(3) Some help digestion" },
+                  { id: 'b_a_f_3_31_m_16', q: "Where do bacteria live in the body?", a: "(1) Inside the host\n(2) Commonly in mouth, nose, throat" },
+                  { id: 'b_a_f_3_31_m_17', q: "What happens when pathogenic bacteria enter the body?", a: "(1) Reproduce rapidly\n(2) Produce toxins\n(3) Toxins damage cells" },
+                  { id: 'b_a_f_3_31_m_18', q: "What is Salmonella?", a: "(1) A type of bacterium\n(2) Found in animal gut\n(3) Causes food poisoning" },
+                  { id: 'b_a_f_3_31_m_19', q: "What are the symptoms of Salmonella food poisoning?", a: "(1) Fever\n(2) Stomach cramps\n(3) Vomiting\n(4) Diarrhoea" },
+                  { id: 'b_a_f_3_31_m_20', q: "What is gonorrhoea?", a: "(1) A bacterial infection\n(2) Sexually transmitted\n(3) Spread by unprotected sexual contact" },
+                  { id: 'b_a_f_3_31_m_21', q: "What are the early symptoms of gonorrhoea?", a: "(1) Thick yellow/green discharge\n(2) Pain when urinating\n(3) Symptoms may disappear later" },
+                  { id: 'b_a_f_3_31_m_22', q: "How can the spread of gonorrhoea be reduced?", a: "(1) Use condoms\n(2) Limit number of partners\n(3) Test and treat infected individuals" }
+                ],
+                "Hard (5-6 marks)": [
+                  { id: 'b_a_f_3_31_h_1', q: "What do viruses do inside the body?", a: "(1) Enter host cells\n(2) Insert genetic material\n(3) Use cell machinery to replicate\n(4) Cell bursts (lysis)\n(5) New viruses infect others" },
+                  { id: 'b_a_f_3_31_h_2', q: "Explain why viral diseases are difficult to treat.", a: "(1) Viruses live inside host cells\n(2) Hard to target without damaging cells\n(3) Antibiotics do not work on viruses\n(4) Viruses replicate rapidly\n(5) Can mutate quickly\n(6) Makes treatment difficult" },
+                  { id: 'b_a_f_3_31_h_3', q: "How is HIV transmitted?", a: "(1) Unprotected sexual contact\n(2) Exchange of body fluids (e.g. blood)\n(3) Sharing needles\n(4) Unscreened blood transfusions\n(5) From mother to baby during birth\n(6) Through breastfeeding" },
+                  { id: 'b_a_f_3_31_h_4', q: "How can the spread of HIV be reduced?", a: "(1) Use condoms\n(2) Do not share needles\n(3) Use screened blood for transfusions\n(4) Test regularly\n(5) Use antiretroviral treatment\n(6) Avoid breastfeeding if HIV-positive" },
+                  { id: 'b_a_f_3_31_h_5', q: "Why are bacterial diseases less common than in the past?", a: "(1) Improved living conditions\n(2) Better sanitation\n(3) Vaccination programmes\n(4) Use of antibiotics\n(5) Improved healthcare\n(6) Better hygiene practices" },
+                  { id: 'b_a_f_3_31_h_6', q: "How can Salmonella food poisoning be prevented?", a: "(1) Cook food thoroughly\n(2) Avoid cross-contamination\n(3) Keep raw meat separate\n(4) Wash hands and surfaces\n(5) Do not wash raw chicken\n(6) Maintain good food hygiene" },
+                  { id: 'b_a_f_3_31_h_7', q: "What can happen if gonorrhoea is untreated?", a: "(1) Pelvic pain\n(2) Infertility\n(3) Ectopic pregnancy\n(4) Infection can spread\n(5) Can affect newborn babies\n(6) May cause blindness in babies" }
+                ]
+              }
+            },
+            "4. Bioenergetics": {
+              "4.1 Photosynthesis": {
+                "Easy (1-2 marks)": [
+                  { id: 'b_a_f_4_41_e_1', q: "What is a limiting factor?", a: "(1) A factor that restricts the rate of a reaction\n(2) If increased, the rate will increase" },
+                  { id: 'b_a_f_4_41_e_2', q: "Which factors can limit photosynthesis?", a: "(1) Light intensity\n(2) Carbon dioxide concentration" },
+                  { id: 'b_a_f_4_41_e_3', q: "Why might a plant have low chlorophyll levels?", a: "(1) Magnesium deficiency\n(2) Some plants have non-green areas" },
+                  { id: 'b_a_f_4_41_e_4', q: "What does deficiency mean?", a: "(1) A lack of something" },
+                  { id: 'b_a_f_4_41_e_5', q: "Why does magnesium deficiency reduce photosynthesis?", a: "(1) Magnesium is needed to make chlorophyll" },
+                  { id: 'b_a_f_4_41_e_6', q: "What is chlorosis?", a: "(1) Yellowing of leaves" },
+                  { id: 'b_a_f_4_41_e_7', q: "What causes chlorosis?", a: "(1) Lack of magnesium" },
+                  { id: 'b_a_f_4_41_e_8', q: "What is yield?", a: "(1) Amount of useful crop produced" },
+                  { id: 'b_a_f_4_41_e_9', q: "How do farmers increase crop yield?", a: "(1) Reduce limiting factors\n(2) Optimise growing conditions" },
+                  { id: 'b_a_f_4_41_e_10', q: "What is hydroponics?", a: "(1) Growing plants in nutrient solution\n(2) Without soil" },
+                  { id: 'b_a_f_4_41_e_11', q: "What are the bubbles produced in the pondweed experiment?", a: "(1) Oxygen\n(2) Produced during photosynthesis" },
+                  { id: 'b_a_f_4_41_e_12', q: "Why is a beaker of water placed between the lamp and the pondweed?", a: "(1) Acts as a heat filter\n(2) Prevents temperature increase" },
+                  { id: 'b_a_f_4_41_e_13', q: "Why should the experiment be left for a short time before taking measurements?", a: "(1) To allow the rate of photosynthesis to stabilise" },
+                  { id: 'b_a_f_4_41_e_14', q: "What is a more accurate way to measure oxygen production than counting bubbles?", a: "(1) Use a gas syringe" },
+                  { id: 'b_a_f_4_41_e_15', q: "How can farmers increase the rate of photosynthesis in greenhouses?", a: "(1) Increase light intensity\n(2) Increase temperature" },
+                  { id: 'b_a_f_4_41_e_16', q: "How does temperature affect photosynthesis?", a: "(1) Higher temperature increases rate\n(2) Too high decreases rate" }
+                ],
+                "Medium (3-4 marks)": [
+                  { id: 'b_a_f_4_41_m_1', q: "What factors affect the rate of photosynthesis?", a: "(1) Light intensity\n(2) Carbon dioxide\n(3) Temperature" },
+                  { id: 'b_a_f_4_41_m_2', q: "How does carbon dioxide affect the rate of photosynthesis?", a: "(1) Carbon dioxide is a reactant\n(2) Low CO₂ reduces rate\n(3) More CO₂ increases rate" },
+                  { id: 'b_a_f_4_41_m_3', q: "How does carbon dioxide concentration change during the day?", a: "(1) Higher at night (respiration releases CO₂)\n(2) Lower during the day (photosynthesis uses CO₂)\n(3) Changes depending on light availability" },
+                  { id: 'b_a_f_4_41_m_4', q: "How does light intensity affect the rate of photosynthesis?", a: "(1) Provides energy for photosynthesis\n(2) Low light → low rate\n(3) High light → higher rate" },
+                  { id: 'b_a_f_4_41_m_5', q: "How does chlorophyll content affect photosynthesis?", a: "(1) Chlorophyll absorbs light\n(2) Less chlorophyll reduces rate\n(3) More chlorophyll increases rate" },
+                  { id: 'b_a_f_4_41_m_6', q: "Why are greenhouses used in farming?", a: "(1) Control environmental conditions\n(2) Increase rate of photosynthesis\n(3) Increase crop yield" },
+                  { id: 'b_a_f_4_41_m_7', q: "Why must temperature be controlled in the pondweed experiment?", a: "(1) Temperature affects enzyme activity\n(2) It is a limiting factor of photosynthesis\n(3) Must be controlled to ensure a fair test" }
+                ],
+                "Hard (5-6 marks)": [
+                  { id: 'b_a_f_4_41_h_1', q: "What are advantages of growing plants in greenhouses?", a: "(1) Grow crops out of season\n(2) Faster growth rates\n(3) Controlled conditions\n(4) Reduced pests\n(5) No soil needed\n(6) Higher yields" },
+                  { id: 'b_a_f_4_41_h_2', q: "Describe a practical to investigate the effect of light intensity on the rate of photosynthesis in pondweed.", a: "(1) Place pondweed in water (e.g. in a test tube/beaker)\n(2) Position a lamp at a measured distance\n(3) Use a ruler to measure the distance\n(4) Allow the plant to equilibrate\n(5) Count bubbles of oxygen produced in a set time\n(6) Repeat at different distances and calculate a mean" },
+                  { id: 'b_a_f_4_41_h_3', q: "What variables should be controlled in the pondweed experiment?", a: "(1) Temperature\n(2) Carbon dioxide concentration\n(3) Type/size of pondweed\n(4) Volume of water\n(5) Light wavelength/colour\n(6) Time measured" }
+                ]
+              },
+              "4.2 Respiration": {
+                "Easy (1-2 marks)": [
+                  { id: 'b_a_f_4_42_e_1', q: "Do muscles use energy when the body is at rest?", a: "(1) Yes\n(2) They still use oxygen and glucose" },
+                  { id: 'b_a_f_4_42_e_2', q: "What happens if muscles do not get enough oxygen?", a: "(1) Anaerobic respiration occurs" },
+                  { id: 'b_a_f_4_42_e_3', q: "What does anaerobic mean?", a: "(1) Without oxygen" },
+                  { id: 'b_a_f_4_42_e_4', q: "What is the word equation for anaerobic respiration in animals?", a: "(1) Glucose → lactic acid + energy" },
+                  { id: 'b_a_f_4_42_e_5', q: "What is lactic acid?", a: "(1) Product of anaerobic respiration in animals" },
+                  { id: 'b_a_f_4_42_e_6', q: "Why is anaerobic respiration less efficient than aerobic respiration?", a: "(1) Glucose is not fully broken down\n(2) Less energy is released" },
+                  { id: 'b_a_f_4_42_e_7', q: "How does energy yield compare between aerobic and anaerobic respiration?", a: "(1) Anaerobic releases much less energy\n(2) About 5% of aerobic respiration" },
+                  { id: 'b_a_f_4_42_e_8', q: "Why do muscles become tired during exercise?", a: "(1) Lactic acid builds up" },
+                  { id: 'b_a_f_4_42_e_9', q: "What is oxygen debt?", a: "(1) Extra oxygen needed after exercise" },
+                  { id: 'b_a_f_4_42_e_10', q: "What happens to glucose after oxygen debt is repaid?", a: "(1) Used in respiration\n(2) Or stored" },
+                  { id: 'b_a_f_4_42_e_11', q: "What affects how quickly someone goes into oxygen debt?", a: "(1) Fitness level" },
+                  { id: 'b_a_f_4_42_e_12', q: "How does the body recover from oxygen debt?", a: "(1) Increased breathing rate\n(2) Increased heart rate" },
+                  { id: 'b_a_f_4_42_e_13', q: "What is the word equation for oxygen debt repayment?", a: "(1) Lactic acid + oxygen → carbon dioxide + water" },
+                  { id: 'b_a_f_4_42_e_14', q: "Can other organisms respire anaerobically?", a: "(1) Yes\n(2) Plants and microorganisms" },
+                  { id: 'b_a_f_4_42_e_15', q: "What are the products of anaerobic respiration in plants and yeast?", a: "(1) Ethanol\n(2) Carbon dioxide" },
+                  { id: 'b_a_f_4_42_e_16', q: "What is fermentation?", a: "(1) Anaerobic respiration in yeast" },
+                  { id: 'b_a_f_4_42_e_17', q: "What is fermentation used for?", a: "(1) Bread making\n(2) Alcohol production" },
+                  { id: 'b_a_f_4_42_e_18', q: "What is metabolism?", a: "(1) The sum of all chemical reactions in a cell or body" },
+                  { id: 'b_a_f_4_42_e_19', q: "How many metabolic reactions occur in the body?", a: "(1) Many / thousands\n(2) Occur continuously" },
+                  { id: 'b_a_f_4_42_e_20', q: "What controls metabolism?", a: "(1) Enzymes\n(2) Hormones (e.g. thyroid hormone)" },
+                  { id: 'b_a_f_4_42_e_21', q: "What increases the rate of metabolic reactions?", a: "(1) Enzymes" },
+                  { id: 'b_a_f_4_42_e_22', q: "What are the two types of metabolic reactions?", a: "(1) Breakdown (catabolic) reactions\n(2) Synthesis (anabolic) reactions" },
+                  { id: 'b_a_f_4_42_e_23', q: "Name two examples of breakdown reactions.", a: "(1) Protein breakdown\n(2) Amino acid breakdown" },
+                  { id: 'b_a_f_4_42_e_24', q: "What is urea?", a: "(1) Waste product of protein metabolism" },
+                  { id: 'b_a_f_4_42_e_25', q: "What are lipids made from?", a: "(1) Glycerol\n(2) Three fatty acids" },
+                  { id: 'b_a_f_4_42_e_26', q: "What are lipids used for?", a: "(1) Form cell membranes\n(2) Store energy" }
+                ],
+                "Medium (3-4 marks)": [
+                  { id: 'b_a_f_4_42_m_1', q: "What happens to the body during exercise?", a: "(1) Increased demand for oxygen\n(2) Increased demand for glucose\n(3) Increased removal of carbon dioxide" },
+                  { id: 'b_a_f_4_42_m_2', q: "What happens to lactic acid after exercise?", a: "(1) Transported to the liver\n(2) Converted back into glucose\n(3) Requires oxygen" },
+                  { id: 'b_a_f_4_42_m_3', q: "How is lactic acid transported from muscles to the liver?", a: "(1) Diffuses from muscle cells into blood\n(2) Carried in the bloodstream\n(3) Diffuses into liver cells" },
+                  { id: 'b_a_f_4_42_m_4', q: "What affects recovery from oxygen debt?", a: "(1) Amount of lactic acid\n(2) Fitness level\n(3) Rate of oxygen intake" },
+                  { id: 'b_a_f_4_42_m_5', q: "Why does bread not contain alcohol?", a: "(1) Yeast is killed by heat\n(2) Ethanol evaporates\n(3) During baking" },
+                  { id: 'b_a_f_4_42_m_6', q: "What is the difference between breakdown and synthesis reactions?", a: "(1) Breakdown reactions split large molecules into smaller ones\n(2) Synthesis reactions build large molecules from smaller ones\n(3) Breakdown releases energy\n(4) Synthesis requires energy" },
+                  { id: 'b_a_f_4_42_m_7', q: "Name three examples of synthesis reactions.", a: "(1) Protein synthesis\n(2) Lipid formation\n(3) Conversion of glucose to glycogen" },
+                  { id: 'b_a_f_4_42_m_8', q: "How are amino acids broken down in the body?", a: "(1) Occurs in the liver\n(2) Enzymes remove the amine group\n(3) Produces urea" }
+                ],
+                "Hard (5-6 marks)": [
+                  { id: 'b_a_f_4_42_h_1', q: "What do muscles use energy for?", a: "(1) Muscle contraction\n(2) Movement of the body\n(3) Maintaining posture\n(4) Moving food through the digestive system\n(5) Pumping blood (heart muscle)\n(6) Transferring energy from respiration" },
+                  { id: 'b_a_f_4_42_h_2', q: "How does the body respond to exercise?", a: "(1) Heart rate increases\n(2) Breathing rate increases\n(3) Breathing depth increases\n(4) More oxygen delivered to muscles\n(5) More carbon dioxide removed\n(6) Glycogen converted to glucose" },
+                  { id: 'b_a_f_4_42_h_3', q: "What is anaerobic respiration?", a: "(1) Breakdown of glucose without oxygen\n(2) Releases energy\n(3) Produces lactic acid in animals\n(4) Produces ethanol and carbon dioxide in plants/yeast\n(5) Less energy released than aerobic respiration\n(6) Incomplete breakdown of glucose" },
+                  { id: 'b_a_f_4_42_h_4', q: "Name six examples of metabolic reactions.", a: "(1) Glucose → starch / glycogen / cellulose\n(2) Formation of lipids from glycerol and fatty acids\n(3) Glucose + nitrate ions → amino acids\n(4) Respiration\n(5) Photosynthesis\n(6) Breakdown of proteins to form urea" },
+                  { id: 'b_a_f_4_42_h_5', q: "What happens during protein breakdown?", a: "(1) Proteins are broken into amino acids\n(2) Amino acids enter the blood\n(3) Transported to the liver\n(4) Excess amino acids are broken down\n(5) Form urea\n(6) Urea is excreted by kidneys" },
+                  { id: 'b_a_f_4_42_h_6', q: "How is glucose used in synthesis reactions?", a: "(1) In plants, converted to starch for storage\n(2) Used to make cellulose for cell walls\n(3) In animals, converted to glycogen\n(4) Glycogen stored in liver and muscles\n(5) Helps regulate blood glucose levels\n(6) Used for growth and energy storage" },
+                  { id: 'b_a_f_4_42_h_7', q: "Explain how surface area to volume ratio affects metabolic processes in organisms.", a: "(1) Small organisms have a large SA:V ratio\n(2) Allows faster exchange of substances (e.g. oxygen, nutrients)\n(3) Supports higher metabolic rate per unit mass\n(4) Large organisms have a smaller SA:V ratio\n(5) Slower exchange of substances\n(6) Require specialised exchange surfaces (e.g. lungs, gills)" }
+                ]
+              }
+            }
           }
         }
       }
-    }
-  }
-};
+    };
 
-// --- Icons ---
-const ChevronLeft = ({ className }) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>;
-const RotateCcw = ({ className }) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>;
-const Trophy = ({ className }) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 22V18"/><path d="M14 22V18"/><path d="M18 4H6v7a6 6 0 0 0 12 0V4Z"/></svg>;
+    // --- Icons ---
+    const ChevronLeft = ({ className }) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>;
+    const RotateCcw = ({ className }) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>;
+    const Trophy = ({ className }) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 22V18"/><path d="M14 22V18"/><path d="M18 4H6v7a6 6 0 0 0 12 0V4Z"/></svg>;
 
-export default function App() {
-  const [step, setStep] = useState('menu');
-  const [path, setPath] = useState([]);
-  const [queue, setQueue] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [showAnswer, setShowAnswer] = useState(false);
-  const [sessionXP, setSessionXP] = useState(0);
-  const [sessionStats, setSessionStats] = useState({ weak: 0, medium: 0, strong: 0 });
-  const [totalXP, setTotalXP] = useState(parseInt(localStorage.getItem('studyqs_xp') || '0'));
+    function App() {
+      const [step, setStep] = useState('menu');
+      const [path, setPath] = useState([]);
+      const [queue, setQueue] = useState([]);
+      const [currentIndex, setCurrentIndex] = useState(0);
+      const [showAnswer, setShowAnswer] = useState(false);
+      const [sessionXP, setSessionXP] = useState(0);
+      const [sessionStats, setSessionStats] = useState({ weak: 0, medium: 0, strong: 0 });
+      const [totalXP, setTotalXP] = useState(parseInt(localStorage.getItem('studyqs_xp') || '0'));
 
-  const startSession = (selectedPath) => {
-    const [subj, board, tier, top, sub, diff] = selectedPath;
-    const allQuestions = DATABASE[subj]?.[board]?.[tier]?.[top]?.[sub]?.[diff] || [];
-    const scores = JSON.parse(localStorage.getItem('studyqs_scores') || '{}');
+      const startSession = (selectedPath) => {
+        const [subj, board, tier, top, sub, diff] = selectedPath;
+        const allQuestions = DATABASE[subj]?.[board]?.[tier]?.[top]?.[sub]?.[diff] || [];
+        const scores = JSON.parse(localStorage.getItem('studyqs_scores') || '{}');
 
-    let weak = [], medium = [], unseen = [], strong = [];
-    
-    // Sort questions into priority buckets
-    allQuestions.forEach(q => {
-      const score = scores[q.id];
-      if (score === 1) weak.push(q);
-      else if (score === 2) medium.push(q);
-      else if (score === 3) strong.push(q);
-      else unseen.push(q);
-    });
-
-    const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
-    
-    // Build the queue: Weak -> Medium -> Unseen
-    let buildQueue = [...shuffle(weak), ...shuffle(medium), ...shuffle(unseen)];
-    
-    // If they have mastered everything, give them a recap of their strong cards
-    if (buildQueue.length === 0 && strong.length > 0) {
-      buildQueue = shuffle(strong);
-    }
-
-    if (buildQueue.length === 0) {
-      alert("No questions found in this section.");
-      return;
-    }
-
-    setQueue(buildQueue);
-    setCurrentIndex(0);
-    setSessionXP(0);
-    setSessionStats({ weak: 0, medium: 0, strong: 0 });
-    setPath(selectedPath);
-    setStep('playing');
-  };
-
-  const handleSelect = (val) => {
-    const newPath = [...path, val];
-    if (newPath.length === 6) {
-      startSession(newPath);
-    } else {
-      setPath(newPath);
-    }
-  };
-
-  const handleRate = (rating) => {
-    const currentQ = queue[currentIndex];
-    const scores = JSON.parse(localStorage.getItem('studyqs_scores') || '{}');
-    scores[currentQ.id] = rating;
-    localStorage.setItem('studyqs_scores', JSON.stringify(scores));
-
-    // Award XP
-    const newTotal = totalXP + 10;
-    setTotalXP(newTotal);
-    setSessionXP(prev => prev + 10);
-    localStorage.setItem('studyqs_xp', newTotal.toString());
-
-    // Update Session Stats Breakdown
-    setSessionStats(prev => ({
-      ...prev,
-      weak: rating === 1 ? prev.weak + 1 : prev.weak,
-      medium: rating === 2 ? prev.medium + 1 : prev.medium,
-      strong: rating === 3 ? prev.strong + 1 : prev.strong
-    }));
-
-    if (currentIndex + 1 < queue.length) {
-      setCurrentIndex(prev => prev + 1);
-      setShowAnswer(false);
-    } else {
-      setStep('summary');
-    }
-  };
-
-  const getTopicStats = () => {
-    if (path.length !== 3) return null;
-    const [subj, board, tier] = path;
-    const topics = DATABASE[subj]?.[board]?.[tier] || {};
-    const scores = JSON.parse(localStorage.getItem('studyqs_scores') || '{}');
-    const stats = {};
-
-    Object.keys(topics).forEach(topic => {
-      let total = 0, mastered = 0, seen = 0;
-      const subtopics = topics[topic];
-      Object.values(subtopics).forEach(difficulties => {
-        Object.values(difficulties).forEach(questions => {
-          total += questions.length;
-          questions.forEach(q => {
-            if (scores[q.id]) seen++;
-            if (scores[q.id] === 3) mastered++;
-          });
-        });
-      });
-      stats[topic] = { total, mastered, seen, pct: total > 0 ? Math.round((mastered / total) * 100) : 0 };
-    });
-    return stats;
-  };
-
-  if (step === 'menu') {
-    let options = [], title = "";
-    if (path.length === 0) { title = "Select Subject"; options = Object.keys(DATABASE); }
-    else if (path.length === 1) { title = "Select Exam Board"; options = Object.keys(DATABASE[path[0]]); }
-    else if (path.length === 2) { title = "Select Tier"; options = Object.keys(DATABASE[path[0]][path[1]]); }
-    else if (path.length === 3) { title = "Select Topic"; options = Object.keys(DATABASE[path[0]][path[1]][path[2]]); }
-    else if (path.length === 4) { title = "Select Subtopic"; options = Object.keys(DATABASE[path[0]][path[1]][path[2]][path[3]]); }
-    else if (path.length === 5) { title = "Select Difficulty"; options = Object.keys(DATABASE[path[0]][path[1]][path[2]][path[3]][path[4]]); }
-
-    const topicStats = path.length === 3 ? getTopicStats() : null;
-
-    return (
-      <div className="w-full max-w-2xl mx-auto p-6 animate-fade-in">
-        <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-10">
-          <div className="text-left">
-            <h1 className="text-4xl font-bold text-gray-900 tracking-tight">studyqs</h1>
-            <p className="text-xl text-gray-500 mt-2">Recall questions for GCSE</p>
-            <p className="text-xs text-gray-400 mt-2 uppercase tracking-wider font-semibold">(DATA IS AUTOSAVED PER DEVICE)</p>
-          </div>
-          <div className="flex gap-3">
-            <div className="bg-[#FEF9C3] px-4 py-3 rounded-xl text-center min-w-[100px] shadow-sm">
-              <div className="text-xs font-bold text-yellow-700 uppercase mb-1">Total XP</div>
-              <div className="text-2xl font-bold text-yellow-900">{totalXP}</div>
-            </div>
-          </div>
-        </div>
-
-        {path.length > 0 && (
-          <div className="flex items-center gap-2 mb-6 text-sm text-gray-600 bg-white p-3 rounded-lg border border-gray-200 shadow-sm">
-            <button onClick={() => setPath(path.slice(0, -1))} className="hover:text-blue-600 flex items-center font-medium transition-colors">
-              <ChevronLeft className="w-4 h-4 mr-1" /> Back
-            </button>
-            <span className="text-gray-300">|</span>
-            <span className="truncate font-medium">{path.join(' > ')}</span>
-          </div>
-        )}
-
-        {/* Level 3: Interactive Topic Cards */}
-        {path.length === 3 && (
-          <div className="mb-10">
-            <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 px-1">Select Topic</h3>
-            <div className="grid grid-cols-1 gap-4">
-              {Object.entries(topicStats).map(([topic, s]) => (
-                <button key={topic} onClick={() => handleSelect(topic)} className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm text-left hover:border-blue-500 hover:shadow-md transition-all group block w-full">
-                  <div className="flex justify-between items-center mb-4">
-                    <span className="text-lg font-bold text-gray-800 truncate mr-2 group-hover:text-blue-700 transition-colors" title={topic}>{topic}</span>
-                    <span className="text-sm font-bold text-blue-600 whitespace-nowrap">{s.pct}% mastered</span>
-                  </div>
-                  <div className="w-full bg-gray-100 rounded-full h-2 mb-3 overflow-hidden">
-                    <div className="bg-blue-500 h-2 rounded-full transition-all duration-1000" style={{ width: `${s.pct}%` }} />
-                  </div>
-                  <div className="text-xs text-gray-400 font-medium">{s.seen} of {s.total} cards seen</div>
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Standard buttons for paths that are NOT Topics */}
-        {path.length !== 3 && (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">{title}</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {options.map(opt => (
-                <button key={opt} onClick={() => handleSelect(opt)} className="p-4 text-left border border-gray-200 rounded-lg hover:border-blue-500 hover:bg-blue-50 hover:text-blue-700 transition-all font-medium text-gray-700 group flex justify-between items-center">
-                  <span className="text-lg">{opt}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  if (step === 'playing') {
-    const q = queue[currentIndex];
-    const progress = ((currentIndex + 1) / queue.length) * 100;
-    return (
-      <div className="w-full max-w-3xl mx-auto p-4 md:p-8 animate-fade-in flex flex-col min-h-screen justify-center">
-        <div className="flex justify-between items-center mb-4">
-          <button onClick={() => setStep('summary')} className="text-gray-500 hover:text-gray-800 flex items-center gap-2 text-sm font-medium transition-colors">
-            <RotateCcw className="w-4 h-4" /> Exit Session
-          </button>
-          <div className="bg-[#FEF9C3] px-3 py-1 rounded-lg text-yellow-800 text-xs font-bold shadow-sm">
-            Session XP: {sessionXP}
-          </div>
-        </div>
-        <div className="w-full bg-gray-200 rounded-full h-2.5 mb-2">
-          <div className="bg-blue-600 h-2.5 rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
-        </div>
-        <div className="text-right text-xs text-gray-500 font-medium mb-8">Card {currentIndex + 1} of {queue.length}</div>
+        let weak = [], medium = [], unseen = [], strong = [];
         
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-200 flex flex-col overflow-hidden min-h-[350px]">
-          <div className="p-8 md:p-12 flex-1 flex items-center justify-center text-center">
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 leading-relaxed">
-              {q.q}
-            </h2>
-          </div>
-          
-          {!showAnswer ? (
-            <div className="p-6 bg-gray-50 border-t border-gray-200 text-center">
-              <button onClick={() => setShowAnswer(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-sm transition-all w-full md:w-auto">
-                Show Answer (Space)
-              </button>
-            </div>
-          ) : (
-            <div className="p-8 md:p-10 bg-blue-50 border-t border-blue-200 text-center animate-fade-in">
-              <p className="text-lg md:text-xl text-blue-900 mb-8 font-medium whitespace-pre-wrap leading-relaxed">
-                {q.a}
-              </p>
-              <p className="text-sm text-gray-500 mb-4 font-medium uppercase tracking-wider">How was it?</p>
-              <div className="grid grid-cols-3 gap-4 max-w-sm mx-auto">
-                <button onClick={() => handleRate(1)} className="p-4 bg-white border border-red-200 hover:border-red-400 hover:bg-red-50 rounded-xl transition-all shadow-sm group">
-                  <span className="text-3xl block mb-2 group-hover:scale-110 transition-transform">🙁</span>
-                  <div className="text-sm font-bold text-red-600">Bad</div>
-                </button>
-                <button onClick={() => handleRate(2)} className="p-4 bg-white border border-yellow-200 hover:border-yellow-400 hover:bg-yellow-50 rounded-xl transition-all shadow-sm group">
-                  <span className="text-3xl block mb-2 group-hover:scale-110 transition-transform">😐</span>
-                  <div className="text-sm font-bold text-yellow-600">Ish</div>
-                </button>
-                <button onClick={() => handleRate(3)} className="p-4 bg-white border border-green-200 hover:border-green-400 hover:bg-green-50 rounded-xl transition-all shadow-sm group">
-                  <span className="text-3xl block mb-2 group-hover:scale-110 transition-transform">🙂</span>
-                  <div className="text-sm font-bold text-green-600">Easy</div>
-                </button>
+        // Sort questions into priority buckets
+        allQuestions.forEach(q => {
+          const score = scores[q.id];
+          if (score === 1) weak.push(q);
+          else if (score === 2) medium.push(q);
+          else if (score === 3) strong.push(q);
+          else unseen.push(q);
+        });
+
+        const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
+        
+        // Build the queue: Weak -> Medium -> Unseen
+        let buildQueue = [...shuffle(weak), ...shuffle(medium), ...shuffle(unseen)];
+        
+        // If they have mastered everything, give them a recap of their strong cards
+        if (buildQueue.length === 0 && strong.length > 0) {
+          buildQueue = shuffle(strong);
+        }
+
+        if (buildQueue.length === 0) {
+          alert("No questions found in this section.");
+          return;
+        }
+
+        setQueue(buildQueue);
+        setCurrentIndex(0);
+        setSessionXP(0);
+        setSessionStats({ weak: 0, medium: 0, strong: 0 });
+        setPath(selectedPath);
+        setStep('playing');
+      };
+
+      const handleSelect = (val) => {
+        const newPath = [...path, val];
+        if (newPath.length === 6) {
+          startSession(newPath);
+        } else {
+          setPath(newPath);
+        }
+      };
+
+      const handleRate = (rating) => {
+        const currentQ = queue[currentIndex];
+        const scores = JSON.parse(localStorage.getItem('studyqs_scores') || '{}');
+        scores[currentQ.id] = rating;
+        localStorage.setItem('studyqs_scores', JSON.stringify(scores));
+
+        // Award XP
+        const newTotal = totalXP + 10;
+        setTotalXP(newTotal);
+        setSessionXP(prev => prev + 10);
+        localStorage.setItem('studyqs_xp', newTotal.toString());
+
+        // Update Session Stats Breakdown
+        setSessionStats(prev => ({
+          ...prev,
+          weak: rating === 1 ? prev.weak + 1 : prev.weak,
+          medium: rating === 2 ? prev.medium + 1 : prev.medium,
+          strong: rating === 3 ? prev.strong + 1 : prev.strong
+        }));
+
+        if (currentIndex + 1 < queue.length) {
+          setCurrentIndex(prev => prev + 1);
+          setShowAnswer(false);
+        } else {
+          setStep('summary');
+        }
+      };
+
+      const getStats = () => {
+        const scores = JSON.parse(localStorage.getItem('studyqs_scores') || '{}');
+        const stats = {};
+        Object.keys(DATABASE).forEach(subj => {
+          let total = 0, mastered = 0, seen = 0;
+          const traverse = (obj) => {
+            if (Array.isArray(obj)) {
+              obj.forEach(q => {
+                total++;
+                if (scores[q.id]) seen++;
+                if (scores[q.id] === 3) mastered++;
+              });
+            } else {
+              Object.values(obj).forEach(val => traverse(val));
+            }
+          };
+          traverse(DATABASE[subj]);
+          stats[subj] = { total, mastered, seen, pct: total > 0 ? Math.round((mastered / total) * 100) : 0 };
+        });
+        return stats;
+      };
+
+      const getTopicStats = () => {
+        if (path.length !== 3) return null;
+        const [subj, board, tier] = path;
+        const topics = DATABASE[subj]?.[board]?.[tier] || {};
+        const scores = JSON.parse(localStorage.getItem('studyqs_scores') || '{}');
+        const stats = {};
+
+        Object.keys(topics).forEach(topic => {
+          let total = 0, mastered = 0, seen = 0;
+          const subtopics = topics[topic];
+          Object.values(subtopics).forEach(difficulties => {
+            Object.values(difficulties).forEach(questions => {
+              total += questions.length;
+              questions.forEach(q => {
+                if (scores[q.id]) seen++;
+                if (scores[q.id] === 3) mastered++;
+              });
+            });
+          });
+          stats[topic] = { total, mastered, seen, pct: total > 0 ? Math.round((mastered / total) * 100) : 0 };
+        });
+        return stats;
+      };
+
+      // Handle Spacebar and Keypresses
+      useEffect(() => {
+        const handleKeyDown = (e) => {
+          if (step !== 'playing') return;
+          if (e.code === 'Space') { 
+            e.preventDefault(); 
+            if (!showAnswer) setShowAnswer(true); 
+          }
+          if (showAnswer) {
+            if (e.key === '1') handleRate(1);
+            if (e.key === '2') handleRate(2);
+            if (e.key === '3') handleRate(3);
+          }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+      }, [step, showAnswer, handleRate]);
+
+
+      if (step === 'menu') {
+        let options = [], title = "";
+        if (path.length === 0) { title = "Select Subject"; options = Object.keys(DATABASE); }
+        else if (path.length === 1) { title = "Select Exam Board"; options = Object.keys(DATABASE[path[0]]); }
+        else if (path.length === 2) { title = "Select Tier"; options = Object.keys(DATABASE[path[0]][path[1]]); }
+        else if (path.length === 3) { title = "Select Topic"; options = Object.keys(DATABASE[path[0]][path[1]][path[2]]); }
+        else if (path.length === 4) { title = "Select Subtopic"; options = Object.keys(DATABASE[path[0]][path[1]][path[2]][path[3]]); }
+        else if (path.length === 5) { title = "Select Difficulty"; options = Object.keys(DATABASE[path[0]][path[1]][path[2]][path[3]][path[4]]); }
+
+        const stats = path.length === 0 ? getStats() : null;
+        const topicStats = path.length === 3 ? getTopicStats() : null;
+
+        return (
+          <div className="w-full max-w-2xl mx-auto p-6 animate-fade-in">
+            <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-10">
+              <div className="text-left">
+                <h1 className="text-4xl font-bold text-gray-900 tracking-tight">studyqs</h1>
+                <p className="text-xl text-gray-500 mt-2">Recall questions for GCSE</p>
+                <p className="text-xs text-gray-400 mt-2 uppercase tracking-wider font-semibold">(DATA IS AUTOSAVED PER DEVICE)</p>
+              </div>
+              <div className="flex gap-3">
+                <div className="bg-[#FEF9C3] px-4 py-3 rounded-xl text-center min-w-[100px] shadow-sm">
+                  <div className="text-xs font-bold text-yellow-700 uppercase mb-1">Total XP</div>
+                  <div className="text-2xl font-bold text-yellow-900">{totalXP}</div>
+                </div>
               </div>
             </div>
-          )}
-        </div>
-      </div>
-    );
-  }
 
-  if (step === 'summary') {
-    return (
-      <div className="w-full max-w-xl mx-auto p-6 text-center animate-fade-in mt-12 min-h-screen flex flex-col justify-center">
-        <div className="mb-6 flex justify-center text-yellow-500">
-          <Trophy className="w-16 h-16" />
-        </div>
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">Session Complete!</h1>
-        <p className="text-blue-600 font-bold text-lg mb-8">+{sessionXP} XP Earned</p>
-        
-        {/* Rating Breakdown Grid */}
-        <div className="grid grid-cols-3 gap-4 mb-8">
-          <div className="bg-white p-4 rounded-xl border border-red-100 shadow-sm">
-            <span className="text-3xl block mb-2">🙁</span>
-            <div className="text-2xl font-bold text-gray-800">{sessionStats.weak}</div>
-            <div className="text-xs font-bold text-gray-400 uppercase mt-1">Bad</div>
-          </div>
-          <div className="bg-white p-4 rounded-xl border border-yellow-100 shadow-sm">
-            <span className="text-3xl block mb-2">😐</span>
-            <div className="text-2xl font-bold text-gray-800">{sessionStats.medium}</div>
-            <div className="text-xs font-bold text-gray-400 uppercase mt-1">Ish</div>
-          </div>
-          <div className="bg-white p-4 rounded-xl border border-green-100 shadow-sm">
-            <span className="text-3xl block mb-2">🙂</span>
-            <div className="text-2xl font-bold text-gray-800">{sessionStats.strong}</div>
-            <div className="text-xs font-bold text-gray-400 uppercase mt-1">Easy</div>
-          </div>
-        </div>
-        
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button onClick={() => startSession(path)} className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-sm transition-all">Practice Again</button>
-          <button onClick={() => { setStep('menu'); setPath([]); }} className="px-6 py-3 bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 font-semibold rounded-lg shadow-sm transition-all">Go Home</button>
-        </div>
-      </div>
-    );
-  }
+            {path.length > 0 && (
+              <div className="flex items-center gap-2 mb-6 text-sm text-gray-600 bg-white p-3 rounded-lg border border-gray-200 shadow-sm">
+                <button onClick={() => setPath(path.slice(0, -1))} className="hover:text-blue-600 flex items-center font-medium transition-colors">
+                  <ChevronLeft className="w-4 h-4 mr-1" /> Back
+                </button>
+                <span className="text-gray-300">|</span>
+                <span className="truncate font-medium">{path.join(' > ')}</span>
+              </div>
+            )}
 
-  return null;
-}
+            {/* Level 0: Interactive Subject Cards (NO STATS AS REQUESTED) */}
+            {path.length === 0 && (
+              <div className="mb-10">
+                <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 px-1">Select Subject</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {Object.keys(DATABASE).map((subj) => (
+                    <button key={subj} onClick={() => handleSelect(subj)} className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm text-left hover:border-blue-500 hover:shadow-md transition-all group block w-full">
+                      <div className="flex justify-between items-center">
+                        <span className="text-lg font-bold text-gray-800 group-hover:text-blue-700 transition-colors">{subj}</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Level 3: Interactive Topic Cards */}
+            {path.length === 3 && (
+              <div className="mb-10">
+                <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 px-1">Select Topic</h3>
+                <div className="grid grid-cols-1 gap-4">
+                  {Object.entries(topicStats).map(([topic, s]) => (
+                    <button key={topic} onClick={() => handleSelect(topic)} className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm text-left hover:border-blue-500 hover:shadow-md transition-all group block w-full">
+                      <div className="flex justify-between items-center mb-4">
+                        <span className="text-lg font-bold text-gray-800 truncate mr-2 group-hover:text-blue-700 transition-colors" title={topic}>{topic}</span>
+                        <span className="text-sm font-bold text-blue-600 whitespace-nowrap">{s.pct}% mastered</span>
+                      </div>
+                      <div className="w-full bg-gray-100 rounded-full h-2 mb-3 overflow-hidden">
+                        <div className="bg-blue-500 h-2 rounded-full transition-all duration-1000" style={{ width: `${s.pct}%` }} />
+                      </div>
+                      <div className="text-xs text-gray-400 font-medium">{s.seen} of {s.total} cards seen</div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Standard buttons for paths that are NOT Subjects or Topics */}
+            {(path.length !== 0 && path.length !== 3) && (
+              <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <h2 className="text-2xl font-bold text-gray-800 mb-6">{title}</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {options.map(opt => (
+                    <button key={opt} onClick={() => handleSelect(opt)} className="p-4 text-left border border-gray-200 rounded-lg hover:border-blue-500 hover:bg-blue-50 hover:text-blue-700 transition-all font-medium text-gray-700 group flex justify-between items-center">
+                      <span className="text-lg">{opt}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      }
+
+      if (step === 'playing') {
+        const q = queue[currentIndex];
+        const progress = ((currentIndex + 1) / queue.length) * 100;
+        return (
+          <div className="w-full max-w-3xl mx-auto p-4 md:p-8 animate-fade-in flex flex-col min-h-screen justify-center">
+            <div className="flex justify-between items-center mb-4">
+              <button onClick={() => setStep('summary')} className="text-gray-500 hover:text-gray-800 flex items-center gap-2 text-sm font-medium transition-colors">
+                <RotateCcw className="w-4 h-4" /> Exit Session
+              </button>
+              <div className="bg-[#FEF9C3] px-3 py-1 rounded-lg text-yellow-800 text-xs font-bold shadow-sm">
+                Session XP: {sessionXP}
+              </div>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+              <div className="bg-blue-600 h-2.5 rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
+            </div>
+            <div className="text-right text-xs text-gray-500 font-medium mb-8">Card {currentIndex + 1} of {queue.length}</div>
+            
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 flex flex-col overflow-hidden min-h-[350px]">
+              <div className="p-8 md:p-12 flex-1 flex items-center justify-center text-center">
+                <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 leading-relaxed">
+                  {q.q}
+                </h2>
+              </div>
+              
+              {!showAnswer ? (
+                <div className="p-6 bg-gray-50 border-t border-gray-200 text-center">
+                  <button onClick={() => setShowAnswer(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-sm transition-all w-full md:w-auto">
+                    Show Answer (Space)
+                  </button>
+                </div>
+              ) : (
+                <div className="p-8 md:p-10 bg-blue-50 border-t border-blue-200 text-center animate-fade-in">
+                  <p className="text-lg md:text-xl text-blue-900 mb-8 font-medium whitespace-pre-wrap leading-relaxed">
+                    {q.a}
+                  </p>
+                  <p className="text-sm text-gray-500 mb-4 font-medium uppercase tracking-wider">How was it?</p>
+                  <div className="grid grid-cols-3 gap-4 max-w-sm mx-auto">
+                    <button onClick={() => handleRate(1)} className="p-4 bg-white border border-red-200 hover:border-red-400 hover:bg-red-50 rounded-xl transition-all shadow-sm group">
+                      <span className="text-3xl block mb-2 group-hover:scale-110 transition-transform">🙁</span>
+                      <div className="text-sm font-bold text-red-600">Bad</div>
+                    </button>
+                    <button onClick={() => handleRate(2)} className="p-4 bg-white border border-yellow-200 hover:border-yellow-400 hover:bg-yellow-50 rounded-xl transition-all shadow-sm group">
+                      <span className="text-3xl block mb-2 group-hover:scale-110 transition-transform">😐</span>
+                      <div className="text-sm font-bold text-yellow-600">Ish</div>
+                    </button>
+                    <button onClick={() => handleRate(3)} className="p-4 bg-white border border-green-200 hover:border-green-400 hover:bg-green-50 rounded-xl transition-all shadow-sm group">
+                      <span className="text-3xl block mb-2 group-hover:scale-110 transition-transform">🙂</span>
+                      <div className="text-sm font-bold text-green-600">Easy</div>
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      }
+
+      if (step === 'summary') {
+        // Find exactly how many cards were answered in this specific session
+        const totalAnswered = sessionStats.weak + sessionStats.medium + sessionStats.strong;
+
+        return (
+          <div className="w-full max-w-xl mx-auto p-6 text-center animate-fade-in mt-12 min-h-screen flex flex-col justify-center">
+            <div className="mb-6 flex justify-center text-yellow-500">
+              <Trophy className="w-16 h-16" />
+            </div>
+            <h1 className="text-3xl font-bold text-gray-800 mb-2">Session Complete!</h1>
+            <p className="text-blue-600 font-bold text-lg mb-8">+{sessionXP} XP Earned</p>
+            
+            <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm mb-8 max-w-md mx-auto w-full">
+              <div className="flex justify-between items-center text-center divide-x divide-gray-100">
+                <div className="flex-1">
+                  <div className="text-3xl font-bold text-gray-800">{totalAnswered}</div>
+                  <div className="text-[10px] uppercase font-semibold text-gray-400 mt-1">Cards Done</div>
+                </div>
+                <div className="flex-1">
+                  <span className="text-2xl block mb-1">🙁</span>
+                  <div className="text-xl font-bold text-gray-800">{sessionStats.weak}</div>
+                </div>
+                <div className="flex-1">
+                  <span className="text-2xl block mb-1">😐</span>
+                  <div className="text-xl font-bold text-gray-800">{sessionStats.medium}</div>
+                </div>
+                <div className="flex-1">
+                  <span className="text-2xl block mb-1">🙂</span>
+                  <div className="text-xl font-bold text-gray-800">{sessionStats.strong}</div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button onClick={() => startSession(path)} className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-sm transition-all">Practice Again</button>
+              <button onClick={() => { setStep('menu'); setPath([]); }} className="px-6 py-3 bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 font-semibold rounded-lg shadow-sm transition-all">Go Home</button>
+            </div>
+          </div>
+        );
+      }
+
+      return null;
+    }
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
