@@ -12,7 +12,81 @@
 
 ## 1.1.1 Eukaryotes and prokaryotes
 
-Plant and animal cells (eukaryotic cells) have a cell membrane, cytoplasm and genetic material enclosed in a nucleus.
+All cells have:
+
+- **cell membrane**
+- **cytoplasm**
+- **DNA**
+- **ribosomes**
+
+---
+
+## Cell membrane
+
+The cell membrane:
+
+1. **holds the cell together**
+2. **separates the inside from the outside**
+3. **controls what enters and leaves the cell**
+
+---
+
+## Cytoplasm
+
+**Jelly-like substance** where chemical reactions happen.
+
+---
+
+## DNA
+
+**Genetic material** that controls the activities of the cell.
+
+---
+
+## Ribosomes
+
+Where **protein synthesis** happens.
+
+This means ribosomes are where **proteins are made**.
+
+---
+
+## Types of cells
+
+There are two types of cells:
+
+- **eukaryotic cells**
+- **prokaryotic cells**
+
+---
+
+## Eukaryotic cells
+
+Eukaryotic cells are **plant and animal cells**.
+
+Their DNA is usually in a **nucleus**.
+
+They are usually **10–100 µm**.
+
+---
+
+## Prokaryotic cells
+
+Prokaryotic cells are **bacterial cells**.
+
+Their DNA is usually a **single loop**.
+
+Sometimes they have small pieces of DNA called **plasmids**.
+
+They are about **1 µm**.
+
+---
+
+## Scale and size of cells
+
+**µm** = micrometres
+
+**1 µm = 0.001 mm = 1 × 10⁻⁶ m**
 
 ---
 
