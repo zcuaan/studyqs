@@ -1,0 +1,242 @@
+Subject,Board,Tier,Topic,Subtopic,Difficulty,ID,Question,Answer
+Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_1,What is the difference between eukaryotic and prokaryotic cells?,"(1) Eukaryotic cells have a nucleus / are more complex
+(2) Prokaryotic cells do not have a nucleus / are smaller and simpler"
+Biology,AQA,Foundation,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_f_1_11_e_1,What is the difference between eukaryotic and prokaryotic cells?,"(1) Eukaryotic cells have a nucleus / are more complex
+(2) Prokaryotic cells do not have a nucleus / are smaller and simpler"
+Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_2,What are eukaryotes?,(1) Organisms made of eukaryotic cells
+Biology,AQA,Foundation,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_f_1_11_e_2,What are eukaryotes?,(1) Organisms made of eukaryotic cells
+Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_3,What are prokaryotes?,(1) Organisms made of prokaryotic cells
+Biology,AQA,Foundation,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_f_1_11_e_3,What are prokaryotes?,(1) Organisms made of prokaryotic cells
+Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_4,Are animal cells prokaryotic or eukaryotic?,(1) Eukaryotic
+Biology,AQA,Foundation,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_f_1_11_e_4,Are animal cells prokaryotic or eukaryotic?,(1) Eukaryotic
+Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_5,Are plant cells prokaryotic or eukaryotic?,(1) Eukaryotic
+Biology,AQA,Foundation,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_f_1_11_e_5,Are plant cells prokaryotic or eukaryotic?,(1) Eukaryotic
+Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_1,Name three structures found in all eukaryotic cells.,"(1) Cell membrane
+(2) Cytoplasm
+(3) Nucleus"
+Biology,AQA,Foundation,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_f_1_11_m_1,Name three structures found in all eukaryotic cells.,"(1) Cell membrane
+(2) Cytoplasm
+(3) Nucleus"
+Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_2,Name four structures found in all prokaryotic cells.,"(1) Cell wall
+(2) Cell membrane
+(3) Cytoplasm
+(4) Circular DNA (DNA loop)"
+Biology,AQA,Foundation,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_f_1_11_m_2,Name four structures found in all prokaryotic cells.,"(1) Cell wall
+(2) Cell membrane
+(3) Cytoplasm
+(4) Circular DNA (DNA loop)"
+Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Hard (5-6 marks),b_a_h_1_11_h_1,Describe how to use a light microscope to observe a specimen.,"(1) Place the slide on the stage and secure it
+(2) Select the lowest power objective lens
+(3) Use the coarse adjustment knob to move the stage close to the lens
+(4) Look through the eyepiece
+(5) Slowly move the stage down until the image is in focus
+(6) Use the fine adjustment knob to sharpen the image
+(7) Switch to a higher magnification if needed and refocus"
+Biology,AQA,Foundation,1. Cell Biology,1.1 Cell Structure,Hard (5-6 marks),b_a_f_1_11_h_1,Describe how to use a light microscope to observe a specimen.,"(1) Place the slide on the stage and secure it
+(2) Select the lowest power objective lens
+(3) Use the coarse adjustment knob to move the stage close to the lens
+(4) Look through the eyepiece
+(5) Slowly move the stage down until the image is in focus
+(6) Use the fine adjustment knob to sharpen the image
+(7) Switch to a higher magnification if needed and refocus"
+Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_1,What colour is blood plasma?,(1) Yellow / straw-coloured
+Biology,AQA,Foundation,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_f_2_22_e_1,What colour is blood plasma?,(1) Yellow / straw-coloured
+Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_2,What are platelets?,"(1) Small cell fragments
+(2) Help blood to clot after injury"
+Biology,AQA,Foundation,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_f_2_22_e_2,What are platelets?,"(1) Small cell fragments
+(2) Help blood to clot after injury"
+Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_39,What is a leaky heart valve?,"(1) A heart valve that does not close properly
+(2) Blood can leak backwards"
+Biology,AQA,Foundation,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_f_2_22_e_39,What is a leaky heart valve?,"(1) A heart valve that does not close properly
+(2) Blood can leak backwards"
+Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_1,What is blood?,"(1) A tissue made of plasma
+(2) Contains red blood cells
+(3) Contains white blood cells and platelets
+(4) Transports substances around the body"
+Biology,AQA,Foundation,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_f_2_22_m_1,What is blood?,"(1) A tissue made of plasma
+(2) Contains red blood cells
+(3) Contains white blood cells and platelets
+(4) Transports substances around the body"
+Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_22,Describe the route of blood from the body tissues to the lungs.,"(1) Body tissues → vena cava
+(2) Vena cava → right atrium
+(3) Right atrium → right ventricle
+(4) Right ventricle → pulmonary artery → lungs"
+Biology,AQA,Foundation,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_f_2_22_m_22,Describe the route of blood from the body tissues to the lungs.,"(1) Body tissues → vena cava
+(2) Vena cava → right atrium
+(3) Right atrium → right ventricle
+(4) Right ventricle → pulmonary artery → lungs"
+Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_14,Describe the full route of blood through the double circulatory system.,"(1) Blood from the body enters the heart through the vena cava
+(2) It enters the right atrium, then the right ventricle
+(3) The right ventricle pumps blood through the pulmonary artery to the lungs
+(4) Blood returns from the lungs through the pulmonary vein to the left atrium
+(5) It moves into the left ventricle
+(6) The left ventricle pumps blood through the aorta to the body tissues"
+Biology,AQA,Foundation,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_f_2_22_h_14,Describe the full route of blood through the double circulatory system.,"(1) Blood from the body enters the heart through the vena cava
+(2) It enters the right atrium, then the right ventricle
+(3) The right ventricle pumps blood through the pulmonary artery to the lungs
+(4) Blood returns from the lungs through the pulmonary vein to the left atrium
+(5) It moves into the left ventricle
+(6) The left ventricle pumps blood through the aorta to the body tissues"
+Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_h_2_23_e_1,Are xylem and phloem part of the plant transport system?,"(1) Yes
+(2) They are tissues, not organs"
+Biology,AQA,Foundation,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_f_2_23_e_1,Are xylem and phloem part of the plant transport system?,"(1) Yes
+(2) They are tissues, not organs"
+Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_h_2_23_m_1,What are the main organs in the plant transport system?,"(1) Roots
+(2) Stems (shoots)
+(3) Leaves"
+Biology,AQA,Foundation,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_f_2_23_m_1,What are the main organs in the plant transport system?,"(1) Roots
+(2) Stems (shoots)
+(3) Leaves"
+Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Hard (5-6 marks),b_a_h_2_23_h_1,How are xylem cells adapted for their function?,"(1) Cells are dead
+(2) No end walls → continuous tubes
+(3) Hollow to allow flow
+(4) Lignin strengthens walls
+(5) Prevents collapse under pressure
+(6) Provides support"
+Biology,AQA,Foundation,2. Organisation,"2.3 Plant tissues, organs and systems",Hard (5-6 marks),b_a_f_2_23_h_1,How are xylem cells adapted for their function?,"(1) Cells are dead
+(2) No end walls → continuous tubes
+(3) Hollow to allow flow
+(4) Lignin strengthens walls
+(5) Prevents collapse under pressure
+(6) Provides support"
+Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_h_3_31_e_1,What causes viral diseases?,(1) Viruses
+Biology,AQA,Foundation,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_f_3_31_e_1,What causes viral diseases?,(1) Viruses
+Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_h_3_31_m_1,Describe the structure of a virus.,"(1) Genetic material (DNA/RNA)
+(2) Protein coat (capsid)
+(3) May have outer lipid envelope"
+Biology,AQA,Foundation,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_f_3_31_m_1,Describe the structure of a virus.,"(1) Genetic material (DNA/RNA)
+(2) Protein coat (capsid)
+(3) May have outer lipid envelope"
+Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Hard (5-6 marks),b_a_h_3_31_h_1,What do viruses do inside the body?,"(1) Enter host cells
+(2) Insert genetic material
+(3) Use cell machinery to replicate
+(4) Cell bursts (lysis)
+(5) New viruses infect others"
+Biology,AQA,Foundation,3. Infection and response,3.1 Communicable diseases,Hard (5-6 marks),b_a_f_3_31_h_1,What do viruses do inside the body?,"(1) Enter host cells
+(2) Insert genetic material
+(3) Use cell machinery to replicate
+(4) Cell bursts (lysis)
+(5) New viruses infect others"
+Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Easy (1-2 marks),b_a_h_4_41_e_1,What is a limiting factor?,"(1) A factor that restricts the rate of a reaction
+(2) If increased, the rate will increase"
+Biology,AQA,Foundation,4. Bioenergetics,4.1 Photosynthesis,Easy (1-2 marks),b_a_f_4_41_e_1,What is a limiting factor?,"(1) A factor that restricts the rate of a reaction
+(2) If increased, the rate will increase"
+Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Medium (3-4 marks),b_a_h_4_41_m_1,What factors affect the rate of photosynthesis?,"(1) Light intensity
+(2) Carbon dioxide concentration
+(3) Temperature
+(4) Chlorophyll content"
+Biology,AQA,Foundation,4. Bioenergetics,4.1 Photosynthesis,Medium (3-4 marks),b_a_f_4_41_m_1,What factors affect the rate of photosynthesis?,"(1) Light intensity
+(2) Carbon dioxide concentration
+(3) Temperature
+(4) Chlorophyll content"
+Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Hard (5-6 marks),b_a_h_4_41_h_1,How does temperature affect the rate of photosynthesis?,"(1) Low temperature → less kinetic energy
+(2) Fewer successful collisions
+(3) Slower reaction rate
+(4) Increasing temperature increases rate
+(5) Enzymes denature at high temperatures
+(6) Rate then decreases"
+Biology,AQA,Foundation,4. Bioenergetics,4.1 Photosynthesis,Hard (5-6 marks),b_a_f_4_41_h_1,How does temperature affect the rate of photosynthesis?,"(1) Low temperature → less kinetic energy
+(2) Fewer successful collisions
+(3) Slower reaction rate
+(4) Increasing temperature increases rate
+(5) Enzymes denature at high temperatures
+(6) Rate then decreases"
+Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_1,Do muscles use energy when the body is at rest?,"(1) Yes
+(2) They still use oxygen and glucose"
+Biology,AQA,Foundation,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_f_4_42_e_1,Do muscles use energy when the body is at rest?,"(1) Yes
+(2) They still use oxygen and glucose"
+Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_18,What is metabolism?,(1) The sum of all chemical reactions in a cell or body
+Biology,AQA,Foundation,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_f_4_42_e_18,What is metabolism?,(1) The sum of all chemical reactions in a cell or body
+Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Medium (3-4 marks),b_a_h_4_42_m_1,What happens to the body during exercise?,"(1) Increased demand for oxygen
+(2) Increased demand for glucose
+(3) Increased removal of carbon dioxide"
+Biology,AQA,Foundation,4. Bioenergetics,4.2 Respiration,Medium (3-4 marks),b_a_f_4_42_m_1,What happens to the body during exercise?,"(1) Increased demand for oxygen
+(2) Increased demand for glucose
+(3) Increased removal of carbon dioxide"
+Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Hard (5-6 marks),b_a_h_4_42_h_1,What do muscles use energy for?,"(1) Muscle contraction
+(2) Movement of the body
+(3) Maintaining posture
+(4) Moving food through the digestive system
+(5) Pumping blood (heart muscle)
+(6) Transferring energy from respiration"
+Biology,AQA,Foundation,4. Bioenergetics,4.2 Respiration,Hard (5-6 marks),b_a_f_4_42_h_1,What do muscles use energy for?,"(1) Muscle contraction
+(2) Movement of the body
+(3) Maintaining posture
+(4) Moving food through the digestive system
+(5) Pumping blood (heart muscle)
+(6) Transferring energy from respiration"
+Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Hard (5-6 marks),b_a_h_4_42_h_4,Name six examples of metabolic reactions.,"(1) Glucose → starch / glycogen / cellulose
+(2) Formation of lipids from glycerol and fatty acids
+(3) Glucose + nitrate ions → amino acids
+(4) Respiration
+(5) Photosynthesis
+(6) Breakdown of proteins to form urea"
+Biology,AQA,Foundation,4. Bioenergetics,4.2 Respiration,Hard (5-6 marks),b_a_f_4_42_h_4,Name six examples of metabolic reactions.,"(1) Glucose → starch / glycogen / cellulose
+(2) Formation of lipids from glycerol and fatty acids
+(3) Glucose + nitrate ions → amino acids
+(4) Respiration
+(5) Photosynthesis
+(6) Breakdown of proteins to form urea"
+Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_1,What are the three states of matter?,"(1) Solid
+(2) Liquid
+(3) Gas"
+Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_1,Describe the properties of a solid.,"(1) Particles closely packed
+(2) Strong forces of attraction
+(3) Vibrate in fixed positions
+(4) Fixed shape and volume"
+Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Hard (5-6 marks),c_e_i_1_1a_h_1,Describe how particles change when a substance is heated or cooled.,"(1) Heating gives particles more energy
+(2) Particles move faster
+(3) Move further apart
+(4) Changes state (solid → liquid → gas)
+(5) Cooling removes energy
+(6) Particles move slower and come closer"
+Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_1,What is a system?,(1) An object or a group of objects
+Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_1,What is a system?,(1) An object or a group of objects
+Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_16,What is the equation for kinetic energy?,"(1) $E_k = \frac{1}{2}mv^2$
+(2) $E_k$ = kinetic energy (J)
+(3) $m$ = mass (kg)
+(4) $v$ = speed (m/s)"
+Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_16,What is the equation for kinetic energy?,"(1) $E_k = \frac{1}{2}mv^2$
+(2) $E_k$ = kinetic energy (J)
+(3) $m$ = mass (kg)
+(4) $v$ = speed (m/s)"
+Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_h_1_11_m_1,Describe energy changes when an object is projected upwards.,"(1) Chemical store (muscles) → kinetic store (object)
+(2) As it rises: kinetic store decreases
+(3) Gravitational potential store increases
+(4) At highest point: kinetic = 0 (all energy in GPE)"
+Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_f_1_11_m_1,Describe energy changes when an object is projected upwards.,"(1) Chemical store (muscles) → kinetic store (object)
+(2) As it rises: kinetic store decreases
+(3) Gravitational potential store increases
+(4) At highest point: kinetic = 0 (all energy in GPE)"
+Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_h_1_11_m_7,Describe how to calculate the kinetic energy of a moving object.,"(1) Measure mass in kg
+(2) Measure speed in m/s
+(3) Square the speed
+(4) Multiply by mass and 0.5"
+Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_f_1_11_m_7,Describe how to calculate the kinetic energy of a moving object.,"(1) Measure mass in kg
+(2) Measure speed in m/s
+(3) Square the speed
+(4) Multiply by mass and 0.5"
+Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_h_1_11_h_1,Explain fully the energy changes when a ball is thrown upwards and falls back down.,"(1) Chemical energy store (muscles) → kinetic store of arm
+(2) Kinetic energy transferred to ball
+(3) As ball rises: kinetic → gravitational potential store
+(4) At top: maximum gravitational potential, zero kinetic
+(5) As it falls: gravitational potential → kinetic
+(6) Some energy dissipated to thermal store due to air resistance"
+Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_f_1_11_h_1,Explain fully the energy changes when a ball is thrown upwards and falls back down.,"(1) Chemical energy store (muscles) → kinetic store of arm
+(2) Kinetic energy transferred to ball
+(3) As ball rises: kinetic → gravitational potential store
+(4) At top: maximum gravitational potential, zero kinetic
+(5) As it falls: gravitational potential → kinetic
+(6) Some energy dissipated to thermal store due to air resistance"
+Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_h_1_11_h_7,Explain energy changes when an object is raised and then falls (including calculations).,"(1) Energy transferred to gravitational potential store when lifted
+(2) Given by $E_p = mgh$
+(3) As object falls: GPE decreases
+(4) Kinetic energy increases
+(5) Given by $E_k = \frac{1}{2}mv^2$
+(6) Total energy conserved (ignoring air resistance)"
+Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_f_1_11_h_7,Explain energy changes when an object is raised and then falls (including calculations).,"(1) Energy transferred to gravitational potential store when lifted
+(2) Given by $E_p = mgh$
+(3) As object falls: GPE decreases
+(4) Kinetic energy increases
+(5) Given by $E_k = \frac{1}{2}mv^2$
+(6) Total energy conserved (ignoring air resistance)"
