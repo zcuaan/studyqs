@@ -13,9 +13,9 @@
 ## 1.1.1 Eukaryotes and prokaryotes
 
 All cells have: a cell membrane, cytoplasm, dna and ribosomes.
-- cell membrane: (1) holds the cell together, (2) separates inside from outside, (3) controls what leaves/enters the cell
-- cytoplasm: jelly-like substance, where chemical reactions happen dna: genetic material that controls the activities of the cell
-- ribosomes: where protein synthesis happens
+- **cell membrane:** (1) holds the cell together, (2) separates inside from outside, (3) controls what leaves/enters the cell
+- **cytoplasm:** jelly-like substance, where chemical reactions happen dna: genetic material that controls the activities of the cell
+- **ribosomes:** where protein synthesis happens
 
 There are two types of cells: eukaryotic and prokaryotic
 
