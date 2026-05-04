@@ -3,987 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>studyqs</title>
+  <title>studyqs - GCSE Revision</title>
   
-  <script src="https://cdn.tailwindcss.com?v=3.5"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=typography,forms&v=3.0"></script>
   
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
   <style>
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+    
+    /* Subtle Notion-style tweaks */
+    body { background-color: #ffffff; color: #37352f; }
+    .notion-card { border: 1px solid #e9e9e7; box-shadow: 0 1px 2px rgba(0,0,0,0.02); }
+    .notion-card:hover { background-color: #f7f7f5; }
   </style>
 </head>
-<body class="bg-gray-50 font-sans text-gray-900 selection:bg-blue-100 min-h-screen">
+<body class="font-sans antialiased min-h-screen selection:bg-blue-100">
   
   <div id="root"></div>
 
   <script type="text/babel">
-    const { useState, useEffect, useCallback } = React;
-
-    // =========================================================
-    // 📚 THE COMPLETE MASTER DATABASE
-    // =========================================================
-    const DATABASE = {
-      "Biology": {
-        "AQA": {
-          "Higher": {
-            "1. Cell Biology": {
-              "1.1 Cell Structure": {
-                "Easy (1-2 marks)": [
-                  { id: 'b_a_1_11_e_1', q: "What is the difference between eukaryotic and prokaryotic cells?", a: "(1) Eukaryotic cells have a nucleus / are more complex\n(2) Prokaryotic cells do not have a nucleus / are smaller and simpler" },
-                  { id: 'b_a_1_11_e_2', q: "What are eukaryotes?", a: "(1) Organisms made of eukaryotic cells" },
-                  { id: 'b_a_1_11_e_3', q: "What are prokaryotes?", a: "(1) Organisms made of prokaryotic cells" },
-                  { id: 'b_a_1_11_e_4', q: "Are animal cells prokaryotic or eukaryotic?", a: "(1) Eukaryotic" },
-                  { id: 'b_a_1_11_e_5', q: "Are plant cells prokaryotic or eukaryotic?", a: "(1) Eukaryotic" },
-                  { id: 'b_a_1_11_e_6', q: "Are bacteria cells prokaryotic or eukaryotic?", a: "(1) Prokaryotic" },
-                  { id: 'b_a_1_11_e_7', q: "What is the length of a eukaryotic cell?", a: "(1) 10–100 μm" },
-                  { id: 'b_a_1_11_e_8', q: "What is the length of a prokaryotic cell?", a: "(1) 0.2–2 μm" },
-                  { id: 'b_a_1_11_e_9', q: "What is the length of an average animal cell?", a: "(1) 10–30 μm" },
-                  { id: 'b_a_1_11_e_10', q: "What is the length of an average plant cell?", a: "(1) 10–100 μm" },
-                  { id: 'b_a_1_11_e_11', q: "What is the length of a virus?", a: "(1) 100 nm" },
-                  { id: 'b_a_1_11_e_12', q: "How many millimetres are in a centimetre?", a: "(1) 10 mm" },
-                  { id: 'b_a_1_11_e_13', q: "How many micrometres are in a millimetre?", a: "(1) 1000 μm" },
-                  { id: 'b_a_1_11_e_14', q: "How many nanometres are in a micrometre?", a: "(1) 1000 nm" },
-                  { id: 'b_a_1_11_e_15', q: "What is the function of the nucleus?", a: "(1) Controls the activities of the cell" },
-                  { id: 'b_a_1_11_e_16', q: "What does the nucleus contain?", a: "(1) Genetic material (DNA)\n(2) Organised into chromosomes" },
-                  { id: 'b_a_1_11_e_17', q: "What is the average size of a nucleus?", a: "(1) Around 10 μm" },
-                  { id: 'b_a_1_11_e_18', q: "What is the cytoplasm?", a: "(1) A jelly-like substance\n(2) Where organelles are suspended" },
-                  { id: 'b_a_1_11_e_19', q: "What is the purpose of the cytoplasm?", a: "(1) Site of chemical reactions\n(2) Contains enzymes" },
-                  { id: 'b_a_1_11_e_20', q: "What is the average size of mitochondria?", a: "(1) Around 1–2 μm" },
-                  { id: 'b_a_1_11_e_21', q: "What is the purpose of ribosomes?", a: "(1) Site of protein synthesis" },
-                  { id: 'b_a_1_11_e_22', q: "What is the purpose of the cell wall?", a: "(1) Strengthens the cell\n(2) Supports the cell" },
-                  { id: 'b_a_1_11_e_23', q: "What is the cell wall made of?", a: "(1) Cellulose" },
-                  { id: 'b_a_1_11_e_24', q: "What is a DNA loop?", a: "(1) A circular strand of DNA" },
-                  { id: 'b_a_1_11_e_25', q: "What is a plasmid?", a: "(1) Small circular rings of DNA" },
-                  { id: 'b_a_1_11_e_26', q: "What is a flagellum?", a: "(1) A long tail-like structure\n(2) Used for movement" },
-                  { id: 'b_a_1_11_e_27', q: "When would you use estimations in calculations?", a: "(1) To check whether a calculated answer is reasonable / correct" },
-                  { id: 'b_a_1_11_e_28', q: "What is a specimen?", a: "(1) The object being observed under a microscope" },
-                  { id: 'b_a_1_11_e_29', q: "What is a slide?", a: "(1) A thin piece of glass or plastic\n(2) Used to hold the specimen" },
-                  { id: 'b_a_1_11_e_30', q: "What is a cover slip?", a: "(1) A thin square of glass or plastic\n(2) Placed over the specimen\n(3) Keeps the specimen flat / in place" },
-                  { id: 'b_a_1_11_e_31', q: "What is the purpose of iodine solution in microscopy?", a: "(1) Stains the specimen\n(2) Makes structures easier to see" },
-                  { id: 'b_a_1_11_e_32', q: "Why must the cover slip be lowered carefully?", a: "(1) To prevent air bubbles forming\n(2) Air bubbles can obstruct the view" }
-                ],
-                "Medium (3-4 marks)": [
-                  { id: 'b_a_1_11_m_1', q: "Name three structures found in all eukaryotic cells.", a: "(1) Cell membrane\n(2) Cytoplasm\n(3) Nucleus" },
-                  { id: 'b_a_1_11_m_2', q: "Name four structures found in all prokaryotic cells.", a: "(1) Cell wall\n(2) Cell membrane\n(3) Cytoplasm\n(4) Circular DNA (DNA loop)" },
-                  { id: 'b_a_1_11_m_3', q: "When writing numbers in standard form, what is the format?", a: "(1) Written as A × 10^n\n(2) Where 1 ≤ A < 10\n(3) n is an integer (positive or negative whole number)" },
-                  { id: 'b_a_1_11_m_4', q: "What does “order of magnitude” mean?", a: "(1) A comparison of size between two values\n(2) Expressed in powers of 10\n(3) Shows how many times bigger or smaller one value is" },
-                  { id: 'b_a_1_11_m_5', q: "If a small animal cell is around 10 μm and a large plant cell is around 100 μm, how many orders of magnitude bigger is the plant cell?", a: "(1) 100 μm ÷ 10 μm = 10\n(2) This is 10^1\n(3) Therefore, it is 1 order of magnitude bigger" },
-                  { id: 'b_a_1_11_m_6', q: "How many orders of magnitude bigger is a small animal cell compared to a virus?", a: "(1) Convert virus size: 100 nm = 0.1 μm\n(2) Small animal cell ≈ 10 μm\n(3) 10 ÷ 0.1 = 100\n(4) This is 10^2\n(5) Therefore, the cell is 2 orders of magnitude bigger" },
-                  { id: 'b_a_1_11_m_7', q: "What is the purpose of the cell membrane?", a: "(1) Holds the cell together\n(2) Controls movement of substances in and out of the cell\n(3) Selectively permeable" },
-                  { id: 'b_a_1_11_m_8', q: "What is the purpose of mitochondria?", a: "(1) Site of aerobic respiration\n(2) Releases energy (ATP)\n(3) Provides energy for cell activities" },
-                  { id: 'b_a_1_11_m_9', q: "What are chloroplasts?", a: "(1) Contain chlorophyll\n(2) Chlorophyll absorbs light energy\n(3) Site of photosynthesis" },
-                  { id: 'b_a_1_11_m_10', q: "What is the permanent vacuole?", a: "(1) Contains cell sap\n(2) Maintains turgor pressure\n(3) Keeps the cell rigid / supports the plant" },
-                  { id: 'b_a_1_11_m_11', q: "Why do prokaryotic cells have plasmids?", a: "(1) Carry extra genes\n(2) Can give advantages (e.g. antibiotic resistance)\n(3) Can be transferred between cells" },
-                  { id: 'b_a_1_11_m_12', q: "How could you use the size of cells to estimate the size of a subcellular structure?", a: "(1) Compare how many times the structure fits into the cell\n(2) Use the known size of the cell\n(3) Divide the cell size by the number of structures\n(4) This gives an approximate size of the structure" },
-                  { id: 'b_a_1_11_m_13', q: "If a cell is 20 μm long and approximately 10 nuclei fit along its length, what is the approximate size of one nucleus?", a: "(1) Cell length = 20 μm\n(2) Number of nuclei = 10\n(3) 20 ÷ 10 = 2\n(4) Nucleus size ≈ 2 μm" },
-                  { id: 'b_a_1_11_m_14', q: "Describe how to prepare a slide to observe onion cells.", a: "(1) Place a drop of water onto a clean slide\n(2) Peel a thin layer of onion epidermis using tweezers\n(3) Place the tissue onto the slide\n(4) Add a drop of iodine solution\n(5) Lower a cover slip carefully at an angle\n(6) Avoid trapping air bubbles" },
-                  { id: 'b_a_1_11_m_15', q: "Describe how to draw a scientific diagram from a microscope observation.", a: "(1) Drawing should be large (at least half the space)\n(2) Use clear, continuous lines\n(3) Do not shade or colour\n(4) Keep structures in proportion\n(5) Include a title\n(6) Include magnification\n(7) Label using straight, uncrossed lines" }
-                ],
-                "Hard (5-6 marks)": [
-                  { id: 'b_a_1_11_h_1', q: "Describe how to use a light microscope to observe a specimen.", a: "(1) Place the slide on the stage and secure it\n(2) Select the lowest power objective lens\n(3) Use the coarse adjustment knob to move the stage close to the lens\n(4) Look through the eyepiece\n(5) Slowly move the stage down until the image is in focus\n(6) Use the fine adjustment knob to sharpen the image\n(7) Switch to a higher magnification if needed and refocus" }
-                ]
-              }
-            },
-            "2. Organisation": {
-              "2.2 Animal tissues, organs and organ systems": {
-              "Easy (1-2 marks)": [
-                { id: 'b_a_h_2_22_e_1', q: "What colour is blood plasma?", a: "(1) Yellow / straw-coloured" },
-                { id: 'b_a_h_2_22_e_2', q: "What are platelets?", a: "(1) Small cell fragments\n(2) Help blood to clot after injury" },
-                { id: 'b_a_h_2_22_e_3', q: "Where is urea formed?", a: "(1) In the liver\n(2) From the breakdown of excess amino acids / proteins" },
-                { id: 'b_a_h_2_22_e_4', q: "Where is urea carried in the blood?", a: "(1) To the kidneys\n(2) Where it is removed from the blood to form urine" },
-                { id: 'b_a_h_2_22_e_5', q: "Are white blood cells or red blood cells bigger?", a: "(1) White blood cells are bigger" },
-                { id: 'b_a_h_2_22_e_6', q: "Are there more white blood cells or red blood cells in the body?", a: "(1) There are more red blood cells" },
-                { id: 'b_a_h_2_22_e_7', q: "What are the two main types of white blood cells?", a: "(1) Lymphocytes\n(2) Phagocytes" },
-                { id: 'b_a_h_2_22_e_8', q: "What do lymphocytes do?", a: "(1) Produce antibodies\n(2) Against specific pathogens" },
-                { id: 'b_a_h_2_22_e_9', q: "What do phagocytes do?", a: "(1) Engulf pathogens\n(2) Digest them" },
-                { id: 'b_a_h_2_22_e_10', q: "What are the three main types of blood vessels?", a: "(1) Arteries\n(2) Veins\n(3) Capillaries" },
-                { id: 'b_a_h_2_22_e_11', q: "What is the smallest type of blood vessel in the circulatory system?", a: "(1) Capillaries" },
-                { id: 'b_a_h_2_22_e_12', q: "How close are capillaries to body cells?", a: "(1) Usually very close to cells\n(2) Often within about 0.05 mm" },
-                { id: 'b_a_h_2_22_e_13', q: "What is the function of arteries?", a: "(1) Carry blood away from the heart\n(2) Carry blood to organs / tissues" },
-                { id: 'b_a_h_2_22_e_14', q: "What colour is blood in most arteries?", a: "(1) Bright red\n(2) Because it is usually oxygenated" },
-                { id: 'b_a_h_2_22_e_15', q: "When you feel your pulse, what are you feeling?", a: "(1) Pressure waves in the arteries\n(2) Caused by the heart pumping blood" },
-                { id: 'b_a_h_2_22_e_16', q: "What is the function of veins?", a: "(1) Carry blood towards the heart\n(2) From organs / tissues" },
-                { id: 'b_a_h_2_22_e_17', q: "Do veins have thick walls?", a: "(1) No\n(2) Veins have thinner walls than arteries" },
-                { id: 'b_a_h_2_22_e_18', q: "Do veins have a pulse?", a: "(1) No\n(2) Blood pressure in veins is low" },
-                { id: 'b_a_h_2_22_e_19', q: "What colour is blood in most veins?", a: "(1) Dark red\n(2) Because it has less oxygen" },
-                { id: 'b_a_h_2_22_e_20', q: "What is a lumen?", a: "(1) The hollow space inside a blood vessel" },
-                { id: 'b_a_h_2_22_e_21', q: "What is pulmonary circulation?", a: "(1) Circulation between the heart and lungs" },
-                { id: 'b_a_h_2_22_e_22', q: "What is systemic circulation?", a: "(1) Circulation between the heart and the rest of the body" },
-                { id: 'b_a_h_2_22_e_23', q: "What is the function of the coronary arteries?", a: "(1) Supply oxygenated blood to the heart muscle\n(2) So the heart muscle can respire" },
-                { id: 'b_a_h_2_22_e_24', q: "How many chambers are in the heart?", a: "(1) Four" },
-                { id: 'b_a_h_2_22_e_25', q: "When one side of the heart fills with blood, is there blood on the other side too?", a: "(1) Yes\n(2) Both sides of the heart fill and empty at the same time" },
-                { id: 'b_a_h_2_22_e_26', q: "How does blood move from the atria to the ventricles?", a: "(1) The atria contract\n(2) This forces blood into the ventricles" },
-                { id: 'b_a_h_2_22_e_27', q: "What are you hearing when you listen to a heartbeat with a stethoscope?", a: "(1) Valves closing" },
-                { id: 'b_a_h_2_22_e_28', q: "Which side of the heart has thicker muscle walls?", a: "(1) The left side\n(2) Because it pumps blood around the whole body" },
-                { id: 'b_a_h_2_22_e_29', q: "Do you need a general anaesthetic to insert a stent?", a: "(1) No" },
-                { id: 'b_a_h_2_22_e_30', q: "Can stents be used in arteries other than coronary arteries?", a: "(1) Yes" },
-                { id: 'b_a_h_2_22_e_31', q: "What vessel carries blood from the body tissues back to the heart?", a: "(1) Vena cava" },
-                { id: 'b_a_h_2_22_e_32', q: "Which chamber does blood enter after returning from the body in the vena cava?", a: "(1) Right atrium" },
-                { id: 'b_a_h_2_22_e_33', q: "Which chamber pumps blood to the lungs?", a: "(1) Right ventricle" },
-                { id: 'b_a_h_2_22_e_34', q: "Which blood vessel carries blood from the heart to the lungs?", a: "(1) Pulmonary artery" },
-                { id: 'b_a_h_2_22_e_35', q: "Which blood vessel carries blood from the lungs back to the heart?", a: "(1) Pulmonary vein" },
-                { id: 'b_a_h_2_22_e_36', q: "Which chamber receives blood from the lungs?", a: "(1) Left atrium" },
-                { id: 'b_a_h_2_22_e_37', q: "Which chamber pumps blood to the body?", a: "(1) Left ventricle" },
-                { id: 'b_a_h_2_22_e_38', q: "Which blood vessel carries blood from the heart to the body?", a: "(1) Aorta" },
-                { id: 'b_a_h_2_22_e_39', q: "What is a leaky heart valve?", a: "(1) A heart valve that does not close properly\n(2) Blood can leak backwards" },
-                { id: 'b_a_h_2_22_e_40', q: "Why are faulty heart valves a problem?", a: "(1) They reduce the efficiency of the heart\n(2) They can cause breathlessness" },
-                { id: 'b_a_h_2_22_e_41', q: "How can faulty heart valves be treated?", a: "(1) They can be replaced with mechanical valves\n(2) Or biological valves" },
-                { id: 'b_a_h_2_22_e_42', q: "What are mechanical heart valves made from?", a: "(1) Man-made materials\n(2) Such as titanium or polymers" },
-                { id: 'b_a_h_2_22_e_43', q: "What are biological heart valves made from?", a: "(1) Animal tissue\n(2) Or human tissue" },
-                { id: 'b_a_h_2_22_e_44', q: "What is the heart’s natural pacemaker?", a: "(1) A group of cells in the right atrium\n(2) Controls resting heart rate" },
-                { id: 'b_a_h_2_22_e_45', q: "What is an artificial pacemaker?", a: "(1) An electrical device implanted in the chest\n(2) Corrects irregular heart rhythms" },
-                { id: 'b_a_h_2_22_e_46', q: "What is a heart transplant?", a: "(1) Replacing a failing heart\n(2) With a donor heart" },
-                { id: 'b_a_h_2_22_e_47', q: "What is an artificial heart?", a: "(1) A man-made pump\n(2) Used to replace or support a failing heart" }
-              ],
-              "Medium (3-4 marks)": [
-                { id: 'b_a_h_2_22_m_1', q: "What is blood?", a: "(1) A tissue made of plasma\n(2) Contains red blood cells\n(3) Contains white blood cells and platelets\n(4) Transports substances around the body" },
-                { id: 'b_a_h_2_22_m_2', q: "What is blood plasma?", a: "(1) The liquid part of blood\n(2) Carries blood cells\n(3) Transports dissolved substances\n(4) Makes up about 55% of blood" },
-                { id: 'b_a_h_2_22_m_3', q: "What substances are transported in blood plasma?", a: "(1) Carbon dioxide\n(2) Urea\n(3) Digested food molecules / glucose\n(4) Hormones" },
-                { id: 'b_a_h_2_22_m_4', q: "How are red blood cells adapted for their function?", a: "(1) No nucleus, giving more space for haemoglobin\n(2) Biconcave disc shape gives a large surface area\n(3) Haemoglobin binds to oxygen\n(4) Thin shape gives a short diffusion distance" },
-                { id: 'b_a_h_2_22_m_5', q: "Compare red blood cells and white blood cells.", a: "(1) Red blood cells transport oxygen\n(2) White blood cells defend against pathogens\n(3) Red blood cells have no nucleus\n(4) White blood cells have a nucleus" },
-                { id: 'b_a_h_2_22_m_6', q: "How are arteries adapted for their function?", a: "(1) Thick walls to withstand high blood pressure\n(2) Muscle layer helps control blood flow\n(3) Elastic fibres stretch and recoil\n(4) Small lumen helps maintain high pressure" },
-                { id: 'b_a_h_2_22_m_7', q: "How are veins adapted for their function?", a: "(1) Valves prevent backflow of blood\n(2) Large lumen reduces resistance to blood flow\n(3) Thin walls because blood pressure is low\n(4) Blood is helped back to the heart by surrounding muscle contractions" },
-                { id: 'b_a_h_2_22_m_8', q: "How do valves in veins work?", a: "(1) Blood flows towards the heart\n(2) If blood starts to flow backwards, valves close\n(3) This prevents backflow\n(4) Muscle contractions help push blood forwards" },
-                { id: 'b_a_h_2_22_m_9', q: "What are capillaries?", a: "(1) Tiny blood vessels\n(2) Form networks around body tissues\n(3) Link arteries and veins\n(4) Allow exchange of substances with cells" },
-                { id: 'b_a_h_2_22_m_10', q: "How are capillaries adapted for exchange?", a: "(1) Walls are one cell thick\n(2) This gives a short diffusion distance\n(3) Walls are permeable\n(4) They form large networks, giving a large surface area" },
-                { id: 'b_a_h_2_22_m_11', q: "Describe the human circulatory system.", a: "(1) Humans have a double circulatory system\n(2) One circuit carries blood between the heart and lungs\n(3) One circuit carries blood between the heart and the rest of the body\n(4) Blood passes through the heart twice for each full circuit of the body" },
-                { id: 'b_a_h_2_22_m_12', q: "What is the difference between pulmonary circulation and systemic circulation?", a: "(1) Pulmonary circulation carries blood between the heart and lungs\n(2) Systemic circulation carries blood between the heart and the rest of the body\n(3) Pulmonary circulation oxygenates blood\n(4) Systemic circulation delivers oxygenated blood to body cells" },
-                { id: 'b_a_h_2_22_m_13', q: "Describe the structure of an artery in detail.", a: "(1) Thick walls\n(2) Small lumen\n(3) Thick layer of muscle\n(4) Elastic fibres in the wall" },
-                { id: 'b_a_h_2_22_m_14', q: "Describe the structure of a vein in detail.", a: "(1) Large lumen\n(2) Relatively thin walls\n(3) Often contain valves" },
-                { id: 'b_a_h_2_22_m_15', q: "Describe the structure of a capillary in detail.", a: "(1) Very small / tiny blood vessel\n(2) Narrow lumen\n(3) Wall is one cell thick" },
-                { id: 'b_a_h_2_22_m_16', q: "When do the valves in the heart close?", a: "(1) Valves close when blood tries to flow backwards\n(2) This prevents backflow\n(3) Valves close after blood has moved through the heart\n(4) The closing of valves produces the heartbeat sound" },
-                { id: 'b_a_h_2_22_m_17', q: "Why is the left side of the heart thicker than the right side?", a: "(1) The left side pumps blood around the whole body\n(2) This requires higher pressure\n(3) The right side only pumps blood to the lungs\n(4) So the right side does not need such thick muscle" },
-                { id: 'b_a_h_2_22_m_18', q: "Why would it be harmful if the right side of the heart pumped at very high pressure?", a: "(1) The right side pumps blood to the lungs\n(2) Lung capillaries are delicate\n(3) High pressure could damage them\n(4) This would reduce gas exchange efficiency" },
-                { id: 'b_a_h_2_22_m_19', q: "What happens to the coronary arteries in coronary heart disease?", a: "(1) Fatty material builds up in the artery wall\n(2) The coronary arteries become narrower\n(3) Blood flow to the heart muscle is reduced" },
-                { id: 'b_a_h_2_22_m_20', q: "Why is coronary heart disease dangerous?", a: "(1) Less blood reaches the heart muscle\n(2) Less oxygen is supplied to heart muscle cells\n(3) Heart muscle cells respire less efficiently\n(4) This can cause chest pain, heart attack or death" },
-                { id: 'b_a_h_2_22_m_21', q: "How do statins help reduce the risk of coronary heart disease?", a: "(1) Statins lower blood cholesterol levels\n(2) This slows fatty material being deposited in arteries\n(3) This reduces narrowing of the arteries\n(4) This lowers the risk of heart attack" },
-                { id: 'b_a_h_2_22_m_22', q: "Describe the route of blood from the body tissues to the lungs.", a: "(1) Body tissues → vena cava\n(2) Vena cava → right atrium\n(3) Right atrium → right ventricle\n(4) Right ventricle → pulmonary artery → lungs" },
-                { id: 'b_a_h_2_22_m_23', q: "Describe the route of blood from the lungs to the body tissues.", a: "(1) Lungs → pulmonary vein\n(2) Pulmonary vein → left atrium\n(3) Left atrium → left ventricle\n(4) Left ventricle → aorta → body tissues" },
-                { id: 'b_a_h_2_22_m_24', q: "What are the advantages and disadvantages of mechanical heart valves?", a: "(1) Last a long time\n(2) Very durable\n(3) May increase risk of blood clots\n(4) Patient may need lifelong blood-thinning medication" },
-                { id: 'b_a_h_2_22_m_25', q: "What are the advantages and disadvantages of biological heart valves?", a: "(1) Less risk of blood clotting than mechanical valves\n(2) Usually do not require lifelong blood thinners\n(3) Do not last as long\n(4) May need replacing after around 12–15 years" },
-                { id: 'b_a_h_2_22_m_26', q: "Why is an irregular heart rhythm a problem?", a: "(1) If too slow, not enough oxygen is delivered\n(2) If too fast, the heart may not fill properly\n(3) Less blood is pumped around the body\n(4) Cells may not get enough oxygen for respiration" },
-                { id: 'b_a_h_2_22_m_27', q: "How do artificial pacemakers work?", a: "(1) Wires connect the pacemaker to the heart\n(2) The pacemaker sends electrical impulses\n(3) These impulses stimulate the heart to contract\n(4) This helps restore a regular heartbeat" },
-                { id: 'b_a_h_2_22_m_28', q: "What are disadvantages of artificial pacemakers?", a: "(1) Need regular check-ups\n(2) Battery may need replacing\n(3) There is a small risk of infection" },
-                { id: 'b_a_h_2_22_m_29', q: "How can severe heart failure be treated?", a: "(1) Heart transplant\n(2) Artificial heart\n(3) Artificial heart can be used while waiting for transplant\n(4) Artificial heart can allow the heart to rest and recover" }
-              ],
-              "Hard (5-6 marks)": [
-                { id: 'b_a_h_2_22_h_1', q: "Describe how platelets help blood to clot after a wound.", a: "(1) Platelets collect at the wound\n(2) Enzymes convert fibrinogen into fibrin\n(3) Fibrin forms a network of protein fibres\n(4) Red blood cells and platelets get trapped in the fibres\n(5) A clot forms to stop blood loss\n(6) The clot dries into a scab" },
-                { id: 'b_a_h_2_22_h_2', q: "Explain why blood clotting is important after injury.", a: "(1) Prevents excessive blood loss\n(2) Forms a clot over the wound\n(3) Clot dries into a scab\n(4) Scab protects new skin as it grows\n(5) Reduces entry of pathogens\n(6) Helps prevent infection" },
-                { id: 'b_a_h_2_22_h_3', q: "Describe the composition of blood and the function of each component.", a: "(1) Plasma transports dissolved substances\n(2) Red blood cells transport oxygen\n(3) White blood cells defend against pathogens\n(4) Platelets help blood clot\n(5) Plasma makes up about 55% of blood\n(6) Red blood cells make up about 45% of blood" },
-                { id: 'b_a_h_2_22_h_4', q: "Explain how urea is produced and removed from the body.", a: "(1) Excess proteins are broken down into amino acids\n(2) Excess amino acids cannot be stored\n(3) They are broken down in the liver\n(4) Urea is produced as a waste product\n(5) Urea is carried in blood plasma to the kidneys\n(6) Kidneys remove urea from the blood to form urine" },
-                { id: 'b_a_h_2_22_h_5', q: "Compare arteries, veins and capillaries.", a: "(1) Arteries carry blood away from the heart\n(2) Veins carry blood towards the heart\n(3) Capillaries connect arteries and veins\n(4) Arteries have thick elastic walls to withstand high pressure\n(5) Veins have valves to prevent backflow\n(6) Capillaries have one-cell-thick walls for diffusion" },
-                { id: 'b_a_h_2_22_h_6', q: "Explain how the structure of capillaries helps substances move between blood and body cells.", a: "(1) Capillaries form networks close to body cells\n(2) This gives a short diffusion distance\n(3) Walls are one cell thick\n(4) This allows rapid diffusion\n(5) Walls are permeable, so substances can pass through\n(6) Large surface area allows efficient exchange" },
-                { id: 'b_a_h_2_22_h_7', q: "Explain why humans have a double circulatory system.", a: "(1) Blood travels from the heart to the lungs\n(2) Blood picks up oxygen in the lungs\n(3) Blood returns to the heart\n(4) The heart pumps oxygenated blood to the body at high pressure\n(5) This allows rapid delivery of oxygen and glucose to cells\n(6) This supports a high rate of respiration" },
-                { id: 'b_a_h_2_22_h_8', q: "Explain how arteries are adapted to carry blood at high pressure.", a: "(1) Arteries carry blood directly from the heart\n(2) Blood is under high pressure\n(3) Thick walls prevent bursting\n(4) Elastic fibres stretch when blood surges through\n(5) Elastic fibres recoil to maintain pressure\n(6) Muscle layer helps control blood flow" },
-                { id: 'b_a_h_2_22_h_9', q: "Compare the structures of arteries, veins and capillaries.", a: "(1) Arteries have thick walls\n(2) Arteries have a small lumen\n(3) Arteries contain thick muscle and elastic fibres\n(4) Veins have thin walls and large lumens\n(5) Veins often have valves\n(6) Capillaries are tiny vessels with walls one cell thick" },
-                { id: 'b_a_h_2_22_h_10', q: "Explain how a stent is used to treat coronary heart disease.", a: "(1) A stent is a small metal mesh tube\n(2) It is inserted into a narrowed coronary artery\n(3) A tiny balloon expands the stent\n(4) This widens the artery\n(5) The stent stays in place after the balloon is removed\n(6) This improves blood flow to the heart muscle" },
-                { id: 'b_a_h_2_22_h_11', q: "Explain how coronary heart disease can lead to a heart attack.", a: "(1) Fatty material builds up in coronary arteries\n(2) The arteries become narrowed\n(3) Less blood reaches the heart muscle\n(4) Less oxygen reaches heart muscle cells\n(5) Heart muscle cells cannot respire enough\n(6) Heart muscle cells may die, causing a heart attack" },
-                { id: 'b_a_h_2_22_h_12', q: "Compare stents, statins and bypass surgery as treatments for coronary heart disease.", a: "(1) Stents widen narrowed arteries to improve blood flow\n(2) Stents act quickly and do not usually need general anaesthetic\n(3) Statins lower cholesterol and slow further fatty deposits\n(4) Statins are long-term medication\n(5) Bypass surgery replaces or bypasses blocked arteries using blood vessels from elsewhere\n(6) Bypass surgery is more invasive and usually used when other treatments are unsuitable" },
-                { id: 'b_a_h_2_22_h_13', q: "Describe how bypass surgery can treat coronary heart disease.", a: "(1) A blood vessel is taken from another part of the body\n(2) It is attached around the blocked or narrowed coronary artery\n(3) This creates a new route for blood flow\n(4) More blood reaches the heart muscle\n(5) More oxygen reaches heart muscle cells\n(6) This reduces the risk of heart attack" },
-                { id: 'b_a_h_2_22_h_14', q: "Describe the full route of blood through the double circulatory system.", a: "(1) Blood from the body enters the heart through the vena cava\n(2) It enters the right atrium, then the right ventricle\n(3) The right ventricle pumps blood through the pulmonary artery to the lungs\n(4) Blood returns from the lungs through the pulmonary vein to the left atrium\n(5) It moves into the left ventricle\n(6) The left ventricle pumps blood through the aorta to the body tissues" },
-                { id: 'b_a_h_2_22_h_15', q: "Explain why the human circulatory system is described as a double circulatory system.", a: "(1) Blood passes through the heart twice in one full circuit\n(2) One circuit carries blood between the heart and lungs\n(3) This is the pulmonary circulation\n(4) One circuit carries blood between the heart and the rest of the body\n(5) This is the systemic circulation\n(6) This allows oxygenated blood to be pumped around the body at high pressure" },
-                { id: 'b_a_h_2_22_h_16', q: "Compare mechanical and biological heart valves.", a: "(1) Mechanical valves are made from man-made materials\n(2) Mechanical valves last a long time\n(3) Mechanical valves increase risk of blood clots\n(4) Patients may need lifelong blood-thinning medication\n(5) Biological valves are made from animal or human tissue\n(6) Biological valves may need replacing after 12–15 years" },
-                { id: 'b_a_h_2_22_h_17', q: "Explain how faulty heart valves can affect the body.", a: "(1) Valves may not close properly\n(2) Blood can leak backwards\n(3) Or valves may become stiff and not open fully\n(4) Less blood is pumped around the body\n(5) Less oxygen reaches body cells\n(6) This can cause breathlessness or serious illness" },
-                { id: 'b_a_h_2_22_h_18', q: "Compare heart transplants and artificial hearts.", a: "(1) A heart transplant uses a donor heart\n(2) Donor hearts are not always available\n(3) Donor heart must be a tissue match\n(4) Artificial hearts can keep a patient alive while waiting for a transplant\n(5) Artificial hearts are expensive\n(6) Artificial hearts increase risk of blood clots" },
-                { id: 'b_a_h_2_22_h_19', q: "Explain how an artificial pacemaker helps treat an irregular heartbeat.", a: "(1) An irregular rhythm can make the heart pump inefficiently\n(2) This reduces oxygen delivery to cells\n(3) The pacemaker is implanted in the chest\n(4) Wires connect it to the heart\n(5) It sends electrical impulses to the heart muscle\n(6) These impulses stimulate regular contractions" }
-              ]
-            },
-              "2.3 Plant tissues, organs and systems": {
-                "Easy (1-2 marks)": [
-                  { id: 'b_a_2_23_e_1', q: "Are xylem and phloem part of the plant transport system?", a: "(1) Yes\n(2) They are tissues, not organs" },
-                  { id: 'b_a_2_23_e_2', q: "What are root hair cells specialised to do?", a: "(1) Absorb water by osmosis\n(2) Absorb mineral ions by active transport" },
-                  { id: 'b_a_2_23_e_3', q: "What are mineral ions used for in plants?", a: "(1) To make proteins\n(2) To make other molecules" },
-                  { id: 'b_a_2_23_e_4', q: "What is the transpiration stream?", a: "(1) Movement of water through the xylem" },
-                  { id: 'b_a_2_23_e_5', q: "How does water help the plant stay upright?", a: "(1) Creates turgor pressure" },
-                  { id: 'b_a_2_23_e_6', q: "What is transpiration?", a: "(1) Loss of water vapour from leaves" },
-                  { id: 'b_a_2_23_e_7', q: "Does the leaf keep most of the water?", a: "(1) No\n(2) Most is lost" },
-                  { id: 'b_a_2_23_e_8', q: "Where are stomata found?", a: "(1) Mainly on the underside of leaves" },
-                  { id: 'b_a_2_23_e_9', q: "What are guard cells specialised to do?", a: "(1) Control gas exchange\n(2) Control water loss" },
-                  { id: 'b_a_2_23_e_10', q: "What is the function of stomata?", a: "(1) Allow gases to enter and leave by diffusion" },
-                  { id: 'b_a_2_23_e_11', q: "What is water potential?", a: "(1) The tendency for water to move by osmosis" },
-                  { id: 'b_a_2_23_e_12', q: "Why can’t stomata remain closed?", a: "(1) Gases would not be able to diffuse in and out" },
-                  { id: 'b_a_2_23_e_13', q: "What is humidity?", a: "(1) The amount of water vapour in the air" },
-                  { id: 'b_a_2_23_e_14', q: "What is the function of the phloem?", a: "(1) Transports sugars (food)\n(2) From leaves to the rest of the plant" },
-                  { id: 'b_a_2_23_e_15', q: "What is cell sap?", a: "(1) Water with dissolved sugars\n(2) May also contain mineral ions" },
-                  { id: 'b_a_2_23_e_16', q: "What is translocation?", a: "(1) Movement of sugars in the phloem" },
-                  { id: 'b_a_2_23_e_17', q: "Why is the shoot of a plant cut at a slant?", a: "(1) Increases surface area for water uptake" },
-                  { id: 'b_a_2_23_e_18', q: "How can a potometer be used to investigate the effect of environmental factors on transpiration rate?", a: "(1) Change one factor (e.g. light, wind, temp)\n(2) Measure rate of water uptake" },
-                  { id: 'b_a_2_23_e_19', q: "What are limitations of using nail varnish to estimate stomata distribution?", a: "(1) Varnish may not peel cleanly\n(2) Results are only estimates" }
-                ],
-                "Medium (3-4 marks)": [
-                  { id: 'b_a_2_23_m_1', q: "What are the main organs in the plant transport system?", a: "(1) Roots\n(2) Stems (shoots)\n(3) Leaves" },
-                  { id: 'b_a_2_23_m_2', q: "How are root hair cells adapted for their function?", a: "(1) Large surface area for absorption\n(2) Large permanent vacuole to increase osmosis\n(3) Many mitochondria for active transport" },
-                  { id: 'b_a_2_23_m_3', q: "What is the function of the xylem?", a: "(1) Transports water\n(2) Transports mineral ions\n(3) From roots to leaves" },
-                  { id: 'b_a_2_23_m_4', q: "What is water used for in plants?", a: "(1) Photosynthesis\n(2) Maintaining turgor pressure\n(3) Transporting minerals" },
-                  { id: 'b_a_2_23_m_5', q: "Describe the structure of xylem tissue.", a: "(1) Hollow tubes\n(2) No end walls\n(3) Strengthened with lignin" },
-                  { id: 'b_a_2_23_m_6', q: "What causes water loss from the leaf?", a: "(1) Spongy mesophyll has air spaces\n(2) Water evaporates into air spaces\n(3) Water vapour diffuses out through stomata" },
-                  { id: 'b_a_2_23_m_7', q: "What are stomata?", a: "(1) Tiny pores in leaves\n(2) Surrounded by guard cells\n(3) Allow gases to diffuse in and out" },
-                  { id: 'b_a_2_23_m_8', q: "What are guard cells?", a: "(1) Cells that surround stomata\n(2) Control opening and closing\n(3) Regulate gas exchange / water loss" },
-                  { id: 'b_a_2_23_m_9', q: "How are guard cells adapted for their function?", a: "(1) Thick inner walls and thin outer walls\n(2) Allows opening and closing\n(3) Sensitive to light (open in light, close in dark)" },
-                  { id: 'b_a_2_23_m_10', q: "Why does a plant lose most of the water it takes in?", a: "(1) Water evaporates from mesophyll cells\n(2) Enters air spaces in the leaf\n(3) Diffuses out through stomata" },
-                  { id: 'b_a_2_23_m_11', q: "Why is water loss not always harmful to the plant?", a: "(1) Maintains the transpiration stream\n(2) Pulls water up from roots\n(3) Supplies water for photosynthesis" },
-                  { id: 'b_a_2_23_m_12', q: "When do stomata open and close?", a: "(1) Open to allow carbon dioxide in\n(2) Open to allow oxygen out\n(3) Close to reduce water loss" },
-                  { id: 'b_a_2_23_m_13', q: "Explain how wind affects transpiration.", a: "(1) Removes water vapour from leaf surface\n(2) Maintains steep concentration gradient\n(3) Increases diffusion rate" },
-                  { id: 'b_a_2_23_m_14', q: "Explain how temperature affects transpiration.", a: "(1) Increases kinetic energy of molecules\n(2) Speeds up evaporation and diffusion\n(3) Increases rate of water loss" },
-                  { id: 'b_a_2_23_m_15', q: "Explain how humidity affects transpiration.", a: "(1) High humidity reduces concentration gradient\n(2) Slows diffusion of water vapour\n(3) Decreases transpiration rate" },
-                  { id: 'b_a_2_23_m_16', q: "Explain how light intensity affects transpiration.", a: "(1) Light increases photosynthesis\n(2) Stomata open for gas exchange\n(3) Increases water loss" },
-                  { id: 'b_a_2_23_m_17', q: "How are plants adapted to reduce water loss?", a: "(1) Waxy cuticle reduces evaporation\n(2) Stomata mainly on underside\n(3) Reduces exposure to sunlight" },
-                  { id: 'b_a_2_23_m_18', q: "What happens if a plant loses water faster than it absorbs it?", a: "(1) Cells lose turgor pressure\n(2) Plant wilts\n(3) Stomata close to reduce water loss" },
-                  { id: 'b_a_2_23_m_19', q: "Will the plant die if it loses too much water?", a: "(1) May stop photosynthesising\n(2) May overheat\n(3) Can recover if conditions improve" },
-                  { id: 'b_a_2_23_m_20', q: "Describe the structure of phloem tissue.", a: "(1) Made of elongated living cells\n(2) Arranged in tubes\n(3) Sieve plates between cells" },
-                  { id: 'b_a_2_23_m_21', q: "How does cell sap move through the phloem?", a: "(1) Moves from cell to cell\n(2) Through pores in sieve plates\n(3) Driven by pressure differences" },
-                  { id: 'b_a_2_23_m_22', q: "What is sugar used for in plants?", a: "(1) Respiration\n(2) Growth (making new cells)\n(3) Storage (e.g. roots)" },
-                  { id: 'b_a_2_23_m_23', q: "Why can removing a ring of bark kill a tree?", a: "(1) Phloem is found under the bark\n(2) Removing it stops sugar transport\n(3) Roots and tissues do not receive food\n(4) Tree eventually dies" }
-                ],
-                "Hard (5-6 marks)": [
-                  { id: 'b_a_2_23_h_1', q: "How are xylem cells adapted for their function?", a: "(1) Cells are dead\n(2) No end walls → continuous tubes\n(3) Hollow to allow flow\n(4) Lignin strengthens walls\n(5) Prevents collapse under pressure\n(6) Provides support" },
-                  { id: 'b_a_2_23_h_2', q: "Describe how water moves from the soil to the leaves.", a: "(1) Water enters root hair cells by osmosis\n(2) Moves through root cells by osmosis\n(3) Enters xylem vessels\n(4) Travels up the stem in transpiration stream\n(5) Moves into leaf cells\n(6) Evaporates and exits via stomata" },
-                  { id: 'b_a_2_23_h_3', q: "How do guard cells work?", a: "(1) When water enters, cells become turgid\n(2) Turgid cells open the stomata\n(3) When water leaves, cells become flaccid\n(4) Flaccid cells close the stomata\n(5) Opening allows gas exchange\n(6) Closing reduces water loss" },
-                  { id: 'b_a_2_23_h_4', q: "Describe the process of transpiration.", a: "(1) Water evaporates from mesophyll cells\n(2) Water vapour enters air spaces\n(3) Diffuses out through stomata\n(4) Creates a concentration gradient\n(5) Causes water to be pulled up through xylem\n(6) Forms the transpiration stream" },
-                  { id: 'b_a_2_23_h_5', q: "What factors increase the rate of transpiration?", a: "(1) High temperature\n(2) Wind\n(3) Low humidity\n(4) High light intensity\n(5) Larger surface area\n(6) More stomata open" },
-                  { id: 'b_a_2_23_h_6', q: "How are phloem cells adapted for their function?", a: "(1) Cells are living\n(2) Have sieve plates with pores\n(3) Few organelles to allow flow\n(4) Companion cells provide energy\n(5) Companion cells contain many mitochondria\n(6) Enables active transport of sugars" },
-                  { id: 'b_a_2_23_h_7', q: "Describe how to measure transpiration using a potometer.", a: "(1) Cut shoot at slant under water\n(2) Assemble under water to avoid bubbles\n(3) Ensure system is airtight\n(4) Introduce air bubble\n(5) Measure distance moved over time\n(6) Calculate rate" },
-                  { id: 'b_a_2_23_h_8', q: "Describe how to investigate stomata distribution using a microscope.", a: "(1) Apply nail varnish to leaf\n(2) Allow to dry and peel\n(3) Place on slide\n(4) Observe under microscope\n(5) Count stomata in known area\n(6) Repeat and calculate mean" }
-                ]
-              }
-            },
-            "3. Infection and response": {
-              "3.1 Communicable diseases": {
-                "Easy (1-2 marks)": [
-                  { id: 'b_a_3_31_e_1', q: "What causes viral diseases?", a: "(1) Viruses" },
-                  { id: 'b_a_3_31_e_2', q: "Are viruses alive?", a: "(1) No\n(2) Do not carry out life processes independently" },
-                  { id: 'b_a_3_31_e_3', q: "Do viruses reproduce?", a: "(1) No\n(2) They replicate inside host cells" },
-                  { id: 'b_a_3_31_e_4', q: "What are the main symptoms of measles?", a: "(1) Fever\n(2) Red rash" },
-                  { id: 'b_a_3_31_e_5', q: "How is measles spread?", a: "(1) By inhaling droplets from coughs and sneezes" },
-                  { id: 'b_a_3_31_e_6', q: "Is measles easy to catch?", a: "(1) Yes\n(2) It is highly infectious" },
-                  { id: 'b_a_3_31_e_7', q: "Can measles be fatal?", a: "(1) Yes\n(2) Especially if complications develop" },
-                  { id: 'b_a_3_31_e_8', q: "How is measles treated?", a: "(1) There is no specific cure\n(2) Patients may be isolated to prevent spread" },
-                  { id: 'b_a_3_31_e_9', q: "Does measles only affect children?", a: "(1) No\n(2) It can affect unvaccinated adults" },
-                  { id: 'b_a_3_31_e_10', q: "What does HIV stand for?", a: "(1) Human immunodeficiency virus" },
-                  { id: 'b_a_3_31_e_11', q: "What happens after the early stage of HIV infection?", a: "(1) Symptoms may disappear\n(2) Virus remains in the body" },
-                  { id: 'b_a_3_31_e_12', q: "How long can HIV take to damage the immune system?", a: "(1) Months to years" },
-                  { id: 'b_a_3_31_e_13', q: "What is the difference between HIV and AIDS?", a: "(1) HIV is the virus\n(2) AIDS is the late stage of infection" },
-                  { id: 'b_a_3_31_e_14', q: "What does AIDS stand for?", a: "(1) Acquired immune deficiency syndrome" },
-                  { id: 'b_a_3_31_e_15', q: "How can the progression of HIV be slowed?", a: "(1) Taking antiretroviral drugs" },
-                  { id: 'b_a_3_31_e_16', q: "What is an unscreened blood transfusion?", a: "(1) Blood that has not been tested for infections" },
-                  { id: 'b_a_3_31_e_17', q: "Is there a vaccine for HIV?", a: "(1) No" },
-                  { id: 'b_a_3_31_e_18', q: "Is there a cure for HIV?", a: "(1) No\n(2) It can be managed with treatment" },
-                  { id: 'b_a_3_31_e_19', q: "What is the difference between HIV-positive and HIV-negative?", a: "(1) HIV-positive = infected with HIV\n(2) HIV-negative = not infected" },
-                  { id: 'b_a_3_31_e_20', q: "What does TMV stand for?", a: "(1) Tobacco mosaic virus" },
-                  { id: 'b_a_3_31_e_21', q: "How can you identify a plant infected with TMV?", a: "(1) Mosaic pattern on leaves\n(2) Discoloured patches" },
-                  { id: 'b_a_3_31_e_22', q: "How is TMV transmitted between plants?", a: "(1) Direct contact\n(2) Insect vectors" },
-                  { id: 'b_a_3_31_e_23', q: "How long can TMV survive outside a host?", a: "(1) Can survive for many years\n(2) e.g. in soil or plant material" },
-                  { id: 'b_a_3_31_e_24', q: "How is TMV treated?", a: "(1) There is no cure" },
-                  { id: 'b_a_3_31_e_25', q: "How can the spread of TMV be reduced?", a: "(1) Good field hygiene\n(2) Control insect pests" },
-                  { id: 'b_a_3_31_e_26', q: "What alternative can farmers use to reduce the impact of TMV?", a: "(1) Grow TMV-resistant crop varieties" },
-                  { id: 'b_a_3_31_e_27', q: "Will bacterial infections continue to decrease?", a: "(1) No\n(2) Antibiotic resistance is increasing" },
-                  { id: 'b_a_3_31_e_28', q: "What causes bacterial diseases?", a: "(1) Pathogenic bacteria" },
-                  { id: 'b_a_3_31_e_29', q: "How do bacteria reproduce?", a: "(1) Asexually\n(2) By binary fission" },
-                  { id: 'b_a_3_31_e_30', q: "Are bacteria prokaryotic or eukaryotic?", a: "(1) Prokaryotic" },
-                  { id: 'b_a_3_31_e_31', q: "How do bacteria compare in size to viruses?", a: "(1) Bacteria are larger" },
-                  { id: 'b_a_3_31_e_32', q: "Are bacteria alive?", a: "(1) Yes" },
-                  { id: 'b_a_3_31_e_33', q: "How is Salmonella transmitted?", a: "(1) Eating undercooked food\n(2) Poor food hygiene" },
-                  { id: 'b_a_3_31_e_34', q: "How long does it take for Salmonella symptoms to develop?", a: "(1) 8–72 hours" },
-                  { id: 'b_a_3_31_e_35', q: "When are antibiotics used to treat Salmonella?", a: "(1) In severe cases\n(2) For vulnerable people (e.g. elderly / young)" },
-                  { id: 'b_a_3_31_e_36', q: "Why can Salmonella be dangerous?", a: "(1) Causes dehydration" },
-                  { id: 'b_a_3_31_e_37', q: "How does the UK reduce the spread of Salmonella?", a: "(1) Vaccinating poultry" },
-                  { id: 'b_a_3_31_e_38', q: "Why should raw chicken not be washed?", a: "(1) Bacteria can spread via water droplets" },
-                  { id: 'b_a_3_31_e_39', q: "What does STD stand for?", a: "(1) Sexually transmitted disease" },
-                  { id: 'b_a_3_31_e_40', q: "What is another term for STD?", a: "(1) STI (sexually transmitted infection)" },
-                  { id: 'b_a_3_31_e_41', q: "What is discharge?", a: "(1) Fluid released from the body" },
-                  { id: 'b_a_3_31_e_42', q: "How is gonorrhoea treated?", a: "(1) Antibiotics" },
-                  { id: 'b_a_3_31_e_43', q: "Why is penicillin no longer used to treat gonorrhoea?", a: "(1) Antibiotic resistance" }
-                ],
-                "Medium (3-4 marks)": [
-                  { id: 'b_a_3_31_m_1', q: "Describe the structure of a virus.", a: "(1) Genetic material (DNA/RNA)\n(2) Protein coat (capsid)\n(3) May have outer lipid envelope" },
-                  { id: 'b_a_3_31_m_2', q: "What serious complications can measles cause?", a: "(1) Blindness\n(2) Brain damage\n(3) Can lead to death in severe cases" },
-                  { id: 'b_a_3_31_m_3', q: "Is measles common in the UK?", a: "(1) Less common due to vaccination\n(2) Most children are vaccinated at a young age\n(3) Still occurs if vaccination rates are low" },
-                  { id: 'b_a_3_31_m_4', q: "What complications can measles cause in adults?", a: "(1) Infertility (in some cases)\n(2) Complications during pregnancy\n(3) Risk of harm to the unborn baby" },
-                  { id: 'b_a_3_31_m_5', q: "What are the early symptoms of HIV?", a: "(1) Flu-like symptoms\n(2) Such as fever\n(3) Fatigue or sore throat" },
-                  { id: 'b_a_3_31_m_6', q: "What does HIV do to the body?", a: "(1) Attacks immune cells\n(2) Weakens the immune system\n(3) Makes it harder to fight infections" },
-                  { id: 'b_a_3_31_m_7', q: "Why is HIV difficult to detect early?", a: "(1) Early symptoms are mild\n(2) Similar to flu\n(3) Long period with no symptoms" },
-                  { id: 'b_a_3_31_m_8', q: "When does HIV develop into AIDS?", a: "(1) When the immune system is severely damaged\n(2) Cannot fight infections\n(3) Cannot fight cancers" },
-                  { id: 'b_a_3_31_m_9', q: "What do antiretroviral drugs do?", a: "(1) Reduce virus replication\n(2) Slow damage to immune system\n(3) Delay development of AIDS" },
-                  { id: 'b_a_3_31_m_10', q: "What factors affect how quickly HIV develops into AIDS?", a: "(1) Overall health\n(2) Nutrition\n(3) Use of antiretroviral drugs" },
-                  { id: 'b_a_3_31_m_11', q: "How long can someone live with HIV?", a: "(1) Near normal life expectancy\n(2) If treated early\n(3) With antiretroviral drugs" },
-                  { id: 'b_a_3_31_m_12', q: "What plants does TMV affect?", a: "(1) Many plant species\n(2) Including tobacco plants\n(3) And tomato plants" },
-                  { id: 'b_a_3_31_m_13', q: "What causes the mosaic pattern in TMV-infected leaves?", a: "(1) Virus infects leaf cells\n(2) Damages or destroys cells\n(3) Causes discolouration" },
-                  { id: 'b_a_3_31_m_14', q: "Why is TMV harmful to plants?", a: "(1) Reduces photosynthesis\n(2) Less chlorophyll / damaged cells\n(3) Leads to reduced growth" },
-                  { id: 'b_a_3_31_m_15', q: "What are non-pathogenic bacteria?", a: "(1) Bacteria that do not cause disease\n(2) Can live in the body\n(3) Some help digestion" },
-                  { id: 'b_a_3_31_m_16', q: "Where do bacteria live in the body?", a: "(1) Inside the host\n(2) Commonly in mouth, nose, throat" },
-                  { id: 'b_a_3_31_m_17', q: "What happens when pathogenic bacteria enter the body?", a: "(1) Reproduce rapidly\n(2) Produce toxins\n(3) Toxins damage cells" },
-                  { id: 'b_a_3_31_m_18', q: "What is Salmonella?", a: "(1) A type of bacterium\n(2) Found in animal gut\n(3) Causes food poisoning" },
-                  { id: 'b_a_3_31_m_19', q: "What are the symptoms of Salmonella food poisoning?", a: "(1) Fever\n(2) Stomach cramps\n(3) Vomiting\n(4) Diarrhoea" },
-                  { id: 'b_a_3_31_m_20', q: "What is gonorrhoea?", a: "(1) A bacterial infection\n(2) Sexually transmitted\n(3) Spread by unprotected sexual contact" },
-                  { id: 'b_a_3_31_m_21', q: "What are the early symptoms of gonorrhoea?", a: "(1) Thick yellow/green discharge\n(2) Pain when urinating\n(3) Symptoms may disappear later" },
-                  { id: 'b_a_3_31_m_22', q: "How can the spread of gonorrhoea be reduced?", a: "(1) Use condoms\n(2) Limit number of partners\n(3) Test and treat infected individuals" }
-                ],
-                "Hard (5-6 marks)": [
-                  { id: 'b_a_3_31_h_1', q: "What do viruses do inside the body?", a: "(1) Enter host cells\n(2) Insert genetic material\n(3) Use cell machinery to replicate\n(4) Cell bursts (lysis)\n(5) New viruses infect others" },
-                  { id: 'b_a_3_31_h_2', q: "Explain why viral diseases are difficult to treat.", a: "(1) Viruses live inside host cells\n(2) Hard to target without damaging cells\n(3) Antibiotics do not work on viruses\n(4) Viruses replicate rapidly\n(5) Can mutate quickly\n(6) Makes treatment difficult" },
-                  { id: 'b_a_3_31_h_3', q: "How is HIV transmitted?", a: "(1) Unprotected sexual contact\n(2) Exchange of body fluids (e.g. blood)\n(3) Sharing needles\n(4) Unscreened blood transfusions\n(5) From mother to baby during birth\n(6) Through breastfeeding" },
-                  { id: 'b_a_3_31_h_4', q: "How can the spread of HIV be reduced?", a: "(1) Use condoms\n(2) Do not share needles\n(3) Use screened blood for transfusions\n(4) Test regularly\n(5) Use antiretroviral treatment\n(6) Avoid breastfeeding if HIV-positive" },
-                  { id: 'b_a_3_31_h_5', q: "Why are bacterial diseases less common than in the past?", a: "(1) Improved living conditions\n(2) Better sanitation\n(3) Vaccination programmes\n(4) Use of antibiotics\n(5) Improved healthcare\n(6) Better hygiene practices" },
-                  { id: 'b_a_3_31_h_6', q: "How can Salmonella food poisoning be prevented?", a: "(1) Cook food thoroughly\n(2) Avoid cross-contamination\n(3) Keep raw meat separate\n(4) Wash hands and surfaces\n(5) Do not wash raw chicken\n(6) Maintain good food hygiene" },
-                  { id: 'b_a_3_31_h_7', q: "What can happen if gonorrhoea is untreated?", a: "(1) Pelvic pain\n(2) Infertility\n(3) Ectopic pregnancy\n(4) Infection can spread\n(5) Can affect newborn babies\n(6) May cause blindness in babies" }
-                ]
-              }
-            },
-            "4. Bioenergetics": {
-              "4.1 Photosynthesis": {
-                "Easy (1-2 marks)": [
-                  { id: 'b_a_h_4_41_e_1', q: "What is a limiting factor?", a: "(1) A factor that restricts the rate of a reaction\n(2) If increased, the rate will increase" },
-                  { id: 'b_a_h_4_41_e_2', q: "Which factors can limit photosynthesis?", a: "(1) Light intensity\n(2) Carbon dioxide concentration" },
-                  { id: 'b_a_h_4_41_e_3', q: "Why might a plant have low chlorophyll levels?", a: "(1) Magnesium deficiency\n(2) Some plants have non-green areas" },
-                  { id: 'b_a_h_4_41_e_4', q: "What does deficiency mean?", a: "(1) A lack of something" },
-                  { id: 'b_a_h_4_41_e_5', q: "Why does magnesium deficiency reduce photosynthesis?", a: "(1) Magnesium is needed to make chlorophyll" },
-                  { id: 'b_a_h_4_41_e_6', q: "What is chlorosis?", a: "(1) Yellowing of leaves" },
-                  { id: 'b_a_h_4_41_e_7', q: "What causes chlorosis?", a: "(1) Lack of magnesium" },
-                  { id: 'b_a_h_4_41_e_8', q: "What is yield?", a: "(1) Amount of useful crop produced" },
-                  { id: 'b_a_h_4_41_e_9', q: "How do farmers increase crop yield?", a: "(1) Reduce limiting factors\n(2) Optimise growing conditions" },
-                  { id: 'b_a_h_4_41_e_10', q: "What is hydroponics?", a: "(1) Growing plants in nutrient solution\n(2) Without soil" },
-                  { id: 'b_a_h_4_41_e_11', q: "What happens to light intensity when distance is doubled?", a: "(1) Light intensity becomes one quarter" },
-                  { id: 'b_a_h_4_41_e_12', q: "What are the bubbles produced in the pondweed experiment?", a: "(1) Oxygen\n(2) Produced during photosynthesis" },
-                  { id: 'b_a_h_4_41_e_13', q: "Why is a beaker of water placed between the lamp and the pondweed?", a: "(1) Acts as a heat filter\n(2) Prevents temperature increase" },
-                  { id: 'b_a_h_4_41_e_14', q: "Why should the experiment be left for a short time before taking measurements?", a: "(1) To allow the rate of photosynthesis to stabilise" },
-                  { id: 'b_a_h_4_41_e_15', q: "What is a more accurate way to measure oxygen production than counting bubbles?", a: "(1) Use a gas syringe" }
-                ],
-                "Medium (3-4 marks)": [
-                  { id: 'b_a_h_4_41_m_1', q: "What factors affect the rate of photosynthesis?", a: "(1) Light intensity\n(2) Carbon dioxide concentration\n(3) Temperature\n(4) Chlorophyll content" },
-                  { id: 'b_a_h_4_41_m_2', q: "How does carbon dioxide affect the rate of photosynthesis?", a: "(1) Carbon dioxide is a reactant\n(2) Low CO₂ reduces rate\n(3) More CO₂ increases rate" },
-                  { id: 'b_a_h_4_41_m_3', q: "How does carbon dioxide concentration change during the day?", a: "(1) Higher at night (respiration releases CO₂)\n(2) Lower during the day (photosynthesis uses CO₂)\n(3) Changes depending on light availability" },
-                  { id: 'b_a_h_4_41_m_4', q: "How does light intensity affect the rate of photosynthesis?", a: "(1) Provides energy for photosynthesis\n(2) Low light → low rate\n(3) High light → higher rate" },
-                  { id: 'b_a_h_4_41_m_5', q: "How does chlorophyll content affect photosynthesis?", a: "(1) Chlorophyll absorbs light\n(2) Less chlorophyll reduces rate\n(3) More chlorophyll increases rate" },
-                  { id: 'b_a_h_4_41_m_6', q: "How can farmers control limiting factors in photosynthesis?", a: "(1) Control light intensity\n(2) Control temperature\n(3) Control carbon dioxide levels" },
-                  { id: 'b_a_h_4_41_m_7', q: "Why are greenhouses used in farming?", a: "(1) Control environmental conditions\n(2) Increase rate of photosynthesis\n(3) Increase crop yield" },
-                  { id: 'b_a_h_4_41_m_8', q: "Why can greenhouse farming be expensive?", a: "(1) Cost of heating\n(2) Cost of lighting\n(3) Cost of equipment" },
-                  { id: 'b_a_h_4_41_m_9', q: "What is the relationship between light intensity and distance?", a: "(1) Inversely proportional\n(2) As distance increases, intensity decreases\n(3) Follows inverse square relationship" },
-                  { id: 'b_a_h_4_41_m_10', q: "What is the inverse square law?", a: "(1) Light intensity ∝ 1 / distance²\n(2) Intensity decreases rapidly with distance\n(3) Doubling distance reduces intensity" },
-                  { id: 'b_a_h_4_41_m_11', q: "How can you identify a limiting factor on a photosynthesis graph?", a: "(1) Rate increases at first\n(2) Then levels off (plateau)\n(3) Shows another factor is limiting" },
-                  { id: 'b_a_h_4_41_m_12', q: "Why must temperature be controlled in the pondweed experiment?", a: "(1) Temperature affects enzyme activity\n(2) It is a limiting factor of photosynthesis\n(3) Must be controlled to ensure a fair test" },
-                  { id: 'b_a_h_4_41_m_13', q: "How does changing the distance of the lamp affect light intensity?", a: "(1) Increasing distance reduces light intensity\n(2) Decreasing distance increases light intensity\n(3) Follows inverse square relationship" }
-                ],
-                "Hard (5-6 marks)": [
-                  { id: 'b_a_h_4_41_h_1', q: "How does temperature affect the rate of photosynthesis?", a: "(1) Low temperature → less kinetic energy\n(2) Fewer successful collisions\n(3) Slower reaction rate\n(4) Increasing temperature increases rate\n(5) Enzymes denature at high temperatures\n(6) Rate then decreases" },
-                  { id: 'b_a_h_4_41_h_2', q: "What are advantages of growing plants in greenhouses?", a: "(1) Grow crops out of season\n(2) Faster growth rates\n(3) Controlled conditions\n(4) Reduced pests\n(5) No soil needed\n(6) Higher yields" },
-                  { id: 'b_a_h_4_41_h_3', q: "Describe a practical to investigate the effect of light intensity on the rate of photosynthesis in pondweed.", a: "(1) Place pondweed in water (e.g. in a test tube/beaker)\n(2) Position a lamp at a measured distance\n(3) Use a ruler to measure the distance\n(4) Allow the plant to equilibrate\n(5) Count bubbles of oxygen produced in a set time\n(6) Repeat at different distances and calculate a mean" },
-                  { id: 'b_a_h_4_41_h_4', q: "What variables should be controlled in the pondweed experiment?", a: "(1) Temperature\n(2) Carbon dioxide concentration\n(3) Type/size of pondweed\n(4) Volume of water\n(5) Light wavelength/colour\n(6) Time measured" }
-                ]
-              },
-              "4.2 Respiration": {
-                "Easy (1-2 marks)": [
-                  { id: 'b_a_h_4_42_e_1', q: "Do muscles use energy when the body is at rest?", a: "(1) Yes\n(2) They still use oxygen and glucose" },
-                  { id: 'b_a_h_4_42_e_2', q: "What happens if muscles do not get enough oxygen?", a: "(1) Anaerobic respiration occurs" },
-                  { id: 'b_a_h_4_42_e_3', q: "What does anaerobic mean?", a: "(1) Without oxygen" },
-                  { id: 'b_a_h_4_42_e_4', q: "What is the word equation for anaerobic respiration in animals?", a: "(1) Glucose → lactic acid + energy" },
-                  { id: 'b_a_h_4_42_e_5', q: "What is lactic acid?", a: "(1) Product of anaerobic respiration in animals" },
-                  { id: 'b_a_h_4_42_e_6', q: "Why is anaerobic respiration less efficient than aerobic respiration?", a: "(1) Glucose is not fully broken down\n(2) Less energy is released" },
-                  { id: 'b_a_h_4_42_e_7', q: "How does energy yield compare between aerobic and anaerobic respiration?", a: "(1) Anaerobic releases much less energy\n(2) About 5% of aerobic respiration" },
-                  { id: 'b_a_h_4_42_e_8', q: "Why do muscles become tired during exercise?", a: "(1) Lactic acid builds up" },
-                  { id: 'b_a_h_4_42_e_9', q: "What is oxygen debt?", a: "(1) Extra oxygen needed after exercise" },
-                  { id: 'b_a_h_4_42_e_10', q: "What happens to glucose after oxygen debt is repaid?", a: "(1) Used in respiration\n(2) Or stored" },
-                  { id: 'b_a_h_4_42_e_11', q: "What affects how quickly someone goes into oxygen debt?", a: "(1) Fitness level" },
-                  { id: 'b_a_h_4_42_e_12', q: "How does the body recover from oxygen debt?", a: "(1) Increased breathing rate\n(2) Increased heart rate" },
-                  { id: 'b_a_h_4_42_e_13', q: "What is the word equation for oxygen debt repayment?", a: "(1) Lactic acid + oxygen → carbon dioxide + water" },
-                  { id: 'b_a_h_4_42_e_14', q: "Can other organisms respire anaerobically?", a: "(1) Yes\n(2) Plants and microorganisms" },
-                  { id: 'b_a_h_4_42_e_15', q: "What are the products of anaerobic respiration in plants and yeast?", a: "(1) Ethanol\n(2) Carbon dioxide" },
-                  { id: 'b_a_h_4_42_e_16', q: "What is fermentation?", a: "(1) Anaerobic respiration in yeast" },
-                  { id: 'b_a_h_4_42_e_17', q: "What is fermentation used for?", a: "(1) Bread making\n(2) Alcohol production" },
-                  { id: 'b_a_h_4_42_e_18', q: "What is metabolism?", a: "(1) The sum of all chemical reactions in a cell or body" },
-                  { id: 'b_a_h_4_42_e_19', q: "How many metabolic reactions occur in the body?", a: "(1) Many / thousands\n(2) Occur continuously" },
-                  { id: 'b_a_h_4_42_e_20', q: "What controls metabolism?", a: "(1) Enzymes\n(2) Hormones (e.g. thyroid hormone)" },
-                  { id: 'b_a_h_4_42_e_21', q: "What increases the rate of metabolic reactions?", a: "(1) Enzymes" },
-                  { id: 'b_a_h_4_42_e_22', q: "What are the two types of metabolic reactions?", a: "(1) Breakdown (catabolic) reactions\n(2) Synthesis (anabolic) reactions" },
-                  { id: 'b_a_h_4_42_e_23', q: "Name two examples of breakdown reactions.", a: "(1) Protein breakdown\n(2) Amino acid breakdown" },
-                  { id: 'b_a_h_4_42_e_24', q: "What is urea?", a: "(1) Waste product of protein metabolism" },
-                  { id: 'b_a_h_4_42_e_25', q: "What are lipids made from?", a: "(1) Glycerol\n(2) Three fatty acids" },
-                  { id: 'b_a_h_4_42_e_26', q: "What are lipids used for?", a: "(1) Form cell membranes\n(2) Store energy" }
-                ],
-                "Medium (3-4 marks)": [
-                  { id: 'b_a_h_4_42_m_1', q: "What happens to the body during exercise?", a: "(1) Increased demand for oxygen\n(2) Increased demand for glucose\n(3) Increased removal of carbon dioxide" },
-                  { id: 'b_a_h_4_42_m_2', q: "What happens to lactic acid after exercise?", a: "(1) Transported to the liver\n(2) Converted back into glucose\n(3) Requires oxygen" },
-                  { id: 'b_a_h_4_42_m_3', q: "How is lactic acid transported from muscles to the liver?", a: "(1) Diffuses from muscle cells into blood\n(2) Carried in the bloodstream\n(3) Diffuses into liver cells" },
-                  { id: 'b_a_h_4_42_m_4', q: "What affects recovery from oxygen debt?", a: "(1) Amount of lactic acid\n(2) Fitness level\n(3) Rate of oxygen intake" },
-                  { id: 'b_a_h_4_42_m_5', q: "Why does bread not contain alcohol?", a: "(1) Yeast is killed by heat\n(2) Ethanol evaporates\n(3) During baking" },
-                  { id: 'b_a_h_4_42_m_6', q: "What is the difference between breakdown and synthesis reactions?", a: "(1) Breakdown reactions split large molecules into smaller ones\n(2) Synthesis reactions build large molecules from smaller ones\n(3) Breakdown releases energy\n(4) Synthesis requires energy" },
-                  { id: 'b_a_h_4_42_m_7', q: "Name three examples of synthesis reactions.", a: "(1) Protein synthesis\n(2) Lipid formation\n(3) Conversion of glucose to glycogen" },
-                  { id: 'b_a_h_4_42_m_8', q: "How are amino acids broken down in the body?", a: "(1) Occurs in the liver\n(2) Enzymes remove the amine group\n(3) Produces urea" }
-                ],
-                "Hard (5-6 marks)": [
-                  { id: 'b_a_h_4_42_h_1', q: "What do muscles use energy for?", a: "(1) Muscle contraction\n(2) Movement of the body\n(3) Maintaining posture\n(4) Moving food through the digestive system\n(5) Pumping blood (heart muscle)\n(6) Transferring energy from respiration" },
-                  { id: 'b_a_h_4_42_h_2', q: "How does the body respond to exercise?", a: "(1) Heart rate increases\n(2) Breathing rate increases\n(3) Breathing depth increases\n(4) More oxygen delivered to muscles\n(5) More carbon dioxide removed\n(6) Glycogen converted to glucose" },
-                  { id: 'b_a_h_4_42_h_3', q: "What is anaerobic respiration?", a: "(1) Breakdown of glucose without oxygen\n(2) Releases energy\n(3) Produces lactic acid in animals\n(4) Produces ethanol and carbon dioxide in plants/yeast\n(5) Less energy released than aerobic respiration\n(6) Incomplete breakdown of glucose" },
-                  { id: 'b_a_h_4_42_h_4', q: "Name six examples of metabolic reactions.", a: "(1) Glucose → starch / glycogen / cellulose\n(2) Formation of lipids from glycerol and fatty acids\n(3) Glucose + nitrate ions → amino acids\n(4) Respiration\n(5) Photosynthesis\n(6) Breakdown of proteins to form urea" },
-                  { id: 'b_a_h_4_42_h_5', q: "What happens during protein breakdown?", a: "(1) Proteins are broken into amino acids\n(2) Amino acids enter the blood\n(3) Transported to the liver\n(4) Excess amino acids are broken down\n(5) Form urea\n(6) Urea is excreted by kidneys" },
-                  { id: 'b_a_h_4_42_h_6', q: "How is glucose used in synthesis reactions?", a: "(1) In plants, converted to starch for storage\n(2) Used to make cellulose for cell walls\n(3) In animals, converted to glycogen\n(4) Glycogen stored in liver and muscles\n(5) Helps regulate blood glucose levels\n(6) Used for growth and energy storage" },
-                  { id: 'b_a_h_4_42_h_7', q: "Explain how surface area to volume ratio affects metabolic processes in organisms.", a: "(1) Small organisms have a large SA:V ratio\n(2) Allows faster exchange of substances (e.g. oxygen, nutrients)\n(3) Supports higher metabolic rate per unit mass\n(4) Large organisms have a smaller SA:V ratio\n(5) Slower exchange of substances\n(6) Require specialised exchange surfaces (e.g. lungs, gills)" }
-                ]
-              }
-            }
-          },
-          "Foundation": {
-            "1. Cell Biology": {
-              "1.1 Cell Structure": {
-                "Easy (1-2 marks)": [
-                  { id: 'b_a_f_1_11_e_1', q: "What is the difference between eukaryotic and prokaryotic cells?", a: "(1) Eukaryotic cells have a nucleus / are more complex\n(2) Prokaryotic cells do not have a nucleus / are smaller and simpler" },
-                  { id: 'b_a_f_1_11_e_2', q: "What are eukaryotes?", a: "(1) Organisms made of eukaryotic cells" },
-                  { id: 'b_a_f_1_11_e_3', q: "What are prokaryotes?", a: "(1) Organisms made of prokaryotic cells" },
-                  { id: 'b_a_f_1_11_e_4', q: "Are animal cells prokaryotic or eukaryotic?", a: "(1) Eukaryotic" },
-                  { id: 'b_a_f_1_11_e_5', q: "Are plant cells prokaryotic or eukaryotic?", a: "(1) Eukaryotic" },
-                  { id: 'b_a_f_1_11_e_6', q: "Are bacteria cells prokaryotic or eukaryotic?", a: "(1) Prokaryotic" },
-                  { id: 'b_a_f_1_11_e_7', q: "What is the length of a eukaryotic cell?", a: "(1) 10–100 μm" },
-                  { id: 'b_a_f_1_11_e_8', q: "What is the length of a prokaryotic cell?", a: "(1) 0.2–2 μm" },
-                  { id: 'b_a_f_1_11_e_9', q: "What is the length of an average animal cell?", a: "(1) 10–30 μm" },
-                  { id: 'b_a_f_1_11_e_10', q: "What is the length of an average plant cell?", a: "(1) 10–100 μm" },
-                  { id: 'b_a_f_1_11_e_11', q: "What is the length of a virus?", a: "(1) 100 nm" },
-                  { id: 'b_a_f_1_11_e_12', q: "How many millimetres are in a centimetre?", a: "(1) 10 mm" },
-                  { id: 'b_a_f_1_11_e_13', q: "How many micrometres are in a millimetre?", a: "(1) 1000 μm" },
-                  { id: 'b_a_f_1_11_e_14', q: "How many nanometres are in a micrometre?", a: "(1) 1000 nm" },
-                  { id: 'b_a_f_1_11_e_15', q: "What is the function of the nucleus?", a: "(1) Controls the activities of the cell" },
-                  { id: 'b_a_f_1_11_e_16', q: "What does the nucleus contain?", a: "(1) Genetic material (DNA)\n(2) Organised into chromosomes" },
-                  { id: 'b_a_f_1_11_e_17', q: "What is the average size of a nucleus?", a: "(1) Around 10 μm" },
-                  { id: 'b_a_f_1_11_e_18', q: "What is the cytoplasm?", a: "(1) A jelly-like substance\n(2) Where organelles are suspended" },
-                  { id: 'b_a_f_1_11_e_19', q: "What is the purpose of the cytoplasm?", a: "(1) Site of chemical reactions\n(2) Contains enzymes" },
-                  { id: 'b_a_f_1_11_e_20', q: "What is the average size of mitochondria?", a: "(1) Around 1–2 μm" },
-                  { id: 'b_a_f_1_11_e_21', q: "What is the purpose of ribosomes?", a: "(1) Site of protein synthesis" },
-                  { id: 'b_a_f_1_11_e_22', q: "What is the purpose of the cell wall?", a: "(1) Strengthens the cell\n(2) Supports the cell" },
-                  { id: 'b_a_f_1_11_e_23', q: "What is the cell wall made of?", a: "(1) Cellulose" },
-                  { id: 'b_a_f_1_11_e_24', q: "What is a DNA loop?", a: "(1) A circular strand of DNA" },
-                  { id: 'b_a_f_1_11_e_25', q: "What is a plasmid?", a: "(1) Small circular rings of DNA" },
-                  { id: 'b_a_f_1_11_e_26', q: "What is a flagellum?", a: "(1) A long tail-like structure\n(2) Used for movement" },
-                  { id: 'b_a_f_1_11_e_27', q: "When would you use estimations in calculations?", a: "(1) To check whether a calculated answer is reasonable / correct" },
-                  { id: 'b_a_f_1_11_e_28', q: "What is a specimen?", a: "(1) The object being observed under a microscope" },
-                  { id: 'b_a_f_1_11_e_29', q: "What is a slide?", a: "(1) A thin piece of glass or plastic\n(2) Used to hold the specimen" },
-                  { id: 'b_a_f_1_11_e_30', q: "What is a cover slip?", a: "(1) A thin square of glass or plastic\n(2) Placed over the specimen\n(3) Keeps the specimen flat / in place" },
-                  { id: 'b_a_f_1_11_e_31', q: "What is the purpose of iodine solution in microscopy?", a: "(1) Stains the specimen\n(2) Makes structures easier to see" },
-                  { id: 'b_a_f_1_11_e_32', q: "Why must the cover slip be lowered carefully?", a: "(1) To prevent air bubbles forming\n(2) Air bubbles can obstruct the view" }
-                ],
-                "Medium (3-4 marks)": [
-                  { id: 'b_a_f_1_11_m_1', q: "Name three structures found in all eukaryotic cells.", a: "(1) Cell membrane\n(2) Cytoplasm\n(3) Nucleus" },
-                  { id: 'b_a_f_1_11_m_2', q: "Name four structures found in all prokaryotic cells.", a: "(1) Cell wall\n(2) Cell membrane\n(3) Cytoplasm\n(4) Circular DNA (DNA loop)" },
-                  { id: 'b_a_f_1_11_m_3', q: "When writing numbers in standard form, what is the format?", a: "(1) Written as A × 10^n\n(2) Where 1 ≤ A < 10\n(3) n is an integer (positive or negative whole number)" },
-                  { id: 'b_a_f_1_11_m_4', q: "What does “order of magnitude” mean?", a: "(1) A comparison of size between two values\n(2) Expressed in powers of 10\n(3) Shows how many times bigger or smaller one value is" },
-                  { id: 'b_a_f_1_11_m_5', q: "If a small animal cell is around 10 μm and a large plant cell is around 100 μm, how many orders of magnitude bigger is the plant cell?", a: "(1) 100 μm ÷ 10 μm = 10\n(2) This is 10^1\n(3) Therefore, it is 1 order of magnitude bigger" },
-                  { id: 'b_a_f_1_11_m_6', q: "How many orders of magnitude bigger is a small animal cell compared to a virus?", a: "(1) Convert virus size: 100 nm = 0.1 μm\n(2) Small animal cell ≈ 10 μm\n(3) 10 ÷ 0.1 = 100\n(4) This is 10^2\n(5) Therefore, the cell is 2 orders of magnitude bigger" },
-                  { id: 'b_a_f_1_11_m_7', q: "What is the purpose of the cell membrane?", a: "(1) Holds the cell together\n(2) Controls movement of substances in and out of the cell\n(3) Selectively permeable" },
-                  { id: 'b_a_f_1_11_m_8', q: "What is the purpose of mitochondria?", a: "(1) Site of aerobic respiration\n(2) Releases energy (ATP)\n(3) Provides energy for cell activities" },
-                  { id: 'b_a_f_1_11_m_9', q: "What are chloroplasts?", a: "(1) Contain chlorophyll\n(2) Chlorophyll absorbs light energy\n(3) Site of photosynthesis" },
-                  { id: 'b_a_f_1_11_m_10', q: "What is the permanent vacuole?", a: "(1) Contains cell sap\n(2) Maintains turgor pressure\n(3) Keeps the cell rigid / supports the plant" },
-                  { id: 'b_a_f_1_11_m_11', q: "Why do prokaryotic cells have plasmids?", a: "(1) Carry extra genes\n(2) Can give advantages (e.g. antibiotic resistance)\n(3) Can be transferred between cells" },
-                  { id: 'b_a_f_1_11_m_12', q: "How could you use the size of cells to estimate the size of a subcellular structure?", a: "(1) Compare how many times the structure fits into the cell\n(2) Use the known size of the cell\n(3) Divide the cell size by the number of structures\n(4) This gives an approximate size of the structure" },
-                  { id: 'b_a_f_1_11_m_13', q: "If a cell is 20 μm long and approximately 10 nuclei fit along its length, what is the approximate size of one nucleus?", a: "(1) Cell length = 20 μm\n(2) Number of nuclei = 10\n(3) 20 ÷ 10 = 2\n(4) Nucleus size ≈ 2 μm" },
-                  { id: 'b_a_f_1_11_m_14', q: "Describe how to prepare a slide to observe onion cells.", a: "(1) Place a drop of water onto a clean slide\n(2) Peel a thin layer of onion epidermis using tweezers\n(3) Place the tissue onto the slide\n(4) Add a drop of iodine solution\n(5) Lower a cover slip carefully at an angle\n(6) Avoid trapping air bubbles" },
-                  { id: 'b_a_f_1_11_m_15', q: "Describe how to draw a scientific diagram from a microscope observation.", a: "(1) Drawing should be large (at least half the space)\n(2) Use clear, continuous lines\n(3) Do not shade or colour\n(4) Keep structures in proportion\n(5) Include a title\n(6) Include magnification\n(7) Label using straight, uncrossed lines" }
-                ],
-                "Hard (5-6 marks)": [
-                  { id: 'b_a_f_1_11_h_1', q: "Describe how to use a light microscope to observe a specimen.", a: "(1) Place the slide on the stage and secure it\n(2) Select the lowest power objective lens\n(3) Use the coarse adjustment knob to move the stage close to the lens\n(4) Look through the eyepiece\n(5) Slowly move the stage down until the image is in focus\n(6) Use the fine adjustment knob to sharpen the image\n(7) Switch to a higher magnification if needed and refocus" }
-                ]
-              }
-            },
-            "2. Organisation": {
-              "2.2 Animal tissues, organs and organ systems": {
-              "Easy (1-2 marks)": [
-                { id: 'b_a_f_2_22_e_1', q: "What colour is blood plasma?", a: "(1) Yellow / straw-coloured" },
-                { id: 'b_a_f_2_22_e_2', q: "What are platelets?", a: "(1) Small cell fragments\n(2) Help blood to clot after injury" },
-                { id: 'b_a_f_2_22_e_3', q: "Where is urea formed?", a: "(1) In the liver\n(2) From the breakdown of excess amino acids / proteins" },
-                { id: 'b_a_f_2_22_e_4', q: "Where is urea carried in the blood?", a: "(1) To the kidneys\n(2) Where it is removed from the blood to form urine" },
-                { id: 'b_a_f_2_22_e_5', q: "Are white blood cells or red blood cells bigger?", a: "(1) White blood cells are bigger" },
-                { id: 'b_a_f_2_22_e_6', q: "Are there more white blood cells or red blood cells in the body?", a: "(1) There are more red blood cells" },
-                { id: 'b_a_f_2_22_e_7', q: "What are the two main types of white blood cells?", a: "(1) Lymphocytes\n(2) Phagocytes" },
-                { id: 'b_a_f_2_22_e_8', q: "What do lymphocytes do?", a: "(1) Produce antibodies\n(2) Against specific pathogens" },
-                { id: 'b_a_f_2_22_e_9', q: "What do phagocytes do?", a: "(1) Engulf pathogens\n(2) Digest them" },
-                { id: 'b_a_f_2_22_e_10', q: "What are the three main types of blood vessels?", a: "(1) Arteries\n(2) Veins\n(3) Capillaries" },
-                { id: 'b_a_f_2_22_e_11', q: "What is the smallest type of blood vessel in the circulatory system?", a: "(1) Capillaries" },
-                { id: 'b_a_f_2_22_e_12', q: "How close are capillaries to body cells?", a: "(1) Usually very close to cells\n(2) Often within about 0.05 mm" },
-                { id: 'b_a_f_2_22_e_13', q: "What is the function of arteries?", a: "(1) Carry blood away from the heart\n(2) Carry blood to organs / tissues" },
-                { id: 'b_a_f_2_22_e_14', q: "What colour is blood in most arteries?", a: "(1) Bright red\n(2) Because it is usually oxygenated" },
-                { id: 'b_a_f_2_22_e_15', q: "When you feel your pulse, what are you feeling?", a: "(1) Pressure waves in the arteries\n(2) Caused by the heart pumping blood" },
-                { id: 'b_a_f_2_22_e_16', q: "What is the function of veins?", a: "(1) Carry blood towards the heart\n(2) From organs / tissues" },
-                { id: 'b_a_f_2_22_e_17', q: "Do veins have thick walls?", a: "(1) No\n(2) Veins have thinner walls than arteries" },
-                { id: 'b_a_f_2_22_e_18', q: "Do veins have a pulse?", a: "(1) No\n(2) Blood pressure in veins is low" },
-                { id: 'b_a_f_2_22_e_19', q: "What colour is blood in most veins?", a: "(1) Dark red\n(2) Because it has less oxygen" },
-                { id: 'b_a_f_2_22_e_20', q: "What is a lumen?", a: "(1) The hollow space inside a blood vessel" },
-                { id: 'b_a_f_2_22_e_21', q: "What is pulmonary circulation?", a: "(1) Circulation between the heart and lungs" },
-                { id: 'b_a_f_2_22_e_22', q: "What is systemic circulation?", a: "(1) Circulation between the heart and the rest of the body" },
-                { id: 'b_a_f_2_22_e_23', q: "What is the function of the coronary arteries?", a: "(1) Supply oxygenated blood to the heart muscle\n(2) So the heart muscle can respire" },
-                { id: 'b_a_f_2_22_e_24', q: "How many chambers are in the heart?", a: "(1) Four" },
-                { id: 'b_a_f_2_22_e_25', q: "When one side of the heart fills with blood, is there blood on the other side too?", a: "(1) Yes\n(2) Both sides of the heart fill and empty at the same time" },
-                { id: 'b_a_f_2_22_e_26', q: "How does blood move from the atria to the ventricles?", a: "(1) The atria contract\n(2) This forces blood into the ventricles" },
-                { id: 'b_a_f_2_22_e_27', q: "What are you hearing when you listen to a heartbeat with a stethoscope?", a: "(1) Valves closing" },
-                { id: 'b_a_f_2_22_e_28', q: "Which side of the heart has thicker muscle walls?", a: "(1) The left side\n(2) Because it pumps blood around the whole body" },
-                { id: 'b_a_f_2_22_e_29', q: "Do you need a general anaesthetic to insert a stent?", a: "(1) No" },
-                { id: 'b_a_f_2_22_e_30', q: "Can stents be used in arteries other than coronary arteries?", a: "(1) Yes" },
-                { id: 'b_a_f_2_22_e_31', q: "What vessel carries blood from the body tissues back to the heart?", a: "(1) Vena cava" },
-                { id: 'b_a_f_2_22_e_32', q: "Which chamber does blood enter after returning from the body in the vena cava?", a: "(1) Right atrium" },
-                { id: 'b_a_f_2_22_e_33', q: "Which chamber pumps blood to the lungs?", a: "(1) Right ventricle" },
-                { id: 'b_a_f_2_22_e_34', q: "Which blood vessel carries blood from the heart to the lungs?", a: "(1) Pulmonary artery" },
-                { id: 'b_a_f_2_22_e_35', q: "Which blood vessel carries blood from the lungs back to the heart?", a: "(1) Pulmonary vein" },
-                { id: 'b_a_f_2_22_e_36', q: "Which chamber receives blood from the lungs?", a: "(1) Left atrium" },
-                { id: 'b_a_f_2_22_e_37', q: "Which chamber pumps blood to the body?", a: "(1) Left ventricle" },
-                { id: 'b_a_f_2_22_e_38', q: "Which blood vessel carries blood from the heart to the body?", a: "(1) Aorta" },
-                { id: 'b_a_f_2_22_e_39', q: "What is a leaky heart valve?", a: "(1) A heart valve that does not close properly\n(2) Blood can leak backwards" },
-                { id: 'b_a_f_2_22_e_40', q: "Why are faulty heart valves a problem?", a: "(1) They reduce the efficiency of the heart\n(2) They can cause breathlessness" },
-                { id: 'b_a_f_2_22_e_41', q: "How can faulty heart valves be treated?", a: "(1) They can be replaced with mechanical valves\n(2) Or biological valves" },
-                { id: 'b_a_f_2_22_e_42', q: "What are mechanical heart valves made from?", a: "(1) Man-made materials\n(2) Such as titanium or polymers" },
-                { id: 'b_a_f_2_22_e_43', q: "What are biological heart valves made from?", a: "(1) Animal tissue\n(2) Or human tissue" },
-                { id: 'b_a_f_2_22_e_44', q: "What is the heart’s natural pacemaker?", a: "(1) A group of cells in the right atrium\n(2) Controls resting heart rate" },
-                { id: 'b_a_f_2_22_e_45', q: "What is an artificial pacemaker?", a: "(1) An electrical device implanted in the chest\n(2) Corrects irregular heart rhythms" },
-                { id: 'b_a_f_2_22_e_46', q: "What is a heart transplant?", a: "(1) Replacing a failing heart\n(2) With a donor heart" },
-                { id: 'b_a_f_2_22_e_47', q: "What is an artificial heart?", a: "(1) A man-made pump\n(2) Used to replace or support a failing heart" }
-              ],
-              "Medium (3-4 marks)": [
-                { id: 'b_a_f_2_22_m_1', q: "What is blood?", a: "(1) A tissue made of plasma\n(2) Contains red blood cells\n(3) Contains white blood cells and platelets\n(4) Transports substances around the body" },
-                { id: 'b_a_f_2_22_m_2', q: "What is blood plasma?", a: "(1) The liquid part of blood\n(2) Carries blood cells\n(3) Transports dissolved substances\n(4) Makes up about 55% of blood" },
-                { id: 'b_a_f_2_22_m_3', q: "What substances are transported in blood plasma?", a: "(1) Carbon dioxide\n(2) Urea\n(3) Digested food molecules / glucose\n(4) Hormones" },
-                { id: 'b_a_f_2_22_m_4', q: "How are red blood cells adapted for their function?", a: "(1) No nucleus, giving more space for haemoglobin\n(2) Biconcave disc shape gives a large surface area\n(3) Haemoglobin binds to oxygen\n(4) Thin shape gives a short diffusion distance" },
-                { id: 'b_a_f_2_22_m_5', q: "Compare red blood cells and white blood cells.", a: "(1) Red blood cells transport oxygen\n(2) White blood cells defend against pathogens\n(3) Red blood cells have no nucleus\n(4) White blood cells have a nucleus" },
-                { id: 'b_a_f_2_22_m_6', q: "How are arteries adapted for their function?", a: "(1) Thick walls to withstand high blood pressure\n(2) Muscle layer helps control blood flow\n(3) Elastic fibres stretch and recoil\n(4) Small lumen helps maintain high pressure" },
-                { id: 'b_a_f_2_22_m_7', q: "How are veins adapted for their function?", a: "(1) Valves prevent backflow of blood\n(2) Large lumen reduces resistance to blood flow\n(3) Thin walls because blood pressure is low\n(4) Blood is helped back to the heart by surrounding muscle contractions" },
-                { id: 'b_a_f_2_22_m_8', q: "How do valves in veins work?", a: "(1) Blood flows towards the heart\n(2) If blood starts to flow backwards, valves close\n(3) This prevents backflow\n(4) Muscle contractions help push blood forwards" },
-                { id: 'b_a_f_2_22_m_9', q: "What are capillaries?", a: "(1) Tiny blood vessels\n(2) Form networks around body tissues\n(3) Link arteries and veins\n(4) Allow exchange of substances with cells" },
-                { id: 'b_a_f_2_22_m_10', q: "How are capillaries adapted for exchange?", a: "(1) Walls are one cell thick\n(2) This gives a short diffusion distance\n(3) Walls are permeable\n(4) They form large networks, giving a large surface area" },
-                { id: 'b_a_f_2_22_m_11', q: "Describe the human circulatory system.", a: "(1) Humans have a double circulatory system\n(2) One circuit carries blood between the heart and lungs\n(3) One circuit carries blood between the heart and the rest of the body\n(4) Blood passes through the heart twice for each full circuit of the body" },
-                { id: 'b_a_f_2_22_m_12', q: "What is the difference between pulmonary circulation and systemic circulation?", a: "(1) Pulmonary circulation carries blood between the heart and lungs\n(2) Systemic circulation carries blood between the heart and the rest of the body\n(3) Pulmonary circulation oxygenates blood\n(4) Systemic circulation delivers oxygenated blood to body cells" },
-                { id: 'b_a_f_2_22_m_13', q: "Describe the structure of an artery in detail.", a: "(1) Thick walls\n(2) Small lumen\n(3) Thick layer of muscle\n(4) Elastic fibres in the wall" },
-                { id: 'b_a_f_2_22_m_14', q: "Describe the structure of a vein in detail.", a: "(1) Large lumen\n(2) Relatively thin walls\n(3) Often contain valves" },
-                { id: 'b_a_f_2_22_m_15', q: "Describe the structure of a capillary in detail.", a: "(1) Very small / tiny blood vessel\n(2) Narrow lumen\n(3) Wall is one cell thick" },
-                { id: 'b_a_f_2_22_m_16', q: "When do the valves in the heart close?", a: "(1) Valves close when blood tries to flow backwards\n(2) This prevents backflow\n(3) Valves close after blood has moved through the heart\n(4) The closing of valves produces the heartbeat sound" },
-                { id: 'b_a_f_2_22_m_17', q: "Why is the left side of the heart thicker than the right side?", a: "(1) The left side pumps blood around the whole body\n(2) This requires higher pressure\n(3) The right side only pumps blood to the lungs\n(4) So the right side does not need such thick muscle" },
-                { id: 'b_a_f_2_22_m_18', q: "Why would it be harmful if the right side of the heart pumped at very high pressure?", a: "(1) The right side pumps blood to the lungs\n(2) Lung capillaries are delicate\n(3) High pressure could damage them\n(4) This would reduce gas exchange efficiency" },
-                { id: 'b_a_f_2_22_m_19', q: "What happens to the coronary arteries in coronary heart disease?", a: "(1) Fatty material builds up in the artery wall\n(2) The coronary arteries become narrower\n(3) Blood flow to the heart muscle is reduced" },
-                { id: 'b_a_f_2_22_m_20', q: "Why is coronary heart disease dangerous?", a: "(1) Less blood reaches the heart muscle\n(2) Less oxygen is supplied to heart muscle cells\n(3) Heart muscle cells respire less efficiently\n(4) This can cause chest pain, heart attack or death" },
-                { id: 'b_a_f_2_22_m_21', q: "How do statins help reduce the risk of coronary heart disease?", a: "(1) Statins lower blood cholesterol levels\n(2) This slows fatty material being deposited in arteries\n(3) This reduces narrowing of the arteries\n(4) This lowers the risk of heart attack" },
-                { id: 'b_a_f_2_22_m_22', q: "Describe the route of blood from the body tissues to the lungs.", a: "(1) Body tissues → vena cava\n(2) Vena cava → right atrium\n(3) Right atrium → right ventricle\n(4) Right ventricle → pulmonary artery → lungs" },
-                { id: 'b_a_f_2_22_m_23', q: "Describe the route of blood from the lungs to the body tissues.", a: "(1) Lungs → pulmonary vein\n(2) Pulmonary vein → left atrium\n(3) Left atrium → left ventricle\n(4) Left ventricle → aorta → body tissues" },
-                { id: 'b_a_f_2_22_m_24', q: "What are the advantages and disadvantages of mechanical heart valves?", a: "(1) Last a long time\n(2) Very durable\n(3) May increase risk of blood clots\n(4) Patient may need lifelong blood-thinning medication" },
-                { id: 'b_a_f_2_22_m_25', q: "What are the advantages and disadvantages of biological heart valves?", a: "(1) Less risk of blood clotting than mechanical valves\n(2) Usually do not require lifelong blood thinners\n(3) Do not last as long\n(4) May need replacing after around 12–15 years" },
-                { id: 'b_a_f_2_22_m_26', q: "Why is an irregular heart rhythm a problem?", a: "(1) If too slow, not enough oxygen is delivered\n(2) If too fast, the heart may not fill properly\n(3) Less blood is pumped around the body\n(4) Cells may not get enough oxygen for respiration" },
-                { id: 'b_a_f_2_22_m_27', q: "How do artificial pacemakers work?", a: "(1) Wires connect the pacemaker to the heart\n(2) The pacemaker sends electrical impulses\n(3) These impulses stimulate the heart to contract\n(4) This helps restore a regular heartbeat" },
-                { id: 'b_a_f_2_22_m_28', q: "What are disadvantages of artificial pacemakers?", a: "(1) Need regular check-ups\n(2) Battery may need replacing\n(3) There is a small risk of infection" },
-                { id: 'b_a_f_2_22_m_29', q: "How can severe heart failure be treated?", a: "(1) Heart transplant\n(2) Artificial heart\n(3) Artificial heart can be used while waiting for transplant\n(4) Artificial heart can allow the heart to rest and recover" }
-              ],
-              "Hard (5-6 marks)": [
-                { id: 'b_a_f_2_22_h_1', q: "Describe how platelets help blood to clot after a wound.", a: "(1) Platelets collect at the wound\n(2) Enzymes convert fibrinogen into fibrin\n(3) Fibrin forms a network of protein fibres\n(4) Red blood cells and platelets get trapped in the fibres\n(5) A clot forms to stop blood loss\n(6) The clot dries into a scab" },
-                { id: 'b_a_f_2_22_h_2', q: "Explain why blood clotting is important after injury.", a: "(1) Prevents excessive blood loss\n(2) Forms a clot over the wound\n(3) Clot dries into a scab\n(4) Scab protects new skin as it grows\n(5) Reduces entry of pathogens\n(6) Helps prevent infection" },
-                { id: 'b_a_f_2_22_h_3', q: "Describe the composition of blood and the function of each component.", a: "(1) Plasma transports dissolved substances\n(2) Red blood cells transport oxygen\n(3) White blood cells defend against pathogens\n(4) Platelets help blood clot\n(5) Plasma makes up about 55% of blood\n(6) Red blood cells make up about 45% of blood" },
-                { id: 'b_a_f_2_22_h_4', q: "Explain how urea is produced and removed from the body.", a: "(1) Excess proteins are broken down into amino acids\n(2) Excess amino acids cannot be stored\n(3) They are broken down in the liver\n(4) Urea is produced as a waste product\n(5) Urea is carried in blood plasma to the kidneys\n(6) Kidneys remove urea from the blood to form urine" },
-                { id: 'b_a_f_2_22_h_5', q: "Compare arteries, veins and capillaries.", a: "(1) Arteries carry blood away from the heart\n(2) Veins carry blood towards the heart\n(3) Capillaries connect arteries and veins\n(4) Arteries have thick elastic walls to withstand high pressure\n(5) Veins have valves to prevent backflow\n(6) Capillaries have one-cell-thick walls for diffusion" },
-                { id: 'b_a_f_2_22_h_6', q: "Explain how the structure of capillaries helps substances move between blood and body cells.", a: "(1) Capillaries form networks close to body cells\n(2) This gives a short diffusion distance\n(3) Walls are one cell thick\n(4) This allows rapid diffusion\n(5) Walls are permeable, so substances can pass through\n(6) Large surface area allows efficient exchange" },
-                { id: 'b_a_f_2_22_h_7', q: "Explain why humans have a double circulatory system.", a: "(1) Blood travels from the heart to the lungs\n(2) Blood picks up oxygen in the lungs\n(3) Blood returns to the heart\n(4) The heart pumps oxygenated blood to the body at high pressure\n(5) This allows rapid delivery of oxygen and glucose to cells\n(6) This supports a high rate of respiration" },
-                { id: 'b_a_f_2_22_h_8', q: "Explain how arteries are adapted to carry blood at high pressure.", a: "(1) Arteries carry blood directly from the heart\n(2) Blood is under high pressure\n(3) Thick walls prevent bursting\n(4) Elastic fibres stretch when blood surges through\n(5) Elastic fibres recoil to maintain pressure\n(6) Muscle layer helps control blood flow" },
-                { id: 'b_a_f_2_22_h_9', q: "Compare the structures of arteries, veins and capillaries.", a: "(1) Arteries have thick walls\n(2) Arteries have a small lumen\n(3) Arteries contain thick muscle and elastic fibres\n(4) Veins have thin walls and large lumens\n(5) Veins often have valves\n(6) Capillaries are tiny vessels with walls one cell thick" },
-                { id: 'b_a_f_2_22_h_10', q: "Explain how a stent is used to treat coronary heart disease.", a: "(1) A stent is a small metal mesh tube\n(2) It is inserted into a narrowed coronary artery\n(3) A tiny balloon expands the stent\n(4) This widens the artery\n(5) The stent stays in place after the balloon is removed\n(6) This improves blood flow to the heart muscle" },
-                { id: 'b_a_f_2_22_h_11', q: "Explain how coronary heart disease can lead to a heart attack.", a: "(1) Fatty material builds up in coronary arteries\n(2) The arteries become narrowed\n(3) Less blood reaches the heart muscle\n(4) Less oxygen reaches heart muscle cells\n(5) Heart muscle cells cannot respire enough\n(6) Heart muscle cells may die, causing a heart attack" },
-                { id: 'b_a_f_2_22_h_12', q: "Compare stents, statins and bypass surgery as treatments for coronary heart disease.", a: "(1) Stents widen narrowed arteries to improve blood flow\n(2) Stents act quickly and do not usually need general anaesthetic\n(3) Statins lower cholesterol and slow further fatty deposits\n(4) Statins are long-term medication\n(5) Bypass surgery replaces or bypasses blocked arteries using blood vessels from elsewhere\n(6) Bypass surgery is more invasive and usually used when other treatments are unsuitable" },
-                { id: 'b_a_f_2_22_h_13', q: "Describe how bypass surgery can treat coronary heart disease.", a: "(1) A blood vessel is taken from another part of the body\n(2) It is attached around the blocked or narrowed coronary artery\n(3) This creates a new route for blood flow\n(4) More blood reaches the heart muscle\n(5) More oxygen reaches heart muscle cells\n(6) This reduces the risk of heart attack" },
-                { id: 'b_a_f_2_22_h_14', q: "Describe the full route of blood through the double circulatory system.", a: "(1) Blood from the body enters the heart through the vena cava\n(2) It enters the right atrium, then the right ventricle\n(3) The right ventricle pumps blood through the pulmonary artery to the lungs\n(4) Blood returns from the lungs through the pulmonary vein to the left atrium\n(5) It moves into the left ventricle\n(6) The left ventricle pumps blood through the aorta to the body tissues" },
-                { id: 'b_a_f_2_22_h_15', q: "Explain why the human circulatory system is described as a double circulatory system.", a: "(1) Blood passes through the heart twice in one full circuit\n(2) One circuit carries blood between the heart and lungs\n(3) This is the pulmonary circulation\n(4) One circuit carries blood between the heart and the rest of the body\n(5) This is the systemic circulation\n(6) This allows oxygenated blood to be pumped around the body at high pressure" },
-                { id: 'b_a_f_2_22_h_16', q: "Compare mechanical and biological heart valves.", a: "(1) Mechanical valves are made from man-made materials\n(2) Mechanical valves last a long time\n(3) Mechanical valves increase risk of blood clots\n(4) Patients may need lifelong blood-thinning medication\n(5) Biological valves are made from animal or human tissue\n(6) Biological valves may need replacing after 12–15 years" },
-                { id: 'b_a_f_2_22_h_17', q: "Explain how faulty heart valves can affect the body.", a: "(1) Valves may not close properly\n(2) Blood can leak backwards\n(3) Or valves may become stiff and not open fully\n(4) Less blood is pumped around the body\n(5) Less oxygen reaches body cells\n(6) This can cause breathlessness or serious illness" },
-                { id: 'b_a_f_2_22_h_18', q: "Compare heart transplants and artificial hearts.", a: "(1) A heart transplant uses a donor heart\n(2) Donor hearts are not always available\n(3) Donor heart must be a tissue match\n(4) Artificial hearts can keep a patient alive while waiting for a transplant\n(5) Artificial hearts are expensive\n(6) Artificial hearts increase risk of blood clots" },
-                { id: 'b_a_f_2_22_h_19', q: "Explain how an artificial pacemaker helps treat an irregular heartbeat.", a: "(1) An irregular rhythm can make the heart pump inefficiently\n(2) This reduces oxygen delivery to cells\n(3) The pacemaker is implanted in the chest\n(4) Wires connect it to the heart\n(5) It sends electrical impulses to the heart muscle\n(6) These impulses stimulate regular contractions" }
-              ]
-            },
-              "2.3 Plant tissues, organs and systems": {
-                "Easy (1-2 marks)": [
-                  { id: 'b_a_f_2_23_e_1', q: "Are xylem and phloem part of the plant transport system?", a: "(1) Yes\n(2) They are tissues, not organs" },
-                  { id: 'b_a_f_2_23_e_2', q: "What are root hair cells specialised to do?", a: "(1) Absorb water by osmosis\n(2) Absorb mineral ions by active transport" },
-                  { id: 'b_a_f_2_23_e_3', q: "What are mineral ions used for in plants?", a: "(1) To make proteins\n(2) To make other molecules" },
-                  { id: 'b_a_f_2_23_e_4', q: "What is the transpiration stream?", a: "(1) Movement of water through the xylem" },
-                  { id: 'b_a_f_2_23_e_5', q: "How does water help the plant stay upright?", a: "(1) Creates turgor pressure" },
-                  { id: 'b_a_f_2_23_e_6', q: "What is transpiration?", a: "(1) Loss of water vapour from leaves" },
-                  { id: 'b_a_f_2_23_e_7', q: "Does the leaf keep most of the water?", a: "(1) No\n(2) Most is lost" },
-                  { id: 'b_a_f_2_23_e_8', q: "Where are stomata found?", a: "(1) Mainly on the underside of leaves" },
-                  { id: 'b_a_f_2_23_e_9', q: "What are guard cells specialised to do?", a: "(1) Control gas exchange\n(2) Control water loss" },
-                  { id: 'b_a_f_2_23_e_10', q: "What is the function of stomata?", a: "(1) Allow gases to enter and leave by diffusion" },
-                  { id: 'b_a_f_2_23_e_11', q: "What is water potential?", a: "(1) The tendency for water to move by osmosis" },
-                  { id: 'b_a_f_2_23_e_12', q: "Why can’t stomata remain closed?", a: "(1) Gases would not be able to diffuse in and out" },
-                  { id: 'b_a_f_2_23_e_13', q: "What is humidity?", a: "(1) The amount of water vapour in the air" },
-                  { id: 'b_a_f_2_23_e_14', q: "What is the function of the phloem?", a: "(1) Transports sugars (food)\n(2) From leaves to the rest of the plant" },
-                  { id: 'b_a_f_2_23_e_15', q: "What is cell sap?", a: "(1) Water with dissolved sugars\n(2) May also contain mineral ions" },
-                  { id: 'b_a_f_2_23_e_16', q: "What is translocation?", a: "(1) Movement of sugars in the phloem" },
-                  { id: 'b_a_f_2_23_e_17', q: "Why is the shoot of a plant cut at a slant?", a: "(1) Increases surface area for water uptake" },
-                  { id: 'b_a_f_2_23_e_18', q: "How can a potometer be used to investigate the effect of environmental factors on transpiration rate?", a: "(1) Change one factor (e.g. light, wind, temp)\n(2) Measure rate of water uptake" },
-                  { id: 'b_a_f_2_23_e_19', q: "What are limitations of using nail varnish to estimate stomata distribution?", a: "(1) Varnish may not peel cleanly\n(2) Results are only estimates" }
-                ],
-                "Medium (3-4 marks)": [
-                  { id: 'b_a_f_2_23_m_1', q: "What are the main organs in the plant transport system?", a: "(1) Roots\n(2) Stems (shoots)\n(3) Leaves" },
-                  { id: 'b_a_f_2_23_m_2', q: "How are root hair cells adapted for their function?", a: "(1) Large surface area for absorption\n(2) Large permanent vacuole to increase osmosis\n(3) Many mitochondria for active transport" },
-                  { id: 'b_a_f_2_23_m_3', q: "What is the function of the xylem?", a: "(1) Transports water\n(2) Transports mineral ions\n(3) From roots to leaves" },
-                  { id: 'b_a_f_2_23_m_4', q: "What is water used for in plants?", a: "(1) Photosynthesis\n(2) Maintaining turgor pressure\n(3) Transporting minerals" },
-                  { id: 'b_a_f_2_23_m_5', q: "Describe the structure of xylem tissue.", a: "(1) Hollow tubes\n(2) No end walls\n(3) Strengthened with lignin" },
-                  { id: 'b_a_f_2_23_m_6', q: "What causes water loss from the leaf?", a: "(1) Spongy mesophyll has air spaces\n(2) Water evaporates into air spaces\n(3) Water vapour diffuses out through stomata" },
-                  { id: 'b_a_f_2_23_m_7', q: "What are stomata?", a: "(1) Tiny pores in leaves\n(2) Surrounded by guard cells\n(3) Allow gases to diffuse in and out" },
-                  { id: 'b_a_f_2_23_m_8', q: "What are guard cells?", a: "(1) Cells that surround stomata\n(2) Control opening and closing\n(3) Regulate gas exchange / water loss" },
-                  { id: 'b_a_f_2_23_m_9', q: "How are guard cells adapted for their function?", a: "(1) Thick inner walls and thin outer walls\n(2) Allows opening and closing\n(3) Sensitive to light (open in light, close in dark)" },
-                  { id: 'b_a_f_2_23_m_10', q: "Why does a plant lose most of the water it takes in?", a: "(1) Water evaporates from mesophyll cells\n(2) Enters air spaces in the leaf\n(3) Diffuses out through stomata" },
-                  { id: 'b_a_f_2_23_m_11', q: "Why is water loss not always harmful to the plant?", a: "(1) Maintains the transpiration stream\n(2) Pulls water up from roots\n(3) Supplies water for photosynthesis" },
-                  { id: 'b_a_f_2_23_m_12', q: "When do stomata open and close?", a: "(1) Open to allow carbon dioxide in\n(2) Open to allow oxygen out\n(3) Close to reduce water loss" },
-                  { id: 'b_a_f_2_23_m_13', q: "Explain how wind affects transpiration.", a: "(1) Removes water vapour from leaf surface\n(2) Maintains steep concentration gradient\n(3) Increases diffusion rate" },
-                  { id: 'b_a_f_2_23_m_14', q: "Explain how temperature affects transpiration.", a: "(1) Increases kinetic energy of molecules\n(2) Speeds up evaporation and diffusion\n(3) Increases rate of water loss" },
-                  { id: 'b_a_f_2_23_m_15', q: "Explain how humidity affects transpiration.", a: "(1) High humidity reduces concentration gradient\n(2) Slows diffusion of water vapour\n(3) Decreases transpiration rate" },
-                  { id: 'b_a_f_2_23_m_16', q: "Explain how light intensity affects transpiration.", a: "(1) Light increases photosynthesis\n(2) Stomata open for gas exchange\n(3) Increases water loss" },
-                  { id: 'b_a_f_2_23_m_17', q: "How are plants adapted to reduce water loss?", a: "(1) Waxy cuticle reduces evaporation\n(2) Stomata mainly on underside\n(3) Reduces exposure to sunlight" },
-                  { id: 'b_a_f_2_23_m_18', q: "What happens if a plant loses water faster than it absorbs it?", a: "(1) Cells lose turgor pressure\n(2) Plant wilts\n(3) Stomata close to reduce water loss" },
-                  { id: 'b_a_f_2_23_m_19', q: "Will the plant die if it loses too much water?", a: "(1) May stop photosynthesising\n(2) May overheat\n(3) Can recover if conditions improve" },
-                  { id: 'b_a_f_2_23_m_20', q: "Describe the structure of phloem tissue.", a: "(1) Made of elongated living cells\n(2) Arranged in tubes\n(3) Sieve plates between cells" },
-                  { id: 'b_a_f_2_23_m_21', q: "How does cell sap move through the phloem?", a: "(1) Moves from cell to cell\n(2) Through pores in sieve plates\n(3) Driven by pressure differences" },
-                  { id: 'b_a_f_2_23_m_22', q: "What is sugar used for in plants?", a: "(1) Respiration\n(2) Growth (making new cells)\n(3) Storage (e.g. roots)" },
-                  { id: 'b_a_f_2_23_m_23', q: "Why can removing a ring of bark kill a tree?", a: "(1) Phloem is found under the bark\n(2) Removing it stops sugar transport\n(3) Roots and tissues do not receive food\n(4) Tree eventually dies" }
-                ],
-                "Hard (5-6 marks)": [
-                  { id: 'b_a_f_2_23_h_1', q: "How are xylem cells adapted for their function?", a: "(1) Cells are dead\n(2) No end walls → continuous tubes\n(3) Hollow to allow flow\n(4) Lignin strengthens walls\n(5) Prevents collapse under pressure\n(6) Provides support" },
-                  { id: 'b_a_f_2_23_h_2', q: "Describe how water moves from the soil to the leaves.", a: "(1) Water enters root hair cells by osmosis\n(2) Moves through root cells by osmosis\n(3) Enters xylem vessels\n(4) Travels up the stem in transpiration stream\n(5) Moves into leaf cells\n(6) Evaporates and exits via stomata" },
-                  { id: 'b_a_f_2_23_h_3', q: "How do guard cells work?", a: "(1) When water enters, cells become turgid\n(2) Turgid cells open the stomata\n(3) When water leaves, cells become flaccid\n(4) Flaccid cells close the stomata\n(5) Opening allows gas exchange\n(6) Closing reduces water loss" },
-                  { id: 'b_a_f_2_23_h_4', q: "Describe the process of transpiration.", a: "(1) Water evaporates from mesophyll cells\n(2) Water vapour enters air spaces\n(3) Diffuses out through stomata\n(4) Creates a concentration gradient\n(5) Causes water to be pulled up through xylem\n(6) Forms the transpiration stream" },
-                  { id: 'b_a_f_2_23_h_5', q: "What factors increase the rate of transpiration?", a: "(1) High temperature\n(2) Wind\n(3) Low humidity\n(4) High light intensity\n(5) Larger surface area\n(6) More stomata open" },
-                  { id: 'b_a_f_2_23_h_6', q: "How are phloem cells adapted for their function?", a: "(1) Cells are living\n(2) Have sieve plates with pores\n(3) Few organelles to allow flow\n(4) Companion cells provide energy\n(5) Companion cells contain many mitochondria\n(6) Enables active transport of sugars" },
-                  { id: 'b_a_f_2_23_h_7', q: "Describe how to measure transpiration using a potometer.", a: "(1) Cut shoot at slant under water\n(2) Assemble under water to avoid bubbles\n(3) Ensure system is airtight\n(4) Introduce air bubble\n(5) Measure distance moved over time\n(6) Calculate rate" },
-                  { id: 'b_a_f_2_23_h_8', q: "Describe how to investigate stomata distribution using a microscope.", a: "(1) Apply nail varnish to leaf\n(2) Allow to dry and peel\n(3) Place on slide\n(4) Observe under microscope\n(5) Count stomata in known area\n(6) Repeat and calculate mean" }
-                ]
-              }
-            },
-            "3. Infection and response": {
-              "3.1 Communicable diseases": {
-                "Easy (1-2 marks)": [
-                  { id: 'b_a_f_3_31_e_1', q: "What causes viral diseases?", a: "(1) Viruses" },
-                  { id: 'b_a_f_3_31_e_2', q: "Are viruses alive?", a: "(1) No\n(2) Do not carry out life processes independently" },
-                  { id: 'b_a_f_3_31_e_3', q: "Do viruses reproduce?", a: "(1) No\n(2) They replicate inside host cells" },
-                  { id: 'b_a_f_3_31_e_4', q: "What are the main symptoms of measles?", a: "(1) Fever\n(2) Red rash" },
-                  { id: 'b_a_f_3_31_e_5', q: "How is measles spread?", a: "(1) By inhaling droplets from coughs and sneezes" },
-                  { id: 'b_a_f_3_31_e_6', q: "Is measles easy to catch?", a: "(1) Yes\n(2) It is highly infectious" },
-                  { id: 'b_a_f_3_31_e_7', q: "Can measles be fatal?", a: "(1) Yes\n(2) Especially if complications develop" },
-                  { id: 'b_a_f_3_31_e_8', q: "How is measles treated?", a: "(1) There is no specific cure\n(2) Patients may be isolated to prevent spread" },
-                  { id: 'b_a_f_3_31_e_9', q: "Does measles only affect children?", a: "(1) No\n(2) It can affect unvaccinated adults" },
-                  { id: 'b_a_f_3_31_e_10', q: "What does HIV stand for?", a: "(1) Human immunodeficiency virus" },
-                  { id: 'b_a_f_3_31_e_11', q: "What happens after the early stage of HIV infection?", a: "(1) Symptoms may disappear\n(2) Virus remains in the body" },
-                  { id: 'b_a_f_3_31_e_12', q: "How long can HIV take to damage the immune system?", a: "(1) Months to years" },
-                  { id: 'b_a_f_3_31_e_13', q: "What is the difference between HIV and AIDS?", a: "(1) HIV is the virus\n(2) AIDS is the late stage of infection" },
-                  { id: 'b_a_f_3_31_e_14', q: "What does AIDS stand for?", a: "(1) Acquired immune deficiency syndrome" },
-                  { id: 'b_a_f_3_31_e_15', q: "How can the progression of HIV be slowed?", a: "(1) Taking antiretroviral drugs" },
-                  { id: 'b_a_f_3_31_e_16', q: "What is an unscreened blood transfusion?", a: "(1) Blood that has not been tested for infections" },
-                  { id: 'b_a_f_3_31_e_17', q: "Is there a vaccine for HIV?", a: "(1) No" },
-                  { id: 'b_a_f_3_31_e_18', q: "Is there a cure for HIV?", a: "(1) No\n(2) It can be managed with treatment" },
-                  { id: 'b_a_f_3_31_e_19', q: "What is the difference between HIV-positive and HIV-negative?", a: "(1) HIV-positive = infected with HIV\n(2) HIV-negative = not infected" },
-                  { id: 'b_a_f_3_31_e_20', q: "What does TMV stand for?", a: "(1) Tobacco mosaic virus" },
-                  { id: 'b_a_f_3_31_e_21', q: "How can you identify a plant infected with TMV?", a: "(1) Mosaic pattern on leaves\n(2) Discoloured patches" },
-                  { id: 'b_a_f_3_31_e_22', q: "How is TMV transmitted between plants?", a: "(1) Direct contact\n(2) Insect vectors" },
-                  { id: 'b_a_f_3_31_e_23', q: "How long can TMV survive outside a host?", a: "(1) Can survive for many years\n(2) e.g. in soil or plant material" },
-                  { id: 'b_a_f_3_31_e_24', q: "How is TMV treated?", a: "(1) There is no cure" },
-                  { id: 'b_a_f_3_31_e_25', q: "How can the spread of TMV be reduced?", a: "(1) Good field hygiene\n(2) Control insect pests" },
-                  { id: 'b_a_f_3_31_e_26', q: "What alternative can farmers use to reduce the impact of TMV?", a: "(1) Grow TMV-resistant crop varieties" },
-                  { id: 'b_a_f_3_31_e_27', q: "Will bacterial infections continue to decrease?", a: "(1) No\n(2) Antibiotic resistance is increasing" },
-                  { id: 'b_a_f_3_31_e_28', q: "What causes bacterial diseases?", a: "(1) Pathogenic bacteria" },
-                  { id: 'b_a_f_3_31_e_29', q: "How do bacteria reproduce?", a: "(1) Asexually\n(2) By binary fission" },
-                  { id: 'b_a_f_3_31_e_30', q: "Are bacteria prokaryotic or eukaryotic?", a: "(1) Prokaryotic" },
-                  { id: 'b_a_f_3_31_e_31', q: "How do bacteria compare in size to viruses?", a: "(1) Bacteria are larger" },
-                  { id: 'b_a_f_3_31_e_32', q: "Are bacteria alive?", a: "(1) Yes" },
-                  { id: 'b_a_f_3_31_e_33', q: "How is Salmonella transmitted?", a: "(1) Eating undercooked food\n(2) Poor food hygiene" },
-                  { id: 'b_a_f_3_31_e_34', q: "How long does it take for Salmonella symptoms to develop?", a: "(1) 8–72 hours" },
-                  { id: 'b_a_f_3_31_e_35', q: "When are antibiotics used to treat Salmonella?", a: "(1) In severe cases\n(2) For vulnerable people (e.g. elderly / young)" },
-                  { id: 'b_a_f_3_31_e_36', q: "Why can Salmonella be dangerous?", a: "(1) Causes dehydration" },
-                  { id: 'b_a_f_3_31_e_37', q: "How does the UK reduce the spread of Salmonella?", a: "(1) Vaccinating poultry" },
-                  { id: 'b_a_f_3_31_e_38', q: "Why should raw chicken not be washed?", a: "(1) Bacteria can spread via water droplets" },
-                  { id: 'b_a_f_3_31_e_39', q: "What does STD stand for?", a: "(1) Sexually transmitted disease" },
-                  { id: 'b_a_f_3_31_e_40', q: "What is another term for STD?", a: "(1) STI (sexually transmitted infection)" },
-                  { id: 'b_a_f_3_31_e_41', q: "What is discharge?", a: "(1) Fluid released from the body" },
-                  { id: 'b_a_f_3_31_e_42', q: "How is gonorrhoea treated?", a: "(1) Antibiotics" },
-                  { id: 'b_a_f_3_31_e_43', q: "Why is penicillin no longer used to treat gonorrhoea?", a: "(1) Antibiotic resistance" }
-                ],
-                "Medium (3-4 marks)": [
-                  { id: 'b_a_f_3_31_m_1', q: "Describe the structure of a virus.", a: "(1) Genetic material (DNA/RNA)\n(2) Protein coat (capsid)\n(3) May have outer lipid envelope" },
-                  { id: 'b_a_f_3_31_m_2', q: "What serious complications can measles cause?", a: "(1) Blindness\n(2) Brain damage\n(3) Can lead to death in severe cases" },
-                  { id: 'b_a_f_3_31_m_3', q: "Is measles common in the UK?", a: "(1) Less common due to vaccination\n(2) Most children are vaccinated at a young age\n(3) Still occurs if vaccination rates are low" },
-                  { id: 'b_a_f_3_31_m_4', q: "What complications can measles cause in adults?", a: "(1) Infertility (in some cases)\n(2) Complications during pregnancy\n(3) Risk of harm to the unborn baby" },
-                  { id: 'b_a_f_3_31_m_5', q: "What are the early symptoms of HIV?", a: "(1) Flu-like symptoms\n(2) Such as fever\n(3) Fatigue or sore throat" },
-                  { id: 'b_a_f_3_31_m_6', q: "What does HIV do to the body?", a: "(1) Attacks immune cells\n(2) Weakens the immune system\n(3) Makes it harder to fight infections" },
-                  { id: 'b_a_f_3_31_m_7', q: "Why is HIV difficult to detect early?", a: "(1) Early symptoms are mild\n(2) Similar to flu\n(3) Long period with no symptoms" },
-                  { id: 'b_a_f_3_31_m_8', q: "When does HIV develop into AIDS?", a: "(1) When the immune system is severely damaged\n(2) Cannot fight infections\n(3) Cannot fight cancers" },
-                  { id: 'b_a_f_3_31_m_9', q: "What do antiretroviral drugs do?", a: "(1) Reduce virus replication\n(2) Slow damage to immune system\n(3) Delay development of AIDS" },
-                  { id: 'b_a_f_3_31_m_10', q: "What factors affect how quickly HIV develops into AIDS?", a: "(1) Overall health\n(2) Nutrition\n(3) Use of antiretroviral drugs" },
-                  { id: 'b_a_f_3_31_m_11', q: "How long can someone live with HIV?", a: "(1) Near normal life expectancy\n(2) If treated early\n(3) With antiretroviral drugs" },
-                  { id: 'b_a_f_3_31_m_12', q: "What plants does TMV affect?", a: "(1) Many plant species\n(2) Including tobacco plants\n(3) And tomato plants" },
-                  { id: 'b_a_f_3_31_m_13', q: "What causes the mosaic pattern in TMV-infected leaves?", a: "(1) Virus infects leaf cells\n(2) Damages or destroys cells\n(3) Causes discolouration" },
-                  { id: 'b_a_f_3_31_m_14', q: "Why is TMV harmful to plants?", a: "(1) Reduces photosynthesis\n(2) Less chlorophyll / damaged cells\n(3) Leads to reduced growth" },
-                  { id: 'b_a_f_3_31_m_15', q: "What are non-pathogenic bacteria?", a: "(1) Bacteria that do not cause disease\n(2) Can live in the body\n(3) Some help digestion" },
-                  { id: 'b_a_f_3_31_m_16', q: "Where do bacteria live in the body?", a: "(1) Inside the host\n(2) Commonly in mouth, nose, throat" },
-                  { id: 'b_a_f_3_31_m_17', q: "What happens when pathogenic bacteria enter the body?", a: "(1) Reproduce rapidly\n(2) Produce toxins\n(3) Toxins damage cells" },
-                  { id: 'b_a_f_3_31_m_18', q: "What is Salmonella?", a: "(1) A type of bacterium\n(2) Found in animal gut\n(3) Causes food poisoning" },
-                  { id: 'b_a_f_3_31_m_19', q: "What are the symptoms of Salmonella food poisoning?", a: "(1) Fever\n(2) Stomach cramps\n(3) Vomiting\n(4) Diarrhoea" },
-                  { id: 'b_a_f_3_31_m_20', q: "What is gonorrhoea?", a: "(1) A bacterial infection\n(2) Sexually transmitted\n(3) Spread by unprotected sexual contact" },
-                  { id: 'b_a_f_3_31_m_21', q: "What are the early symptoms of gonorrhoea?", a: "(1) Thick yellow/green discharge\n(2) Pain when urinating\n(3) Symptoms may disappear later" },
-                  { id: 'b_a_f_3_31_m_22', q: "How can the spread of gonorrhoea be reduced?", a: "(1) Use condoms\n(2) Limit number of partners\n(3) Test and treat infected individuals" }
-                ],
-                "Hard (5-6 marks)": [
-                  { id: 'b_a_f_3_31_h_1', q: "What do viruses do inside the body?", a: "(1) Enter host cells\n(2) Insert genetic material\n(3) Use cell machinery to replicate\n(4) Cell bursts (lysis)\n(5) New viruses infect others" },
-                  { id: 'b_a_f_3_31_h_2', q: "Explain why viral diseases are difficult to treat.", a: "(1) Viruses live inside host cells\n(2) Hard to target without damaging cells\n(3) Antibiotics do not work on viruses\n(4) Viruses replicate rapidly\n(5) Can mutate quickly\n(6) Makes treatment difficult" },
-                  { id: 'b_a_f_3_31_h_3', q: "How is HIV transmitted?", a: "(1) Unprotected sexual contact\n(2) Exchange of body fluids (e.g. blood)\n(3) Sharing needles\n(4) Unscreened blood transfusions\n(5) From mother to baby during birth\n(6) Through breastfeeding" },
-                  { id: 'b_a_f_3_31_h_4', q: "How can the spread of HIV be reduced?", a: "(1) Use condoms\n(2) Do not share needles\n(3) Use screened blood for transfusions\n(4) Test regularly\n(5) Use antiretroviral treatment\n(6) Avoid breastfeeding if HIV-positive" },
-                  { id: 'b_a_f_3_31_h_5', q: "Why are bacterial diseases less common than in the past?", a: "(1) Improved living conditions\n(2) Better sanitation\n(3) Vaccination programmes\n(4) Use of antibiotics\n(5) Improved healthcare\n(6) Better hygiene practices" },
-                  { id: 'b_a_f_3_31_h_6', q: "How can Salmonella food poisoning be prevented?", a: "(1) Cook food thoroughly\n(2) Avoid cross-contamination\n(3) Keep raw meat separate\n(4) Wash hands and surfaces\n(5) Do not wash raw chicken\n(6) Maintain good food hygiene" },
-                  { id: 'b_a_f_3_31_h_7', q: "What can happen if gonorrhoea is untreated?", a: "(1) Pelvic pain\n(2) Infertility\n(3) Ectopic pregnancy\n(4) Infection can spread\n(5) Can affect newborn babies\n(6) May cause blindness in babies" }
-                ]
-              }
-            },
-            "4. Bioenergetics": {
-              "4.1 Photosynthesis": {
-                "Easy (1-2 marks)": [
-                  { id: 'b_a_f_4_41_e_1', q: "What is a limiting factor?", a: "(1) A factor that restricts the rate of a reaction\n(2) If increased, the rate will increase" },
-                  { id: 'b_a_f_4_41_e_2', q: "Which factors can limit photosynthesis?", a: "(1) Light intensity\n(2) Carbon dioxide concentration" },
-                  { id: 'b_a_f_4_41_e_3', q: "Why might a plant have low chlorophyll levels?", a: "(1) Magnesium deficiency\n(2) Some plants have non-green areas" },
-                  { id: 'b_a_f_4_41_e_4', q: "What does deficiency mean?", a: "(1) A lack of something" },
-                  { id: 'b_a_f_4_41_e_5', q: "Why does magnesium deficiency reduce photosynthesis?", a: "(1) Magnesium is needed to make chlorophyll" },
-                  { id: 'b_a_f_4_41_e_6', q: "What is chlorosis?", a: "(1) Yellowing of leaves" },
-                  { id: 'b_a_f_4_41_e_7', q: "What causes chlorosis?", a: "(1) Lack of magnesium" },
-                  { id: 'b_a_f_4_41_e_8', q: "What is yield?", a: "(1) Amount of useful crop produced" },
-                  { id: 'b_a_f_4_41_e_9', q: "How do farmers increase crop yield?", a: "(1) Reduce limiting factors\n(2) Optimise growing conditions" },
-                  { id: 'b_a_f_4_41_e_10', q: "What is hydroponics?", a: "(1) Growing plants in nutrient solution\n(2) Without soil" },
-                  { id: 'b_a_f_4_41_e_11', q: "What are the bubbles produced in the pondweed experiment?", a: "(1) Oxygen\n(2) Produced during photosynthesis" },
-                  { id: 'b_a_f_4_41_e_12', q: "Why is a beaker of water placed between the lamp and the pondweed?", a: "(1) Acts as a heat filter\n(2) Prevents temperature increase" },
-                  { id: 'b_a_f_4_41_e_13', q: "Why should the experiment be left for a short time before taking measurements?", a: "(1) To allow the rate of photosynthesis to stabilise" },
-                  { id: 'b_a_f_4_41_e_14', q: "What is a more accurate way to measure oxygen production than counting bubbles?", a: "(1) Use a gas syringe" },
-                  { id: 'b_a_f_4_41_e_15', q: "How can farmers increase the rate of photosynthesis in greenhouses?", a: "(1) Increase light intensity\n(2) Increase temperature" },
-                  { id: 'b_a_f_4_41_e_16', q: "How does temperature affect photosynthesis?", a: "(1) Higher temperature increases rate\n(2) Too high decreases rate" }
-                ],
-                "Medium (3-4 marks)": [
-                  { id: 'b_a_f_4_41_m_1', q: "What factors affect the rate of photosynthesis?", a: "(1) Light intensity\n(2) Carbon dioxide\n(3) Temperature" },
-                  { id: 'b_a_f_4_41_m_2', q: "How does carbon dioxide affect the rate of photosynthesis?", a: "(1) Carbon dioxide is a reactant\n(2) Low CO₂ reduces rate\n(3) More CO₂ increases rate" },
-                  { id: 'b_a_f_4_41_m_3', q: "How does carbon dioxide concentration change during the day?", a: "(1) Higher at night (respiration releases CO₂)\n(2) Lower during the day (photosynthesis uses CO₂)\n(3) Changes depending on light availability" },
-                  { id: 'b_a_f_4_41_m_4', q: "How does light intensity affect the rate of photosynthesis?", a: "(1) Provides energy for photosynthesis\n(2) Low light → low rate\n(3) High light → higher rate" },
-                  { id: 'b_a_f_4_41_m_5', q: "How does chlorophyll content affect photosynthesis?", a: "(1) Chlorophyll absorbs light\n(2) Less chlorophyll reduces rate\n(3) More chlorophyll increases rate" },
-                  { id: 'b_a_f_4_41_m_6', q: "Why are greenhouses used in farming?", a: "(1) Control environmental conditions\n(2) Increase rate of photosynthesis\n(3) Increase crop yield" },
-                  { id: 'b_a_f_4_41_m_7', q: "Why must temperature be controlled in the pondweed experiment?", a: "(1) Temperature affects enzyme activity\n(2) It is a limiting factor of photosynthesis\n(3) Must be controlled to ensure a fair test" }
-                ],
-                "Hard (5-6 marks)": [
-                  { id: 'b_a_f_4_41_h_1', q: "What are advantages of growing plants in greenhouses?", a: "(1) Grow crops out of season\n(2) Faster growth rates\n(3) Controlled conditions\n(4) Reduced pests\n(5) No soil needed\n(6) Higher yields" },
-                  { id: 'b_a_f_4_41_h_2', q: "Describe a practical to investigate the effect of light intensity on the rate of photosynthesis in pondweed.", a: "(1) Place pondweed in water (e.g. in a test tube/beaker)\n(2) Position a lamp at a measured distance\n(3) Use a ruler to measure the distance\n(4) Allow the plant to equilibrate\n(5) Count bubbles of oxygen produced in a set time\n(6) Repeat at different distances and calculate a mean" },
-                  { id: 'b_a_f_4_41_h_3', q: "What variables should be controlled in the pondweed experiment?", a: "(1) Temperature\n(2) Carbon dioxide concentration\n(3) Type/size of pondweed\n(4) Volume of water\n(5) Light wavelength/colour\n(6) Time measured" }
-                ]
-              },
-              "4.2 Respiration": {
-                "Easy (1-2 marks)": [
-                  { id: 'b_a_f_4_42_e_1', q: "Do muscles use energy when the body is at rest?", a: "(1) Yes\n(2) They still use oxygen and glucose" },
-                  { id: 'b_a_f_4_42_e_2', q: "What happens if muscles do not get enough oxygen?", a: "(1) Anaerobic respiration occurs" },
-                  { id: 'b_a_f_4_42_e_3', q: "What does anaerobic mean?", a: "(1) Without oxygen" },
-                  { id: 'b_a_f_4_42_e_4', q: "What is the word equation for anaerobic respiration in animals?", a: "(1) Glucose → lactic acid + energy" },
-                  { id: 'b_a_f_4_42_e_5', q: "What is lactic acid?", a: "(1) Product of anaerobic respiration in animals" },
-                  { id: 'b_a_f_4_42_e_6', q: "Why is anaerobic respiration less efficient than aerobic respiration?", a: "(1) Glucose is not fully broken down\n(2) Less energy is released" },
-                  { id: 'b_a_f_4_42_e_7', q: "How does energy yield compare between aerobic and anaerobic respiration?", a: "(1) Anaerobic releases much less energy\n(2) About 5% of aerobic respiration" },
-                  { id: 'b_a_f_4_42_e_8', q: "Why do muscles become tired during exercise?", a: "(1) Lactic acid builds up" },
-                  { id: 'b_a_f_4_42_e_9', q: "What is oxygen debt?", a: "(1) Extra oxygen needed after exercise" },
-                  { id: 'b_a_f_4_42_e_10', q: "What happens to glucose after oxygen debt is repaid?", a: "(1) Used in respiration\n(2) Or stored" },
-                  { id: 'b_a_f_4_42_e_11', q: "What affects how quickly someone goes into oxygen debt?", a: "(1) Fitness level" },
-                  { id: 'b_a_f_4_42_e_12', q: "How does the body recover from oxygen debt?", a: "(1) Increased breathing rate\n(2) Increased heart rate" },
-                  { id: 'b_a_f_4_42_e_13', q: "What is the word equation for oxygen debt repayment?", a: "(1) Lactic acid + oxygen → carbon dioxide + water" },
-                  { id: 'b_a_f_4_42_e_14', q: "Can other organisms respire anaerobically?", a: "(1) Yes\n(2) Plants and microorganisms" },
-                  { id: 'b_a_f_4_42_e_15', q: "What are the products of anaerobic respiration in plants and yeast?", a: "(1) Ethanol\n(2) Carbon dioxide" },
-                  { id: 'b_a_f_4_42_e_16', q: "What is fermentation?", a: "(1) Anaerobic respiration in yeast" },
-                  { id: 'b_a_f_4_42_e_17', q: "What is fermentation used for?", a: "(1) Bread making\n(2) Alcohol production" },
-                  { id: 'b_a_f_4_42_e_18', q: "What is metabolism?", a: "(1) The sum of all chemical reactions in a cell or body" },
-                  { id: 'b_a_f_4_42_e_19', q: "How many metabolic reactions occur in the body?", a: "(1) Many / thousands\n(2) Occur continuously" },
-                  { id: 'b_a_f_4_42_e_20', q: "What controls metabolism?", a: "(1) Enzymes\n(2) Hormones (e.g. thyroid hormone)" },
-                  { id: 'b_a_f_4_42_e_21', q: "What increases the rate of metabolic reactions?", a: "(1) Enzymes" },
-                  { id: 'b_a_f_4_42_e_22', q: "What are the two types of metabolic reactions?", a: "(1) Breakdown (catabolic) reactions\n(2) Synthesis (anabolic) reactions" },
-                  { id: 'b_a_f_4_42_e_23', q: "Name two examples of breakdown reactions.", a: "(1) Protein breakdown\n(2) Amino acid breakdown" },
-                  { id: 'b_a_f_4_42_e_24', q: "What is urea?", a: "(1) Waste product of protein metabolism" },
-                  { id: 'b_a_f_4_42_e_25', q: "What are lipids made from?", a: "(1) Glycerol\n(2) Three fatty acids" },
-                  { id: 'b_a_f_4_42_e_26', q: "What are lipids used for?", a: "(1) Form cell membranes\n(2) Store energy" }
-                ],
-                "Medium (3-4 marks)": [
-                  { id: 'b_a_f_4_42_m_1', q: "What happens to the body during exercise?", a: "(1) Increased demand for oxygen\n(2) Increased demand for glucose\n(3) Increased removal of carbon dioxide" },
-                  { id: 'b_a_f_4_42_m_2', q: "What happens to lactic acid after exercise?", a: "(1) Transported to the liver\n(2) Converted back into glucose\n(3) Requires oxygen" },
-                  { id: 'b_a_f_4_42_m_3', q: "How is lactic acid transported from muscles to the liver?", a: "(1) Diffuses from muscle cells into blood\n(2) Carried in the bloodstream\n(3) Diffuses into liver cells" },
-                  { id: 'b_a_f_4_42_m_4', q: "What affects recovery from oxygen debt?", a: "(1) Amount of lactic acid\n(2) Fitness level\n(3) Rate of oxygen intake" },
-                  { id: 'b_a_f_4_42_m_5', q: "Why does bread not contain alcohol?", a: "(1) Yeast is killed by heat\n(2) Ethanol evaporates\n(3) During baking" },
-                  { id: 'b_a_f_4_42_m_6', q: "What is the difference between breakdown and synthesis reactions?", a: "(1) Breakdown reactions split large molecules into smaller ones\n(2) Synthesis reactions build large molecules from smaller ones\n(3) Breakdown releases energy\n(4) Synthesis requires energy" },
-                  { id: 'b_a_f_4_42_m_7', q: "Name three examples of synthesis reactions.", a: "(1) Protein synthesis\n(2) Lipid formation\n(3) Conversion of glucose to glycogen" },
-                  { id: 'b_a_f_4_42_m_8', q: "How are amino acids broken down in the body?", a: "(1) Occurs in the liver\n(2) Enzymes remove the amine group\n(3) Produces urea" }
-                ],
-                "Hard (5-6 marks)": [
-                  { id: 'b_a_f_4_42_h_1', q: "What do muscles use energy for?", a: "(1) Muscle contraction\n(2) Movement of the body\n(3) Maintaining posture\n(4) Moving food through the digestive system\n(5) Pumping blood (heart muscle)\n(6) Transferring energy from respiration" },
-                  { id: 'b_a_f_4_42_h_2', q: "How does the body respond to exercise?", a: "(1) Heart rate increases\n(2) Breathing rate increases\n(3) Breathing depth increases\n(4) More oxygen delivered to muscles\n(5) More carbon dioxide removed\n(6) Glycogen converted to glucose" },
-                  { id: 'b_a_f_4_42_h_3', q: "What is anaerobic respiration?", a: "(1) Breakdown of glucose without oxygen\n(2) Releases energy\n(3) Produces lactic acid in animals\n(4) Produces ethanol and carbon dioxide in plants/yeast\n(5) Less energy released than aerobic respiration\n(6) Incomplete breakdown of glucose" },
-                  { id: 'b_a_f_4_42_h_4', q: "Name six examples of metabolic reactions.", a: "(1) Glucose → starch / glycogen / cellulose\n(2) Formation of lipids from glycerol and fatty acids\n(3) Glucose + nitrate ions → amino acids\n(4) Respiration\n(5) Photosynthesis\n(6) Breakdown of proteins to form urea" },
-                  { id: 'b_a_f_4_42_h_5', q: "What happens during protein breakdown?", a: "(1) Proteins are broken into amino acids\n(2) Amino acids enter the blood\n(3) Transported to the liver\n(4) Excess amino acids are broken down\n(5) Form urea\n(6) Urea is excreted by kidneys" },
-                  { id: 'b_a_f_4_42_h_6', q: "How is glucose used in synthesis reactions?", a: "(1) In plants, converted to starch for storage\n(2) Used to make cellulose for cell walls\n(3) In animals, converted to glycogen\n(4) Glycogen stored in liver and muscles\n(5) Helps regulate blood glucose levels\n(6) Used for growth and energy storage" },
-                  { id: 'b_a_f_4_42_h_7', q: "Explain how surface area to volume ratio affects metabolic processes in organisms.", a: "(1) Small organisms have a large SA:V ratio\n(2) Allows faster exchange of substances (e.g. oxygen, nutrients)\n(3) Supports higher metabolic rate per unit mass\n(4) Large organisms have a smaller SA:V ratio\n(5) Slower exchange of substances\n(6) Require specialised exchange surfaces (e.g. lungs, gills)" }
-                ]
-              }
-            }
-          }
-        }
-      },
-      "Chemistry": {
-      "Edexcel": {
-        "International (iGCSE)": {
-          "1. Principles of chemistry": {
-            "1a. States of Matter": {
-              "Easy (1-2 marks)": [
-                { id: 'c_e_i_1_1a_e_1', q: "What are the three states of matter?", a: "(1) Solid\n(2) Liquid\n(3) Gas" },
-                { id: 'c_e_i_1_1a_e_2', q: "What is diffusion?", a: "(1) Movement of particles from high to low concentration" },
-                { id: 'c_e_i_1_1a_e_3', q: "What is dilution?", a: "(1) Reducing concentration\n(2) By adding more solvent" },
-                { id: 'c_e_i_1_1a_e_4', q: "What is a solution?", a: "(1) A mixture of solute and solvent" },
-                { id: 'c_e_i_1_1a_e_5', q: "What is a solute?", a: "(1) The substance being dissolved" },
-                { id: 'c_e_i_1_1a_e_6', q: "What is a solvent?", a: "(1) The substance that dissolves the solute" },
-                { id: 'c_e_i_1_1a_e_7', q: "What is a saturated solution?", a: "(1) A solution containing the maximum amount of solute" },
-                { id: 'c_e_i_1_1a_e_8', q: "What are the units of solubility?", a: "(1) g per 100 g of solvent" },
-                { id: 'c_e_i_1_1a_e_9', q: "What is an atom?", a: "(1) Smallest particle of an element" },
-                { id: 'c_e_i_1_1a_e_10', q: "What subatomic particles are in an atom?", a: "(1) Protons\n(2) Neutrons\n(3) Electrons" },
-                { id: 'c_e_i_1_1a_e_11', q: "What charge do atoms have?", a: "(1) Neutral" },
-                { id: 'c_e_i_1_1a_e_12', q: "What is an ion?", a: "(1) A charged particle formed by gaining or losing electrons" },
-                { id: 'c_e_i_1_1a_e_13', q: "What is an element?", a: "(1) A substance made of one type of atom" },
-                { id: 'c_e_i_1_1a_e_14', q: "What is a molecule?", a: "(1) Two or more atoms joined together" },
-                { id: 'c_e_i_1_1a_e_15', q: "What is an isotope?", a: "(1) Atoms with same number of protons\n(2) Different number of neutrons" }
-              ],
-              "Medium (3-4 marks)": [
-                { id: 'c_e_i_1_1a_m_1', q: "Describe the properties of a solid.", a: "(1) Particles closely packed\n(2) Strong forces of attraction\n(3) Vibrate in fixed positions\n(4) Fixed shape and volume" },
-                { id: 'c_e_i_1_1a_m_2', q: "Describe the properties of a liquid.", a: "(1) Particles close together\n(2) Weaker forces than solids\n(3) Move randomly\n(4) Fixed volume, no fixed shape" },
-                { id: 'c_e_i_1_1a_m_3', q: "Describe the properties of a gas.", a: "(1) Particles far apart\n(2) Very weak forces\n(3) Move rapidly and randomly\n(4) No fixed shape or volume" },
-                { id: 'c_e_i_1_1a_m_4', q: "How do forces of attraction differ in solids, liquids and gases?", a: "(1) Strong in solids\n(2) Weaker in liquids\n(3) Very weak in gases" },
-                { id: 'c_e_i_1_1a_m_5', q: "Compare the energy of particles in solids, liquids and gases.", a: "(1) Solids have lowest energy\n(2) Liquids have more energy\n(3) Gases have highest energy" },
-                { id: 'c_e_i_1_1a_m_6', q: "Name the changes of state.", a: "(1) Melting\n(2) Freezing\n(3) Evaporation/boiling\n(4) Condensation" },
-                { id: 'c_e_i_1_1a_m_7', q: "Explain diffusion in terms of particles.", a: "(1) Particles move randomly\n(2) Due to kinetic energy\n(3) Move from high to low concentration" },
-                { id: 'c_e_i_1_1a_m_8', q: "How does temperature affect diffusion?", a: "(1) Higher temperature increases kinetic energy\n(2) Particles move faster\n(3) Diffusion rate increases" },
-                { id: 'c_e_i_1_1a_m_9', q: "What is solubility?", a: "(1) Maximum amount of solute that dissolves\n(2) In 100 g of solvent\n(3) At a given temperature" },
-                { id: 'c_e_i_1_1a_m_10', q: "Describe the structure of an atom.", a: "(1) Nucleus contains protons and neutrons\n(2) Electrons in shells around nucleus\n(3) Nucleus is small and dense\n(4) Most mass is in nucleus" },
-                { id: 'c_e_i_1_1a_m_11', q: "What is the difference between atomic number and mass number?", a: "(1) Atomic number = number of protons\n(2) Mass number = protons + neutrons\n(3) Identifies element\n(4) Determines isotope" },
-                { id: 'c_e_i_1_1a_m_12', q: "Why is relative atomic mass not a whole number?", a: "(1) It is an average\n(2) Based on isotopes\n(3) Different abundances" },
-                { id: 'c_e_i_1_1a_m_13', q: "What does a solubility curve show?", a: "(1) Solubility vs temperature\n(2) Different substances compared\n(3) Shows trends\n(4) Used to predict crystallisation" }
-              ],
-              "Hard (5-6 marks)": [
-                { id: 'c_e_i_1_1a_h_1', q: "Describe how particles change when a substance is heated or cooled.", a: "(1) Heating gives particles more energy\n(2) Particles move faster\n(3) Move further apart\n(4) Changes state (solid → liquid → gas)\n(5) Cooling removes energy\n(6) Particles move slower and come closer" },
-                { id: 'c_e_i_1_1a_h_2', q: "Explain how a gas becomes a liquid and then a solid.", a: "(1) Temperature decreases\n(2) Particles lose kinetic energy\n(3) Move slower\n(4) Come closer together\n(5) Forces of attraction increase\n(6) Form liquid then solid" },
-                { id: 'c_e_i_1_1a_h_3', q: "Describe how to investigate solubility at different temperatures.", a: "(1) Add excess solute to water\n(2) Heat to dissolve\n(3) Allow to cool to set temperature\n(4) Filter or decant solution\n(5) Evaporate solvent\n(6) Measure mass of solute" },
-                { id: 'c_e_i_1_1a_h_4', q: "Explain how to interpret a solubility curve.", a: "(1) Read solubility at a given temperature\n(2) Compare substances\n(3) Identify saturation point\n(4) Above line = excess\n(5) On line = saturated\n(6) Below line = unsaturated" },
-                { id: 'c_e_i_1_1a_h_5', q: "Calculate relative atomic mass from isotope data.", a: "(1) Multiply mass × abundance\n(2) Add totals\n(3) Divide by total abundance\n(4) Gives weighted mean\n(5) Reflects isotope proportions\n(6) Round appropriately" }
-              ]
-            }
-          }
-        }
-      }
-    },
-      "Physics": {
-      "AQA": {
-        "Higher": {
-          "1. Energy": {
-            "1.1 Energy changes in a system": {
-              "Easy (1-2 marks)": [
-                { id: 'p_a_h_1_11_e_1', q: "What is a system?", a: "(1) An object or a group of objects" },
-                { id: 'p_a_h_1_11_e_2', q: "What is a closed system?", a: "(1) A system where no energy is transferred to or from the surroundings" },
-                { id: 'p_a_h_1_11_e_3', q: "What is an energy store?", a: "(1) A way energy is held in a system" },
-                { id: 'p_a_h_1_11_e_4', q: "Name the 8 energy stores.", a: "(1) Kinetic\n(2) Thermal (internal)\n(3) Gravitational potential\n(4) Elastic potential\n(5) Chemical\n(6) Magnetic\n(7) Electrostatic\n(8) Nuclear" },
-                { id: 'p_a_h_1_11_e_5', q: "When does the kinetic energy store increase?", a: "(1) When an object moves" },
-                { id: 'p_a_h_1_11_e_6', q: "What happens to kinetic energy when an object is stationary?", a: "(1) It is zero" },
-                { id: 'p_a_h_1_11_e_7', q: "What is gravitational potential energy?", a: "(1) Energy stored due to position in a gravitational field" },
-                { id: 'p_a_h_1_11_e_8', q: "What is elastic potential energy?", a: "(1) Energy stored when an object is stretched or compressed" },
-                { id: 'p_a_h_1_11_e_9', q: "What is thermal (internal) energy?", a: "(1) Energy stored due to the temperature of an object" },
-                { id: 'p_a_h_1_11_e_10', q: "Give examples of chemical energy stores.", a: "(1) Food\n(2) Batteries\n(3) Fuels" },
-                { id: 'p_a_h_1_11_e_11', q: "What is friction?", a: "(1) A force that opposes motion" },
-                { id: 'p_a_h_1_11_e_12', q: "What does friction do to energy?", a: "(1) Transfers energy to the thermal energy store of objects and surroundings" },
-                { id: 'p_a_h_1_11_e_13', q: "What are the three ways energy can be transferred?", a: "(1) By heating\n(2) By mechanical work (forces)\n(3) By electrical work (current)" },
-                { id: 'p_a_h_1_11_e_14', q: "What is “work done”?", a: "(1) Energy transferred" },
-                { id: 'p_a_h_1_11_e_15', q: "What happens to gravitational potential energy as an object falls?", a: "(1) It decreases\n(2) It transfers to the kinetic energy store" },
-                { id: 'p_a_h_1_11_e_16', q: "What is the equation for kinetic energy?", a: "(1) $E_k = \\frac{1}{2}mv^2$\n(2) $E_k$ = kinetic energy (J)\n(3) $m$ = mass (kg)\n(4) $v$ = speed (m/s)" },
-                { id: 'p_a_h_1_11_e_17', q: "What is the equation for elastic potential energy?", a: "(1) $E_e = \\frac{1}{2}ke^2$\n(2) $E_e$ = elastic potential energy (J)\n(3) $k$ = spring constant (N/m)\n(4) $e$ = extension (m)" },
-                { id: 'p_a_h_1_11_e_18', q: "What is the equation for gravitational potential energy?", a: "(1) $E_p = mgh$\n(2) $E_p$ = gravitational potential energy (J)\n(3) $m$ = mass (kg)\n(4) $g$ = gravitational field strength (N/kg)\n(5) $h$ = height (m)" },
-                { id: 'p_a_h_1_11_e_19', q: "What is Hooke’s Law?", a: "(1) Extension is directly proportional to force\n(2) Only valid before the limit of proportionality" },
-                { id: 'p_a_h_1_11_e_20', q: "What is the limit of proportionality?", a: "(1) The point where extension is no longer proportional to force" }
-              ],
-              "Medium (3-4 marks)": [
-                { id: 'p_a_h_1_11_m_1', q: "Describe energy changes when an object is projected upwards.", a: "(1) Chemical store (muscles) → kinetic store (object)\n(2) As it rises: kinetic store decreases\n(3) Gravitational potential store increases\n(4) At highest point: kinetic = 0 (all energy in GPE)" },
-                { id: 'p_a_h_1_11_m_2', q: "Describe energy changes when a moving object hits an obstacle.", a: "(1) Kinetic energy decreases\n(2) Energy transferred to thermal stores (due to friction)\n(3) Some energy transferred to sound\n(4) Some energy may go into deformation (elastic store)" },
-                { id: 'p_a_h_1_11_m_3', q: "Describe energy changes when an object accelerates.", a: "(1) Energy is transferred from a chemical store (e.g. fuel/muscles)\n(2) Work is done by a force\n(3) Kinetic energy store increases" },
-                { id: 'p_a_h_1_11_m_4', q: "Describe energy changes when a vehicle slows down.", a: "(1) Kinetic energy decreases\n(2) Energy transferred by friction in brakes\n(3) Energy goes to thermal energy stores of brakes and surroundings" },
-                { id: 'p_a_h_1_11_m_5', q: "Describe energy changes when water is boiled in a kettle.", a: "(1) Electrical energy is transferred to the kettle\n(2) Energy transferred by electrical work\n(3) Thermal energy store of heating element increases\n(4) Energy transferred by heating to water → water’s thermal store increases" },
-                { id: 'p_a_h_1_11_m_6', q: "What happens to energy in a closed system?", a: "(1) Total energy remains constant\n(2) Energy is redistributed between stores" },
-                { id: 'p_a_h_1_11_m_7', q: "Describe how to calculate the kinetic energy of a moving object.", a: "(1) Measure mass in kg\n(2) Measure speed in m/s\n(3) Square the speed\n(4) Multiply by mass and 0.5" },
-                { id: 'p_a_h_1_11_m_8', q: "Describe how to calculate elastic potential energy in a spring.", a: "(1) Measure extension in metres\n(2) Use spring constant (N/m)\n(3) Square the extension\n(4) Multiply by spring constant and 0.5\n(5) Only valid before limit of proportionality" },
-                { id: 'p_a_h_1_11_m_9', q: "Describe how to calculate gravitational potential energy.", a: "(1) Measure mass (kg)\n(2) Use given value of g\n(3) Measure height (m)\n(4) Multiply all three values" },
-                { id: 'p_a_h_1_11_m_10', q: "Explain the relationship between force and extension in a spring.", a: "(1) Initially directly proportional (straight line)\n(2) Obeys Hooke’s Law\n(3) After limit of proportionality, graph curves\n(4) Extension increases faster than force" },
-                { id: 'p_a_h_1_11_m_11', q: "How can you identify the limit of proportionality on a graph?", a: "(1) It is where the straight line ends\n(2) The graph begins to curve\n(3) Relationship is no longer linear" }
-              ],
-              "Hard (5-6 marks)": [
-                { id: 'p_a_h_1_11_h_1', q: "Explain fully the energy changes when a ball is thrown upwards and falls back down.", a: "(1) Chemical energy store (muscles) → kinetic store of arm\n(2) Kinetic energy transferred to ball\n(3) As ball rises: kinetic → gravitational potential store\n(4) At top: maximum gravitational potential, zero kinetic\n(5) As it falls: gravitational potential → kinetic\n(6) Some energy dissipated to thermal store due to air resistance" },
-                { id: 'p_a_h_1_11_h_2', q: "Explain energy changes when a moving object hits the ground and does not bounce.", a: "(1) Gravitational potential → kinetic during fall\n(2) On impact: kinetic energy decreases rapidly\n(3) Energy transferred to thermal stores (object + ground)\n(4) Energy transferred to sound\n(5) Energy used in deformation of object/ground\n(6) Energy spreads to surroundings (dissipated)" },
-                { id: 'p_a_h_1_11_h_3', q: "Explain energy changes when a car slows down.", a: "(1) Initial kinetic energy store is high\n(2) Braking force does work\n(3) Energy transferred mechanically\n(4) Kinetic energy decreases\n(5) Energy transferred to thermal stores of brakes/tyres/road\n(6) Energy dissipated to surroundings" },
-                { id: 'p_a_h_1_11_h_4', q: "Explain energy changes when using an electric kettle (full system explanation).", a: "(1) Energy supplied electrically from mains\n(2) Energy transferred by electrical work to heating element\n(3) Thermal energy store of element increases\n(4) Energy transferred by heating to water\n(5) Water’s thermal store increases (temperature rises)\n(6) Some energy dissipated to surroundings (inefficiency)" },
-                { id: 'p_a_h_1_11_h_5', q: "Explain how energy is redistributed in any system change (exam-style general answer).", a: "(1) Energy is conserved overall\n(2) Energy is transferred between different stores\n(3) Useful energy may become less useful\n(4) Some energy is dissipated to thermal stores of surroundings\n(5) Transfers occur via heating, mechanical work, or electrical work\n(6) Total energy in a closed system remains constant" },
-                { id: 'p_a_h_1_11_h_6', q: "Explain how calculations show energy redistribution (Required Practical Skill).", a: "(1) Calculate initial energy in system\n(2) Calculate final energy in different stores\n(3) Compare values on same scale\n(4) Show total energy remains constant\n(5) Identify energy transferred to less useful stores (e.g. thermal)\n(6) Conclude energy is conserved but redistributed" },
-                { id: 'p_a_h_1_11_h_7', q: "Explain energy changes when an object is raised and then falls (including calculations).", a: "(1) Energy transferred to gravitational potential store when lifted\n(2) Given by $E_p = mgh$\n(3) As object falls: GPE decreases\n(4) Kinetic energy increases\n(5) Given by $E_k = \\frac{1}{2}mv^2$\n(6) Total energy conserved (ignoring air resistance)" },
-                { id: 'p_a_h_1_11_h_8', q: "Explain how elastic potential energy is stored in a spring (with conditions).", a: "(1) Work is done to stretch/compress spring\n(2) Energy stored as elastic potential energy\n(3) Given by $E_e = \\frac{1}{2}ke^2$\n(4) Applies only before limit of proportionality\n(5) Beyond this point, energy calculation is less accurate\n(6) Spring may deform permanently" },
-                { id: 'p_a_h_1_11_h_9', q: "Explain how to use calculations to compare energy changes in a system (WS 4.5).", a: "(1) Calculate energy before change\n(2) Calculate energy after change\n(3) Use correct equations (KE, GPE, EPE)\n(4) Compare values on same scale (Joules)\n(5) Identify where energy has been transferred\n(6) Conclude total energy is conserved but redistributed" },
-                { id: 'p_a_h_1_11_h_10', q: "Describe the force–extension graph of a spring.", a: "(1) Straight line = force proportional to extension\n(2) Obeys Hooke’s Law\n(3) Limit of proportionality marks end of linear behaviour\n(4) After this, graph curves\n(5) Spring no longer obeys Hooke’s Law\n(6) May not return to original length" }
-              ]
-            }
-          }
-        },
-        "Foundation": {
-          "1. Energy": {
-            "1.1 Energy changes in a system": {
-              "Easy (1-2 marks)": [
-                { id: 'p_a_f_1_11_e_1', q: "What is a system?", a: "(1) An object or a group of objects" },
-                { id: 'p_a_f_1_11_e_2', q: "What is a closed system?", a: "(1) A system where no energy is transferred to or from the surroundings" },
-                { id: 'p_a_f_1_11_e_3', q: "What is an energy store?", a: "(1) A way energy is held in a system" },
-                { id: 'p_a_f_1_11_e_4', q: "Name the 8 energy stores.", a: "(1) Kinetic\n(2) Thermal (internal)\n(3) Gravitational potential\n(4) Elastic potential\n(5) Chemical\n(6) Magnetic\n(7) Electrostatic\n(8) Nuclear" },
-                { id: 'p_a_f_1_11_e_5', q: "When does the kinetic energy store increase?", a: "(1) When an object moves" },
-                { id: 'p_a_f_1_11_e_6', q: "What happens to kinetic energy when an object is stationary?", a: "(1) It is zero" },
-                { id: 'p_a_f_1_11_e_7', q: "What is gravitational potential energy?", a: "(1) Energy stored due to position in a gravitational field" },
-                { id: 'p_a_f_1_11_e_8', q: "What is elastic potential energy?", a: "(1) Energy stored when an object is stretched or compressed" },
-                { id: 'p_a_f_1_11_e_9', q: "What is thermal (internal) energy?", a: "(1) Energy stored due to the temperature of an object" },
-                { id: 'p_a_f_1_11_e_10', q: "Give examples of chemical energy stores.", a: "(1) Food\n(2) Batteries\n(3) Fuels" },
-                { id: 'p_a_f_1_11_e_11', q: "What is friction?", a: "(1) A force that opposes motion" },
-                { id: 'p_a_f_1_11_e_12', q: "What does friction do to energy?", a: "(1) Transfers energy to the thermal energy store of objects and surroundings" },
-                { id: 'p_a_f_1_11_e_13', q: "What are the three ways energy can be transferred?", a: "(1) By heating\n(2) By mechanical work (forces)\n(3) By electrical work (current)" },
-                { id: 'p_a_f_1_11_e_14', q: "What is “work done”?", a: "(1) Energy transferred" },
-                { id: 'p_a_f_1_11_e_15', q: "What happens to gravitational potential energy as an object falls?", a: "(1) It decreases\n(2) It transfers to the kinetic energy store" },
-                { id: 'p_a_f_1_11_e_16', q: "What is the equation for kinetic energy?", a: "(1) $E_k = \\frac{1}{2}mv^2$\n(2) $E_k$ = kinetic energy (J)\n(3) $m$ = mass (kg)\n(4) $v$ = speed (m/s)" },
-                { id: 'p_a_f_1_11_e_17', q: "What is the equation for elastic potential energy?", a: "(1) $E_e = \\frac{1}{2}ke^2$\n(2) $E_e$ = elastic potential energy (J)\n(3) $k$ = spring constant (N/m)\n(4) $e$ = extension (m)" },
-                { id: 'p_a_f_1_11_e_18', q: "What is the equation for gravitational potential energy?", a: "(1) $E_p = mgh$\n(2) $E_p$ = gravitational potential energy (J)\n(3) $m$ = mass (kg)\n(4) $g$ = gravitational field strength (N/kg)\n(5) $h$ = height (m)" },
-                { id: 'p_a_f_1_11_e_19', q: "What is Hooke’s Law?", a: "(1) Extension is directly proportional to force\n(2) Only valid before the limit of proportionality" },
-                { id: 'p_a_f_1_11_e_20', q: "What is the limit of proportionality?", a: "(1) The point where extension is no longer proportional to force" }
-              ],
-              "Medium (3-4 marks)": [
-                { id: 'p_a_f_1_11_m_1', q: "Describe energy changes when an object is projected upwards.", a: "(1) Chemical store (muscles) → kinetic store (object)\n(2) As it rises: kinetic store decreases\n(3) Gravitational potential store increases\n(4) At highest point: kinetic = 0 (all energy in GPE)" },
-                { id: 'p_a_f_1_11_m_2', q: "Describe energy changes when a moving object hits an obstacle.", a: "(1) Kinetic energy decreases\n(2) Energy transferred to thermal stores (due to friction)\n(3) Some energy transferred to sound\n(4) Some energy may go into deformation (elastic store)" },
-                { id: 'p_a_f_1_11_m_3', q: "Describe energy changes when an object accelerates.", a: "(1) Energy is transferred from a chemical store (e.g. fuel/muscles)\n(2) Work is done by a force\n(3) Kinetic energy store increases" },
-                { id: 'p_a_f_1_11_m_4', q: "Describe energy changes when a vehicle slows down.", a: "(1) Kinetic energy decreases\n(2) Energy transferred by friction in brakes\n(3) Energy goes to thermal energy stores of brakes and surroundings" },
-                { id: 'p_a_f_1_11_m_5', q: "Describe energy changes when water is boiled in a kettle.", a: "(1) Electrical energy is transferred to the kettle\n(2) Energy transferred by electrical work\n(3) Thermal energy store of heating element increases\n(4) Energy transferred by heating to water → water’s thermal store increases" },
-                { id: 'p_a_f_1_11_m_6', q: "What happens to energy in a closed system?", a: "(1) Total energy remains constant\n(2) Energy is redistributed between stores" },
-                { id: 'p_a_f_1_11_m_7', q: "Describe how to calculate the kinetic energy of a moving object.", a: "(1) Measure mass in kg\n(2) Measure speed in m/s\n(3) Square the speed\n(4) Multiply by mass and 0.5" },
-                { id: 'p_a_f_1_11_m_8', q: "Describe how to calculate elastic potential energy in a spring.", a: "(1) Measure extension in metres\n(2) Use spring constant (N/m)\n(3) Square the extension\n(4) Multiply by spring constant and 0.5\n(5) Only valid before limit of proportionality" },
-                { id: 'p_a_f_1_11_m_9', q: "Describe how to calculate gravitational potential energy.", a: "(1) Measure mass (kg)\n(2) Use given value of g\n(3) Measure height (m)\n(4) Multiply all three values" },
-                { id: 'p_a_f_1_11_m_10', q: "Explain the relationship between force and extension in a spring.", a: "(1) Initially directly proportional (straight line)\n(2) Obeys Hooke’s Law\n(3) After limit of proportionality, graph curves\n(4) Extension increases faster than force" },
-                { id: 'p_a_f_1_11_m_11', q: "How can you identify the limit of proportionality on a graph?", a: "(1) It is where the straight line ends\n(2) The graph begins to curve\n(3) Relationship is no longer linear" }
-              ],
-              "Hard (5-6 marks)": [
-                { id: 'p_a_f_1_11_h_1', q: "Explain fully the energy changes when a ball is thrown upwards and falls back down.", a: "(1) Chemical energy store (muscles) → kinetic store of arm\n(2) Kinetic energy transferred to ball\n(3) As ball rises: kinetic → gravitational potential store\n(4) At top: maximum gravitational potential, zero kinetic\n(5) As it falls: gravitational potential → kinetic\n(6) Some energy dissipated to thermal store due to air resistance" },
-                { id: 'p_a_f_1_11_h_2', q: "Explain energy changes when a moving object hits the ground and does not bounce.", a: "(1) Gravitational potential → kinetic during fall\n(2) On impact: kinetic energy decreases rapidly\n(3) Energy transferred to thermal stores (object + ground)\n(4) Energy transferred to sound\n(5) Energy used in deformation of object/ground\n(6) Energy spreads to surroundings (dissipated)" },
-                { id: 'p_a_f_1_11_h_3', q: "Explain energy changes when a car slows down.", a: "(1) Initial kinetic energy store is high\n(2) Braking force does work\n(3) Energy transferred mechanically\n(4) Kinetic energy decreases\n(5) Energy transferred to thermal stores of brakes/tyres/road\n(6) Energy dissipated to surroundings" },
-                { id: 'p_a_f_1_11_h_4', q: "Explain energy changes when using an electric kettle (full system explanation).", a: "(1) Energy supplied electrically from mains\n(2) Energy transferred by electrical work to heating element\n(3) Thermal energy store of element increases\n(4) Energy transferred by heating to water\n(5) Water’s thermal store increases (temperature rises)\n(6) Some energy dissipated to surroundings (inefficiency)" },
-                { id: 'p_a_f_1_11_h_5', q: "Explain how energy is redistributed in any system change (exam-style general answer).", a: "(1) Energy is conserved overall\n(2) Energy is transferred between different stores\n(3) Useful energy may become less useful\n(4) Some energy is dissipated to thermal stores of surroundings\n(5) Transfers occur via heating, mechanical work, or electrical work\n(6) Total energy in a closed system remains constant" },
-                { id: 'p_a_f_1_11_h_6', q: "Explain how calculations show energy redistribution (Required Practical Skill).", a: "(1) Calculate initial energy in system\n(2) Calculate final energy in different stores\n(3) Compare values on same scale\n(4) Show total energy remains constant\n(5) Identify energy transferred to less useful stores (e.g. thermal)\n(6) Conclude energy is conserved but redistributed" },
-                { id: 'p_a_f_1_11_h_7', q: "Explain energy changes when an object is raised and then falls (including calculations).", a: "(1) Energy transferred to gravitational potential store when lifted\n(2) Given by $E_p = mgh$\n(3) As object falls: GPE decreases\n(4) Kinetic energy increases\n(5) Given by $E_k = \\frac{1}{2}mv^2$\n(6) Total energy conserved (ignoring air resistance)" },
-                { id: 'p_a_f_1_11_h_8', q: "Explain how elastic potential energy is stored in a spring (with conditions).", a: "(1) Work is done to stretch/compress spring\n(2) Energy stored as elastic potential energy\n(3) Given by $E_e = \\frac{1}{2}ke^2$\n(4) Applies only before limit of proportionality\n(5) Beyond this point, energy calculation is less accurate\n(6) Spring may deform permanently" },
-                { id: 'p_a_f_1_11_h_9', q: "Explain how to use calculations to compare energy changes in a system (WS 4.5).", a: "(1) Calculate energy before change\n(2) Calculate energy after change\n(3) Use correct equations (KE, GPE, EPE)\n(4) Compare values on same scale (Joules)\n(5) Identify where energy has been transferred\n(6) Conclude total energy is conserved but redistributed" },
-                { id: 'p_a_f_1_11_h_10', q: "Describe the force–extension graph of a spring.", a: "(1) Straight line = force proportional to extension\n(2) Obeys Hooke’s Law\n(3) Limit of proportionality marks end of linear behaviour\n(4) After this, graph curves\n(5) Spring no longer obeys Hooke’s Law\n(6) May not return to original length" }
-              ]
-            }
-          }
-        }
-      }
-    }
-    };
+    const { useState, useEffect } = React;
 
     // --- Icons ---
-    const ChevronLeft = ({ className }) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>;
-    const RotateCcw = ({ className }) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>;
-    const Trophy = ({ className }) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 22V18"/><path d="M14 22V18"/><path d="M18 4H6v7a6 6 0 0 0 12 0V4Z"/></svg>;
+    const ChevronLeft = () => <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>;
+    const RotateCcw = () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>;
+    const BookOpen = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>;
+    const Layers = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>;
 
     function App() {
+      const [DATABASE, setDatabase] = useState({});
+      const [loading, setLoading] = useState(true);
+      const [error, setError] = useState(null);
+
       const [step, setStep] = useState('menu');
       const [path, setPath] = useState([]);
       const [queue, setQueue] = useState([]);
@@ -992,6 +50,43 @@
       const [sessionXP, setSessionXP] = useState(0);
       const [sessionStats, setSessionStats] = useState({ weak: 0, medium: 0, strong: 0 });
       const [totalXP, setTotalXP] = useState(parseInt(localStorage.getItem('studyqs_xp') || '0'));
+      const [markdownContent, setMarkdownContent] = useState('');
+
+      // 1. Fetch CSV on startup
+      useEffect(() => {
+        Papa.parse('questions.csv', {
+          download: true,
+          header: true,
+          skipEmptyLines: true,
+          complete: (results) => {
+            const db = {};
+            results.data.forEach(row => {
+              // Ensure row has the bare minimum data to avoid breaking
+              if (!row.Subject || !row.Question || !row.Answer) return;
+              
+              db[row.Subject] ??= {};
+              db[row.Subject][row.Board] ??= {};
+              db[row.Subject][row.Board][row.Tier] ??= {};
+              db[row.Subject][row.Board][row.Tier][row.Topic] ??= {};
+              db[row.Subject][row.Board][row.Tier][row.Topic][row.Subtopic] ??= {};
+              db[row.Subject][row.Board][row.Tier][row.Topic][row.Subtopic][row.Difficulty] ??= [];
+              
+              db[row.Subject][row.Board][row.Tier][row.Topic][row.Subtopic][row.Difficulty].push({
+                id: row.ID, 
+                q: row.Question, 
+                a: row.Answer
+              });
+            });
+            setDatabase(db);
+            setLoading(false);
+          },
+          error: (err) => {
+            console.error(err);
+            setError("Could not load questions.csv. Make sure the file is uploaded to GitHub.");
+            setLoading(false);
+          }
+        });
+      }, []);
 
       const startSession = (selectedPath) => {
         const [subj, board, tier, top, sub, diff] = selectedPath;
@@ -999,8 +94,6 @@
         const scores = JSON.parse(localStorage.getItem('studyqs_scores') || '{}');
 
         let weak = [], medium = [], unseen = [], strong = [];
-        
-        // Sort questions into priority buckets
         allQuestions.forEach(q => {
           const score = scores[q.id];
           if (score === 1) weak.push(q);
@@ -1010,19 +103,10 @@
         });
 
         const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
-        
-        // Build the queue: Weak -> Medium -> Unseen
         let buildQueue = [...shuffle(weak), ...shuffle(medium), ...shuffle(unseen)];
-        
-        // If they have mastered everything, give them a recap of their strong cards
-        if (buildQueue.length === 0 && strong.length > 0) {
-          buildQueue = shuffle(strong);
-        }
+        if (buildQueue.length === 0 && strong.length > 0) buildQueue = shuffle(strong);
 
-        if (buildQueue.length === 0) {
-          alert("No questions found in this section.");
-          return;
-        }
+        if (buildQueue.length === 0) return alert("No questions found.");
 
         setQueue(buildQueue);
         setCurrentIndex(0);
@@ -1032,13 +116,31 @@
         setStep('playing');
       };
 
+      // 2. Fetch Markdown file dynamically
+      const openNotes = () => {
+        // Clean path to create filename (e.g. biology_aqa_higher_1_cell_biology_1_1_cell_structure.md)
+        let filename = path.join('_').replace(/[^a-zA-Z0-9_-]/g, '_').toLowerCase();
+        filename = filename.replace(/_+/g, '_') + '.md'; 
+        
+        fetch(`notes/${filename}`)
+          .then(res => {
+            if (!res.ok) throw new Error("File not found");
+            return res.text();
+          })
+          .then(text => {
+            setMarkdownContent(marked.parse(text));
+            setStep('revise');
+          })
+          .catch(() => {
+            setMarkdownContent(marked.parse("### Notes coming soon!\n\nI haven't uploaded the study sheet for this topic to the `notes` folder yet."));
+            setStep('revise');
+          });
+      };
+
       const handleSelect = (val) => {
         const newPath = [...path, val];
-        if (newPath.length === 6) {
-          startSession(newPath);
-        } else {
-          setPath(newPath);
-        }
+        if (newPath.length === 6) startSession(newPath);
+        else setPath(newPath);
       };
 
       const handleRate = (rating) => {
@@ -1047,13 +149,11 @@
         scores[currentQ.id] = rating;
         localStorage.setItem('studyqs_scores', JSON.stringify(scores));
 
-        // Award XP
         const newTotal = totalXP + 10;
         setTotalXP(newTotal);
         setSessionXP(prev => prev + 10);
         localStorage.setItem('studyqs_xp', newTotal.toString());
 
-        // Update Session Stats Breakdown
         setSessionStats(prev => ({
           ...prev,
           weak: rating === 1 ? prev.weak + 1 : prev.weak,
@@ -1064,31 +164,7 @@
         if (currentIndex + 1 < queue.length) {
           setCurrentIndex(prev => prev + 1);
           setShowAnswer(false);
-        } else {
-          setStep('summary');
-        }
-      };
-
-      const getStats = () => {
-        const scores = JSON.parse(localStorage.getItem('studyqs_scores') || '{}');
-        const stats = {};
-        Object.keys(DATABASE).forEach(subj => {
-          let total = 0, mastered = 0, seen = 0;
-          const traverse = (obj) => {
-            if (Array.isArray(obj)) {
-              obj.forEach(q => {
-                total++;
-                if (scores[q.id]) seen++;
-                if (scores[q.id] === 3) mastered++;
-              });
-            } else {
-              Object.values(obj).forEach(val => traverse(val));
-            }
-          };
-          traverse(DATABASE[subj]);
-          stats[subj] = { total, mastered, seen, pct: total > 0 ? Math.round((mastered / total) * 100) : 0 };
-        });
-        return stats;
+        } else setStep('summary');
       };
 
       const getTopicStats = () => {
@@ -1115,14 +191,10 @@
         return stats;
       };
 
-      // Handle Spacebar and Keypresses
       useEffect(() => {
         const handleKeyDown = (e) => {
           if (step !== 'playing') return;
-          if (e.code === 'Space') { 
-            e.preventDefault(); 
-            if (!showAnswer) setShowAnswer(true); 
-          }
+          if (e.code === 'Space') { e.preventDefault(); if (!showAnswer) setShowAnswer(true); }
           if (showAnswer) {
             if (e.key === '1') handleRate(1);
             if (e.key === '2') handleRate(2);
@@ -1133,200 +205,229 @@
         return () => window.removeEventListener('keydown', handleKeyDown);
       }, [step, showAnswer, handleRate]);
 
+      if (loading) return <div className="min-h-screen flex items-center justify-center text-gray-400">Loading database...</div>;
+      if (error) return <div className="min-h-screen flex items-center justify-center text-red-500 font-bold px-6 text-center">{error}</div>;
 
+      let currentView = null;
+
+      // === RENDER MENU ===
       if (step === 'menu') {
         let options = [], title = "";
-        if (path.length === 0) { title = "Select Subject"; options = Object.keys(DATABASE); }
-        else if (path.length === 1) { title = "Select Exam Board"; options = Object.keys(DATABASE[path[0]]); }
-        else if (path.length === 2) { title = "Select Tier"; options = Object.keys(DATABASE[path[0]][path[1]]); }
-        else if (path.length === 3) { title = "Select Topic"; options = Object.keys(DATABASE[path[0]][path[1]][path[2]]); }
-        else if (path.length === 4) { title = "Select Subtopic"; options = Object.keys(DATABASE[path[0]][path[1]][path[2]][path[3]]); }
-        else if (path.length === 5) { title = "Select Difficulty"; options = Object.keys(DATABASE[path[0]][path[1]][path[2]][path[3]][path[4]]); }
+        if (path.length === 0) { title = "Subjects"; options = Object.keys(DATABASE); }
+        else if (path.length === 1) { title = "Exam Board"; options = Object.keys(DATABASE[path[0]] || {}); }
+        else if (path.length === 2) { title = "Tier"; options = Object.keys(DATABASE[path[0]][path[1]] || {}); }
+        else if (path.length === 3) { title = "Topics"; options = Object.keys(DATABASE[path[0]][path[1]][path[2]] || {}); }
+        else if (path.length === 4) { title = "Subtopics"; options = Object.keys(DATABASE[path[0]][path[1]][path[2]][path[3]] || {}); }
+        else if (path.length === 5) { title = path[4]; options = Object.keys(DATABASE[path[0]][path[1]][path[2]][path[3]][path[4]] || {}); }
 
-        const stats = path.length === 0 ? getStats() : null;
         const topicStats = path.length === 3 ? getTopicStats() : null;
 
-        return (
-          <div className="w-full max-w-2xl mx-auto p-6 animate-fade-in">
-            <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-10">
-              <div className="text-left">
-                <h1 className="text-4xl font-bold text-gray-900 tracking-tight">studyqs</h1>
-                <p className="text-xl text-gray-500 mt-2">Recall questions for GCSE</p>
-                <p className="text-xs text-gray-400 mt-2 uppercase tracking-wider font-semibold">(DATA IS AUTOSAVED PER DEVICE)</p>
+        currentView = (
+          <div className="w-full max-w-3xl mx-auto p-6 md:p-10 animate-fade-in pb-24">
+            {/* Header */}
+            <div className="flex justify-between items-end mb-12 border-b border-gray-100 pb-6">
+              <div>
+                <h1 className="text-3xl font-bold tracking-tight mb-1">studyqs</h1>
+                <p className="text-sm text-gray-500 font-medium">GCSE revision + recall</p>
+                <p className="text-[10px] text-gray-400 uppercase tracking-widest mt-1">progress is autosaved per device</p>
               </div>
-              <div className="flex gap-3">
-                <div className="bg-[#FEF9C3] px-4 py-3 rounded-xl text-center min-w-[100px] shadow-sm">
-                  <div className="text-xs font-bold text-yellow-700 uppercase mb-1">Total XP</div>
-                  <div className="text-2xl font-bold text-yellow-900">{totalXP}</div>
-                </div>
+              <div className="text-right">
+                <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Total XP</div>
+                <div className="text-xl font-bold text-gray-800">{totalXP}</div>
               </div>
             </div>
 
+            {/* Breadcrumbs */}
             {path.length > 0 && (
-              <div className="flex items-center gap-2 mb-6 text-sm text-gray-600 bg-white p-3 rounded-lg border border-gray-200 shadow-sm">
-                <button onClick={() => setPath(path.slice(0, -1))} className="hover:text-blue-600 flex items-center font-medium transition-colors">
-                  <ChevronLeft className="w-4 h-4 mr-1" /> Back
-                </button>
-                <span className="text-gray-300">|</span>
-                <span className="truncate font-medium">{path.join(' > ')}</span>
-              </div>
-            )}
-
-            {/* Level 0: Interactive Subject Cards (NO STATS AS REQUESTED) */}
-            {path.length === 0 && (
-              <div className="mb-10">
-                <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 px-1">Select Subject</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {Object.keys(DATABASE).map((subj) => (
-                    <button key={subj} onClick={() => handleSelect(subj)} className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm text-left hover:border-blue-500 hover:shadow-md transition-all group block w-full">
-                      <div className="flex justify-between items-center">
-                        <span className="text-lg font-bold text-gray-800 group-hover:text-blue-700 transition-colors">{subj}</span>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Level 3: Interactive Topic Cards */}
-            {path.length === 3 && (
-              <div className="mb-10">
-                <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 px-1">Select Topic</h3>
-                <div className="grid grid-cols-1 gap-4">
-                  {Object.entries(topicStats).map(([topic, s]) => (
-                    <button key={topic} onClick={() => handleSelect(topic)} className="bg-white border border-gray-200 rounded-lg p-5 shadow-sm text-left hover:border-blue-500 hover:shadow-md transition-all group block w-full">
-                      <div className="flex justify-between items-center mb-4">
-                        <span className="text-lg font-bold text-gray-800 truncate mr-2 group-hover:text-blue-700 transition-colors" title={topic}>{topic}</span>
-                        <span className="text-sm font-bold text-blue-600 whitespace-nowrap">{s.pct}% mastered</span>
-                      </div>
-                      <div className="w-full bg-gray-100 rounded-full h-2 mb-3 overflow-hidden">
-                        <div className="bg-blue-500 h-2 rounded-full transition-all duration-1000" style={{ width: `${s.pct}%` }} />
-                      </div>
-                      <div className="text-xs text-gray-400 font-medium">{s.seen} of {s.total} cards seen</div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Standard buttons for paths that are NOT Subjects or Topics */}
-            {(path.length !== 0 && path.length !== 3) && (
-              <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6">{title}</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {options.map(opt => (
-                    <button key={opt} onClick={() => handleSelect(opt)} className="p-4 text-left border border-gray-200 rounded-lg hover:border-blue-500 hover:bg-blue-50 hover:text-blue-700 transition-all font-medium text-gray-700 group flex justify-between items-center">
-                      <span className="text-lg">{opt}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        );
-      }
-
-      if (step === 'playing') {
-        const q = queue[currentIndex];
-        const progress = ((currentIndex + 1) / queue.length) * 100;
-        return (
-          <div className="w-full max-w-3xl mx-auto p-4 md:p-8 animate-fade-in flex flex-col min-h-screen justify-center">
-            <div className="flex justify-between items-center mb-4">
-              <button onClick={() => setStep('summary')} className="text-gray-500 hover:text-gray-800 flex items-center gap-2 text-sm font-medium transition-colors">
-                <RotateCcw className="w-4 h-4" /> Exit Session
+              <button onClick={() => setPath(path.slice(0, -1))} className="flex items-center text-sm font-medium text-gray-400 hover:text-gray-800 transition-colors mb-6">
+                <ChevronLeft /> <span className="ml-1">{path.join(' / ')}</span>
               </button>
-              <div className="bg-[#FEF9C3] px-3 py-1 rounded-lg text-yellow-800 text-xs font-bold shadow-sm">
-                Session XP: {sessionXP}
+            )}
+
+            <h2 className="text-xl font-semibold mb-6">{title}</h2>
+
+            {/* Level 0: Subjects (No Progress Bars) */}
+            {path.length === 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {options.map(subj => (
+                  <button key={subj} onClick={() => handleSelect(subj)} className="text-left p-5 rounded-lg notion-card transition-colors group block w-full">
+                    <span className="text-lg font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">{subj}</span>
+                  </button>
+                ))}
               </div>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-2.5 mb-2">
-              <div className="bg-blue-600 h-2.5 rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
-            </div>
-            <div className="text-right text-xs text-gray-500 font-medium mb-8">Card {currentIndex + 1} of {queue.length}</div>
-            
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 flex flex-col overflow-hidden min-h-[350px]">
-              <div className="p-8 md:p-12 flex-1 flex items-center justify-center text-center">
-                <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 leading-relaxed">
-                  {q.q}
-                </h2>
+            )}
+
+            {/* Level 3: Topics with Progress Bars */}
+            {path.length === 3 && (
+              <div className="grid grid-cols-1 gap-3">
+                {Object.entries(topicStats).map(([topic, s]) => (
+                  <button key={topic} onClick={() => handleSelect(topic)} className="text-left p-5 rounded-lg notion-card transition-colors group block w-full">
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="text-lg font-semibold text-gray-800 truncate mr-2 group-hover:text-blue-600 transition-colors" title={topic}>{topic}</span>
+                      <span className="text-sm font-medium text-gray-400 whitespace-nowrap">{s.pct}% mastered</span>
+                    </div>
+                    <div className="w-full bg-gray-100 rounded-full h-1.5 mb-3 overflow-hidden">
+                      <div className="bg-gray-800 h-1.5 rounded-full transition-all duration-1000" style={{ width: `${s.pct}%` }} />
+                    </div>
+                    <div className="text-xs text-gray-400">{s.seen} of {s.total} cards seen</div>
+                  </button>
+                ))}
               </div>
-              
-              {!showAnswer ? (
-                <div className="p-6 bg-gray-50 border-t border-gray-200 text-center">
-                  <button onClick={() => setShowAnswer(true)} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-sm transition-all w-full md:w-auto">
-                    Show Answer (Space)
+            )}
+
+            {/* Subtopic Dashboard (Notion Style) */}
+            {path.length === 5 ? (
+              <div className="space-y-8 animate-fade-in">
+                {/* Option 1: Study Notes */}
+                <div>
+                  <div className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Learn</div>
+                  <button onClick={openNotes} className="w-full flex items-center p-4 rounded-lg notion-card transition-colors text-left group">
+                    <div className="bg-gray-100 p-2 rounded text-gray-600 mr-4 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors"><BookOpen /></div>
+                    <div>
+                      <div className="font-semibold text-gray-800">Study Sheet</div>
+                      <div className="text-sm text-gray-500 mt-0.5">Read notes and diagrams for this topic</div>
+                    </div>
                   </button>
                 </div>
-              ) : (
-                <div className="p-8 md:p-10 bg-blue-50 border-t border-blue-200 text-center animate-fade-in">
-                  <p className="text-lg md:text-xl text-blue-900 mb-8 font-medium whitespace-pre-wrap leading-relaxed">
-                    {q.a}
-                  </p>
-                  <p className="text-sm text-gray-500 mb-4 font-medium uppercase tracking-wider">How was it?</p>
-                  <div className="grid grid-cols-3 gap-4 max-w-sm mx-auto">
-                    <button onClick={() => handleRate(1)} className="p-4 bg-white border border-red-200 hover:border-red-400 hover:bg-red-50 rounded-xl transition-all shadow-sm group">
-                      <span className="text-3xl block mb-2 group-hover:scale-110 transition-transform">🙁</span>
-                      <div className="text-sm font-bold text-red-600">Bad</div>
-                    </button>
-                    <button onClick={() => handleRate(2)} className="p-4 bg-white border border-yellow-200 hover:border-yellow-400 hover:bg-yellow-50 rounded-xl transition-all shadow-sm group">
-                      <span className="text-3xl block mb-2 group-hover:scale-110 transition-transform">😐</span>
-                      <div className="text-sm font-bold text-yellow-600">Ish</div>
-                    </button>
-                    <button onClick={() => handleRate(3)} className="p-4 bg-white border border-green-200 hover:border-green-400 hover:bg-green-50 rounded-xl transition-all shadow-sm group">
-                      <span className="text-3xl block mb-2 group-hover:scale-110 transition-transform">🙂</span>
-                      <div className="text-sm font-bold text-green-600">Easy</div>
-                    </button>
+
+                {/* Option 2: Flashcards */}
+                <div>
+                  <div className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Recall</div>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    {options.map(diff => (
+                      <button key={diff} onClick={() => handleSelect(diff)} className="flex items-center p-4 rounded-lg notion-card transition-colors text-left group">
+                        <div className="bg-gray-100 p-2 rounded text-gray-600 mr-3 group-hover:bg-green-50 group-hover:text-green-600 transition-colors"><Layers /></div>
+                        <div className="font-medium text-gray-800">{diff.split(' ')[0]}</div>
+                      </button>
+                    ))}
                   </div>
                 </div>
-              )}
-            </div>
+              </div>
+            ) : null }
+
+            {/* Standard Menu List for other levels */}
+            {(path.length !== 0 && path.length !== 3 && path.length !== 5) && (
+              <div className="flex flex-col gap-2">
+                {options.map(opt => (
+                  <button key={opt} onClick={() => handleSelect(opt)} className="w-full text-left p-4 rounded-lg notion-card font-medium transition-colors">
+                    {opt}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         );
       }
 
-      if (step === 'summary') {
-        // Find exactly how many cards were answered in this specific session
-        const totalAnswered = sessionStats.weak + sessionStats.medium + sessionStats.strong;
-
-        return (
-          <div className="w-full max-w-xl mx-auto p-6 text-center animate-fade-in mt-12 min-h-screen flex flex-col justify-center">
-            <div className="mb-6 flex justify-center text-yellow-500">
-              <Trophy className="w-16 h-16" />
+      // === RENDER REVISE MODE (MARKDOWN) ===
+      else if (step === 'revise') {
+        currentView = (
+          <div className="w-full max-w-3xl mx-auto p-6 md:p-10 animate-fade-in pb-24">
+            <div className="flex justify-between items-center mb-8 border-b border-gray-100 pb-6">
+              <button onClick={() => setStep('menu')} className="flex items-center text-sm font-medium text-gray-400 hover:text-gray-800 transition-colors">
+                <ChevronLeft /> Back to Menu
+              </button>
             </div>
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">Session Complete!</h1>
-            <p className="text-blue-600 font-bold text-lg mb-8">+{sessionXP} XP Earned</p>
             
-            <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm mb-8 max-w-md mx-auto w-full">
-              <div className="flex justify-between items-center text-center divide-x divide-gray-100">
-                <div className="flex-1">
-                  <div className="text-3xl font-bold text-gray-800">{totalAnswered}</div>
-                  <div className="text-[10px] uppercase font-semibold text-gray-400 mt-1">Cards Done</div>
-                </div>
-                <div className="flex-1">
-                  <span className="text-2xl block mb-1">🙁</span>
-                  <div className="text-xl font-bold text-gray-800">{sessionStats.weak}</div>
-                </div>
-                <div className="flex-1">
-                  <span className="text-2xl block mb-1">😐</span>
-                  <div className="text-xl font-bold text-gray-800">{sessionStats.medium}</div>
-                </div>
-                <div className="flex-1">
-                  <span className="text-2xl block mb-1">🙂</span>
-                  <div className="text-xl font-bold text-gray-800">{sessionStats.strong}</div>
-                </div>
+            {/* Tailwind Typography Plugin handles all the styling perfectly here */}
+            <div 
+              className="prose prose-gray max-w-none"
+              dangerouslySetInnerHTML={{ __html: markdownContent }}
+            />
+          </div>
+        );
+      }
+
+      // === RENDER PLAYING (FLASHCARDS) ===
+      else if (step === 'playing') {
+        const q = queue[currentIndex];
+        const progress = ((currentIndex + 1) / queue.length) * 100;
+        currentView = (
+          <div className="w-full max-w-3xl mx-auto p-6 md:p-10 animate-fade-in flex flex-col min-h-screen pb-24">
+            <div className="flex justify-between items-center mb-6">
+              <button onClick={() => setStep('summary')} className="text-gray-400 hover:text-gray-800 flex items-center text-sm font-medium transition-colors">
+                <RotateCcw /> <span className="ml-2">Exit</span>
+              </button>
+              <div className="text-xs font-bold text-gray-400 uppercase tracking-widest">{currentIndex + 1} / {queue.length}</div>
+            </div>
+            
+            <div className="w-full bg-gray-100 rounded-full h-1 mb-8">
+              <div className="bg-gray-800 h-1 rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
+            </div>
+            
+            <div className="flex-1 flex flex-col items-center justify-center w-full pb-10">
+              {/* Thin bordered card container */}
+              <div className="w-full max-w-2xl border border-gray-200 rounded-2xl p-8 md:p-12 min-h-[350px] flex flex-col justify-center bg-white shadow-sm relative">
+                
+                <h2 className="text-2xl md:text-3xl font-semibold leading-relaxed text-center mb-10 text-gray-800">
+                  {q.q}
+                </h2>
+                
+                {!showAnswer ? (
+                  <div className="text-center mt-auto">
+                    <button onClick={() => setShowAnswer(true)} className="px-6 py-3 rounded-lg border border-gray-200 font-medium hover:bg-gray-50 transition-colors text-gray-700">
+                      Show Answer (Space)
+                    </button>
+                  </div>
+                ) : (
+                  <div className="animate-fade-in mt-auto flex flex-col items-center w-full">
+                    <div className="w-full border-t border-gray-100 pt-8 mb-10">
+                      <p className="text-lg text-gray-600 whitespace-pre-wrap leading-relaxed text-center">
+                        {q.a}
+                      </p>
+                    </div>
+                    
+                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest text-center mb-4">how did you do?</p>
+                    <div className="grid grid-cols-3 gap-3 w-full max-w-md">
+                      <button onClick={() => handleRate(1)} className="py-3 rounded-lg border border-gray-200 font-medium hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-colors text-gray-600">🙁 Bad</button>
+                      <button onClick={() => handleRate(2)} className="py-3 rounded-lg border border-gray-200 font-medium hover:bg-yellow-50 hover:text-yellow-600 hover:border-yellow-200 transition-colors text-gray-600">😐 Meh</button>
+                      <button onClick={() => handleRate(3)} className="py-3 rounded-lg border border-gray-200 font-medium hover:bg-green-50 hover:text-green-600 hover:border-green-200 transition-colors text-gray-600">🙂 Easy</button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
+          </div>
+        );
+      }
+
+      // === RENDER SUMMARY ===
+      else if (step === 'summary') {
+        const totalAnswered = sessionStats.weak + sessionStats.medium + sessionStats.strong;
+        currentView = (
+          <div className="w-full max-w-xl mx-auto p-6 md:p-10 text-center animate-fade-in flex flex-col justify-center min-h-screen pb-24">
+            <h1 className="text-3xl font-bold mb-2">Session Complete</h1>
+            <p className="text-gray-500 font-medium mb-10">+{sessionXP} XP Earned</p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button onClick={() => startSession(path)} className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-sm transition-all">Practice Again</button>
-              <button onClick={() => { setStep('menu'); setPath([]); }} className="px-6 py-3 bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 font-semibold rounded-lg shadow-sm transition-all">Go Home</button>
+            <div className="border border-gray-200 rounded-lg p-6 mb-10 flex justify-between items-center text-center divide-x divide-gray-100 bg-white shadow-sm">
+              <div className="flex-1"><div className="text-2xl font-bold">{totalAnswered}</div><div className="text-xs text-gray-400 mt-1 uppercase">Cards</div></div>
+              <div className="flex-1"><div className="text-2xl font-bold">{sessionStats.weak}</div><div className="text-xs text-red-400 mt-1 uppercase">Bad</div></div>
+              <div className="flex-1"><div className="text-2xl font-bold">{sessionStats.medium}</div><div className="text-xs text-yellow-400 mt-1 uppercase">Meh</div></div>
+              <div className="flex-1"><div className="text-2xl font-bold">{sessionStats.strong}</div><div className="text-xs text-green-400 mt-1 uppercase">Easy</div></div>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <button onClick={() => startSession(path)} className="px-6 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors shadow-sm">Practice Again</button>
+              <button onClick={() => { setStep('menu'); setPath([]); }} className="px-6 py-3 border border-gray-200 bg-white rounded-lg font-medium hover:bg-gray-50 transition-colors shadow-sm">Home</button>
             </div>
           </div>
         );
       }
 
-      return null;
+      // Return the current view + the globally fixed footer
+      return (
+        <React.Fragment>
+          {currentView}
+          
+          {/* Subtle Corner Footer */}
+          <div className="fixed bottom-4 right-4 text-right text-[10px] sm:text-xs text-gray-500 hover:text-gray-400 transition-colors z-50">
+            <p>a <a href="https://targettuition.com/" target="_blank" rel="noopener noreferrer" className="font-semibold underline">Target Tuition</a> company</p>
+            <p className="mt-0.5">if you like this, please support by donating <a href="https://donate.stripe.com/dRm7sL3xJ8xe3deb1Eco00a" target="_blank" rel="noopener noreferrer" className="font-semibold underline">[here]</a>!!</p>
+          </div>
+        </React.Fragment>
+      );
     }
+
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(<App />);
   </script>
