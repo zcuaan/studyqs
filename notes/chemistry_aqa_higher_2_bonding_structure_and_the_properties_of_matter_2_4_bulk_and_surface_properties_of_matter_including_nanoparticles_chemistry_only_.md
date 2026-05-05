@@ -15,22 +15,21 @@
 ## 2.4.2 Uses of nanoparticles
 
 Nanoparticles are used in:
-1. **Catalysts** because they have high SA:V
-2. **Sunscreens** because they have better coverage  
+1. **Catalysts:** they have high SA:V so highly reactive
+2. **Sunscreens:** they have better coverage
    Titanium dioxide nanoparticles block UV light + leave no white marks on the skin
-3. **Paint:** they have better coverage (also titanium dioxide nanoparticles)
-4. **Medicine and drugs:** they are more easily absorbed + can be delivered to specific areas
-5. **Electronic circuits:** they conduct electricity + are tiny!
-6. **Medical clothing:** silver nanoparticles have anti-bacterial properties and can be sprayed/added to polymer fibres
-7. **Deodorant in clothing:** silver nanoparticles have anti-bacterial properties and can be sprayed/added to polymer fibres
+3. **Medicine and drugs:** they are more easily absorbed + can deliver drugs to specific areas
+4. **Electronic circuits:** they conduct electricity + are tiny!
+5. **Medical clothing:** silver nanoparticles have anti-bacterial properties and can be added to polymer fibres
+6. **Deodorant in clothing:** silver nanoparticles have anti-bacterial properties and can be added to polymer fibres
 
 **Pros:**
-- so many uses!
-- so helpful!
-- useful because they have a high SA:V, so they can be very reactive/effective in small amounts
+1. **Efficiency:** high SA:V → highly reactive → effective in small amounts
+2. **Special properties:** Some materials have different properties when they're nanoparticles (like the titanium dioxide)
+3. **Medical advancement:** Better drug delivery + antibacterial protection in textiles
 
 **Cons:**
-- They're too new. The science is in the early stages, so there are unknown risks.
-- Health risk? Okay in the short term. Long term? Who knows!
-- Nanoparticles are useful because they have high SA:V, but that also means if they're even a little bit toxic, that effect could be bigger per nanoparticle
-- Our bodies may struggle to dispose of them, so we have to be careful
+- **Unknown risks:** Early stage technology, unknown long-term effects.
+- **Health risks:** Very small → might be inhaled → pass through skin → bloodstream
+- **Toxicity:** High SA:V so if toxic -> greater toxic effect
+- **Environmental:** Could be washed into environemnt + difficult to remove from our bodies
