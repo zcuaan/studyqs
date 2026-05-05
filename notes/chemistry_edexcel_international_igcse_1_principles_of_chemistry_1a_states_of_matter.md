@@ -18,7 +18,7 @@
 
 - It happens naturally so no energy is needed.
 - When temperature is increased, it will occur faster as particles have more kinetic energy.
-- 
+  
 **Diffusion in Gas Experiment**
 - Using a jar which has a glass plate in the middle to split it in half, fill half a jar with bromine gas (brown), fill the other half of the jar with air.
 - Take the glass plate out, the two will diffuse.
