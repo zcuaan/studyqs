@@ -48,7 +48,8 @@ Plant cells have all of the above and:
 6. **Cell wall:** strengthens and supports the cell (is made of cellulose)
 7. **Chloroplast:** they have chlorophyll (which is green hence why plants are green) which absorb sunlight for photosynthesis
 8. **Permanent vacuole:** space in the cytoplasm filled with cell sap to keep the cells rigid + support the plant
-    (Cell sap = solution of sugars and salts)
+
+   (Cell sap = solution of sugars and salts)
 
 ---
 
