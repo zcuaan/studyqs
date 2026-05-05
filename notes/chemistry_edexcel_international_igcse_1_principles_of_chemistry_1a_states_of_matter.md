@@ -14,5 +14,6 @@
 
 ## Diffusion and Dilution
 
-Diffusion is the movement of particles from an area of high concentration to an area of low concentration.
-Dilution is adding more solvent (usually water) to a solution
+**Diffusion** is the movement of particles from an area of high concentration to an area of low concentration.
+
+**Dilution** is adding more solvent (usually water) to a solution
