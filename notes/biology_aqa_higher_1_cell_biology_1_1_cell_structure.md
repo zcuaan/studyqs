@@ -36,18 +36,18 @@ They're about 1 µm.
 
 Most animal cells have:
 
-**1. Nucleus:** controls all cell activities + contains DNA
-**2. Cell membrane:** hold the cell together + control the movement of substances in and out of the cell
-**3. Mitochondria:** site of aerobic respiration so it releases energy for cell activities
-**4. Ribosomes:** where protein synthesis happens (where proteins are made)
-**5. Cytoplasm:** where chemical reactions happen + supports internal cell structure
+1. **Nucleus:** controls all cell activities + contains DNA
+2. **Cell membrane:** hold the cell together + control the movement of substances in and out of the cell
+3. **Mitochondria:** site of aerobic respiration so it releases energy for cell activities
+4. **Ribosomes:** where protein synthesis happens (where proteins are made)
+5. **Cytoplasm:** where chemical reactions happen + supports internal cell structure
     (it is a liquid gel of nutrients and salts)
 
 Plant cells have all of the above and:
 
-**6. Cell wall:** strengthens and supports the cell (is made of cellulose)
-**7. Chloroplast:** they have chlorophyll (which is green hence why plants are green) which absorb sunlight for photosynthesis
-**8. Permanent vacuole:** space in the cytoplasm filled with cell sap to keep the cells rigid + support the plant
+6. **Cell wall:** strengthens and supports the cell (is made of cellulose)
+7. **Chloroplast:** they have chlorophyll (which is green hence why plants are green) which absorb sunlight for photosynthesis
+8. **Permanent vacuole:** space in the cytoplasm filled with cell sap to keep the cells rigid + support the plant
     (Cell sap = solution of sugars and salts)
 
 ---
