@@ -35,6 +35,7 @@ They're about 1 µm.
 ## 1.1.2 Animal and plant cells
 
 Most animal cells have:
+
 **1. Nucleus:** controls all cell activities + contains DNA
 **2. Cell membrane:** hold the cell together + control the movement of substances in and out of the cell
 **3. Mitochondria:** site of aerobic respiration so it releases energy for cell activities
@@ -43,6 +44,7 @@ Most animal cells have:
     (it is a liquid gel of nutrients and salts)
 
 Plant cells have all of the above and:
+
 **6. Cell wall:** strengthens and supports the cell (is made of cellulose)
 **7. Chloroplast:** they have chlorophyll (which is green hence why plants are green) which absorb sunlight for photosynthesis
 **8. Permanent vacuole:** space in the cytoplasm filled with cell sap to keep the cells rigid + support the plant
