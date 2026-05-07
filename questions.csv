@@ -1,1471 +1,424 @@
-Subject,Board,Tier,Topic,Subtopic,Difficulty,ID,Question,Answer,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_1,What is the difference between eukaryotic and prokaryotic cells?,"(1) Eukaryotic cells have a nucleus / are more complex
+Subject,Board,Tier,Topic,Subtopic,Difficulty,ID,Question,Answer,Notes
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_1,What is the difference between eukaryotic and prokaryotic cells? (2),"(1) Eukaryotic cells have a nucleus / are more complex
 (2) Prokaryotic cells do not have a nucleus / are smaller and simpler",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_2,What are eukaryotes?,(1) Organisms made of eukaryotic cells,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_3,What are prokaryotes?,(1) Organisms made of prokaryotic cells,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_4,Are animal cells prokaryotic or eukaryotic?,(1) Eukaryotic,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_5,Are plant cells prokaryotic or eukaryotic?,(1) Eukaryotic,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_6,Are bacteria cells prokaryotic or eukaryotic?,(1) Prokaryotic,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_7,What is the length of a eukaryotic cell?,10–100 μm,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_8,What is the length of a prokaryotic cell?,0.2–2 μm,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_9,What is the length of an average animal cell?,10–30 μm,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_10,What is the length of an average plant cell?,10–100 μm,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_11,What is the length of a virus?,100 nm,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_12,How many millimetres are in a centimetre?,10 mm,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_13,How many micrometres are in a millimetre?,1000 μm,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_14,How many nanometres are in a micrometre?,1000 nm,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_15,What is the function of the nucleus?,Controls the activities of the cell,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_16,What does the nucleus contain?,"(1) Genetic material (DNA)
-(2) Organised into chromosomes",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_17,What is the average size of a nucleus?,Around 10 μm,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_18,What is the cytoplasm?,"(1) A jelly-like substance
-(2) Where organelles are suspended",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_19,What is the purpose of the cytoplasm?,"(1) Site of chemical reactions
-(2) Contains enzymes",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_20,What is the average size of mitochondria?,Around 1–2 μm,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_21,What is the purpose of ribosomes?,Site of protein synthesis,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_22,What is the purpose of the cell wall?,"(1) Strengthens the cell
-(2) Supports the cell",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_23,What is the cell wall made of?,Cellulose,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_24,What is a DNA loop?,A circular strand of DNA,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_25,What is a plasmid?,Small circular rings of DNA,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_26,What is a flagellum?,"(1) A long tail-like structure
-(2) Used for movement",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_27,When would you use estimations in calculations?,To check whether a calculated answer is reasonable / correct,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_28,What is a specimen?,The object being observed under a microscope,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_29,What is a slide?,"(1) A thin piece of glass or plastic
-(2) Used to hold the specimen",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_30,What is a cover slip?,"(1) A thin square of glass or plastic
-(2) Placed over the specimen
-(3) Keeps the specimen flat / in place",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_31,What is the purpose of iodine solution in microscopy?,"(1) Stains the specimen
-(2) Makes structures easier to see",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_1_11_e_32,Why must the cover slip be lowered carefully?,"(1) To prevent air bubbles forming
-(2) Air bubbles can obstruct the view",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_1_11_m_1,Name three structures found in all eukaryotic cells?,"(1) Cell membrane
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_2,What are eukaryotes? (1),Organisms made of eukaryotic cells,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_3,What are prokaryotes? (1),Organisms made of prokaryotic cells,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_4,Are animal cells prokaryotic or eukaryotic? (1),Eukaryotic,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_5,Are plant cells prokaryotic or eukaryotic? (1),Eukaryotic,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_6,Are bacteria cells prokaryotic or eukaryotic? (1),Prokaryotic,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_7,What is the length of a eukaryotic cell? (1),10–100 μm,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_8,What is the length of a prokaryotic cell? (1),0.2–2 μm,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_9,What is the length of an average animal cell? (1),10–30 μm,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_10,What is the length of an average plant cell? (1),10–100 μm,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_11,What is the length of a virus? (1),100 nm,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_12,How many millimetres are in a centimetre? (1),10 mm,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_13,How many micrometres are in a millimetre? (1),1000 μm,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_14,How many nanometres are in a micrometre? (1),1000 nm,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_15,What is the function of the nucleus? (1),It controls all cell activities,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_16,What does the nucleus contain?,DNA,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_17,What is the average size of a nucleus? (1),Around 10 μm,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_18,What is the purpose of the cytoplasm? (2),(1) To support the internal cell structure and (2) be where chemical reactions take place,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_19,What is the average size of mitochondria? (1),Around 1–2 μm,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_20,What is the purpose of ribosomes? (1),"Protein synthesis happens in the ribosomes, so it is where proteins are made.",
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_21,What is the purpose of the cell wall? (2),(1) To strengthen and (2) support the cell,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_22,What is the cell wall made of? (1),Cellulose,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_23,What is a DNA loop? (1),A circular strand of DNA,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_24,What is a plasmid? (1),Small circular rings of DNA,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_25,What is a flagellum? (2),(1) A long strand of protein (2) that acts as a tail for movement,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_26,When would you use estimations in calculations? (1),To check whether a calculated answer is reasonable / correct,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_27,What is a specimen? (1),It is the object that you want to look at under a microscope,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_28,What is a slide? (1),A slide is a strip of clear glass or plastic which you put the specimen on,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_29,What is a cover slip? (2),"(1) It is a square of thin, transparent plastic or glass (2) placed on a specimen to keep it from moving",
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_30,What is the purpose of iodine solution in microscopy? (1),To stain the specimen so you can see the structures better,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_31,Why must the cover slip be lowered carefully? (2),"(1) Because if you get air bubbles underneath, (2) it will obstruct your view",
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_32,What is the purpose of the cell membrane? (2),"(1) To hold the cell together
+(2) To control the movement of substances in and out of the cell",
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_33,What is the permanent vacuole? (2),"(1) It is a space in the cytoplasm filled with cell sap.
+(2) It keeps the cells rigid to support the plant.",
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_34,"If a cell is 20μm long and approximately 10 nuclei can fit lengthways. 
+What is the approximate size of the nucleus? (2)","20μm ÷ 10 = 2μm
+So the nucleus is approximately 2μm in length.",
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_35,What does “order of magnitude” mean? (2),"(1) It is how much bigger one thing is compared to another.
+(2) It is shown in powers of 10.",
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_36,"When writing numbers in standard form, what is the format? (2)","(1) a × 10ⁿ 
+(2) where 1 ≤ a < 10 and n must be a whole number",
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_37,"If a small animal cell is around 10μm and a large plant cell is around 100μm. 
+How many orders of magnitudes bigger is the large plant cell than the small animal cell? (1)","The large plant cell is 10x bigger so it is one order of magnitude bigger, or 10¹ bigger.",
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_38,Why do prokaryotic cells have plasmids? (1),For specific features like antibiotic resistance,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_39,What is cell sap? (1),A solution of sugars and salts,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_1,What is the cytoplasm? (3),(1) A liquid gel of nutrients and salts (2) which supports internal cell structures where (3) many chemical reactions happen.,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_2,Name four structures found in all eukaryotic cells. (4),"(1) Cell membrane
 (2) Cytoplasm
-(3) Nucleus",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_1_11_m_2,Name four structures found in all prokaryotic cells?,"(1) Cell wall
-(2) Cell membrane
-(3) Cytoplasm
-(4) Circular DNA (DNA loop)",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_1_11_m_3,When writing numbers in standard form,what is the format?,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_1_11_m_4,What does “order of magnitude” mean?,"(1) A comparison of size between two values
-(2) Expressed in powers of 10
-(3) Shows how many times bigger or smaller one value is",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_1_11_m_5,If a small animal cell is around 10 μm and a large plant cell is around 100 μm,how many orders of magnitude bigger is the plant cell?,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_1_11_m_6,How many orders of magnitude bigger is a small animal cell compared to a virus?,"(1) Convert virus size: 100 nm = 0.1 μm
-(2) Small animal cell ≈ 10 μm
-(3) 10 ÷ 0.1 = 100
-(4) This is 10^2
-(5) Therefore, the cell is 2 orders of magnitude bigger",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_1_11_m_7,What is the purpose of the cell membrane?,"(1) Holds the cell together
-(2) Controls movement of substances in and out of the cell
-(3) Selectively permeable",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_1_11_m_8,What is the purpose of mitochondria?,"(1) Site of aerobic respiration
-(2) Releases energy (ATP)
-(3) Provides energy for cell activities",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_1_11_m_9,What are chloroplasts?,"(1) Contain chlorophyll
-(2) Chlorophyll absorbs light energy
-(3) Site of photosynthesis",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_1_11_m_10,What is the permanent vacuole?,"(1) Contains cell sap
-(2) Maintains turgor pressure
-(3) Keeps the cell rigid / supports the plant",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_1_11_m_11,Why do prokaryotic cells have plasmids?,"(1) Carry extra genes
-(2) Can give advantages (e.g. antibiotic resistance)
-(3) Can be transferred between cells",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_1_11_m_12,How could you use the size of cells to estimate the size of a subcellular structure?,"(1) Compare how many times the structure fits into the cell
+(3) Nucleus
+(4) Ribosomes",
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_3,How many orders of magnitude bigger is a small animal cell compared to a virus? (4),"(1) A small animal cell is approximately 10μm.
+(2) A virus is approximately 100nm = 0.1μm.
+(3) So a small animal cell is 100x bigger than a virus
+(4) which is two orders of magnitudes bigger or 10² bigger.",
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_4,What is the purpose of mitochondria? (3),(1) It is the site of aerobic respiration (2) so it releases energy (3) for cell activities,
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_5,What are chloroplasts? (3),"(1) Chloroplasts contain chlorophyll.
+(2) Chlorophyll is green (it's what makes plants green)
+(3) Chlorophyll absorbs sunlight so the plant can photosynthesise to make food.",
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_6,How could you use the size of cells to estimate the size of a subcellular structure? (4),"(1) Compare how many times the structure fits into the cell
 (2) Use the known size of the cell
 (3) Divide the cell size by the number of structures
 (4) This gives an approximate size of the structure",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_1_11_m_13,If a cell is 20 μm long and approximately 10 nuclei fit along its length,what is the approximate size of one nucleus?,
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_1_11_m_14,Describe how to prepare a slide to observe onion cells?,"(1) Place a drop of water onto a clean slide
-(2) Peel a thin layer of onion epidermis using tweezers
-(3) Place the tissue onto the slide
-(4) Add a drop of iodine solution
-(5) Lower a cover slip carefully at an angle
-(6) Avoid trapping air bubbles",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_1_11_m_15,Describe how to draw a scientific diagram from a microscope observation?,"(1) Drawing should be large (at least half the space)
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_7,What do all cells have? (4),"(1) Cell membrane
+(2) Cytoplasm
+(3) DNA
+(4) Ribosomes",
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Hard (5-6 marks),b_a_h_1_11_h_1,Describe how to draw a scientific diagram from a microscope observation? (7),"(1) Drawing should be large (at least half the space)
 (2) Use clear, continuous lines
 (3) Do not shade or colour
 (4) Keep structures in proportion
 (5) Include a title
 (6) Include magnification
 (7) Label using straight, uncrossed lines",
-Biology,AQA,Higher,1. Cell Biology,1.1 Cell Structure,Hard (5-6 marks),b_a_1_11_h_1,Describe how to use a light microscope to observe a specimen?,"(1) Place the slide on the stage and secure it
-(2) Select the lowest power objective lens
-(3) Use the coarse adjustment knob to move the stage close to the lens
-(4) Look through the eyepiece
-(5) Slowly move the stage down until the image is in focus
-(6) Use the fine adjustment knob to sharpen the image
-(7) Switch to a higher magnification if needed and refocus",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_1,What colour is blood plasma?,(1) Yellow / straw-coloured,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_2,What are platelets?,"(1) Small cell fragments
-(2) Help blood to clot after injury",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_3,Where is urea formed?,"(1) In the liver
-(2) From the breakdown of excess amino acids / proteins",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_4,Where is urea carried in the blood?,"(1) To the kidneys
-(2) Where it is removed from the blood to form urine",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_5,Are white blood cells or red blood cells bigger?,(1) White blood cells are bigger,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_6,Are there more white blood cells or red blood cells in the body?,(1) There are more red blood cells,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_7,What are the two main types of white blood cells?,"(1) Lymphocytes
-(2) Phagocytes",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_8,What do lymphocytes do?,"(1) Produce antibodies
-(2) Against specific pathogens",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_9,What do phagocytes do?,"(1) Engulf pathogens
-(2) Digest them",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_10,What are the three main types of blood vessels?,"(1) Arteries
-(2) Veins
-(3) Capillaries",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_11,What is the smallest type of blood vessel in the circulatory system?,(1) Capillaries,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_12,How close are capillaries to body cells?,"(1) Usually very close to cells
-(2) Often within about 0.05 mm",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_13,What is the function of arteries?,"(1) Carry blood away from the heart
-(2) Carry blood to organs / tissues",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_14,What colour is blood in most arteries?,"(1) Bright red
-(2) Because it is usually oxygenated",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_15,When you feel your pulse,what are you feeling?,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_16,What is the function of veins?,"(1) Carry blood towards the heart
-(2) From organs / tissues",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_17,Do veins have thick walls?,"(1) No
-(2) Veins have thinner walls than arteries",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_18,Do veins have a pulse?,"(1) No
-(2) Blood pressure in veins is low",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_19,What colour is blood in most veins?,"(1) Dark red
-(2) Because it has less oxygen",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_20,What is a lumen?,(1) The hollow space inside a blood vessel,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_21,What is pulmonary circulation?,(1) Circulation between the heart and lungs,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_22,What is systemic circulation?,(1) Circulation between the heart and the rest of the body,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_23,What is the function of the coronary arteries?,"(1) Supply oxygenated blood to the heart muscle
-(2) So the heart muscle can respire",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_24,How many chambers are in the heart?,(1) Four,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_25,When one side of the heart fills with blood,is there blood on the other side too?,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_26,How does blood move from the atria to the ventricles?,"(1) The atria contract
-(2) This forces blood into the ventricles",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_27,What are you hearing when you listen to a heartbeat with a stethoscope?,(1) Valves closing,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_28,Which side of the heart has thicker muscle walls?,"(1) The left side
-(2) Because it pumps blood around the whole body",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_29,Do you need a general anaesthetic to insert a stent?,(1) No,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_30,Can stents be used in arteries other than coronary arteries?,(1) Yes,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_31,What vessel carries blood from the body tissues back to the heart?,(1) Vena cava,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_32,Which chamber does blood enter after returning from the body in the vena cava?,(1) Right atrium,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_33,Which chamber pumps blood to the lungs?,(1) Right ventricle,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_34,Which blood vessel carries blood from the heart to the lungs?,(1) Pulmonary artery,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_35,Which blood vessel carries blood from the lungs back to the heart?,(1) Pulmonary vein,"(1) Written as A × 10^n
-(2) Where 1 ≤ A < 10
-(3) n is an integer (positive or negative whole number)"
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_36,Which chamber receives blood from the lungs?,(1) Left atrium,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_37,Which chamber pumps blood to the body?,(1) Left ventricle,"(1) 100 μm ÷ 10 μm = 10
-(2) This is 10^1
-(3) Therefore, it is 1 order of magnitude bigger"
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_38,Which blood vessel carries blood from the heart to the body?,(1) Aorta,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_39,What is a leaky heart valve?,"(1) A heart valve that does not close properly
-(2) Blood can leak backwards",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_40,Why are faulty heart valves a problem?,"(1) They reduce the efficiency of the heart
-(2) They can cause breathlessness",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_41,How can faulty heart valves be treated?,"(1) They can be replaced with mechanical valves
-(2) Or biological valves",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_42,What are mechanical heart valves made from?,"(1) Man-made materials
-(2) Such as titanium or polymers",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_43,What are biological heart valves made from?,"(1) Animal tissue
-(2) Or human tissue",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_44,What is the heart’s natural pacemaker?,"(1) A group of cells in the right atrium
-(2) Controls resting heart rate",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_45,What is an artificial pacemaker?,"(1) An electrical device implanted in the chest
-(2) Corrects irregular heart rhythms","(1) Cell length = 20 μm
-(2) Number of nuclei = 10
-(3) 20 ÷ 10 = 2
-(4) Nucleus size ≈ 2 μm"
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_46,What is a heart transplant?,"(1) Replacing a failing heart
-(2) With a donor heart",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_47,What is an artificial heart?,"(1) A man-made pump
-(2) Used to replace or support a failing heart",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_1,What is blood?,"(1) A tissue made of plasma
-(2) Contains red blood cells
-(3) Contains white blood cells and platelets
-(4) Transports substances around the body",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_2,What is blood plasma?,"(1) The liquid part of blood
-(2) Carries blood cells
-(3) Transports dissolved substances
-(4) Makes up about 55% of blood",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_3,What substances are transported in blood plasma?,"(1) Carbon dioxide
-(2) Urea
-(3) Digested food molecules / glucose
-(4) Hormones",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_4,How are red blood cells adapted for their function?,"(1) No nucleus, giving more space for haemoglobin
-(2) Biconcave disc shape gives a large surface area
-(3) Haemoglobin binds to oxygen
-(4) Thin shape gives a short diffusion distance",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_5,Compare red blood cells and white blood cells.,"(1) Red blood cells transport oxygen
-(2) White blood cells defend against pathogens
-(3) Red blood cells have no nucleus
-(4) White blood cells have a nucleus",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_6,How are arteries adapted for their function?,"(1) Thick walls to withstand high blood pressure
-(2) Muscle layer helps control blood flow
-(3) Elastic fibres stretch and recoil
-(4) Small lumen helps maintain high pressure",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_7,How are veins adapted for their function?,"(1) Valves prevent backflow of blood
-(2) Large lumen reduces resistance to blood flow
-(3) Thin walls because blood pressure is low
-(4) Blood is helped back to the heart by surrounding muscle contractions",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_8,How do valves in veins work?,"(1) Blood flows towards the heart
-(2) If blood starts to flow backwards, valves close
-(3) This prevents backflow
-(4) Muscle contractions help push blood forwards",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_9,What are capillaries?,"(1) Tiny blood vessels
-(2) Form networks around body tissues
-(3) Link arteries and veins
-(4) Allow exchange of substances with cells",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_10,How are capillaries adapted for exchange?,"(1) Walls are one cell thick
-(2) This gives a short diffusion distance
-(3) Walls are permeable
-(4) They form large networks, giving a large surface area",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_11,Describe the human circulatory system.,"(1) Humans have a double circulatory system
-(2) One circuit carries blood between the heart and lungs
-(3) One circuit carries blood between the heart and the rest of the body
-(4) Blood passes through the heart twice for each full circuit of the body",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_12,What is the difference between pulmonary circulation and systemic circulation?,"(1) Pulmonary circulation carries blood between the heart and lungs
-(2) Systemic circulation carries blood between the heart and the rest of the body
-(3) Pulmonary circulation oxygenates blood
-(4) Systemic circulation delivers oxygenated blood to body cells",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_13,Describe the structure of an artery in detail.,"(1) Thick walls
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Hard (5-6 marks),b_a_h_1_11_h_2,Name five structures found in all prokaryotic cells. (5),"(1) Cell wall
+(2) Cell membrane
+(3) Cytoplasm
+(4) Circular DNA (DNA loop)
+(5) Ribosomes",
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Hard (5-6 marks),b_a_h_1_11_h_3,Describe how to prepare a slide to observe onion cells? (6),"(1) Add a drop of water to the middle of a clean slide
+(2) Cut up an onion and separate it out into layers
+(3) Use tweezers to peel off some epidermal tissue (thin skin) from the bottom of one of the layers
+(4) Add a drop of iodine solution
+(5) Place a cover slip on top
+(6) (Stand the cover slip upright on the side, and lower it slowly to avoid getting any air bubbles underneath)",
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Hard (5-6 marks),b_a_h_1_11_h_4,Describe how to use a light microscope to observe a specimen? (6),"(1) Clip the slide to the stage of the microscope.
+(2) Select the lowest-powered objective lens (lowest magnification) 
+(3) Use the coarse adjustment knob to move the stage up to just below the objective lens 
+(4) Look down the eyepiece. Use the coarse adjustment knob to move the stage down until the image is in focus 
+(5) Adjust the focus with the fine adjustment knob until the image is clear 
+(6) If you need greater magnification, use a higher-powered objective lens and refocus",
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Hard (5-6 marks),b_a_h_1_11_h_5,What do most animal cells have? (5),"(1) Nucleus
+(2) Cytoplasm
+(3) Cell membrane
+(4) Mitochondria
+(5) Ribosomes",
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_1,What is blood? ,"(1) It is a liquid composed of plasma (55%) 
+(2) and red blood cells (45%)
+(3) plus white blood cells
+(4) platelets,
+(5) and other dissolved substances transported around the body.",4.2.2.1
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_1,What colour is blood plasma?,(1) Yellow,4.2.2.1
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_2,What are platelets?,(1) Small fragments of cells (2) that start the clotting process when wounded,4.2.2.1
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_2,Describe how platelets work.,"(1) When you wound yourself, enzymes convert fibrinogen into fibrin. 
+(2) The fibrin forms a network of protein fibres. 
+(3) These capture lots of red blood cells and platelets to form a jelly-like clot. 
+(4) The clot stops you from bleeding. 
+(5) The clot dries and hardens and becomes a scab. 
+(6) This protects the new skin as it grows and stops bacteria from entering the body.",4.2.2.1
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_3,Where and how is urea formed?,(1) Urea is formed in the liver (2) from the breakdown of excess proteins.,4.2.2.1
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_4,Where is urea carried in the blood?,(1) It is carried to your kidneys (2) where it is removed from your blood to form urine.,4.2.2.1
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_3,How are red blood cells adapted for their function?,"(1) They have no nucleus, (2) making more space for haemoglobin. (3) They are biconcave discs (4) which increase surface area to volume ratio. (5) They have haemoglobin (6) that binds to oxygen.",4.2.2.1
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_1,What are the two types of white blood cells?,(1) Lymphocytes: (2) they form antibodies against microorganisms. (3) Phagocytes: (4) they engulf and digest invading bacteria and viruses.,4.2.2.1
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_5,Are white blood cells or red blood cells bigger?,(1) White blood cells are bigger,4.2.2.1
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_6,Are there more white blood cells or red blood cells in the body?,(1) There are more red blood cells,4.2.2.1
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_2,What are the three main types of blood vessels?,"(1) Arteries, (2) veins, (3) capillaries",4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_7,What is the smallest blood vessel in your circulatory system?,(1) Capillaries,4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_8,How close are capillaries to your body cells?,(1) They are always within 0.05mm,4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_9,What is the purpose of your arteries?,(1) To carry blood away from your heart (2) to the organs of your body.,4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_3,How are arteries adapted for their function?,(1) Thick walls (2) containing muscle and elastic fibres (3) to withstand the pressure of the blood. (4) Strong and elastic walls to allow blood through them.,4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_10,What colour is the blood in your arteries?,(1) Bright-red,4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_11,"When you feel your heartbeat, what are you feeling?",(1) The pressure of your blood (2) passing through your arteries,4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_12,What is the purpose of your veins?,(1) To carry blood away from the organs (2) towards your heart,4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_4,How are veins adapted for their function?,"(1) Valves (2) to prevent backflow of blood. (3) When blood flows backwards, the valves close.",4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_5,How do valves work?,"(1) When the blood flows backwards, (2) the muscles around the veins contract (3) and one set of valves close (4) to push the blood in the correct direction.",4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_13,Do veins also have thick walls?,"(1) No, (2) they have thin walls.",4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_14,Do veins have a pulse?,"(1) No, (2) there is not a significant amount of pressure.",4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_15,What colour is the blood in your veins?,(1) Purple-red (2) because it is low in oxygen,4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_6,What are capillaries?,(1) Tiny blood vessels (2) that form a huge network (3) to link the arteries and veins.,4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_7,How are capillaries adapted for their function?,(1) One cell thick (2) for shorter diffusion distance. (3) Permeable walls (4) for diffusion.,4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_16,What is a lumen?,(1) The hole (2) in the middle of a blood vessel,4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_8,Describe the circulatory system of a human.,(1) It has a double circulatory system: (2) One carries blood from your heart to your organs and body. (3) One carries blood from your heart to your lungs and back.,4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_17,Which mammals have double circulatory systems?,"(1) Warm-blooded, (2) active animals.",4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_18,What is the difference between the pulmonary circulation and the systemic circulation?,(1) The pulmonary circulation involves the lungs. (2) The systemic circulation involves the rest of your body.,4.2.2.2
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_19,What is the purpose of coronary arteries?,(1) To deliver blood (2) to the heart muscle,4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_20,How many chambers are in the heart?,(1) 4,4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_21,"When one side of the heart is filled with blood, is there blood on the other side at the same time?","(1) Yes, (2) the heart empties and fills simultaneously.",4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_22,How does blood get from the atria to the ventricles?,(1) The atria contract (2) to force the blood down.,4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_23,When do the valves close in the heart?,(1) When blood is pumped out of the heart (2) via the pulmonary artery or aorta.,4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_24,"When you hear your heartbeat through a stethoscope, what are you listening to?",(1) The valves closing,4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_9,Which side of the heart is thicker?,(1) The left side (2) because it needs to develop enough pressure (3) to force the blood through the body.,4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_10,"If the right side of the heart were thick as well, would this be okay?","(1) No, (2) because the high pressure would damage the capillary network (3) where gas exchange takes place.",4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_11,What happens to your coronary arteries when you have coronary heart disease?,(1) They become narrow (2) due to the buildup of fatty material (3) on the lining of the vessels,4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_4,Why is coronary heart disease a problem?,"(1) The reduced blood flow 
+(2) means less oxygen is supplied to your heart 
+(3) which can lead to pain, (4) a heart attack, (5) or even death.",4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_5,What are some methods of preventing coronary heart disease?,"(1) Stent: a metal mesh placed in the artery. 
+(2) A tiny balloon opens up the stent and artery before being removed. The stent stays in place. 
+
+(4) Statins: reduces blood cholesterol levels 
+(5) and slows down the rate of fatty material deposition. 
+
+(6) Bypass surgery: replace blocked coronary arteries with veins from other parts of the body.",4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_25,Do you need a general anaesthetic to put in a stent?,(1) No,4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_26,Can stents be used with any other arteries in the body?,(1) Yes,4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_12,What is a leaky valve?,"(1) When heart valves leak (2) or don't fully open anymore (become stiff), (3) it makes the heart less efficient.",4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_27,Why are leaky valves a problem?,(1) You can become breathless (2) and potentially die if not treated.,4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_13,How do we fix leaky valves?,"(1) Replace with mechanical valves (2) made of titanium or polymers. 
+(3) Replace with biological valves (4) from animals such as pigs, cattle or humans.",4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_14,What are the pros and cons of mechanical valves vs biological valves?,"(1) Mechanical: require medicine for life to prevent blood clots. 
+(2) Mechanical: durable and last a long time. 
+(3) Biological: work better and no blood thinners needed. 
+(4) Biological: only last 12-15 years.",4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_15,What is your natural pacemaker?,"(1) A group of cells 
+(2) in the right atrium 
+(3) that control the resting heart rate.",4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_28,Why is an irregular heart rhythm an issue?,"(1) If too slow, you're not getting enough oxygen. 
+(2) If too fast, it cannot pump blood properly.",4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_16,What is an artificial pacemaker?,"(1) Electrical devices (2) used to correct irregularities in the heart rhythm. 
+(3) It is implanted into your chest.",4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_17,How do artificial pacemakers work?,"(1) They are attached to your heart by two wires. 
+(2) They send strong, regular electrical signals (3) that stimulate it to beat.",4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Easy (1-2 marks),b_a_h_2_22_e_29,What are the cons of an artificial pacemaker?,(1) You will need regular check-ups,4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_18,"If your heart is failing, what can be done to fix this?","(1) Wait for a donor heart that is a tissue match and get a heart transplant. 
+(2) Get an artificial heart to keep you alive while waiting for a transplant 
+(3) or give your heart time to rest and recover.",4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_19,Pros and cons of heart transplant vs artificial heart?,"(1) Heart transplants not always available. 
+(2) Artificial heart expensive. 
+(3) Artificial heart risk of blood clotting.",4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_20,Describe the structure of an artery in detail.,"(1) Thick walls
 (2) Small lumen
 (3) Thick layer of muscle
-(4) Elastic fibres in the wall",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_14,Describe the structure of a vein in detail.,"(1) Large lumen
+(4) Elastic fibres in the wall",4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_21,Describe the structure of a vein in detail.,"(1) Large lumen
 (2) Relatively thin walls
-(3) Often contain valves",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_15,Describe the structure of a capillary in detail.,"(1) Very small / tiny blood vessel
+(3) Often contain valves",4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_22,Describe the structure of a capillary in detail.,"(1) Very small / tiny blood vessel
 (2) Narrow lumen
-(3) Wall is one cell thick",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_16,When do the valves in the heart close?,"(1) Valves close when blood tries to flow backwards
-(2) This prevents backflow
-(3) Valves close after blood has moved through the heart
-(4) The closing of valves produces the heartbeat sound","(1) Pressure waves in the arteries
-(2) Caused by the heart pumping blood"
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_17,Why is the left side of the heart thicker than the right side?,"(1) The left side pumps blood around the whole body
-(2) This requires higher pressure
-(3) The right side only pumps blood to the lungs
-(4) So the right side does not need such thick muscle",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_18,Why would it be harmful if the right side of the heart pumped at very high pressure?,"(1) The right side pumps blood to the lungs
-(2) Lung capillaries are delicate
-(3) High pressure could damage them
-(4) This would reduce gas exchange efficiency",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_19,What happens to the coronary arteries in coronary heart disease?,"(1) Fatty material builds up in the artery wall
-(2) The coronary arteries become narrower
-(3) Blood flow to the heart muscle is reduced",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_20,Why is coronary heart disease dangerous?,"(1) Less blood reaches the heart muscle
-(2) Less oxygen is supplied to heart muscle cells
-(3) Heart muscle cells respire less efficiently
-(4) This can cause chest pain, heart attack or death",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_21,How do statins help reduce the risk of coronary heart disease?,"(1) Statins lower blood cholesterol levels
-(2) This slows fatty material being deposited in arteries
-(3) This reduces narrowing of the arteries
-(4) This lowers the risk of heart attack",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_22,Describe the route of blood from the body tissues to the lungs.,"(1) Body tissues → vena cava
-(2) Vena cava → right atrium
-(3) Right atrium → right ventricle
-(4) Right ventricle → pulmonary artery → lungs",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_23,Describe the route of blood from the lungs to the body tissues.,"(1) Lungs → pulmonary vein
-(2) Pulmonary vein → left atrium
-(3) Left atrium → left ventricle
-(4) Left ventricle → aorta → body tissues",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_24,What are the advantages and disadvantages of mechanical heart valves?,"(1) Last a long time
-(2) Very durable
-(3) May increase risk of blood clots
-(4) Patient may need lifelong blood-thinning medication",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_25,What are the advantages and disadvantages of biological heart valves?,"(1) Less risk of blood clotting than mechanical valves
-(2) Usually do not require lifelong blood thinners
-(3) Do not last as long
-(4) May need replacing after around 12–15 years",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_26,Why is an irregular heart rhythm a problem?,"(1) If too slow, not enough oxygen is delivered
-(2) If too fast, the heart may not fill properly
-(3) Less blood is pumped around the body
-(4) Cells may not get enough oxygen for respiration","(1) Yes
-(2) Both sides of the heart fill and empty at the same time"
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_27,How do artificial pacemakers work?,"(1) Wires connect the pacemaker to the heart
-(2) The pacemaker sends electrical impulses
-(3) These impulses stimulate the heart to contract
-(4) This helps restore a regular heartbeat",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_28,What are disadvantages of artificial pacemakers?,"(1) Need regular check-ups
-(2) Battery may need replacing
-(3) There is a small risk of infection",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Medium (3-4 marks),b_a_h_2_22_m_29,How can severe heart failure be treated?,"(1) Heart transplant
-(2) Artificial heart
-(3) Artificial heart can be used while waiting for transplant
-(4) Artificial heart can allow the heart to rest and recover",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_1,Describe how platelets help blood to clot after a wound.,"(1) Platelets collect at the wound
-(2) Enzymes convert fibrinogen into fibrin
-(3) Fibrin forms a network of protein fibres
-(4) Red blood cells and platelets get trapped in the fibres
-(5) A clot forms to stop blood loss
-(6) The clot dries into a scab",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_2,Explain why blood clotting is important after injury.,"(1) Prevents excessive blood loss
-(2) Forms a clot over the wound
-(3) Clot dries into a scab
-(4) Scab protects new skin as it grows
-(5) Reduces entry of pathogens
-(6) Helps prevent infection",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_3,Describe the composition of blood and the function of each component.,"(1) Plasma transports dissolved substances
-(2) Red blood cells transport oxygen
-(3) White blood cells defend against pathogens
-(4) Platelets help blood clot
-(5) Plasma makes up about 55% of blood
-(6) Red blood cells make up about 45% of blood",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_4,Explain how urea is produced and removed from the body.,"(1) Excess proteins are broken down into amino acids
-(2) Excess amino acids cannot be stored
-(3) They are broken down in the liver
-(4) Urea is produced as a waste product
-(5) Urea is carried in blood plasma to the kidneys
-(6) Kidneys remove urea from the blood to form urine",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_5,Compare arteries,veins and capillaries.,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_6,Explain how the structure of capillaries helps substances move between blood and body cells.,"(1) Capillaries form networks close to body cells
-(2) This gives a short diffusion distance
-(3) Walls are one cell thick
-(4) This allows rapid diffusion
-(5) Walls are permeable, so substances can pass through
-(6) Large surface area allows efficient exchange",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_7,Explain why humans have a double circulatory system.,"(1) Blood travels from the heart to the lungs
-(2) Blood picks up oxygen in the lungs
-(3) Blood returns to the heart
-(4) The heart pumps oxygenated blood to the body at high pressure
-(5) This allows rapid delivery of oxygen and glucose to cells
-(6) This supports a high rate of respiration",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_8,Explain how arteries are adapted to carry blood at high pressure.,"(1) Arteries carry blood directly from the heart
-(2) Blood is under high pressure
-(3) Thick walls prevent bursting
-(4) Elastic fibres stretch when blood surges through
-(5) Elastic fibres recoil to maintain pressure
-(6) Muscle layer helps control blood flow",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_9,Compare the structures of arteries,veins and capillaries.,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_10,Explain how a stent is used to treat coronary heart disease.,"(1) A stent is a small metal mesh tube
-(2) It is inserted into a narrowed coronary artery
-(3) A tiny balloon expands the stent
-(4) This widens the artery
-(5) The stent stays in place after the balloon is removed
-(6) This improves blood flow to the heart muscle",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_11,Explain how coronary heart disease can lead to a heart attack.,"(1) Fatty material builds up in coronary arteries
-(2) The arteries become narrowed
-(3) Less blood reaches the heart muscle
-(4) Less oxygen reaches heart muscle cells
-(5) Heart muscle cells cannot respire enough
-(6) Heart muscle cells may die, causing a heart attack",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_12,Compare stents,statins and bypass surgery as treatments for coronary heart disease.,
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_13,Describe how bypass surgery can treat coronary heart disease.,"(1) A blood vessel is taken from another part of the body
-(2) It is attached around the blocked or narrowed coronary artery
-(3) This creates a new route for blood flow
-(4) More blood reaches the heart muscle
-(5) More oxygen reaches heart muscle cells
-(6) This reduces the risk of heart attack",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_14,Describe the full route of blood through the double circulatory system.,"(1) Blood from the body enters the heart through the vena cava
-(2) It enters the right atrium, then the right ventricle
-(3) The right ventricle pumps blood through the pulmonary artery to the lungs
-(4) Blood returns from the lungs through the pulmonary vein to the left atrium
-(5) It moves into the left ventricle
-(6) The left ventricle pumps blood through the aorta to the body tissues",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_15,Explain why the human circulatory system is described as a double circulatory system.,"(1) Blood passes through the heart twice in one full circuit
-(2) One circuit carries blood between the heart and lungs
-(3) This is the pulmonary circulation
-(4) One circuit carries blood between the heart and the rest of the body
-(5) This is the systemic circulation
-(6) This allows oxygenated blood to be pumped around the body at high pressure",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_16,Compare mechanical and biological heart valves.,"(1) Mechanical valves are made from man-made materials
-(2) Mechanical valves last a long time
-(3) Mechanical valves increase risk of blood clots
-(4) Patients may need lifelong blood-thinning medication
-(5) Biological valves are made from animal or human tissue
-(6) Biological valves may need replacing after 12–15 years",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_17,Explain how faulty heart valves can affect the body.,"(1) Valves may not close properly
-(2) Blood can leak backwards
-(3) Or valves may become stiff and not open fully
-(4) Less blood is pumped around the body
-(5) Less oxygen reaches body cells
-(6) This can cause breathlessness or serious illness",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_18,Compare heart transplants and artificial hearts.,"(1) A heart transplant uses a donor heart
-(2) Donor hearts are not always available
-(3) Donor heart must be a tissue match
-(4) Artificial hearts can keep a patient alive while waiting for a transplant
-(5) Artificial hearts are expensive
-(6) Artificial hearts increase risk of blood clots",
-Biology,AQA,Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_19,Explain how an artificial pacemaker helps treat an irregular heartbeat.,"(1) An irregular rhythm can make the heart pump inefficiently
-(2) This reduces oxygen delivery to cells
-(3) The pacemaker is implanted in the chest
-(4) Wires connect it to the heart
-(5) It sends electrical impulses to the heart muscle
-(6) These impulses stimulate regular contractions",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_1,Are xylem and phloem part of the plant transport system?,"(1) Yes
-(2) They are tissues, not organs",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_2,What are root hair cells specialised to do?,"(1) Absorb water by osmosis
-(2) Absorb mineral ions by active transport",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_3,What are mineral ions used for in plants?,"(1) To make proteins
-(2) To make other molecules",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_4,What is the transpiration stream?,(1) Movement of water through the xylem,
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_5,How does water help the plant stay upright?,(1) Creates turgor pressure,
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_6,What is transpiration?,(1) Loss of water vapour from leaves,
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_7,Does the leaf keep most of the water?,"(1) No
-(2) Most is lost",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_8,Where are stomata found?,(1) Mainly on the underside of leaves,
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_9,What are guard cells specialised to do?,"(1) Control gas exchange
-(2) Control water loss",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_10,What is the function of stomata?,(1) Allow gases to enter and leave by diffusion,
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_11,What is water potential?,(1) The tendency for water to move by osmosis,
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_12,Why can’t stomata remain closed?,(1) Gases would not be able to diffuse in and out,
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_13,What is humidity?,(1) The amount of water vapour in the air,
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_14,What is the function of the phloem?,"(1) Transports sugars (food)
-(2) From leaves to the rest of the plant",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_15,What is cell sap?,"(1) Water with dissolved sugars
-(2) May also contain mineral ions",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_16,What is translocation?,(1) Movement of sugars in the phloem,
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_17,Why is the shoot of a plant cut at a slant?,(1) Increases surface area for water uptake,
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_18,How can a potometer be used to investigate the effect of environmental factors on transpiration rate?,"(1) Change one factor (e.g. light, wind, temp)
-(2) Measure rate of water uptake",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Easy (1-2 marks),b_a_2_23_e_19,What are limitations of using nail varnish to estimate stomata distribution?,"(1) Varnish may not peel cleanly
-(2) Results are only estimates",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_1,What are the main organs in the plant transport system?,"(1) Roots
-(2) Stems (shoots)
-(3) Leaves",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_2,How are root hair cells adapted for their function?,"(1) Large surface area for absorption
-(2) Large permanent vacuole to increase osmosis
-(3) Many mitochondria for active transport",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_3,What is the function of the xylem?,"(1) Transports water
-(2) Transports mineral ions
-(3) From roots to leaves",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_4,What is water used for in plants?,"(1) Photosynthesis
-(2) Maintaining turgor pressure
-(3) Transporting minerals",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_5,Describe the structure of xylem tissue?,"(1) Hollow tubes
-(2) No end walls
-(3) Strengthened with lignin",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_6,What causes water loss from the leaf?,"(1) Spongy mesophyll has air spaces
-(2) Water evaporates into air spaces
-(3) Water vapour diffuses out through stomata",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_7,What are stomata?,"(1) Tiny pores in leaves
-(2) Surrounded by guard cells
-(3) Allow gases to diffuse in and out",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_8,What are guard cells?,"(1) Cells that surround stomata
-(2) Control opening and closing
-(3) Regulate gas exchange / water loss",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_9,How are guard cells adapted for their function?,"(1) Thick inner walls and thin outer walls
-(2) Allows opening and closing
-(3) Sensitive to light (open in light, close in dark)",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_10,Why does a plant lose most of the water it takes in?,"(1) Water evaporates from mesophyll cells
-(2) Enters air spaces in the leaf
-(3) Diffuses out through stomata",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_11,Why is water loss not always harmful to the plant?,"(1) Maintains the transpiration stream
-(2) Pulls water up from roots
-(3) Supplies water for photosynthesis",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_12,When do stomata open and close?,"(1) Open to allow carbon dioxide in
-(2) Open to allow oxygen out
-(3) Close to reduce water loss",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_13,Explain how wind affects transpiration?,"(1) Removes water vapour from leaf surface
-(2) Maintains steep concentration gradient
-(3) Increases diffusion rate",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_14,Explain how temperature affects transpiration?,"(1) Increases kinetic energy of molecules
-(2) Speeds up evaporation and diffusion
-(3) Increases rate of water loss",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_15,Explain how humidity affects transpiration?,"(1) High humidity reduces concentration gradient
-(2) Slows diffusion of water vapour
-(3) Decreases transpiration rate","(1) Arteries carry blood away from the heart
-(2) Veins carry blood towards the heart
-(3) Capillaries connect arteries and veins
-(4) Arteries have thick elastic walls to withstand high pressure
-(5) Veins have valves to prevent backflow
-(6) Capillaries have one-cell-thick walls for diffusion"
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_16,Explain how light intensity affects transpiration?,"(1) Light increases photosynthesis
-(2) Stomata open for gas exchange
-(3) Increases water loss",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_17,How are plants adapted to reduce water loss?,"(1) Waxy cuticle reduces evaporation
-(2) Stomata mainly on underside
-(3) Reduces exposure to sunlight",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_18,What happens if a plant loses water faster than it absorbs it?,"(1) Cells lose turgor pressure
-(2) Plant wilts
-(3) Stomata close to reduce water loss",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_19,Will the plant die if it loses too much water?,"(1) May stop photosynthesising
-(2) May overheat
-(3) Can recover if conditions improve","(1) Arteries have thick walls
-(2) Arteries have a small lumen
-(3) Arteries contain thick muscle and elastic fibres
-(4) Veins have thin walls and large lumens
-(5) Veins often have valves
-(6) Capillaries are tiny vessels with walls one cell thick"
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_20,Describe the structure of phloem tissue?,"(1) Made of elongated living cells
-(2) Arranged in tubes
-(3) Sieve plates between cells",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_21,How does cell sap move through the phloem?,"(1) Moves from cell to cell
-(2) Through pores in sieve plates
-(3) Driven by pressure differences",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_22,What is sugar used for in plants?,"(1) Respiration
-(2) Growth (making new cells)
-(3) Storage (e.g. roots)","(1) Stents widen narrowed arteries to improve blood flow
-(2) Stents act quickly and do not usually need general anaesthetic
-(3) Statins lower cholesterol and slow further fatty deposits
-(4) Statins are long-term medication
-(5) Bypass surgery replaces or bypasses blocked arteries using blood vessels from elsewhere
-(6) Bypass surgery is more invasive and usually used when other treatments are unsuitable"
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Medium (3-4 marks),b_a_2_23_m_23,Why can removing a ring of bark kill a tree?,"(1) Phloem is found under the bark
-(2) Removing it stops sugar transport
-(3) Roots and tissues do not receive food
-(4) Tree eventually dies",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Hard (5-6 marks),b_a_2_23_h_1,How are xylem cells adapted for their function?,"(1) Cells are dead
-(2) No end walls → continuous tubes
-(3) Hollow to allow flow
-(4) Lignin strengthens walls
-(5) Prevents collapse under pressure
-(6) Provides support",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Hard (5-6 marks),b_a_2_23_h_2,Describe how water moves from the soil to the leaves.,"(1) Water enters root hair cells by osmosis
-(2) Moves through root cells by osmosis
-(3) Enters xylem vessels
-(4) Travels up the stem in transpiration stream
-(5) Moves into leaf cells
-(6) Evaporates and exits via stomata",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Hard (5-6 marks),b_a_2_23_h_3,How do guard cells work?,"(1) When water enters, cells become turgid
-(2) Turgid cells open the stomata
-(3) When water leaves, cells become flaccid
-(4) Flaccid cells close the stomata
-(5) Opening allows gas exchange
-(6) Closing reduces water loss",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Hard (5-6 marks),b_a_2_23_h_4,Describe the process of transpiration.,"(1) Water evaporates from mesophyll cells
-(2) Water vapour enters air spaces
-(3) Diffuses out through stomata
-(4) Creates a concentration gradient
-(5) Causes water to be pulled up through xylem
-(6) Forms the transpiration stream",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Hard (5-6 marks),b_a_2_23_h_5,What factors increase the rate of transpiration?,"(1) High temperature
-(2) Wind
-(3) Low humidity
-(4) High light intensity
-(5) Larger surface area
-(6) More stomata open",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Hard (5-6 marks),b_a_2_23_h_6,How are phloem cells adapted for their function?,"(1) Cells are living
-(2) Have sieve plates with pores
-(3) Few organelles to allow flow
-(4) Companion cells provide energy
-(5) Companion cells contain many mitochondria
-(6) Enables active transport of sugars",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Hard (5-6 marks),b_a_2_23_h_7,Describe how to measure transpiration using a potometer.,"(1) Cut shoot at slant under water
-(2) Assemble under water to avoid bubbles
-(3) Ensure system is airtight
-(4) Introduce air bubble
-(5) Measure distance moved over time
-(6) Calculate rate",
-Biology,AQA,Higher,2. Organisation,"2.3 Plant tissues, organs and systems",Hard (5-6 marks),b_a_2_23_h_8,Describe how to investigate stomata distribution using a microscope.,"(1) Apply nail varnish to leaf
-(2) Allow to dry and peel
-(3) Place on slide
-(4) Observe under microscope
-(5) Count stomata in known area
-(6) Repeat and calculate mean",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_1,What causes viral diseases?,(1) Viruses,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_2,Are viruses alive?,"(1) No
-(2) Do not carry out life processes independently",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_3,Do viruses reproduce?,"(1) No
-(2) They replicate inside host cells",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_4,What are the main symptoms of measles?,"(1) Fever
-(2) Red rash",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_5,How is measles spread?,(1) By inhaling droplets from coughs and sneezes,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_6,Is measles easy to catch?,"(1) Yes
-(2) It is highly infectious",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_7,Can measles be fatal?,"(1) Yes
-(2) Especially if complications develop",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_8,How is measles treated?,"(1) There is no specific cure
-(2) Patients may be isolated to prevent spread",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_9,Does measles only affect children?,"(1) No
-(2) It can affect unvaccinated adults",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_10,What does HIV stand for?,(1) Human immunodeficiency virus,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_11,What happens after the early stage of HIV infection?,"(1) Symptoms may disappear
-(2) Virus remains in the body",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_12,How long can HIV take to damage the immune system?,Months to years,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_13,What is the difference between HIV and AIDS?,"(1) HIV is the virus
-(2) AIDS is the late stage of infection",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_14,What does AIDS stand for?,(1) Acquired immune deficiency syndrome,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_15,How can the progression of HIV be slowed?,(1) Taking antiretroviral drugs,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_16,What is an unscreened blood transfusion?,(1) Blood that has not been tested for infections,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_17,Is there a vaccine for HIV?,(1) No,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_18,Is there a cure for HIV?,"(1) No
-(2) It can be managed with treatment",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_19,What is the difference between HIV-positive and HIV-negative?,"(1) HIV-positive = infected with HIV
-(2) HIV-negative = not infected",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_20,What does TMV stand for?,(1) Tobacco mosaic virus,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_21,How can you identify a plant infected with TMV?,"(1) Mosaic pattern on leaves
-(2) Discoloured patches",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_22,How is TMV transmitted between plants?,"(1) Direct contact
-(2) Insect vectors",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_23,How long can TMV survive outside a host?,"(1) Can survive for many years
-(2) e.g. in soil or plant material",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_24,How is TMV treated?,(1) There is no cure,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_25,How can the spread of TMV be reduced?,"(1) Good field hygiene
-(2) Control insect pests",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_26,What alternative can farmers use to reduce the impact of TMV?,(1) Grow TMV-resistant crop varieties,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_27,Will bacterial infections continue to decrease?,"(1) No
-(2) Antibiotic resistance is increasing",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_28,What causes bacterial diseases?,(1) Pathogenic bacteria,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_29,How do bacteria reproduce?,"(1) Asexually
-(2) By binary fission",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_30,Are bacteria prokaryotic or eukaryotic?,(1) Prokaryotic,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_31,How do bacteria compare in size to viruses?,(1) Bacteria are larger,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_32,Are bacteria alive?,(1) Yes,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_33,How is Salmonella transmitted?,"(1) Eating undercooked food
-(2) Poor food hygiene",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_34,How long does it take for Salmonella symptoms to develop?,8–72 hours,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_35,When are antibiotics used to treat Salmonella?,"(1) In severe cases
-(2) For vulnerable people (e.g. elderly / young)",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_36,Why can Salmonella be dangerous?,(1) Causes dehydration,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_37,How does the UK reduce the spread of Salmonella?,(1) Vaccinating poultry,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_38,Why should raw chicken not be washed?,(1) Bacteria can spread via water droplets,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_39,What does STD stand for?,(1) Sexually transmitted disease,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_40,What is another term for STD?,(1) STI (sexually transmitted infection),
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_41,What is discharge?,(1) Fluid released from the body,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_42,How is gonorrhoea treated?,(1) Antibiotics,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Easy (1-2 marks),b_a_3_31_e_43,Why is penicillin no longer used to treat gonorrhoea?,(1) Antibiotic resistance,
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_1,Describe the structure of a virus.,"(1) Genetic material (DNA/RNA)
-(2) Protein coat (capsid)
-(3) May have outer lipid envelope",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_2,What serious complications can measles cause?,"(1) Blindness
-(2) Brain damage
-(3) Can lead to death in severe cases",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_3,Is measles common in the UK?,"(1) Less common due to vaccination
-(2) Most children are vaccinated at a young age
-(3) Still occurs if vaccination rates are low",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_4,What complications can measles cause in adults?,"(1) Infertility (in some cases)
-(2) Complications during pregnancy
-(3) Risk of harm to the unborn baby",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_5,What are the early symptoms of HIV?,"(1) Flu-like symptoms
-(2) Such as fever
-(3) Fatigue or sore throat",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_6,What does HIV do to the body?,"(1) Attacks immune cells
-(2) Weakens the immune system
-(3) Makes it harder to fight infections",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_7,Why is HIV difficult to detect early?,"(1) Early symptoms are mild
-(2) Similar to flu
-(3) Long period with no symptoms",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_8,When does HIV develop into AIDS?,"(1) When the immune system is severely damaged
-(2) Cannot fight infections
-(3) Cannot fight cancers",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_9,What do antiretroviral drugs do?,"(1) Reduce virus replication
-(2) Slow damage to immune system
-(3) Delay development of AIDS",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_10,What factors affect how quickly HIV develops into AIDS?,"(1) Overall health
-(2) Nutrition
-(3) Use of antiretroviral drugs",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_11,How long can someone live with HIV?,"(1) Near normal life expectancy
-(2) If treated early
-(3) With antiretroviral drugs",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_12,What plants does TMV affect?,"(1) Many plant species
-(2) Including tobacco plants
-(3) And tomato plants",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_13,What causes the mosaic pattern in TMV-infected leaves?,"(1) Virus infects leaf cells
-(2) Damages or destroys cells
-(3) Causes discolouration",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_14,Why is TMV harmful to plants?,"(1) Reduces photosynthesis
-(2) Less chlorophyll / damaged cells
-(3) Leads to reduced growth",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_15,What are non-pathogenic bacteria?,"(1) Bacteria that do not cause disease
-(2) Can live in the body
-(3) Some help digestion",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_16,Where do bacteria live in the body?,"(1) Inside the host
-(2) Commonly in mouth, nose, throat",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_17,What happens when pathogenic bacteria enter the body?,"(1) Reproduce rapidly
-(2) Produce toxins
-(3) Toxins damage cells",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_18,What is Salmonella?,"(1) A type of bacterium
-(2) Found in animal gut
-(3) Causes food poisoning",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_19,What are the symptoms of Salmonella food poisoning?,"(1) Fever
-(2) Stomach cramps
-(3) Vomiting
-(4) Diarrhoea",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_20,What is gonorrhoea?,"(1) A bacterial infection
-(2) Sexually transmitted
-(3) Spread by unprotected sexual contact",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_21,What are the early symptoms of gonorrhoea?,"(1) Thick yellow/green discharge
-(2) Pain when urinating
-(3) Symptoms may disappear later",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Medium (3-4 marks),b_a_3_31_m_22,How can the spread of gonorrhoea be reduced?,"(1) Use condoms
-(2) Limit number of partners
-(3) Test and treat infected individuals",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Hard (5-6 marks),b_a_3_31_h_1,What do viruses do inside the body?,"(1) Enter host cells
-(2) Insert genetic material
-(3) Use cell machinery to replicate
-(4) Cell bursts (lysis)
-(5) New viruses infect others",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Hard (5-6 marks),b_a_3_31_h_2,Explain why viral diseases are difficult to treat?,"(1) Viruses live inside host cells
-(2) Hard to target without damaging cells
-(3) Antibiotics do not work on viruses
-(4) Viruses replicate rapidly
-(5) Can mutate quickly
-(6) Makes treatment difficult",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Hard (5-6 marks),b_a_3_31_h_3,How is HIV transmitted?,"(1) Unprotected sexual contact
-(2) Exchange of body fluids (e.g. blood)
-(3) Sharing needles
-(4) Unscreened blood transfusions
-(5) From mother to baby during birth
-(6) Through breastfeeding",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Hard (5-6 marks),b_a_3_31_h_4,How can the spread of HIV be reduced?,"(1) Use condoms
-(2) Do not share needles
-(3) Use screened blood for transfusions
-(4) Test regularly
-(5) Use antiretroviral treatment
-(6) Avoid breastfeeding if HIV-positive",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Hard (5-6 marks),b_a_3_31_h_5,Why are bacterial diseases less common than in the past?,"(1) Improved living conditions
-(2) Better sanitation
-(3) Vaccination programmes
-(4) Use of antibiotics
-(5) Improved healthcare
-(6) Better hygiene practices",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Hard (5-6 marks),b_a_3_31_h_6,How can Salmonella food poisoning be prevented?,"(1) Cook food thoroughly
-(2) Avoid cross-contamination
-(3) Keep raw meat separate
-(4) Wash hands and surfaces
-(5) Do not wash raw chicken
-(6) Maintain good food hygiene",
-Biology,AQA,Higher,3. Infection and response,3.1 Communicable diseases,Hard (5-6 marks),b_a_3_31_h_7,What can happen if gonorrhoea is untreated?,"(1) Pelvic pain
-(2) Infertility
-(3) Ectopic pregnancy
-(4) Infection can spread
-(5) Can affect newborn babies
-(6) May cause blindness in babies",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Easy (1-2 marks),b_a_h_4_41_e_1,What is a limiting factor?,"(1) A factor that restricts the rate of a reaction
-(2) If increased, the rate will increase",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Easy (1-2 marks),b_a_h_4_41_e_2,Which factors can limit photosynthesis?,"(1) Light intensity
-(2) Carbon dioxide concentration",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Easy (1-2 marks),b_a_h_4_41_e_3,Why might a plant have low chlorophyll levels?,"(1) Magnesium deficiency
-(2) Some plants have non-green areas",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Easy (1-2 marks),b_a_h_4_41_e_4,What does deficiency mean?,(1) A lack of something,
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Easy (1-2 marks),b_a_h_4_41_e_5,Why does magnesium deficiency reduce photosynthesis?,(1) Magnesium is needed to make chlorophyll,
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Easy (1-2 marks),b_a_h_4_41_e_6,What is chlorosis?,(1) Yellowing of leaves,
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Easy (1-2 marks),b_a_h_4_41_e_7,What causes chlorosis?,(1) Lack of magnesium,
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Easy (1-2 marks),b_a_h_4_41_e_8,What is yield?,(1) Amount of useful crop produced,
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Easy (1-2 marks),b_a_h_4_41_e_9,How do farmers increase crop yield?,"(1) Reduce limiting factors
-(2) Optimise growing conditions",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Easy (1-2 marks),b_a_h_4_41_e_10,What is hydroponics?,"(1) Growing plants in nutrient solution
-(2) Without soil",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Easy (1-2 marks),b_a_h_4_41_e_11,What happens to light intensity when distance is doubled?,(1) Light intensity becomes one quarter,"(1) Written as A × 10^n
-(2) Where 1 ≤ A < 10
-(3) n is an integer (positive or negative whole number)"
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Easy (1-2 marks),b_a_h_4_41_e_12,What are the bubbles produced in the pondweed experiment?,"(1) Oxygen
-(2) Produced during photosynthesis",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Easy (1-2 marks),b_a_h_4_41_e_13,Why is a beaker of water placed between the lamp and the pondweed?,"(1) Acts as a heat filter
-(2) Prevents temperature increase","(1) 100 μm ÷ 10 μm = 10
-(2) This is 10^1
-(3) Therefore, it is 1 order of magnitude bigger"
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Easy (1-2 marks),b_a_h_4_41_e_14,Why should the experiment be left for a short time before taking measurements?,(1) To allow the rate of photosynthesis to stabilise,
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Easy (1-2 marks),b_a_h_4_41_e_15,What is a more accurate way to measure oxygen production than counting bubbles?,(1) Use a gas syringe,
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Medium (3-4 marks),b_a_h_4_41_m_1,What factors affect the rate of photosynthesis?,"(1) Light intensity
-(2) Carbon dioxide concentration
-(3) Temperature
-(4) Chlorophyll content",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Medium (3-4 marks),b_a_h_4_41_m_2,How does carbon dioxide affect the rate of photosynthesis?,"(1) Carbon dioxide is a reactant
-(2) Low CO₂ reduces rate
-(3) More CO₂ increases rate",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Medium (3-4 marks),b_a_h_4_41_m_3,How does carbon dioxide concentration change during the day?,"(1) Higher at night (respiration releases CO₂)
-(2) Lower during the day (photosynthesis uses CO₂)
-(3) Changes depending on light availability",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Medium (3-4 marks),b_a_h_4_41_m_4,How does light intensity affect the rate of photosynthesis?,"(1) Provides energy for photosynthesis
-(2) Low light → low rate
-(3) High light → higher rate",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Medium (3-4 marks),b_a_h_4_41_m_5,How does chlorophyll content affect photosynthesis?,"(1) Chlorophyll absorbs light
-(2) Less chlorophyll reduces rate
-(3) More chlorophyll increases rate",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Medium (3-4 marks),b_a_h_4_41_m_6,How can farmers control limiting factors in photosynthesis?,"(1) Control light intensity
-(2) Control temperature
-(3) Control carbon dioxide levels","(1) Cell length = 20 μm
-(2) Number of nuclei = 10
-(3) 20 ÷ 10 = 2
-(4) Nucleus size ≈ 2 μm"
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Medium (3-4 marks),b_a_h_4_41_m_7,Why are greenhouses used in farming?,"(1) Control environmental conditions
-(2) Increase rate of photosynthesis
-(3) Increase crop yield",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Medium (3-4 marks),b_a_h_4_41_m_8,Why can greenhouse farming be expensive?,"(1) Cost of heating
-(2) Cost of lighting
-(3) Cost of equipment",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Medium (3-4 marks),b_a_h_4_41_m_9,What is the relationship between light intensity and distance?,"(1) Inversely proportional
-(2) As distance increases, intensity decreases
-(3) Follows inverse square relationship",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Medium (3-4 marks),b_a_h_4_41_m_10,What is the inverse square law?,"(1) Light intensity ∝ 1 / distance²
-(2) Intensity decreases rapidly with distance
-(3) Doubling distance reduces intensity",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Medium (3-4 marks),b_a_h_4_41_m_11,How can you identify a limiting factor on a photosynthesis graph?,"(1) Rate increases at first
-(2) Then levels off (plateau)
-(3) Shows another factor is limiting",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Medium (3-4 marks),b_a_h_4_41_m_12,Why must temperature be controlled in the pondweed experiment?,"(1) Temperature affects enzyme activity
-(2) It is a limiting factor of photosynthesis
-(3) Must be controlled to ensure a fair test",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Medium (3-4 marks),b_a_h_4_41_m_13,How does changing the distance of the lamp affect light intensity?,"(1) Increasing distance reduces light intensity
-(2) Decreasing distance increases light intensity
-(3) Follows inverse square relationship",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Hard (5-6 marks),b_a_h_4_41_h_1,How does temperature affect the rate of photosynthesis?,"(1) Low temperature → less kinetic energy
-(2) Fewer successful collisions
-(3) Slower reaction rate
-(4) Increasing temperature increases rate
-(5) Enzymes denature at high temperatures
-(6) Rate then decreases",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Hard (5-6 marks),b_a_h_4_41_h_2,What are advantages of growing plants in greenhouses?,"(1) Grow crops out of season
-(2) Faster growth rates
-(3) Controlled conditions
-(4) Reduced pests
-(5) No soil needed
-(6) Higher yields",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Hard (5-6 marks),b_a_h_4_41_h_3,Describe a practical to investigate the effect of light intensity on the rate of photosynthesis in pondweed.,"(1) Place pondweed in water (e.g. in a test tube/beaker)
-(2) Position a lamp at a measured distance
-(3) Use a ruler to measure the distance
-(4) Allow the plant to equilibrate
-(5) Count bubbles of oxygen produced in a set time
-(6) Repeat at different distances and calculate a mean",
-Biology,AQA,Higher,4. Bioenergetics,4.1 Photosynthesis,Hard (5-6 marks),b_a_h_4_41_h_4,What variables should be controlled in the pondweed experiment?,"(1) Temperature
-(2) Carbon dioxide concentration
-(3) Type/size of pondweed
-(4) Volume of water
-(5) Light wavelength/colour
-(6) Time measured",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_1,Do muscles use energy when the body is at rest?,"(1) Yes
-(2) They still use oxygen and glucose",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_2,What happens if muscles do not get enough oxygen?,(1) Anaerobic respiration occurs,
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_3,What does anaerobic mean?,(1) Without oxygen,
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_4,What is the word equation for anaerobic respiration in animals?,(1) Glucose → lactic acid + energy,
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_5,What is lactic acid?,(1) Product of anaerobic respiration in animals,
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_6,Why is anaerobic respiration less efficient than aerobic respiration?,"(1) Glucose is not fully broken down
-(2) Less energy is released",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_7,How does energy yield compare between aerobic and anaerobic respiration?,"(1) Anaerobic releases much less energy
-(2) About 5% of aerobic respiration","(1) Pressure waves in the arteries
-(2) Caused by the heart pumping blood"
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_8,Why do muscles become tired during exercise?,(1) Lactic acid builds up,
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_9,What is oxygen debt?,(1) Extra oxygen needed after exercise,
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_10,What happens to glucose after oxygen debt is repaid?,"(1) Used in respiration
-(2) Or stored",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_11,What affects how quickly someone goes into oxygen debt?,(1) Fitness level,
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_12,How does the body recover from oxygen debt?,"(1) Increased breathing rate
-(2) Increased heart rate",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_13,What is the word equation for oxygen debt repayment?,(1) Lactic acid + oxygen → carbon dioxide + water,
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_14,Can other organisms respire anaerobically?,"(1) Yes
-(2) Plants and microorganisms",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_15,What are the products of anaerobic respiration in plants and yeast?,"(1) Ethanol
-(2) Carbon dioxide",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_16,What is fermentation?,(1) Anaerobic respiration in yeast,
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_17,What is fermentation used for?,"(1) Bread making
-(2) Alcohol production","(1) Yes
-(2) Both sides of the heart fill and empty at the same time"
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_18,What is metabolism?,(1) The sum of all chemical reactions in a cell or body,
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_19,How many metabolic reactions occur in the body?,"(1) Many / thousands
-(2) Occur continuously",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_20,What controls metabolism?,"(1) Enzymes
-(2) Hormones (e.g. thyroid hormone)",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_21,What increases the rate of metabolic reactions?,(1) Enzymes,
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_22,What are the two types of metabolic reactions?,"(1) Breakdown (catabolic) reactions
-(2) Synthesis (anabolic) reactions",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_23,Name two examples of breakdown reactions?,"(1) Protein breakdown
-(2) Amino acid breakdown",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_24,What is urea?,(1) Waste product of protein metabolism,
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_25,What are lipids made from?,"(1) Glycerol
-(2) Three fatty acids",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Easy (1-2 marks),b_a_h_4_42_e_26,What are lipids used for?,"(1) Form cell membranes
-(2) Store energy",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Medium (3-4 marks),b_a_h_4_42_m_1,What happens to the body during exercise?,"(1) Increased demand for oxygen
-(2) Increased demand for glucose
-(3) Increased removal of carbon dioxide",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Medium (3-4 marks),b_a_h_4_42_m_2,What happens to lactic acid after exercise?,"(1) Transported to the liver
-(2) Converted back into glucose
-(3) Requires oxygen",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Medium (3-4 marks),b_a_h_4_42_m_3,How is lactic acid transported from muscles to the liver?,"(1) Diffuses from muscle cells into blood
-(2) Carried in the bloodstream
-(3) Diffuses into liver cells",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Medium (3-4 marks),b_a_h_4_42_m_4,What affects recovery from oxygen debt?,"(1) Amount of lactic acid
-(2) Fitness level
-(3) Rate of oxygen intake",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Medium (3-4 marks),b_a_h_4_42_m_5,Why does bread not contain alcohol?,"(1) Yeast is killed by heat
-(2) Ethanol evaporates
-(3) During baking",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Medium (3-4 marks),b_a_h_4_42_m_6,What is the difference between breakdown and synthesis reactions?,"(1) Breakdown reactions split large molecules into smaller ones
-(2) Synthesis reactions build large molecules from smaller ones
-(3) Breakdown releases energy
-(4) Synthesis requires energy",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Medium (3-4 marks),b_a_h_4_42_m_7,Name three examples of synthesis reactions.,"(1) Protein synthesis
-(2) Lipid formation
-(3) Conversion of glucose to glycogen",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Medium (3-4 marks),b_a_h_4_42_m_8,How are amino acids broken down in the body?,"(1) Occurs in the liver
-(2) Enzymes remove the amine group
-(3) Produces urea",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Hard (5-6 marks),b_a_h_4_42_h_1,What do muscles use energy for?,"(1) Muscle contraction
-(2) Movement of the body
-(3) Maintaining posture
-(4) Moving food through the digestive system
-(5) Pumping blood (heart muscle)
-(6) Transferring energy from respiration",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Hard (5-6 marks),b_a_h_4_42_h_2,How does the body respond to exercise?,"(1) Heart rate increases
-(2) Breathing rate increases
-(3) Breathing depth increases
-(4) More oxygen delivered to muscles
-(5) More carbon dioxide removed
-(6) Glycogen converted to glucose",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Hard (5-6 marks),b_a_h_4_42_h_3,What is anaerobic respiration?,"(1) Breakdown of glucose without oxygen
-(2) Releases energy
-(3) Produces lactic acid in animals
-(4) Produces ethanol and carbon dioxide in plants/yeast
-(5) Less energy released than aerobic respiration
-(6) Incomplete breakdown of glucose",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Hard (5-6 marks),b_a_h_4_42_h_4,Name six examples of metabolic reactions.,"(1) Glucose → starch / glycogen / cellulose
-(2) Formation of lipids from glycerol and fatty acids
-(3) Glucose + nitrate ions → amino acids
-(4) Respiration
-(5) Photosynthesis
-(6) Breakdown of proteins to form urea",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Hard (5-6 marks),b_a_h_4_42_h_5,What happens during protein breakdown?,"(1) Proteins are broken into amino acids
-(2) Amino acids enter the blood
-(3) Transported to the liver
-(4) Excess amino acids are broken down
-(5) Form urea
-(6) Urea is excreted by kidneys",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Hard (5-6 marks),b_a_h_4_42_h_6,How is glucose used in synthesis reactions?,"(1) In plants, converted to starch for storage
-(2) Used to make cellulose for cell walls
-(3) In animals, converted to glycogen
-(4) Glycogen stored in liver and muscles
-(5) Helps regulate blood glucose levels
-(6) Used for growth and energy storage",
-Biology,AQA,Higher,4. Bioenergetics,4.2 Respiration,Hard (5-6 marks),b_a_h_4_42_h_7,Explain how surface area to volume ratio affects metabolic processes in organisms.,"(1) Small organisms have a large SA:V ratio
-(2) Allows faster exchange of substances (e.g. oxygen, nutrients)
-(3) Supports higher metabolic rate per unit mass
-(4) Large organisms have a smaller SA:V ratio
-(5) Slower exchange of substances
-(6) Require specialised exchange surfaces (e.g. lungs, gills)",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_1,What are the three states of matter?,"(1) Solid
+(3) Wall is one cell thick",4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_6,Describe how oxygenated blood passes through the heart (6),"(1) Blood is oxygenated in the lungs
+(2) Then enters the heart via the pulmonary veins
+(3) Left atrium
+(4) Left ventricle
+(5) Leaves the heart via the aorta
+(6) and is delivered to body tissues.",4.2.2.3
+Biology,AQA,Triple - Higher,2. Organisation,"2.2 Animal tissues, organs and organ systems",Hard (5-6 marks),b_a_h_2_22_h_7,Describe how deoxygenated blood passes through the heart (6),"(1) Deoxygenated blood leaves body tissues
+(2) Enters the heart via the vena cava
+(3) Right atrium
+(4) Right ventricle
+(5) Leaves the heart via the pulmonary arteries
+(6) Enters the lungs to be oxygenated.",4.2.2.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_8,How are nerve cells adapted for their function?,(1) Dendrites (branched connections) for connecting to other nerve cells (2) Axons to carry the nerve impulse (3) Nerve endings/synapses to pass impulses (4) Lots of mitochondria for energy,4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_40,How far does the longest nerve cell run?,(1) From the bottom of the spine (2) to the big toe,4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_41,What are the two types of muscle cells?,(1) Striated (striped) muscle cells (2) and unstriated (smooth) muscle cells,4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_42,What is the difference between the two types of muscle cells?,(1) Striated (striped) muscle cells are used for movement (2) Unstriated (smooth) muscle cells are used for digestion,4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_9,How are muscle cells used for movement?,(1) Striated muscle cells form tissues called muscles (2) that work in pairs (3) to move bones of the skeleton,4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_43,How are muscle cells used for digestion?,(1) Unstriated (smooth) muscle cells control the movement of food through your gut (2) by contracting to squeeze the food along,4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_10,How are striated muscle cells adapted for their function?,(1) Lots of mitochondria (2) Special proteins that slide over each other (3) Store glycogen (4) Long,4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_44,What is glycogen?,(1) Stored version of glucose (2) that can be broken down and used for energy when needed,4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_11,How are root hair cells adapted for their function?,(1) Large surface area (2) Mitochondria (3) Large permanent vacuole to increase rate of osmosis,4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_12,How are photosynthetic cells adapted for their function?,"(1) Chloroplasts which contain chlorophyll 
+(2) Arranged in layers in leaves and along outer part of stem to absorb more sunlight 
+
+(3) Large permanent vacuole to keep leaves rigid 
+(4) so they can spread out and capture as much light as possible",4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Hard (5-6 marks),b_a_h_1_11_h_6,How is a xylem cell adapted for its function?,"(1) The cells are dead and joined together 
+(2) with no end walls between the cells 
+(3) so they act as long hollow tubes to transport water and mineral ions 
+(4) Lignin between the cell walls make the cell strong 
+(5) to withstand water pressure and support the stem",4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_45,Are xylem cells dead?,(1) They are alive at first (2) then die when they mature,4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Hard (5-6 marks),b_a_h_1_11_h_7,How is phloem adapted for its function?,(1) The phloem cells don't have end walls (2) and have a special sieve plate instead (3) This turns them into tubes that can carry water with dissolved food (4) Phloem cells lose a lot of their internal structures to create space (5) They are kept alive by companion cells (6) which produce energy from their mitochondria and transfer it to the phloem,4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_46,How are plant roots adapted for efficient mineral exchange?,"(1) Root hair cells have a large surface area.
+(2) Water is constantly moved away from the roots by the transpiration stream, maintaining a steep concentration gradient.",4.1.3.1
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_13,Why do multicellular organisms require different systems?,"(1) Multicellular organisms cannot rely on simple diffusion alone. 
+(2) Gases would take too long to reach every cell. 
+(3) Food molecules would take too long to reach every cell. 
+(4) Metabolic waste would take too long to leave cells (which could build up and poison them).",4.1.3.1
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_14,How do fish maintain an efficient gas exchange system?,"(1) Gills are made up of many thin filaments. 
+(2) The filaments have a rich blood supply. 
+(3) Fish pump water over their gills using the operculum. 
+(4) This maintains a constant flow of water, keeping a steep concentration gradient for gas exchange.",4.1.3.1
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_15,How are plant leaves adapted for efficient gas exchange?,"(1) Leaves are thin, giving a short diffusion distance.
+(2) Leaves are flat and have a large surface area.
+(3) Stomata allow gases to enter and leave the leaf.
+(4) Air spaces inside the leaf increase the surface area for gas exchange.",4.1.3.1
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_47,What’s a tissue? (2),"(1) A group of cells 
+(2) with similar structure and function.",4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_48,What’s an organ? (2),"(1) A collection of tissues 
+(2) performing a specific function.",4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_49,What’s an organ system? (2),"(1) A collection of organs 
+(2) which work together.",4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_50,What does differentiate mean? (1),When cells become specialised to carry out particular jobs.,4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_51,State the levels of organisation in a multicellular organism.,Cells → tissues → organs → organ systems → organisms.,4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_16,Name three organ systems in the human body.,"Any three of: digestive system, circulatory system, gas exchange/respiratory system, nervous system, endocrine system, reproductive system etc",4.1.1.3
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_52,How many micrometres are in a millimetre?,(1) 1000 micrometres.,1.1.5
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_53,What are the two types of electron microscopes?,"(1) Transmission electron microscope
+(2) Scanning electron microscope",1.1.5
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_54,Can you keep electron microscopes anywhere?,"(1) No. 
+(2) They must be kept in special temperature, pressure and humidity-controlled rooms.",1.1.5
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Easy (1-2 marks),b_a_h_1_11_e_55,What does resolution mean?,The ability to distinguish between two separate points.,1.1.5
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Medium (3-4 marks),b_a_h_1_11_m_17,What is the difference between the two types of electron microscopes?,"(1) Transmission electron microscopes give 2D images. 
+(2) They have very high magnification and resolution. 
+(3) Scanning electron microscopes give 3D images. 
+(4) SEMs have lower magnification than TEMs.",1.1.5
+Biology,AQA,Triple - Higher,1. Cell Biology,1.1 Cell Structure,Hard (5-6 marks),b_a_h_1_11_h_8,What is the difference between light microscopes and electron microscopes?,"(1) Light microscopes can only magnify up to about ×2000. 
+(2) Electron microscopes can magnify up to about ×2,000,000. 
+
+(3) Light microscopes are cheaper. 
+(4) Electron microscopes are more expensive. 
+
+(5) Light microscopes do not allow you to see all subcellular structures. 
+(6) Electron microscopes allow you to see more subcellular structures, such as ribosomes.",1.1.5
+Biology,AQA,Triple - Higher,1. Cell Biology,1.3 Transport in Cells,Easy (1-2 marks),b_a_h_1_13_e_1,What does dilute mean?,A solution with a low concentration of solute / high concentration of water.,1.3.2
+Biology,AQA,Triple - Higher,1. Cell Biology,1.3 Transport in Cells,Easy (1-2 marks),b_a_h_1_13_e_2,What does concentrated mean?,A solution with a high concentration of solute / a low concentration of water.,1.3.2
+Biology,AQA,Triple - Higher,1. Cell Biology,1.3 Transport in Cells,Easy (1-2 marks),b_a_h_1_13_e_3,What’s a solute?,The substance being dissolved.,1.3.2
+Biology,AQA,Triple - Higher,1. Cell Biology,1.3 Transport in Cells,Easy (1-2 marks),b_a_h_1_13_e_4,What’s a solvent?,The substance that dissolves the solute.,1.3.2
+Biology,AQA,Triple - Higher,1. Cell Biology,1.3 Transport in Cells,Easy (1-2 marks),b_a_h_1_13_e_5,What’s a solution?,A mixture formed when a solute dissolves in a solvent.,1.3.2
+Biology,AQA,Triple - Higher,1. Cell Biology,1.3 Transport in Cells,Easy (1-2 marks),b_a_h_1_13_e_6,What’s osmosis?,The movement of water molecules through a partially permeable membrane.,1.3.2
+Biology,AQA,Triple - Higher,1. Cell Biology,1.3 Transport in Cells,Easy (1-2 marks),b_a_h_1_13_e_7,What does isotonic mean? (1),External solute concentration = internal solute concentration.,1.3.2
+Biology,AQA,Triple - Higher,1. Cell Biology,1.3 Transport in Cells,Easy (1-2 marks),b_a_h_1_13_e_8,What does hypertonic mean? (1),External solute concentration is higher than internal solute concentration.,1.3.2
+Biology,AQA,Triple - Higher,1. Cell Biology,1.3 Transport in Cells,Easy (1-2 marks),b_a_h_1_13_e_9,What does hypotonic mean? (1),External solute concentration is lower than internal solute concentration.,1.3.2
+Biology,AQA,Triple - Higher,1. Cell Biology,1.3 Transport in Cells,Hard (5-6 marks),b_a_h_1_13_h_1,"What is the difference between isotonic, hypertonic and hypotonic solutions?","(1) Isotonic: external solute concentration = internal solute concentrations
+(2) Water moves in and out at the same rate, so no net movement. 
+
+(3) Hypertonic: solute concentration is higher outside, so water moves out of the cell. 
+(4) The cell shrivels. 
+
+(5) Hypotonic: external solute concentration is lower, so water moves into the cell. 
+(6) The cell swells and may burst.",1.3.2
+Biology,AQA,Triple - Higher,1. Cell Biology,1.3 Transport in Cells,Medium (3-4 marks),b_a_h_1_13_m_1,Why do athletes drink sports drinks instead of water after competing? (3),"(1) Replaces water.
+(2) Replaces salts/ions/electrolytes.
+(3) Replaces glucose.",1.3.2
+Biology,AQA,Triple - Higher,1. Cell Biology,1.3 Transport in Cells,Hard (5-6 marks),b_a_h_1_13_h_2,What happens if there is an imbalance of ions and water in the body? (6),"(1) Too little water in blood / ion concentration too high.
+(2) Cells lose water by osmosis.
+(3) Cells shrink.
+
+(4) Too much water in blood / ion concentration too low.
+(5) Cells absorb too much water by osmosis.
+(6) Cells swell and may burst.",1.3.2
+Biology,AQA,Triple - Higher,1. Cell Biology,1.3 Transport in Cells,Easy (1-2 marks),b_a_h_1_13_e_10,How and why are isotonic sports drinks useful after exercise? (2),"(1) Similar concentration of salts + glucose to the body.
+(2) Replaces water + salts lost in sweat.",1.3.2
+Biology,AQA,Triple - Higher,1. Cell Biology,1.3 Transport in Cells,Medium (3-4 marks),b_a_h_1_13_m_2,How and why are hypertonic sports drinks useful during intense exercise? (3),"(1) Higher concentration of salts + glucose than blood.
+(2) Glucose diffuses from small intestine into blood.
+(3) Diffusion = high to low concentration.
+(4) More glucose for respiration.",1.3.2
+Biology,AQA,Triple - Higher,1. Cell Biology,1.3 Transport in Cells,Medium (3-4 marks),b_a_h_1_13_m_3,How and why are hypotonic sports drinks useful for rapid rehydration? (4),"(1) Lower concentration of salts + glucose than blood.
+(2) More water in small intestine than blood.
+(3) Water moves from small intestine into blood by osmosis.
+(4) Replaces water quickly.",1.3.2
+Biology,AQA,Triple - Higher,1. Cell Biology,1.3 Transport in Cells,Easy (1-2 marks),b_a_h_1_13_e_11,Why would you drink a hypotonic sports drink? (1),For rapid hydration,1.3.2
+Biology,AQA,Triple - Higher,1. Cell Biology,1.3 Transport in Cells,Easy (1-2 marks),b_a_h_1_13_e_12,Why would you drink a hypertonic sports drink? (1),For more glucose for respiration.,1.3.2
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_1,What are the three states of matter? (3),"(1) Solid
 (2) Liquid
 (3) Gas",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_2,What is diffusion?,(1) Movement of particles from high to low concentration,
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_3,What is dilution?,"(1) Reducing concentration
-(2) By adding more solvent",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_4,What is a solution?,(1) A mixture of solute and solvent,
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_5,What is a solute?,(1) The substance being dissolved,
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_6,What is a solvent?,(1) The substance that dissolves the solute,
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_7,What is a saturated solution?,(1) A solution containing the maximum amount of solute,
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_8,What are the units of solubility?,(1) g per 100 g of solvent,
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_9,What is an atom?,(1) Smallest particle of an element,
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_10,What subatomic particles are in an atom?,"(1) Protons
-(2) Neutrons
-(3) Electrons",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_11,What charge do atoms have?,(1) Neutral,
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_12,What is an ion?,(1) A charged particle formed by gaining or losing electrons,
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_13,What is an element?,(1) A substance made of one type of atom,
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_14,What is a molecule?,(1) Two or more atoms joined together,
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_15,What is an isotope?,"(1) Atoms with same number of protons
-(2) Different number of neutrons",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_1,Describe the properties of a solid?,"(1) Particles closely packed
-(2) Strong forces of attraction
-(3) Vibrate in fixed positions
-(4) Fixed shape and volume",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_2,Describe the properties of a liquid?,"(1) Particles close together
-(2) Weaker forces than solids
-(3) Move randomly
-(4) Fixed volume, no fixed shape",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_3,Describe the properties of a gas?,"(1) Particles far apart
-(2) Very weak forces
-(3) Move rapidly and randomly
-(4) No fixed shape or volume",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_4,How do forces of attraction differ in solids,liquids and gases?,
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_5,Compare the energy of particles in solids,liquids and gases?,
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_6,Name the changes of state?,"(1) Melting
-(2) Freezing
-(3) Evaporation/boiling
-(4) Condensation",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_7,Explain diffusion in terms of particles?,"(1) Particles move randomly
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_2,What is diffusion? (1),(1) The movement of particles from an area of high concentration to an area of low concentration.,
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_3,What is dilution? (1),(1) Adding more solvent (usually water) to a solution,
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_4,What is a solution? (1),(1) A mixture of solute and solvent,
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_5,What is a solute? (1),(1) The substance being dissolved,
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_6,What is a solvent? (1),(1) The substance that dissolves the solute,
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_7,What is a saturated solution? (1),(1) A solution containing the maximum amount of solute,
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_8,What are the units of solubility? (1),(1) g per 100 g of solvent,
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_9,What is solubility? (2),"(1) how much of a substance will dissolve in a given volume of a liquid
+(2) g per 100 g of solvent",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_10,What does a solubility curve show? (1),Solubility in g per 100 g of water plotted against temperature,
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Easy (1-2 marks),c_e_i_1_1a_e_11,What is the solubility of a solid affected by? (2),"Temperature
+The higher the temperature, the more soluble",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_1,Explain diffusion in terms of particles. (3),"(1) Particles move randomly
 (2) Due to kinetic energy
-(3) Move from high to low concentration",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_8,How does temperature affect diffusion?,"(1) Higher temperature increases kinetic energy
+(3) From an area of high concentration to an area of low concentration",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_2,How does temperature affect diffusion? (3),"(1) Higher temperature increases kinetic energy
 (2) Particles move faster
 (3) Diffusion rate increases",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_9,What is solubility?,"(1) Maximum amount of solute that dissolves
-(2) In 100 g of solvent
-(3) At a given temperature",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_10,Describe the structure of an atom?,"(1) Nucleus contains protons and neutrons
-(2) Electrons in shells around nucleus
-(3) Nucleus is small and dense
-(4) Most mass is in nucleus",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_11,What is the difference between atomic number and mass number?,"(1) Atomic number = number of protons
-(2) Mass number = protons + neutrons
-(3) Identifies element
-(4) Determines isotope",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_12,Why is relative atomic mass not a whole number?,"(1) It is an average
-(2) Based on isotopes
-(3) Different abundances",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_13,What does a solubility curve show?,"(1) Solubility vs temperature
-(2) Different substances compared
-(3) Shows trends
-(4) Used to predict crystallisation",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Hard (5-6 marks),c_e_i_1_1a_h_1,Describe how particles change when a substance is heated or cooled.,"(1) Heating gives particles more energy
-(2) Particles move faster
-(3) Move further apart
-(4) Changes state (solid → liquid → gas)
-(5) Cooling removes energy
-(6) Particles move slower and come closer",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Hard (5-6 marks),c_e_i_1_1a_h_2,Explain how a gas becomes a liquid and then a solid.,"(1) Temperature decreases
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_3,Explain how a solid becomes a liquid. (4),"(1) Temperature increases
+(2) Particles gain kinetic energy
+(3) Move faster / vibrate more
+(4) Until they break away from their positions",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_4,Explain how a liquid becomes a gas. (4),"(1) Temperature increases
+(2) Particles gain kinetic energy
+(3) Move faster / vibrate more
+(4) Until they break away from each other completely",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_5,A student completes an experiment to show what happens when aqueous ammonia (NH3) and hydrochloric acid (HCl) combined. What happens?,"(1) The particles of ammonia are smaller and lighter than the particles of hydrogen chloride
+(2) so they diffuse faster and travel further.
+(3) A white ring of ammonium chloride will form closer to the hydrochloric acid.",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_6,Describe an experiment that proves diffusion in liquids. (4),"(1) Put potassium manganate (VII) crystals in a beaker of water.
+(2) The molecules will diffuse from an area of high concentration (where the crystals are)
+(3) to an area of low concentration (the rest of the water)
+(4) The liquid will turn purple.
+
+Note: any experiment will work.",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Medium (3-4 marks),c_e_i_1_1a_m_7,What is the solubility of a gas affected by? (3),"Temperature and pressure
+The higher the temperature, the more soluble
+As pressure increases, gases become more soluble",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Hard (5-6 marks),c_e_i_1_1a_h_1,Describe the properties of a solid? (6),"(1) Strong forces of attraction hold the particles together.
+(2) They have a definite shape and (3) a definite volume
+(4) Lattice arrangement 
+(5) Dense
+(6) The particles vibrate in their position",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Hard (5-6 marks),c_e_i_1_1a_h_2,Describe the properties of a liquid? (5),"(1) Weak forces of attraction hold the particles together.
+(2) They have a indefinite shape and (3) a definite volume
+(4) Randomly arranged but stick close together
+(5) The particles are constantly moving randomly",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Hard (5-6 marks),c_e_i_1_1a_h_3,Describe the properties of a gas? (6),"(1) Very weak forces of attraction
+(2) They have a indefinite shape and (3) a indefinite volume
+(4) Randomly arranged but will always fill a container
+(5) The particles are constantly moving (6) randomly",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Hard (5-6 marks),c_e_i_1_1a_h_4,Name the different changes in states of matter. (5),"(1) liquid → gas: evaporation
+(2) liquid → solid: solidification
+(3) solid → liquid: melting
+(4) solid → gas: subliming
+(5) gas → liquid: condensation",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Hard (5-6 marks),c_e_i_1_1a_h_5,Explain how a gas becomes a liquid. (5),"(1) Temperature decreases
+(2) Particles lose kinetic energy
+(3) Move slower
+(4) Come closer together
+(5) Forces of attraction increase",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Hard (5-6 marks),c_e_i_1_1a_h_6,Describe how to investigate solubility at different temperatures. (6),"(1) Weigh empty evaporating basin / record mass
+(2) Heat water to just above 30°C
+(3) Add solute you are testing
+(4) Stir until no more dissolves / excess solid remains / solution is saturated
+(5) Cool solution to exactly 30°C
+(6) Pour clear solution into evaporating basin (avoid transferring undissolved crystals)
+(7) Weigh basin + solution / record total mass
+(8) Heat gently to evaporate water
+(9) Cool and reweigh
+(10) Repeat heating, cooling and weighing until mass is constant
+(11) Use recorded masses to calculate solubility",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Hard (5-6 marks),c_e_i_1_1a_h_7,Explain how a liquid becomes a solid. (6),"(1) Temperature decreases
 (2) Particles lose kinetic energy
 (3) Move slower
 (4) Come closer together
 (5) Forces of attraction increase
-(6) Form liquid then solid",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Hard (5-6 marks),c_e_i_1_1a_h_3,Describe how to investigate solubility at different temperatures.,"(1) Add excess solute to water
-(2) Heat to dissolve
-(3) Allow to cool to set temperature
-(4) Filter or decant solution
-(5) Evaporate solvent
-(6) Measure mass of solute",
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Hard (5-6 marks),c_e_i_1_1a_h_4,Explain how to interpret a solubility curve.,"(1) Read solubility at a given temperature
-(2) Compare substances
-(3) Identify saturation point
-(4) Above line = excess
-(5) On line = saturated
-(6) Below line = unsaturated","(1) Arteries carry blood away from the heart
-(2) Veins carry blood towards the heart
-(3) Capillaries connect arteries and veins
-(4) Arteries have thick elastic walls to withstand high pressure
-(5) Veins have valves to prevent backflow
-(6) Capillaries have one-cell-thick walls for diffusion"
-Chemistry,Edexcel,International (iGCSE),1. Principles of chemistry,1a. States of Matter,Hard (5-6 marks),c_e_i_1_1a_h_5,Calculate relative atomic mass from isotope data.,"(1) Multiply mass × abundance
+(6) Until strong bond formed",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1a. States of Matter,Hard (5-6 marks),c_e_i_1_1a_h_8,Describe an experiment that proves diffusion using bromine gas. (6),"(1) Bromine is brown and smells really strong.
+(2) Half-fill a gas jar with bromine gas, and the other with air
+(3) Separate the glass plate in the middle
+(4) The bromine particles will move from an area of high concentration (where it is) to an area of low concentration (the side with air).
+(5) And the air particles will from from an area of high concentration (where it is) to an area of low concentration (the side with bromine gas).
+(6) You will get a lighter coloured gas which shows diffusion.",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,"1b. Elements, compounds and mixtures",Easy (1-2 marks),c_e_i_1_1b_e_1,What is an atom? (1),(1) Smallest particle of an element,
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,"1b. Elements, compounds and mixtures",Easy (1-2 marks),c_e_i_1_1b_e_2,What subatomic particles are in an atom? (3),"(1) Protons
+(2) Neutrons
+(3) Electrons",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,"1b. Elements, compounds and mixtures",Easy (1-2 marks),c_e_i_1_1b_e_3,What charge do atoms have? (1),(1) Neutral,
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,"1b. Elements, compounds and mixtures",Easy (1-2 marks),c_e_i_1_1b_e_4,What is an ion?,(1) A charged particle formed by gaining or losing electrons,
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,"1b. Elements, compounds and mixtures",Easy (1-2 marks),c_e_i_1_1b_e_5,What is an element?,(1) A substance made of one type of atom,
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,"1b. Elements, compounds and mixtures",Easy (1-2 marks),c_e_i_1_1b_e_6,What is a molecule?,(1) Two or more atoms joined together,
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,"1b. Elements, compounds and mixtures",Easy (1-2 marks),c_e_i_1_1b_e_7,What is an isotope?,"(1) Atoms with same number of protons
+(2) Different number of neutrons",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,"1b. Elements, compounds and mixtures",Medium (3-4 marks),c_e_i_1_1b_m_1,Describe the structure of an atom.,"(1) Nucleus contains protons and neutrons
+(2) Electrons in shells around nucleus
+(3) Nucleus is small and dense
+(4) Most mass is in nucleus",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,"1b. Elements, compounds and mixtures",Medium (3-4 marks),c_e_i_1_1b_m_2,What is the difference between atomic number and mass number?,"(1) Atomic number = number of protons
+(2) Mass number = protons + neutrons
+(3) Identifies element
+(4) Determines isotope",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,"1b. Elements, compounds and mixtures",Medium (3-4 marks),c_e_i_1_1b_m_3,Why is relative atomic mass not a whole number?,"(1) It is an average
+(2) Based on isotopes
+(3) Different abundances",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,"1b. Elements, compounds and mixtures",Hard (5-6 marks),c_e_i_1_1b_h_1,Calculate relative atomic mass from isotope data.,"(1) Multiply mass × abundance
 (2) Add totals
 (3) Divide by total abundance
 (4) Gives weighted mean
 (5) Reflects isotope proportions
 (6) Round appropriately",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_1,What is a system?,(1) An object or a group of objects,
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_2,What is a closed system?,(1) A system where no energy is transferred to or from the surroundings,
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_3,What is an energy store?,(1) A way energy is held in a system,"(1) Arteries have thick walls
-(2) Arteries have a small lumen
-(3) Arteries contain thick muscle and elastic fibres
-(4) Veins have thin walls and large lumens
-(5) Veins often have valves
-(6) Capillaries are tiny vessels with walls one cell thick"
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_4,Name the 8 energy stores.,"(1) Kinetic
-(2) Thermal (internal)
-(3) Gravitational potential
-(4) Elastic potential
-(5) Chemical
-(6) Magnetic
-(7) Electrostatic
-(8) Nuclear",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_5,When does the kinetic energy store increase?,(1) When an object moves,
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_6,What happens to kinetic energy when an object is stationary?,(1) It is zero,"(1) Stents widen narrowed arteries to improve blood flow
-(2) Stents act quickly and do not usually need general anaesthetic
-(3) Statins lower cholesterol and slow further fatty deposits
-(4) Statins are long-term medication
-(5) Bypass surgery replaces or bypasses blocked arteries using blood vessels from elsewhere
-(6) Bypass surgery is more invasive and usually used when other treatments are unsuitable"
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_7,What is gravitational potential energy?,(1) Energy stored due to position in a gravitational field,
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_8,What is elastic potential energy?,(1) Energy stored when an object is stretched or compressed,
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_9,What is thermal (internal) energy?,(1) Energy stored due to the temperature of an object,
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_10,Give examples of chemical energy stores.,"(1) Food
-(2) Batteries
-(3) Fuels",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_11,What is friction?,(1) A force that opposes motion,
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_12,What does friction do to energy?,(1) Transfers energy to the thermal energy store of objects and surroundings,
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_13,What are the three ways energy can be transferred?,"(1) By heating
-(2) By mechanical work (forces)
-(3) By electrical work (current)",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_14,What is “work done”?,(1) Energy transferred,
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_15,What happens to gravitational potential energy as an object falls?,"(1) It decreases
-(2) It transfers to the kinetic energy store",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_16,What is the equation for kinetic energy?,"(1) $E_k = \frac{1}{2}mv^2$
-(2) $E_k$ = kinetic energy (J)
-(3) $m$ = mass (kg)
-(4) $v$ = speed (m/s)",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_17,What is the equation for elastic potential energy?,"(1) $E_e = \frac{1}{2}ke^2$
-(2) $E_e$ = elastic potential energy (J)
-(3) $k$ = spring constant (N/m)
-(4) $e$ = extension (m)",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_18,What is the equation for gravitational potential energy?,"(1) $E_p = mgh$
-(2) $E_p$ = gravitational potential energy (J)
-(3) $m$ = mass (kg)
-(4) $g$ = gravitational field strength (N/kg)
-(5) $h$ = height (m)",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_19,What is Hooke’s Law?,"(1) Extension is directly proportional to force
-(2) Only valid before the limit of proportionality",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_h_1_11_e_20,What is the limit of proportionality?,(1) The point where extension is no longer proportional to force,
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_h_1_11_m_1,Describe energy changes when an object is projected upwards.,"(1) Chemical store (muscles) → kinetic store (object)
-(2) As it rises: kinetic store decreases
-(3) Gravitational potential store increases
-(4) At highest point: kinetic = 0 (all energy in GPE)",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_h_1_11_m_2,Describe energy changes when a moving object hits an obstacle.,"(1) Kinetic energy decreases
-(2) Energy transferred to thermal stores (due to friction)
-(3) Some energy transferred to sound
-(4) Some energy may go into deformation (elastic store)",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_h_1_11_m_3,Describe energy changes when an object accelerates.,"(1) Energy is transferred from a chemical store (e.g. fuel/muscles)
-(2) Work is done by a force
-(3) Kinetic energy store increases",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_h_1_11_m_4,Describe energy changes when a vehicle slows down.,"(1) Kinetic energy decreases
-(2) Energy transferred by friction in brakes
-(3) Energy goes to thermal energy stores of brakes and surroundings",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_h_1_11_m_5,Describe energy changes when water is boiled in a kettle.,"(1) Electrical energy is transferred to the kettle
-(2) Energy transferred by electrical work
-(3) Thermal energy store of heating element increases
-(4) Energy transferred by heating to water → water’s thermal store increases",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_h_1_11_m_6,What happens to energy in a closed system?,"(1) Total energy remains constant
-(2) Energy is redistributed between stores",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_h_1_11_m_7,Describe how to calculate the kinetic energy of a moving object.,"(1) Measure mass in kg
-(2) Measure speed in m/s
-(3) Square the speed
-(4) Multiply by mass and 0.5",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_h_1_11_m_8,Describe how to calculate elastic potential energy in a spring.,"(1) Measure extension in metres
-(2) Use spring constant (N/m)
-(3) Square the extension
-(4) Multiply by spring constant and 0.5
-(5) Only valid before limit of proportionality",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_h_1_11_m_9,Describe how to calculate gravitational potential energy.,"(1) Measure mass (kg)
-(2) Use given value of g
-(3) Measure height (m)
-(4) Multiply all three values",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_h_1_11_m_10,Explain the relationship between force and extension in a spring.,"(1) Initially directly proportional (straight line)
-(2) Obeys Hooke’s Law
-(3) After limit of proportionality, graph curves
-(4) Extension increases faster than force",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_h_1_11_m_11,How can you identify the limit of proportionality on a graph?,"(1) It is where the straight line ends
-(2) The graph begins to curve
-(3) Relationship is no longer linear",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_h_1_11_h_1,Explain fully the energy changes when a ball is thrown upwards and falls back down.,"(1) Chemical energy store (muscles) → kinetic store of arm
-(2) Kinetic energy transferred to ball
-(3) As ball rises: kinetic → gravitational potential store
-(4) At top: maximum gravitational potential, zero kinetic
-(5) As it falls: gravitational potential → kinetic
-(6) Some energy dissipated to thermal store due to air resistance",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_h_1_11_h_2,Explain energy changes when a moving object hits the ground and does not bounce.,"(1) Gravitational potential → kinetic during fall
-(2) On impact: kinetic energy decreases rapidly
-(3) Energy transferred to thermal stores (object + ground)
-(4) Energy transferred to sound
-(5) Energy used in deformation of object/ground
-(6) Energy spreads to surroundings (dissipated)",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_h_1_11_h_3,Explain energy changes when a car slows down.,"(1) Initial kinetic energy store is high
-(2) Braking force does work
-(3) Energy transferred mechanically
-(4) Kinetic energy decreases
-(5) Energy transferred to thermal stores of brakes/tyres/road
-(6) Energy dissipated to surroundings",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_h_1_11_h_4,Explain energy changes when using an electric kettle (full system explanation).,"(1) Energy supplied electrically from mains
-(2) Energy transferred by electrical work to heating element
-(3) Thermal energy store of element increases
-(4) Energy transferred by heating to water
-(5) Water’s thermal store increases (temperature rises)
-(6) Some energy dissipated to surroundings (inefficiency)",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_h_1_11_h_5,Explain how energy is redistributed in any system change (exam-style general answer).,"(1) Energy is conserved overall
-(2) Energy is transferred between different stores
-(3) Useful energy may become less useful
-(4) Some energy is dissipated to thermal stores of surroundings
-(5) Transfers occur via heating, mechanical work, or electrical work
-(6) Total energy in a closed system remains constant",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_h_1_11_h_6,Explain how calculations show energy redistribution (Required Practical Skill).,"(1) Calculate initial energy in system
-(2) Calculate final energy in different stores
-(3) Compare values on same scale
-(4) Show total energy remains constant
-(5) Identify energy transferred to less useful stores (e.g. thermal)
-(6) Conclude energy is conserved but redistributed",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_h_1_11_h_7,Explain energy changes when an object is raised and then falls (including calculations).,"(1) Energy transferred to gravitational potential store when lifted
-(2) Given by $E_p = mgh$
-(3) As object falls: GPE decreases
-(4) Kinetic energy increases
-(5) Given by $E_k = \frac{1}{2}mv^2$
-(6) Total energy conserved (ignoring air resistance)",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_h_1_11_h_8,Explain how elastic potential energy is stored in a spring (with conditions).,"(1) Work is done to stretch/compress spring
-(2) Energy stored as elastic potential energy
-(3) Given by $E_e = \frac{1}{2}ke^2$
-(4) Applies only before limit of proportionality
-(5) Beyond this point, energy calculation is less accurate
-(6) Spring may deform permanently",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_h_1_11_h_9,Explain how to use calculations to compare energy changes in a system (WS 4.5).,"(1) Calculate energy before change
-(2) Calculate energy after change
-(3) Use correct equations (KE, GPE, EPE)
-(4) Compare values on same scale (Joules)
-(5) Identify where energy has been transferred
-(6) Conclude total energy is conserved but redistributed",
-Physics,AQA,Higher,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_h_1_11_h_10,Describe the force–extension graph of a spring.,"(1) Straight line = force proportional to extension
-(2) Obeys Hooke’s Law
-(3) Limit of proportionality marks end of linear behaviour
-(4) After this, graph curves
-(5) Spring no longer obeys Hooke’s Law
-(6) May not return to original length",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_1,What is a system?,(1) An object or a group of objects,
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_2,What is a closed system?,(1) A system where no energy is transferred to or from the surroundings,
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_3,What is an energy store?,(1) A way energy is held in a system,
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_4,Name the 8 energy stores.,"(1) Kinetic
-(2) Thermal (internal)
-(3) Gravitational potential
-(4) Elastic potential
-(5) Chemical
-(6) Magnetic
-(7) Electrostatic
-(8) Nuclear",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_5,When does the kinetic energy store increase?,(1) When an object moves,
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_6,What happens to kinetic energy when an object is stationary?,(1) It is zero,
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_7,What is gravitational potential energy?,(1) Energy stored due to position in a gravitational field,
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_8,What is elastic potential energy?,(1) Energy stored when an object is stretched or compressed,
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_9,What is thermal (internal) energy?,(1) Energy stored due to the temperature of an object,
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_10,Give examples of chemical energy stores.,"(1) Food
-(2) Batteries
-(3) Fuels",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_11,What is friction?,(1) A force that opposes motion,
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_12,What does friction do to energy?,(1) Transfers energy to the thermal energy store of objects and surroundings,
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_13,What are the three ways energy can be transferred?,"(1) By heating
-(2) By mechanical work (forces)
-(3) By electrical work (current)",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_14,What is “work done”?,(1) Energy transferred,
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_15,What happens to gravitational potential energy as an object falls?,"(1) It decreases
-(2) It transfers to the kinetic energy store",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_16,What is the equation for kinetic energy?,"(1) $E_k = \frac{1}{2}mv^2$
-(2) $E_k$ = kinetic energy (J)
-(3) $m$ = mass (kg)
-(4) $v$ = speed (m/s)",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_17,What is the equation for elastic potential energy?,"(1) $E_e = \frac{1}{2}ke^2$
-(2) $E_e$ = elastic potential energy (J)
-(3) $k$ = spring constant (N/m)
-(4) $e$ = extension (m)",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_18,What is the equation for gravitational potential energy?,"(1) $E_p = mgh$
-(2) $E_p$ = gravitational potential energy (J)
-(3) $m$ = mass (kg)
-(4) $g$ = gravitational field strength (N/kg)
-(5) $h$ = height (m)",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_19,What is Hooke’s Law?,"(1) Extension is directly proportional to force
-(2) Only valid before the limit of proportionality",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Easy (1-2 marks),p_a_f_1_11_e_20,What is the limit of proportionality?,(1) The point where extension is no longer proportional to force,
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_f_1_11_m_1,Describe energy changes when an object is projected upwards.,"(1) Chemical store (muscles) → kinetic store (object)
-(2) As it rises: kinetic store decreases
-(3) Gravitational potential store increases
-(4) At highest point: kinetic = 0 (all energy in GPE)",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_f_1_11_m_2,Describe energy changes when a moving object hits an obstacle.,"(1) Kinetic energy decreases
-(2) Energy transferred to thermal stores (due to friction)
-(3) Some energy transferred to sound
-(4) Some energy may go into deformation (elastic store)",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_f_1_11_m_3,Describe energy changes when an object accelerates.,"(1) Energy is transferred from a chemical store (e.g. fuel/muscles)
-(2) Work is done by a force
-(3) Kinetic energy store increases",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_f_1_11_m_4,Describe energy changes when a vehicle slows down.,"(1) Kinetic energy decreases
-(2) Energy transferred by friction in brakes
-(3) Energy goes to thermal energy stores of brakes and surroundings",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_f_1_11_m_5,Describe energy changes when water is boiled in a kettle.,"(1) Electrical energy is transferred to the kettle
-(2) Energy transferred by electrical work
-(3) Thermal energy store of heating element increases
-(4) Energy transferred by heating to water → water’s thermal store increases",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_f_1_11_m_6,What happens to energy in a closed system?,"(1) Total energy remains constant
-(2) Energy is redistributed between stores",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_f_1_11_m_7,Describe how to calculate the kinetic energy of a moving object.,"(1) Measure mass in kg
-(2) Measure speed in m/s
-(3) Square the speed
-(4) Multiply by mass and 0.5",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_f_1_11_m_8,Describe how to calculate elastic potential energy in a spring.,"(1) Measure extension in metres
-(2) Use spring constant (N/m)
-(3) Square the extension
-(4) Multiply by spring constant and 0.5
-(5) Only valid before limit of proportionality",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_f_1_11_m_9,Describe how to calculate gravitational potential energy.,"(1) Measure mass (kg)
-(2) Use given value of g
-(3) Measure height (m)
-(4) Multiply all three values",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_f_1_11_m_10,Explain the relationship between force and extension in a spring.,"(1) Initially directly proportional (straight line)
-(2) Obeys Hooke’s Law
-(3) After limit of proportionality, graph curves
-(4) Extension increases faster than force",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Medium (3-4 marks),p_a_f_1_11_m_11,How can you identify the limit of proportionality on a graph?,"(1) It is where the straight line ends
-(2) The graph begins to curve
-(3) Relationship is no longer linear",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_f_1_11_h_1,Explain fully the energy changes when a ball is thrown upwards and falls back down.,"(1) Chemical energy store (muscles) → kinetic store of arm
-(2) Kinetic energy transferred to ball
-(3) As ball rises: kinetic → gravitational potential store
-(4) At top: maximum gravitational potential, zero kinetic
-(5) As it falls: gravitational potential → kinetic
-(6) Some energy dissipated to thermal store due to air resistance",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_f_1_11_h_2,Explain energy changes when a moving object hits the ground and does not bounce.,"(1) Gravitational potential → kinetic during fall
-(2) On impact: kinetic energy decreases rapidly
-(3) Energy transferred to thermal stores (object + ground)
-(4) Energy transferred to sound
-(5) Energy used in deformation of object/ground
-(6) Energy spreads to surroundings (dissipated)",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_f_1_11_h_3,Explain energy changes when a car slows down.,"(1) Initial kinetic energy store is high
-(2) Braking force does work
-(3) Energy transferred mechanically
-(4) Kinetic energy decreases
-(5) Energy transferred to thermal stores of brakes/tyres/road
-(6) Energy dissipated to surroundings",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_f_1_11_h_4,Explain energy changes when using an electric kettle (full system explanation).,"(1) Energy supplied electrically from mains
-(2) Energy transferred by electrical work to heating element
-(3) Thermal energy store of element increases
-(4) Energy transferred by heating to water
-(5) Water’s thermal store increases (temperature rises)
-(6) Some energy dissipated to surroundings (inefficiency)",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_f_1_11_h_5,Explain how energy is redistributed in any system change (exam-style general answer).,"(1) Energy is conserved overall
-(2) Energy is transferred between different stores
-(3) Useful energy may become less useful
-(4) Some energy is dissipated to thermal stores of surroundings
-(5) Transfers occur via heating, mechanical work, or electrical work
-(6) Total energy in a closed system remains constant",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_f_1_11_h_6,Explain how calculations show energy redistribution (Required Practical Skill).,"(1) Calculate initial energy in system
-(2) Calculate final energy in different stores
-(3) Compare values on same scale
-(4) Show total energy remains constant
-(5) Identify energy transferred to less useful stores (e.g. thermal)
-(6) Conclude energy is conserved but redistributed",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_f_1_11_h_7,Explain energy changes when an object is raised and then falls (including calculations).,"(1) Energy transferred to gravitational potential store when lifted
-(2) Given by $E_p = mgh$
-(3) As object falls: GPE decreases
-(4) Kinetic energy increases
-(5) Given by $E_k = \frac{1}{2}mv^2$
-(6) Total energy conserved (ignoring air resistance)",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_f_1_11_h_8,Explain how elastic potential energy is stored in a spring (with conditions).,"(1) Work is done to stretch/compress spring
-(2) Energy stored as elastic potential energy
-(3) Given by $E_e = \frac{1}{2}ke^2$
-(4) Applies only before limit of proportionality
-(5) Beyond this point, energy calculation is less accurate
-(6) Spring may deform permanently",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_f_1_11_h_9,Explain how to use calculations to compare energy changes in a system (WS 4.5).,"(1) Calculate energy before change
-(2) Calculate energy after change
-(3) Use correct equations (KE, GPE, EPE)
-(4) Compare values on same scale (Joules)
-(5) Identify where energy has been transferred
-(6) Conclude total energy is conserved but redistributed",
-Physics,AQA,Foundation,1. Energy,1.1 Energy changes in a system,Hard (5-6 marks),p_a_f_1_11_h_10,Describe the force–extension graph of a spring.,"(1) Straight line = force proportional to extension
-(2) Obeys Hooke’s Law
-(3) Limit of proportionality marks end of linear behaviour
-(4) After this, graph curves
-(5) Spring no longer obeys Hooke’s Law
-(6) May not return to original length",
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,"(1) Strong in solids
-(2) Weaker in liquids
-(3) Very weak in gases"
-,,,,,,,,,"(1) Solids have lowest energy
-(2) Liquids have more energy
-(3) Gases have highest energy"
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1c. Atomic structure,Medium (3-4 marks),c_e_i_1_1c_m_1,"What is the relative charge of a proton, neutron and electron? (3)","(1) Protons are +1
+(2) Neutrons are 0
+(3) Electrons are -1",
+Chemistry,Edexcel,International (iGCSE) - Triple,1. Principles of chemistry,1c. Atomic structure,Medium (3-4 marks),c_e_i_1_1c_m_2,"What is the relative mass of a proton, neutron and electron? (3)","(1) Protons are 1
+(2) Neutrons are 1
+(3) Electrons are 0.0005",
