@@ -146,7 +146,19 @@
       const handleRate = (rating) => {
         const currentQ = queue[currentIndex];
         const scores = JSON.parse(localStorage.getItem('studyqs_scores') || '{}');
-        scores[currentQ.id] = rating;
+        const currentScore = scores[currentQ.id] || 0;
+
+        // --- GRADUAL PROGRESSION LOGIC ---
+        let newScore = rating;
+        
+        // If they click "Easy" but they were previously "Bad", 
+        // only promote it to "Meh" (Level 2) so they have to prove it again.
+        if (rating === 3 && currentScore === 1) {
+          newScore = 2;
+        }
+        // ---------------------------------
+
+        scores[currentQ.id] = newScore;
         localStorage.setItem('studyqs_scores', JSON.stringify(scores));
 
         const newTotal = totalXP + 10;
@@ -154,6 +166,8 @@
         setSessionXP(prev => prev + 10);
         localStorage.setItem('studyqs_xp', newTotal.toString());
 
+        // Keep the session stats based on what they actually clicked 
+        // so the end screen doesn't confuse them!
         setSessionStats(prev => ({
           ...prev,
           weak: rating === 1 ? prev.weak + 1 : prev.weak,
@@ -218,7 +232,20 @@
         else if (path.length === 2) { title = "Tier"; options = Object.keys(DATABASE[path[0]][path[1]] || {}); }
         else if (path.length === 3) { title = "Topics"; options = Object.keys(DATABASE[path[0]][path[1]][path[2]] || {}); }
         else if (path.length === 4) { title = "Subtopics"; options = Object.keys(DATABASE[path[0]][path[1]][path[2]][path[3]] || {}); }
-        else if (path.length === 5) { title = path[4]; options = Object.keys(DATABASE[path[0]][path[1]][path[2]][path[3]][path[4]] || {}); }
+        else if (path.length === 5) { 
+          title = path[4]; 
+          const rawOptions = Object.keys(DATABASE[path[0]][path[1]][path[2]][path[3]][path[4]] || {}); 
+          // Custom override to force Easy, Medium, Hard order
+          options = rawOptions.sort((a, b) => {
+            const getWeight = (str) => {
+              if (str.includes('Easy')) return 1;
+              if (str.includes('Medium')) return 2;
+              if (str.includes('Hard')) return 3;
+              return 99;
+            };
+            return getWeight(a) - getWeight(b);
+          });
+        }
 
         const topicStats = path.length === 3 ? getTopicStats() : null;
 
@@ -297,7 +324,7 @@
                     {options.map(diff => (
                       <button key={diff} onClick={() => handleSelect(diff)} className="flex items-center p-4 rounded-lg notion-card transition-colors text-left group">
                         <div className="bg-gray-100 p-2 rounded text-gray-600 mr-3 group-hover:bg-green-50 group-hover:text-green-600 transition-colors"><Layers /></div>
-                        <div className="font-medium text-gray-800">{diff.replace(/^[0-9].\s+/, '')}</div>
+                        <div className="font-medium text-gray-800">{diff.split(' ')[0]}</div>
                       </button>
                     ))}
                   </div>
